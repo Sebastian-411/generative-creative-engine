@@ -91,6 +91,8 @@ Antes de la ronda 1, copia o haz commit de la pieza para poder revertir.
 
 1. `node ../video-engine/engine/check.mjs videos/<slug>`: corrige **todas** las fallas. Lee cada aviso y decide (corregir o justificar en `brief.md`).
 2. `node ../video-engine/engine/stills.mjs videos/<slug> --review`: tres hojas (beats al inicio y la mitad de cada línea, tiras de −0.2 a +0.2 s en cada corte, y los beats a 360 px de ancho). **Ábrelas con Read** y aplica `video-review`, empezando por los números de `review/auto.md` (si números y ojo discrepan, ganan los números). Para texto pequeño o un momento clave, `--times` y el fotograma a tamaño completo.
+   - Es **la misma rúbrica que usa el `critic`**, completa: la pasada de primer espectador en frío, las 12 preguntas y el checklist **Texto en pantalla, sin sonido** (cada rótulo de su entrada a su salida). No la resumas ni la reemplaces por una lista propia: lo que el crítico encontraría, encuéntralo tú antes.
+   - Escribe tus hallazgos en el formato de `video-review` (tiempo · fotograma · qué está mal → cambio exacto · se queda) y corrígelos **antes** de lanzar al crítico. Un defecto chico de texto que el crítico atrapa es una ronda perdida.
 3. Si la pieza es para publicar o dura más de 30 s, lanza al agente `critic` con la ruta de la pieza.
 4. Comprueba el contrato línea por línea (gancho en el fotograma 0, payoff a tiempo, rima) y la tabla de beats (cada apoyo entra en su palabra, un solo RESPIRO, ventanas de lectura cumplidas). Enruta cada hallazgo al rol que lo corrige; arregla en orden **texto → timing → detalle** y anótalo en la bitácora.
 5. Repite **una** vez. Si después de 2 rondas algo sigue mal, entrégalo y dilo; no iteres en círculo.

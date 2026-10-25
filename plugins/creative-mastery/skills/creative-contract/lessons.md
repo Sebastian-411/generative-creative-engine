@@ -17,5 +17,7 @@ Correcciones del usuario que valen para todas las piezas. Más reciente arriba. 
 
 ## Feedback del sistema (agentes sobre las skills)
 
+- 2026-10-25 · critic (uso desatendido, 5 reels): el crítico devolvió 5 de 5 en el primer intento por defectos chicos de texto que la revisión propia no vio (rótulo karaoke que se reescribía y perdía "la mitad", "Super-" / "Kamiokande" partido y repetido por el subtítulo, objetos rotulados sin nombre claro) → la revisión de `video-oneshot` aplica la rúbrica completa de `video-review`, y esta suma el checklist **Texto en pantalla, sin sonido**, que el `critic` también usa. · `video-review`, `video-oneshot`, `critic`, `story-grammar`
+
 - 2026-10-24 · critic (demo Tastora): el payoff solo se leía con sonido (precio de 30 px sobre metraje) → regla: el momento del payoff siempre lleva su versión grande en pantalla; `critic` revisa sin sonido primero; `stills.mjs` incluye 0.3 s y el último cuadro; el crítico lee `voice.json`. · `critic`, `video-review`, `stills.mjs`
 - 2026-10-24 · story-architect (demo Tastora): ruta fija `videos/`, sin plantilla de borrador de voz, sin regla para productos de dos lados, umbrales distintos entre hook-lab y storytelling, sin aviso sobre datos de prueba → corregido en `story-architect.md`, `hook-lab`, `storytelling`.

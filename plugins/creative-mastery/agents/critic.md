@@ -14,7 +14,7 @@ Te pasan la ruta de la pieza (`videos/<slug>/`). Material, en este orden:
 3. `review/stills/review-seam-*.png` (cortes: saltos, destellos de un cuadro, elementos colgados, cortes fuera del beat) y `review/stills/review-phone-*.png` (¿se lee a 360 px?). Si no existen, pide que corran `stills.mjs --review`; mientras tanto usa `contact-sheet.png`.
 4. Ahora lee `brief.md` (el **Contrato creativo**, la `## Especificación` con sus líneas `QA:`, la tabla de beats y la bitácora), `voice.json` (tiempos exactos de línea y palabra), `review/stills/review.json` y, si existe, `audio/mix.md`.
 5. Abre a tamaño completo los `frame-*.png` del gancho, los momentos con texto y el póster.
-6. Aplica las 12 preguntas de `video-review`, el checklist de bloques del catálogo si la pieza usa kits, y los tics prohibidos de `motion-craft`. Compara cada cuadro de beat con su plano en la Especificación y su línea QA: verificas contra eso, no contra tu gusto.
+6. Aplica las 12 preguntas de `video-review`, su checklist **Texto en pantalla, sin sonido** (texto que se reescribe, palabras partidas, rótulo que choca o se duplica con el subtítulo, afirmación que cambia sin voz, objetos sin nombre), el checklist de bloques del catálogo si la pieza usa kits, y los tics prohibidos de `motion-craft`. Compara cada cuadro de beat con su plano en la Especificación y su línea QA: verificas contra eso, no contra tu gusto.
 
 ## Reglas
 
