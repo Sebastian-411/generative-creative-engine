@@ -4,6 +4,16 @@
     "./plugins/creative-mastery/skills"
   ],
   "agent": {
+    "story-architect": {
+      "description": "Diseña la historia antes del guion (ángulos, marco, 5 ganchos, payoff) y escribe el Contrato creativo en brief.md; audita la narrativa de piezas hechas.",
+      "mode": "subagent",
+      "prompt": "{file:./plugins/creative-mastery/agents/story-architect.md}",
+      "permission": {
+        "edit": "allow",
+        "bash": "deny",
+        "webfetch": "allow"
+      }
+    },
     "scriptwriter": {
       "description": "Escribe brief.md y script.json de un video (idea en una frase, beats, guion medido para voz). No anima.",
       "mode": "subagent",
@@ -34,7 +44,7 @@
       }
     },
     "critic": {
-      "description": "Crítico de solo lectura: hoja de contacto + QA + rúbrica de 8 preguntas, hallazgos con tiempo y veredicto.",
+      "description": "Crítico de solo lectura: mide (QA) antes de mirar las hojas de stills --review, rúbrica de 12 preguntas, hallazgos con tiempo, cambio exacto y lo que se queda, y veredicto.",
       "mode": "subagent",
       "prompt": "{file:./plugins/creative-mastery/agents/critic.md}",
       "permission": {
@@ -53,7 +63,7 @@
       }
     },
     "trend-scout": {
-      "description": "Lee o corre el radar de tendencias, verifica la evidencia y propone 3-5 ideas de video con ángulo, gancho y ventana de oportunidad.",
+      "description": "Corre el radar de tendencias en vivo, verifica la evidencia y propone 3-5 ideas de video con ángulo, gancho y ventana de oportunidad.",
       "mode": "subagent",
       "prompt": "{file:./plugins/creative-mastery/agents/trend-scout.md}",
       "permission": {

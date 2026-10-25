@@ -4,6 +4,10 @@
 
 **Plantilla**: `blank` + esta receta (SVG con `stroke-dashoffset` o Canvas) · **Stage**: `fps: 24, drawings: 12`
 
+## Medio
+
+Una pluma sobre papel blanco: papel de fondo · una sola tinta negra para todo · **un** hilo de color que conduce · rótulos a mano · el trazo con su bamboleo. Se mueve **dibujando**: nada aparece, todo se traza en el orden de una mano, y la línea se transforma para pasar a la idea siguiente.
+
 ## Paleta
 
 | Rol | Hex |

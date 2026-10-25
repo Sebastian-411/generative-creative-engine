@@ -4,7 +4,7 @@ Uso: python tts_qwen.py job.json
 job.json: {"text": "...", "description": "...", "language": "Spanish", "outs": ["t1.wav", "t2.wav"],
            "backend": "space" | "local", "space": "Qwen/Qwen3-TTS"}
 - space: la demo oficial en Hugging Face (GPU gratuita, sin llave; requiere internet y `pip install gradio_client`).
-- local: el modelo en esta máquina (en GPUs sin bf16 corre en CPU float32: lento pero estable).
+- local: el modelo en esta máquina: GPU NVIDIA en bf16 (emulado en GTX 16xx, sin NaN; fp16 sí da NaN) o CPU float32 si no hay GPU.
 Imprime una línea JSON por toma generada.
 """
 import json
@@ -39,12 +39,23 @@ def via_local(job):
     import torch
     from qwen_tts import Qwen3TTSModel
 
-    gpu = torch.cuda.is_available() and torch.cuda.get_device_capability(0)[0] >= 8
-    model = Qwen3TTSModel.from_pretrained(job.get("model", "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign"),
-                                          device_map="cuda:0" if gpu else "cpu", dtype=torch.bfloat16 if gpu else torch.float32)
+    import numpy as np
+    name = job.get("model", "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign")
+    # GPU NVIDIA con >= 5 GB: bf16 (nativo desde Ampere; emulado en Turing/GTX 16xx, ~4x más rápido que la CPU).
+    # fp16 NO: en Turing da NaN. Si una toma sale con NaN, esa toma se rehace en CPU float32.
+    gpu = torch.cuda.is_available() and torch.cuda.get_device_properties(0).total_memory >= 5 * 1024 ** 3
+    model = Qwen3TTSModel.from_pretrained(name, device_map="cuda:0" if gpu else "cpu", dtype=torch.bfloat16 if gpu else torch.float32)
+    print(json.dumps({"device": torch.cuda.get_device_name(0) + " bf16" if gpu else "cpu float32"}), flush=True)
+    cpu_model = None
     for out in job["outs"]:
         wavs, sr = model.generate_voice_design(text=job["text"], language=job.get("language", "Spanish"), instruct=job["description"])
-        sf.write(out, wavs[0], sr)
+        w = np.asarray(wavs[0], dtype=np.float32)
+        if gpu and (not np.isfinite(w).all() or np.abs(w).max() < 1e-4):
+            print(json.dumps({"retry_cpu": out, "why": "NaN o silencio en GPU"}), flush=True)
+            cpu_model = cpu_model or Qwen3TTSModel.from_pretrained(name, device_map="cpu", dtype=torch.float32)
+            wavs, sr = cpu_model.generate_voice_design(text=job["text"], language=job.get("language", "Spanish"), instruct=job["description"])
+            w = np.asarray(wavs[0], dtype=np.float32)
+        sf.write(out, w, sr)
         print(json.dumps({"out": out}), flush=True)
 
 

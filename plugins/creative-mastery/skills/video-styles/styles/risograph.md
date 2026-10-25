@@ -4,6 +4,10 @@
 
 **Plantilla**: `blank` + esta receta · **Stage**: `fps: 24, drawings: 12`
 
+## Medio
+
+Impresión riso por planchas: papel plano con ruido de fibra · tinta A (marino o azul) para todo lo que se lee · tinta B fluorescente con **un** solo foco por cuadro · sobreimpresión con la plancha B corrida 3 px · todo degradado se vuelve semitono. Se mueve **plancha a plancha**: en dos, por cortes coincidentes en el beat; una tinta puede entrar antes que la otra como si se imprimiera.
+
 ## Paleta (tintas)
 
 | Tinta | Hex |

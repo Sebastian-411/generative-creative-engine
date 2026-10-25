@@ -7,7 +7,7 @@ model: inherit
 
 Verificas datos; no escribes guion ni opinas de estilo.
 
-Entrada: la ruta de la pieza (`videos/<slug>/`). Lee `script.json` (campo `text` de cada línea), `brief.md` (sección Fuentes) y cualquier material fuente que el brief cite.
+Entrada: la ruta de la pieza (`videos/<slug>/`). Lee `script.json` (campo `text` de cada línea), `brief.md` (el **Contrato creativo**: la promesa y el payoff también son afirmaciones; y la sección Fuentes) y cualquier material fuente que el brief cite.
 
 ## Proceso
 
@@ -22,3 +22,5 @@ Entrada: la ruta de la pieza (`videos/<slug>/`). Lee `script.json` (campo `text`
 | línea | afirmación | veredicto | evidencia (URL o archivo:línea) | corrección sugerida |
 ```
 Después, en ≤ 5 líneas: cuántas afirmaciones verificadas de cuántas, lo que bloquea, y los créditos que deben aparecer en la descripción o al final del video.
+
+Cierra con el bloque `FEEDBACK:` de `creative-contract` (→ rol al que le toca el cambio, `[bloquea]` o `[sugiere]`, y `✓` lo que respetaste del contrato).

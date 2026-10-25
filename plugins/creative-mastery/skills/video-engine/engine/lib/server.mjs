@@ -30,7 +30,17 @@ export function serve(dir) {
     if (!file.startsWith(root) && !url.startsWith('/__engine/')) { res.writeHead(403).end(); return; }
     fs.stat(file, (err, st) => {
       if (err || !st.isFile()) { res.writeHead(404).end('not found: ' + url); return; }
-      res.writeHead(200, { 'Content-Type': TYPES[path.extname(file).toLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-store' });
+      const type = TYPES[path.extname(file).toLowerCase()] || 'application/octet-stream';
+      // Rangos HTTP: sin ellos Chrome no puede buscar (seek) dentro de un <video> y se queda en el fotograma 0.
+      const range = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range || '');
+      if (range) {
+        const start = range[1] ? +range[1] : Math.max(0, st.size - +range[2]);
+        const end = range[1] && range[2] ? Math.min(+range[2], st.size - 1) : st.size - 1;
+        res.writeHead(206, { 'Content-Type': type, 'Content-Range': `bytes ${start}-${end}/${st.size}`, 'Content-Length': end - start + 1, 'Accept-Ranges': 'bytes', 'Cache-Control': 'no-store' });
+        fs.createReadStream(file, { start, end }).pipe(res);
+        return;
+      }
+      res.writeHead(200, { 'Content-Type': type, 'Content-Length': st.size, 'Accept-Ranges': 'bytes', 'Cache-Control': 'no-store' });
       fs.createReadStream(file).pipe(res);
     });
   });

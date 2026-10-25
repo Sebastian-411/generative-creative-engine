@@ -211,8 +211,22 @@ async function narrateQwen() {
   let peak = 0; for (const v of buf) peak = Math.max(peak, Math.abs(v));
   if (peak > 0) for (let i = 0; i < buf.length; i++) buf[i] *= 0.89 / peak;
   writeWav(rawFile, [buf]);
+  // tempo: acelera (o frena) toda la narración sin cambiar el tono (atempo) y reescala los tiempos por palabra.
+  // Útil porque Qwen actuado tiende a ~2 palabras/s; 1.10–1.20 sigue sonando natural.
+  const tempo = Math.min(1.35, Math.max(0.8, +(script.tempo || 1)));
+  let samples = buf.length;
+  if (Math.abs(tempo - 1) > 0.005) {
+    const tmp = rawFile.replace(/\.wav$/, '.tempo.wav');
+    const rt = spawnSync(ffmpeg, ['-y', '-loglevel', 'error', '-i', rawFile, '-af', `atempo=${tempo}`, '-ac', '1', '-ar', String(SR), '-c:a', 'pcm_s16le', tmp]);
+    if (rt.status !== 0) throw new Error('atempo falló: ' + rt.stderr);
+    fs.renameSync(tmp, rawFile);
+    samples = readWav(rawFile).channels[0].length;
+    const k = (x) => +(x / tempo).toFixed(3);
+    for (const l of lines) { l.start = k(l.start); l.end = k(l.end); l.words = l.words.map((w) => ({ ...w, start: k(w.start), end: k(w.end) })); }
+    report.push(`tempo ×${tempo}: la narración se aceleró sin cambiar el tono`);
+  }
   if (master) masterVoice(rawFile, path.join(pieceDir, 'audio', 'voice.wav'), script.room || 'seco');
-  const duration = +(buf.length / SR).toFixed(3);
+  const duration = +(samples / SR).toFixed(3);
   const totalWords = lines.reduce((a, l) => a + l.words.length, 0);
   const speech = lines.reduce((a, l) => a + (l.end - l.start), 0);
   fs.writeFileSync(path.join(pieceDir, 'voice.json'), JSON.stringify({ engine: 'qwen', duration, wordsPerSecond: +(totalWords / speech).toFixed(2), descriptions: blocks.map((b) => ({ speaker: b.speaker, description: b.description })), lines }, null, 1));

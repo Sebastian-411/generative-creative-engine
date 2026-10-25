@@ -1,7 +1,5 @@
 /examples
 /videos
 node_modules/
-# Audio de los demos: pesado y con voces clonadas de datasets (solo uso interno)
-demos/*/audio/
-demos/voz-prueba/
-knowledge/trends/radar.log
+# Demos y piezas: viven solo en local, no en el repo
+demos/

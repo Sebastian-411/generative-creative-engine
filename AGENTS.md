@@ -7,21 +7,29 @@ Este repo es un plugin multi-host (Claude Code, Cursor, Codex, OpenCode) para ge
 - "Hazme un video / reel / short / explicador / promo" → skill `video-oneshot`.
 - Escribir o depurar una pieza, un render que falla o un comando del motor → skill `video-engine`.
 - Revisar un video ya hecho → skill `video-review` (o el agente `critic`).
-- "¿Qué está pegando?", ideas para redes, contenido reactivo → skill `trend-radar` (lee `knowledge/trends/latest.md`).
+- "¿Qué está pegando?", ideas para redes, contenido reactivo → skill `trend-radar` (corre `radar.mjs` en vivo).
+- Storytelling, ganchos, narrativa, "no engancha" → skills `storytelling` y `hook-lab` (o el agente `story-architect`).
 - Tono, emoción, personaje o acento de la voz ("que suene caleño", "de terror") → skill `voice-director`.
 
 ## Agentes
 
 | Agente | Acceso | Rol |
 |---|---|---|
-| `scriptwriter` | escribe `brief.md` y `script.json` | Historia y guion medido para voz |
+| `story-architect` | escribe el Contrato creativo en `brief.md` | Ángulos, marco narrativo, 5 ganchos, payoff y auditoría narrativa |
+| `scriptwriter` | escribe `brief.md` y `script.json` | Guion medido para voz, fiel al contrato |
 | `art-director` | escribe `design.md` y la prueba de look | Dirección de arte |
 | `motion-designer` | lectura y escritura | Anima la pieza o una escena |
 | `critic` | solo lectura | Hallazgos con evidencia y veredicto |
 | `fact-checker` | solo lectura y web | Verifica datos y licencias |
-| `trend-scout` | lectura, web y radar | Convierte el radar diario en 3–5 ideas con evidencia, ángulo y ventana |
+| `trend-scout` | lectura, web y radar | Corre el radar en vivo y lo convierte en 3–5 ideas con evidencia, ángulo y ventana |
 
 Cada agente y cada ronda deben justificarse. Un short de 15 s lo hace el orquestador solo. Los agentes entran en piezas de más de 45 s, piezas para publicar o piezas con marca.
+
+## Esencia común: Contrato creativo y feedback
+
+- Toda pieza lleva un **Contrato creativo** arriba de `brief.md` (skill `creative-contract`): idea en una frase, promesa, pregunta dramática, payoff, gancho, estructura, rima inicio-final, tono. Todos los agentes y skills lo leen antes de actuar y no lo contradicen en silencio.
+- Cada agente cierra su salida con un bloque `FEEDBACK:` dirigido al rol que debe cambiar algo (`[bloquea]` / `[sugiere]`). El orquestador lo resuelve y lo registra en `## Bitácora` del brief.
+- Las correcciones del usuario que valen para siempre van a `plugins/creative-mastery/skills/creative-contract/lessons.md` y a la skill dueña.
 
 ## Reglas del motor (no negociables)
 

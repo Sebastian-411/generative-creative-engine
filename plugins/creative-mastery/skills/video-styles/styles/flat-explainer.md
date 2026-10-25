@@ -4,6 +4,10 @@
 
 **Plantilla**: `blank` + esta receta (SVG inline + GSAP) · **Stage**: `fps: 30`
 
+## Medio
+
+Piezas de vinilo plano sobre una mesa clara: fondo liso · formas principales en dos azules (el sistema) · neutros para el contexto · **un** token naranja que viaja (lo que el ojo sigue) · etiquetas cortas pegadas a su objeto. Se mueve **armándose**: cada pieza aparece por una causa, la línea sale de un nodo y llega al siguiente.
+
 ## Paleta
 
 | Rol | Hex |

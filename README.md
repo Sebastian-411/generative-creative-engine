@@ -45,7 +45,9 @@ Instala `playwright-core`, `ffmpeg-static` y `gsap` en `~/.generative-creative-e
 
 Requisitos: Node 18+, Chrome o Edge, y Python 3 solo si el video lleva voz.
 
-**Voz expresiva (opcional, recomendado)**: `node plugins/creative-mastery/skills/video-engine/engine/setup-voice.mjs --dir D:i-models` instala Chatterbox (local, MIT, ~8 GB) y faster-whisper. Corre con GPU NVIDIA de 6 GB o en CPU. Luego crea voces con acento: `node .../voices.mjs kit`. Opcional: Gemini TTS gratis en la nube (`voices.mjs config --gemini-key …`).
+**Opcional, para videos de un sitio web**: `npx hyperframes@0.8.195 capture <url> --json` (HyperFrames de HeyGen, Apache-2.0, gratis y local) saca capturas con scroll, colores con su rol, fuentes reales, logos y el texto del sitio. Varias skills destilan además su doctrina de video.
+
+**Voz expresiva (opcional, recomendado)**: `node plugins/creative-mastery/skills/video-engine/engine/setup-voice.mjs --dir D:/ai-models` instala Chatterbox (local, MIT, ~8 GB) y faster-whisper. Corre con GPU NVIDIA de 6 GB o en CPU. Luego crea voces con acento: `node .../voices.mjs kit`. Opcional: Gemini TTS gratis en la nube (`voices.mjs config --gemini-key …`).
 
 ## Uso
 
@@ -55,7 +57,7 @@ hazme un short de 25 s explicando cómo funciona el cifrado de extremo a extremo
 
 La skill `video-oneshot` hace todo el recorrido sin pedirte aprobaciones:
 
-1. brief y guion
+1. contrato creativo (historia, gancho, payoff), brief y guion
 2. verificación de datos
 3. voz
 4. animación anclada a cada palabra
@@ -71,24 +73,28 @@ Las piezas quedan en `videos/<slug>/`, con el entregable en `render/final.mp4`.
 
 | Skill | Para qué |
 |---|---|
-| `video-oneshot` | Orquestador: pedido → MP4 en una pasada |
+| `video-oneshot` | Orquestador: pedido → MP4 en una pasada, con rutas por tipo (sitio/producto real, explicador, PR, motion, música, dato, historia), recorrido de sitios, edición como editor y versiones |
 | `video-engine` | El motor: contrato de la pieza, API de `stage`, comandos, kit de papel, plantillas |
-| `story-grammar` | Formatos narrativos, arco, guion para voz sintética, tabla de beats |
-| `motion-craft` | Duraciones, curvas, coreografía, cortes en movimiento, tics prohibidos |
-| `video-styles` | 8 estilos con paleta, tipografía, reglas y receta |
+| `creative-contract` | La esencia compartida: Contrato creativo de cada pieza, protocolo de feedback entre agentes y lecciones del usuario |
+| `storytelling` | 3 ángulos que son 3 películas (mundo + dispositivo + forma), marcos narrativos por objetivo y género (ABT, Story Spine, StoryBrand, in medias res, Fichte…), payoff, rúbrica de 10 criterios, prosa sin tics de IA |
+| `hook-lab` | 13 mecanismos de gancho, ganchos en cuatro capas (imagen, texto, voz, sonido) y cómo elegir sin prometer de más |
+| `story-grammar` | Formatos y números por tipo, techo de voz por escena, revelado por palabra, tiempos de lectura, tabla de beats ampliada, subtítulos y zonas seguras |
+| `motion-craft` | Curvas por papel, resortes, cámara continua, profundidad, cortes, PROHIBIDO global; vocabulario adjetivo→parámetro, 23 transiciones y 17 recetas (count-up, charts, mockups, lower thirds…) |
+| `video-styles` | 8 estilos escritos como un medio (partes y cómo se mueve), marca real por encima del catálogo, tratamientos (grano, riso, halftone, VHS…) |
 | `voice-director` | Voz que actúa: emoción/intensidad/ritmo por línea, voces con acento (caleño, paisa, venezolano…) clonadas de grabaciones autorizadas, varias tomas verificadas con Whisper |
-| `trend-radar` | Radar diario de tendencias (Google Trends/News por país, Wikipedia, Bluesky, YouTube, HN, GitHub) con score y evidencia en `knowledge/trends/latest.md` |
-| `sound-design` | Música procedural, efectos, ducking, −14 LUFS |
-| `video-review` | Rúbrica de 8 preguntas, hallazgos con evidencia, rondas |
+| `trend-radar` | Radar de tendencias en vivo (Google Trends/News por país, Wikipedia, Bluesky, YouTube, HN, GitHub) con score y evidencia, consultado en el momento (sin historial) |
+| `sound-design` | Música procedural o ACE-Step, carve por bandas bajo la voz, efectos alineados a su pico y solo con causa visible, voz/música por línea, −14 LUFS |
+| `video-review` | Medir antes de mirar, 3 hojas de revisión (beats, cortes, teléfono), rúbrica de 12 preguntas, hallazgos con evidencia, rondas |
 
 | Agente | Acceso | Rol |
 |---|---|---|
-| `scriptwriter` | escribe `brief.md` y `script.json` | Historia y guion medido para voz |
+| `story-architect` | escribe el Contrato creativo en `brief.md` | Ángulos, marco narrativo, 5 ganchos, payoff y auditoría narrativa |
+| `scriptwriter` | escribe `brief.md` y `script.json` | Guion medido para voz, fiel al contrato |
 | `art-director` | escribe `design.md` y la prueba de look | Paleta, tipografía y reglas del look |
 | `motion-designer` | lectura y escritura | Anima la pieza o una escena hasta que pasa el QA |
 | `critic` | solo lectura | Segundo par de ojos y veredicto de publicación |
 | `fact-checker` | solo lectura y web | Verifica datos y licencias |
-| `trend-scout` | lectura, web y radar | Convierte el radar diario en 3–5 ideas con evidencia, ángulo y ventana |
+| `trend-scout` | lectura, web y radar | Corre el radar en vivo y lo convierte en 3–5 ideas con evidencia, ángulo y ventana |
 
 Para piezas cortas, el orquestador trabaja solo. Los agentes entran cuando la pieza es larga, se va a publicar o trae marca o referencias.
 
@@ -119,6 +125,7 @@ stills.mjs <dir>     # fotogramas + contact-sheet.png
 mix.mjs <dir>        # música + voz + efectos → audio/mix.wav (−14 LUFS)
 render.mjs <dir>     # MP4 (--draft a mitad de resolución)
 build.mjs <dir>      # check → mix → render → verificación → hoja de contacto
+site-footage.mjs <url> <out.mp4>  # graba un sitio (propio) haciendo scroll, con su animación 3D, como metraje
 ```
 
 ## Cómo está empaquetado

@@ -1,11 +1,21 @@
 ---
 name: motion-craft
-description: Criterio de movimiento para motion graphics generados por código - duraciones, curvas (easing), resortes, coreografía y escalonado, cortes en movimiento, cámara, transiciones entre escenas, tipografía cinética y la lista de tics que delatan "animación hecha por IA". Con números concretos medidos de trabajo profesional. Úsala al escribir o revisar la animación de una pieza (index.html), cuando algo "se ve barato", flota sin intención, rebota de más o tiene cortes torpes. No cubre narrativa (`story-grammar`) ni paleta/estilo (`video-styles`).
+description: Criterio de movimiento para motion graphics generados por código - duraciones, curvas según el papel, blur de movimiento, resortes por amortiguación, coreografía y solape, golpes musicales, cortes y vectores, cámara continua, tipografía cinética, "nada se detiene" y la lista PROHIBIDO global que hereda el contrato. Con números medidos de trabajo profesional y recetas para nuestro motor (vocabulario adjetivo→parámetro, 23 transiciones, recetas de titulares, contadores, charts, lower thirds, dispositivos). Úsala al escribir o revisar la animación de una pieza (index.html), al traducir lo que pide el usuario ("más premium", "más dinámico") a parámetros, o cuando algo "se ve barato", flota sin intención, rebota de más o tiene cortes torpes. No cubre narrativa (`story-grammar`) ni paleta/estilo (`video-styles`).
 ---
 
 # Oficio del movimiento
 
-El movimiento es información: cada cosa que se mueve debe tener una causa, y en cada instante debe haber **una** cosa principal en vuelo. Si pausas el video en cualquier segundo, algo con sentido está ocurriendo.
+> Esencia común: lee el **Contrato creativo** de `brief.md` (`creative-contract`). El movimiento más fuerte es el del payoff; el fotograma 0 ya es el gancho y el último rima con el primero.
+
+El movimiento es información: cada cosa que se mueve tiene una causa, y en cada instante hay **una** cosa principal en vuelo. Prueba de todo movimiento: terminar la frase *"esto se mueve porque…"*. Si no puedes, quítalo.
+
+Notación: `tl = stage.tl`, `F = 1/stage.fps`; los tiempos salen de `stage.at/word/end` o `stage.beat/bar`.
+
+| Necesitas… | Abre |
+|---|---|
+| traducir "suave", "premium", "dinámico", "cinematográfico" a curva, duración y número | `references/vocabulario.md` |
+| elegir y construir una transición (23 recetas por energía + 5 continuidades) | `references/transiciones.md` |
+| contador, chart, dispositivo, notificaciones, whip pan, iris, logo sting, slam, line swap, marcador, lower thirds | `references/recetas.md` |
 
 ## Duraciones
 
@@ -16,61 +26,85 @@ El movimiento es información: cada cosa que se mueve debe tener una causa, y en
 | Tarjeta, número, bloque | 300–450 ms |
 | Entrada de escena / titular grande | 400–600 ms |
 | Revelación dramática | 600–1200 ms |
-| Movimiento de cámara | 1.1–1.3 s |
+| Movimiento rápido (barrido, látigo, zoom) | 0.3–0.6 s, **con blur** |
+| Reencuadre de cámara | 1.1–1.3 s |
 
-- La mediana profesional es ~10 fotogramas a 30 fps (0.33 s). Lo lento se ve amateur.
-- Más distancia, más tiempo: 100 px ×1.0, 400 px ×1.6, pantalla completa ×1.8–2.0.
-- **Salida = 65–75 % de la entrada.** Una entrada única nunca pasa de 800 ms.
+- Mediana profesional ~10 fotogramas a 30 fps (0.33 s). Más distancia, más tiempo: 100 px ×1.0, 400 px ×1.6, pantalla completa ×1.8–2.0.
+- **Salida = 65–75 % de la entrada** (HF dice 40–50 %; nos quedamos con lo nuestro). Una entrada única nunca pasa de 800 ms. Llegar lento, salir limpio: una salida es un solo movimiento, nunca deslizar-parar-irse.
+- Ritmo por género: montaje 0.13–0.8 s por corte · promedio 1.8–3 s con movimiento por dentro · demo 7–10 s en un encuadre mientras la UI actúa · showreel 1.5–4 s por idea. **Un mismo tratamiento envejece a los ~6 s**: se cambia de tratamiento o se pausa; nunca se alargan los tweens.
 
-## Curvas
+## Curvas según el papel
 
-- Entradas: `power4.out` / `expo.out` (casi todo el recorrido en los primeros 4–8 fotogramas, cola larga). Salidas: `power4.in`. Movimiento en pantalla: `power2.inOut`. Rotaciones continuas y barras de progreso: `none`.
-- **Nunca lineal en movimiento espacial** (salvo derivas lentas de fondo).
-- Sobrepaso: premium 0 %, papel 3–5 %, éxito 5–10 %. `back.out(1.4–1.7)` sí; `bounce` y `elastic`, no.
-- Resortes (`Stage.spring`): UI 320/30, cámara y tarjetas 170/26, tipografía pesada 120/24, personaje 180/12. Ratio de amortiguación ≥ 0.72.
+El mismo `power2.out` de 0.5 s en todo es lo que hace que una pieza se vea generada.
+
+| Papel | Curva |
+|---|---|
+| Llegada | `expo.out` / `power4.out` (casi todo el recorrido en 4–8 fotogramas, cola larga) |
+| Cámara, inundación de color, movimiento en pantalla | `power2.inOut` (deriva de cámara larga: `power1.inOut`) |
+| Salida, zoom a través | `power3.in` / `power4.in` |
+| **Impacto (sello, golpe)** | `.in` (`power3.in`, 0.15–0.2 s): un impacto es una aceleración; el contacto es `tl.set` + `stage.sfx('thud', t)` |
+| Rotación continua, progreso, velocidad constante que es el punto | `none` |
+
+- **Nunca lineal en movimiento espacial** (salvo derivas lentas de fondo). Nunca `bounce` ni `elastic`.
+- **Blur de movimiento medido**: todo movimiento de 0.3–0.6 s lleva blur con pico en su fotograma más rápido: **6–12 px en algo del tamaño de un texto** (en zoom: 10 px; con 20 se embarran las letras), **15–20 px a pantalla completa**; solo horizontal si el movimiento es horizontal (SVG `feGaussianBlur stdDeviation="X 0"` por proxy, ver `references/transiciones.md`). El blur vale lo mismo a ambos lados de un corte.
+- **Sobrepaso solo en transforms**: premium 0 %, papel 3–5 %, éxito 5–10 %; tope `back.out(1.7)`. **Opacidad, color y números nunca se pasan** (un contador que llega a 47 y vuelve a 42 mostró una cifra falsa). El arrastre secundario (sombra, carcasa) termina 1 fotograma después que el objeto.
+- **Resortes por amortiguación** ζ = damping / (2√stiffness) en `Stage.spring` (masa 1): 1.0 no rebota · **0.7–0.85 premium** · 0.4–0.6 juguetón · < 0.3 caricatura. Presets: UI 320/30 (ζ 0.84) · cámara y tarjetas 170/26 (ζ 1.0) · tipografía pesada 120/24 (ζ 1.1) · personaje 180/12 (ζ 0.45, **solo personajes**). Fuera de personajes, ζ ≥ 0.72.
 - Escala: los objetos **llegan desde grande** (1.3–1.8× → 1, `expo.out`) más que crecer desde cero. Las llegadas por transform superan a los fundidos 6 a 1.
 
 ## Coreografía
 
-- **Una cosa se mueve a la vez**; el resto espera o deriva. Como máximo 1/3 de los elementos activos al mismo tiempo.
-- Escalonado: 50–100 ms entre elementos, **total ≤ 500 ms**. Palabras: ganchos 2–4 fotogramas, titulares 4–6, con voz 8–12.
+- **Una cosa se mueve a la vez**; el resto espera. Como máximo 1/3 de los elementos activos al mismo tiempo.
+- **Solape con proporción**: el siguiente arranca cuando el anterior lleva 30–50 %. El desfase siempre es **menor** que la duración (si no, es una cola). Escalonado: letras 1 fotograma, palabras 60–120 ms (con voz: en `stage.word`), ítems 40–80 ms; **total ≤ 500 ms**.
+- Se retrasan los secundarios, **nunca el focal** (si espera, se lee como lag). Se escalona lo que *ocurre*, no lo que ya *estaba*.
+- **Combinar propiedades solo si cuentan la misma historia**: subir + fundirse = "llega". Subir + rotar + escalar + desenfocar = cuatro afirmaciones y texto ilegible.
 - Todo entra desde la misma dirección. El protagonista recorre la mayor distancia; el contra-movimiento va al 20–30 % de su velocidad.
 - Fases: preparación 20–30 %, acción 30–40 %, resolución 30–40 %, y 100–200 ms de quietud.
-- Causalidad: un efecto empieza en el fotograma de su causa (el sonido en el contacto, las chispas desde su fuente).
-- Ningún recorrido de más de 1/3 de pantalla sin un fotograma clave intermedio.
+- Causalidad: un efecto empieza en el fotograma de su causa (el sonido en el contacto, las chispas desde su fuente, el clic enciende lo siguiente **en el mismo fotograma**).
+- Ningún recorrido de más de 1/3 de pantalla sin un fotograma clave intermedio. Para mover un grupo ya compuesto, **curva de empujón** (10 % de la distancia en 20 % del tiempo `power3.in` → 65 % en 18 % `none` → 25 % en 62 % `power4.out`; la cola ≥ 3× la arrancada), no `power4.inOut`, que frena de golpe.
 
-## Cortes y transiciones
+## Golpes musicales
 
-- **Corta en movimiento, nunca en reposo**: el plano saliente se va todavía moviéndose y el entrante llega ya en vuelo (≥ 50 % de su recorrido).
-- **Ley del vector**: mismo eje y misma dirección a ambos lados del corte, velocidades parecidas (salida `power4.in` ↔ entrada `power4.out`). El signo de la escala también coincide (si algo sale alejándose, lo siguiente no entra creciendo desde chico).
-- Una dirección dominante por pieza (por defecto, de derecha a izquierda); las otras significan algo: arriba = elevar, adelante en Z = profundizar.
-- Corte por defecto ("cortar la curva"): ~0.6 s en total; recorrido parcial de ~12 % del ancho (±230 px a 1920; ±130 px a 1080); la salida se desvanece al 25–30 % de su recorrido y la entrada arranca en opacidad 0.35.
-- Zoom a través: salida escala 1→1.2 + blur 0→10 px + opacidad 1→0.15 en 0.2 s (`power3.in`); entrada 0.75→1 en 0.5 s (`expo.out`).
-- 2–3 tipos de transición por pieza, nunca la misma dos veces seguidas. **Nada de crossfades** entre escenas (salvo cronologías). Nada de fundido a negro por defecto.
-- Con música: los cortes caen en el compás (`stage.bar`, `stage.beat`); adelanta la imagen 1–2 fotogramas respecto al golpe.
+- Un movimiento que debe caer en el golpe **arranca 40–190 ms antes** (`stage.beat(n) - .12`); la reacción entra 0–45 ms después.
+- **El golpe mismo es un `tl.set` de 0 ms**: suavizarlo lo mata. Se corta en el beat, la composición cambia en el compás (`stage.bar`).
+- Golpe de cámara en el beat: +1.2 % de escala que decae. Audio-reactivo: texto al 3–6 %, fondos al 10–30 % (graves → escala, agudos → brillo).
+
+## Cortes y vectores
+
+- **Corta en movimiento, nunca en reposo**, en el fotograma más rápido: la salida se va todavía moviéndose y la entrada llega en vuelo (≥ 50 % de su recorrido).
+- **Ley del vector**: mismo eje, misma dirección y velocidades espejadas (`power4.in` ↔ `power4.out`). El signo de la escala también coincide.
+- Vectores reservados: lateral (una dirección dominante, por defecto derecha→izquierda) = "siguiente" · arriba = conclusión, elevar · Z adelante = profundizar · **Z atrás = llegada** (solo en el payoff) · **estallido de escala = salir de un mundo**. Nunca dos cortes seguidos en sentidos opuestos; un cambio de dirección necesita una causa visible (clic, rebote, impacto).
+- Corte por defecto, **cortar la curva**: ~0.6 s; recorrido ±12 % del ancho (±130 px a 1080); salida `power4.in` que se desvanece al 25–30 %; entrada desde opacidad 0.35, `power4.out`. Recetas exactas y las otras 22 en `references/transiciones.md`.
+- Paleta de la pieza: **2–3 tipos en < 30 s, 3–5 en piezas largas**; uno primario, 1–2 acentos, el más audaz en el clímax; nunca el mismo dos veces seguidas; cada una la causa algo en pantalla. ≤ 1/3 de los cortes entre beats son secos. **Dos mundos nunca se funden** (nada de crossfade salvo cronologías); nada de "fundir afuera y fundir adentro"; nada de fundido a negro por defecto.
 
 ## Cámara
 
-- Una sola transformación en un contenedor; nunca acercar y alejar de inmediato.
-- Pon un punto del mundo en un punto de la pantalla; no hagas zoom "alrededor de un punto" (el sujeto se resbala bajo el texto).
-- Zoom interpolado en espacio logarítmico. Golpes de cámara en el beat: +1.2 % de escala que decae exponencialmente.
+- **La cámara es un actor y no se apaga**: cada escena lleva **un** movimiento continuo (empuje 4–8 %, órbita 3–5 °/s o paralaje), con la curva calculada sobre una ventana ~12 % más larga que la escena para que el corte caiga con la cámara aún en vuelo: `tl.fromTo(cam,{scale:1},{scale:1.06,ease:'power1.inOut',duration:(fin-ini)*1.12},ini)`.
+- **Reposo y barrido**: en un mundo continuo, la cámara se detiene **1.5–2.5 s** en el momento del héroe; descansa la cámara, no la película (los contadores siguen, las etiquetas se estampan).
+- Una sola transformación en un contenedor; nunca acercar y alejar de inmediato. Pon un punto del mundo en un punto de la pantalla (no zoom "alrededor de un punto"). Zoom en espacio logarítmico.
+- **Profundidad**: fondo 0.2× de la velocidad de cámara, contenido 1×, primer plano **6×**. La señal más fuerte es la oclusión: **un** elemento cercano con `blur(22px)` que cruza delante. Dos ya son decoración.
 
 ## Tipografía cinética
 
-- Titular entrando desde una máscara (`overflow:hidden`): `yPercent 105 → 0`, palabras escalonadas 55 ms.
-- Un titular ocupa 7–11 % del alto del cuadro; texto de apoyo 5–7 %; número protagonista 22–29 %. Mínimo legible en celular: ~48 px a 1080 de ancho.
-- Una sola familia tipográfica (dos como máximo); peso 800 para golpes y 500 para apoyo.
-- Resaltar = cambiar el color de **una** palabra en el momento en que se dice.
+- **Un titular que aterrizó se queda quieto** hasta que sale. La deriva la hace la cámara (contenedor) o el fondo, nunca el titular.
+- Entrada base: máscara (`overflow:hidden`), `yPercent 105 → 0`, palabras a 55 ms. **Varía dentro de la pieza**; alternativas medidas: por palabra `blur(6px)→0` + opacidad en 0.13 s cada 0.067 s sin desplazamiento · por palabra de gris a tinta cada 0.07–0.1 s · línea entera de 8 px de blur a nítido en 0.13–0.2 s · por letra para un nombre, 0.3→1 cada 0.1 s · tragamonedas, ~0.1 s por vuelta · cascada con opacidad binaria (`tl.set`) y latigazo `power4.out` (ancla 60–80 px en 0.16–0.2 s, palabra 40–50 px en 0.13–0.16 s, cada una 1 fotograma antes de que la anterior asiente).
+- Tamaños (vertical 1080×1920): titular 7–11 % del alto (en horizontal 4–9 %), apoyo 5–7 %, número protagonista 22–29 %, palabras héroe al 60–90 % del ancho. Mínimo legible en celular ~48 px a 1080 de ancho. Tipografía cinética: 3–7 palabras por escena.
+- Sostener lo que se lee: **0.5 s + 0.3 s por palabra**; la última línea ≥ 2 s. Salida con blur + fundido de 0.13–0.25 s o con el movimiento de la escena.
+- Una familia (dos como máximo); 800 para golpes, 500 para apoyo. Resaltar = cambiar el color de **una** palabra cuando se dice.
+- **Números**: el contador dura 1.2–1.6 s con `power2.out` + `snap`, sin `back`; luego se sostiene y aterriza en un tiempo fuerte o un corte. `tabular-nums`.
 
-## Vida en la quietud
+## Nada se detiene, nada tiembla
 
-- Ningún cuadro congelado salvo la pose final: deriva lenta (8–30 px/s), ruido suave (`Stage.noise`), un fondo que respira.
-- Pero nada de "temblor decorativo": flotar, pulsar o respirar sin motivo también delata. La vida de fondo va al 10–20 % de opacidad o de velocidad del protagonista.
+Son la misma regla. Una pausa viva tiene causa: el dato que sigue llegando (dígitos, una línea que se extiende, un latido de 1 s porque la conexión está arriba), la cámara continua o el mundo resolviendo. Sin causa, grano + empuje del 2–3 %; **nunca flotar, pulsar ni respirar en bucle**. La vida de fondo va al 10–20 % de la velocidad del protagonista. Prueba medible: en el último segundo no hay dos fotogramas consecutivos idénticos (salvo una pose final o un titlecard de quietud deliberada).
 
-## Tics que delatan "hecho por IA" (prohibidos)
+## PROHIBIDO global
 
-- Titular centrado sobre degradado; todo entra con fundido; partículas genéricas; brillos en la interfaz; emojis; degradados arcoíris; giros 3D gratuitos.
-- Etiquetas en esquinas, contadores "01 / 05", códigos de tiempo, barras de progreso decorativas, mayúsculas espaciadas como adorno.
-- Titulares que se escriben con cursor parpadeante; logotipo como único final.
-- La asociación obvia: un cohete para "lanzamiento", una bombilla para "idea".
-- Rebotes de caricatura en una pieza seria.
+El contrato la hereda: el campo PROHIBIDO de `## Especificación` en `brief.md` = esta lista + lo de la pieza. Después de cada render, todo default que apareció se nombra y entra al PROHIBIDO de la pieza (y a `lessons.md` si se repite). Excepción única: si **es** la marca del usuario.
+
+- **Fondo**: vacío negro o azul marino con cosas flotando en el medio (en temas de cielo o espacio también: sal por un medio — un atlas impreso, papel, un planetario de cartón, un mapa celeste en tinta — o por la escala, no por el negro con puntos); titular centrado sobre degradado; degradados morados, azules o arcoíris, mesh, tarjetas de vidrio.
+- **Efectos**: glow, bloom, neón, destellos, orbes, partículas decorativas, brillos en la interfaz, giros 3D gratuitos, emojis.
+- **Movimiento**: todo entra con fundido (o fundido + subida) a la vez; todo centrado; todo desliza hacia arriba; cada escena entra igual; texto que se mueve mientras se lee; títulos que derivan o escalan después de aterrizar; empuje lento tardío sobre un título; flotar/pulsar/respirar en bucle; rebote en UI; anillos de clic; rebotes de caricatura en una pieza seria.
+- **Composición**: etiquetas de esquina, marcos, corchetes y HUD decorativos; contadores "01 / 05", códigos de tiempo, barras de progreso decorativas, mayúsculas espaciadas como adorno; 3 tarjetas en fila; grilla de KPIs; título sobre una captura atenuada; logo pegado en una esquina; logo como único final.
+- **Tipo y look**: titular que se escribe con cursor parpadeante (solo vale dentro de un chat o terminal); fondo crema + serif + itálica de acento + etiquetas "01 / 02" + mono en mayúsculas + chips de píldora como default (válido solo si **es** la marca, ver `video-styles`); Inter, Space Grotesk, Instrument Serif, Geist o JetBrains Mono por defecto.
+- **Idea**: la asociación obvia (cohete para "lanzamiento", bombilla para "idea").
+
+Fuentes: medición propia de trabajo profesional · parte destilada de HyperFrames (Apache-2.0): `references/motion.md`, `look.md`, `motion-doctrine`, `cut-the-curve`, páginas `/prompting/motion` y `/prompting/vocabulary`.

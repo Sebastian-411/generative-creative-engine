@@ -1,0 +1,21 @@
+# Lecciones
+
+Correcciones del usuario que valen para todas las piezas. Más reciente arriba. Formato: fecha · qué pasó → regla · dónde vive la regla.
+
+- 2026-10-25 · demo árboles: el desenfoque de una escena quedó prendido 6 s porque `tl.to(a,…,t).to(a,…)` encadenado sin posición va al final del timeline → siempre `'>'` o tiempo explícito; corregido en R8/R12 y 4 transiciones. · `motion-craft`, `video-engine`
+- 2026-10-25 · "¿por qué no tiras Qwen con CUDA?" → el venv de Qwen tenía `torch +cpu` (nunca vio la GPU). En la GTX 1660 Super: fp16 da NaN; **bf16 emulado funciona** (~4× más rápido que CPU, 4.7 GB de VRAM). `tts_qwen.py` usa GPU bf16 con guard de NaN → CPU. Al instalar un modelo, verificar `torch.cuda.is_available()` en su venv. · `voice-director`, `tts_qwen.py`
+- 2026-10-25 · demo árboles: la voz salió a 1.79 palabras/s (94 s para 60) con ritmos "lento/pausado" y Whisper oyó "tres millones" por "tres billones" → en Qwen evita `pace: lento` salvo 1–2 líneas, mide el total antes de animar, y di las cifras grandes de forma que no se puedan confundir ("tres millones de millones"; "billones" solo en pantalla). · `voice-director`, `story-grammar`
+- 2026-10-25 · prueba de recetas: `tl.set(el,{textContent:'29.000'})` mostró "29" (GSAP lo lee como número) → contadores y cifras se escriben en `stage.onFrame` desde el índice de fotograma; `check.mjs` avisa si ve `textContent:` en un tween. Toda receta nueva se prueba en una pieza antes de darla por buena. · `motion-craft` R12, `data-story`, `check.mjs`
+- 2026-10-25 · "destila HyperFrames y vuelve joyas las skills" → HyperFrames (HeyGen, Apache-2.0, gratis en local) queda como **herramienta complementaria**, no como motor: `npx hyperframes capture <url> --json` para sacar marca, fuentes, logo y texto de un sitio; su doctrina (adjetivo→número, 3 historias = 3 películas, revisión medida antes de mirar, carve de la música) se destiló en las skills. Lo pago de HeyGen (Studio, avatares, voces) no se usa. Laboratorio: `D:/ai-models/hyperframes-lab`. · todas
+- 2026-10-24 · Tastora: "es una web que tiene animación 3D cuando haces scroll" (las capturas estáticas no la mostraban) → antes de diseñar una pieza de un producto con sitio, recorre el sitio **con scroll** (capturas por paso) y, si tiene animación propia, úsala como metraje real con `site-footage.mjs` en vez de redibujarla. · `story-architect`, `art-director`, `video-engine`
+- 2026-10-24 · "Chatterbox suena muy robótico"; con Qwen3-TTS: "mil veces esa" → la voz por defecto es Qwen3-TTS VoiceDesign, actuada de corrido por bloque de hablante. Chatterbox solo para clonar a una persona concreta con consentimiento. · `voice-director`, `video-oneshot`
+- 2026-10-24 · "no se le escucha música" → la música se normaliza por loudness respecto a la voz (db relativo) y se verifica en `audio/mix.md`; nunca se fía de un volumen absoluto. · `sound-design`, `mix.mjs`
+- 2026-10-24 · La voz de Edge sonaba plana → toda línea lleva dirección (emoción, intensidad, ritmo) y se verifican varias tomas con Whisper. · `voice-director`
+- 2026-10-24 · "que sea gratuito" → solo herramientas locales o con plan gratis; nada que exija pago para producir una pieza. · todas
+- 2026-10-24 · Tendencias "sin histórico" → el radar se consulta en vivo cada vez; no se guardan digests. · `trend-radar`
+- 2026-10-24 · Voces clonadas de datasets → no se publican; se marcan `publishable:false` en `assets.json`. · `voice-director`, `sound-design`
+
+## Feedback del sistema (agentes sobre las skills)
+
+- 2026-10-24 · critic (demo Tastora): el payoff solo se leía con sonido (precio de 30 px sobre metraje) → regla: el momento del payoff siempre lleva su versión grande en pantalla; `critic` revisa sin sonido primero; `stills.mjs` incluye 0.3 s y el último cuadro; el crítico lee `voice.json`. · `critic`, `video-review`, `stills.mjs`
+- 2026-10-24 · story-architect (demo Tastora): ruta fija `videos/`, sin plantilla de borrador de voz, sin regla para productos de dos lados, umbrales distintos entre hook-lab y storytelling, sin aviso sobre datos de prueba → corregido en `story-architect.md`, `hook-lab`, `storytelling`.

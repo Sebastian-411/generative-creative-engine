@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-// Radar de tendencias: junta señales de fuentes públicas gratuitas, agrupa las que hablan del mismo
-// tema, puntúa (velocidad, novedad, cruce entre plataformas, relevancia, confianza) y escribe:
-//   <out>/YYYY-MM-DD.json   todas las señales del día, con fuente, enlace y hora de observación
-//   <out>/latest.md         el digest que leen las skills antes de proponer o crear un video
+// Radar de tendencias EN VIVO: consulta fuentes públicas gratuitas en el momento, agrupa las señales que
+// hablan del mismo tema, puntúa (velocidad, novedad, cruce entre plataformas, relevancia, confianza) e
+// imprime el digest. No guarda historial: la novedad sale de la fecha de publicación de cada fuente.
+// Solo usa Node 18+ (fetch nativo): funciona en cualquier máquina donde esté el plugin.
 //
-//   node radar.mjs [--out knowledge/trends] [--geo CO] [--lang es] [--niche "tecnología,fútbol"]
+//   node radar.mjs [--geo CO] [--lang es] [--niche "tecnología,fútbol"] [--json] [--out archivo.md]
 //
 // Fuentes sin llave: Google Trends (RSS), Google News, Wikipedia, Bluesky, Hacker News, GitHub Trending.
 // Opcional con llave gratuita: YouTube Data API (YOUTUBE_API_KEY o "youtubeApiKey" en la config).
@@ -15,7 +15,8 @@ import path from 'node:path';
 
 const argv = process.argv.slice(2);
 const arg = (k, d) => { const i = argv.indexOf('--' + k); return i >= 0 ? argv[i + 1] : d; };
-const OUT = path.resolve(arg('out', 'knowledge/trends'));
+const OUT = arg('out') ? path.resolve(arg('out')) : null;
+const AS_JSON = argv.includes('--json');
 const GEO = arg('geo', 'CO');
 const LANG = arg('lang', 'es');
 const fold = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
@@ -24,7 +25,6 @@ const cfgFile = path.join(process.env.CREATIVE_ENGINE_HOME || path.join(os.homed
 const cfg = fs.existsSync(cfgFile) ? JSON.parse(fs.readFileSync(cfgFile, 'utf8')) : {};
 const UA = { 'User-Agent': 'Mozilla/5.0 (creative-mastery trend-radar; +https://github.com/Sebastian-411/generative-creative-engine)' };
 const now = new Date();
-const today = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 10); // fecha local
 
 async function get(url, type = 'text') {
   const ctrl = new AbortController();
@@ -38,6 +38,10 @@ async function get(url, type = 'text') {
 const unxml = (s) => s.replace(/<!\[CDATA\[|\]\]>/g, '').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').trim();
 const tag = (xml, t) => [...xml.matchAll(new RegExp(`<${t}[^>]*>([\\s\\S]*?)</${t}>`, 'g'))].map((m) => unxml(m[1]));
 const items = (xml) => [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((m) => m[1]);
+// Horas desde que la fuente publicó la señal (null si no lo informa).
+const ageHours = (d) => { const t = Date.parse(d || ''); return Number.isFinite(t) ? Math.max(0, (now - t) / 3600000) : null; };
+// Novedad por fuente cuando no hay fecha: lo "en tendencia ahora" (Bluesky, HN) es reciente; Wikipedia es de ayer.
+const DEFAULT_AGE = { bluesky: 3, hackernews: 8, github_trending: 12, youtube: 12, wikipedia: 24 };
 
 // ---- Adaptadores: cada uno devuelve señales { source, topic, url, metric, rank, context } -----------------
 const SOURCES = {
@@ -47,11 +51,12 @@ const SOURCES = {
       source: 'google_trends', topic: tag(it, 'title')[0], rank: i + 1, url: `https://trends.google.com/trends/explore?geo=${GEO}&q=${encodeURIComponent(tag(it, 'title')[0])}`,
       metric: parseInt(String(tag(it, 'ht:approx_traffic')[0] || '0').replace(/[^\d]/g, ''), 10) || 0, unit: 'búsquedas aprox.',
       context: tag(it, 'ht:news_item_title').slice(0, 2).join(' · '), links: tag(it, 'ht:news_item_url').slice(0, 2),
+      age_h: ageHours(tag(it, 'pubDate')[0]),
     }));
   },
   async google_news() {
     const xml = await get(`https://news.google.com/rss?hl=${LANG}-419&gl=${GEO}&ceid=${GEO}:${LANG}-419`);
-    return items(xml).slice(0, 35).map((it, i) => ({ source: 'google_news', topic: tag(it, 'title')[0].replace(/\s+-\s+[^-]+$/, ''), rank: i + 1, url: tag(it, 'link')[0], metric: 0, context: (tag(it, 'source')[0] || '') }));
+    return items(xml).slice(0, 35).map((it, i) => ({ source: 'google_news', topic: tag(it, 'title')[0].replace(/\s+-\s+[^-]+$/, ''), rank: i + 1, url: tag(it, 'link')[0], metric: 0, context: (tag(it, 'source')[0] || ''), age_h: ageHours(tag(it, 'pubDate')[0]) }));
   },
   async wikipedia() {
     const d = new Date(now.getTime() - 86400000);
@@ -112,24 +117,14 @@ function cluster(signals) {
   return groups;
 }
 
-// ---- Historial: novedad y "ya se está agotando" ------------------------------------------------------------
-function history() {
-  if (!fs.existsSync(OUT)) return [];
-  return fs.readdirSync(OUT).filter((f) => /^\d{4}-\d{2}-\d{2}\.json$/.test(f) && f !== `${today}.json`).sort().slice(-7)
-    .map((f) => JSON.parse(fs.readFileSync(path.join(OUT, f), 'utf8')));
-}
-
 async function main() {
-  fs.mkdirSync(OUT, { recursive: true });
-  const results = await Promise.allSettled(Object.entries(SOURCES).map(async ([k, fn]) => [k, await fn()]));
+  const names = Object.keys(SOURCES);
+  const results = await Promise.allSettled(names.map((k) => SOURCES[k]()));
   const signals = [], failures = [];
   results.forEach((r, i) => {
-    const name = Object.keys(SOURCES)[i];
-    if (r.status === 'fulfilled') signals.push(...r.value[1].filter((s) => s.topic).map((s) => ({ ...s, observed_at: now.toISOString() })));
-    else failures.push(`${name}: ${String(r.reason?.message || r.reason).slice(0, 120)}`);
+    if (r.status === 'fulfilled') signals.push(...r.value.filter((s) => s.topic).map((s) => ({ ...s, age_h: s.age_h ?? DEFAULT_AGE[s.source] ?? 24 })));
+    else failures.push(`${names[i]}: ${String(r.reason?.message || r.reason).slice(0, 120)}`);
   });
-  const past = history();
-  const seenDays = (g) => past.filter((day) => day.topics.some((t) => [...g.words].filter((w) => t.words.includes(w)).length >= Math.min(2, g.words.size))).length;
 
   const groups = cluster(signals).map((g) => {
     const srcs = [...new Set(g.signals.map((s) => s.source))];
@@ -137,39 +132,44 @@ async function main() {
     const bestRank = Math.min(...g.signals.map((s) => s.rank));
     const traffic = Math.max(0, ...g.signals.filter((s) => s.source === 'google_trends').map((s) => s.metric));
     const wiki = Math.max(0, ...g.signals.filter((s) => s.source === 'wikipedia').map((s) => s.metric));
-    const days = seenDays(g);
+    const age = Math.min(...g.signals.map((s) => s.age_h));
     const velocity = Math.min(1, (traffic ? Math.log10(traffic + 1) / 6 : 0) + (wiki ? Math.log10(wiki + 1) / 7 : 0) + (1 - Math.min(bestRank, 30) / 30) * 0.4);
-    const novelty = days === 0 ? 1 : days === 1 ? 0.6 : days <= 3 ? 0.3 : 0.1;
+    const novelty = age < 6 ? 1 : age < 12 ? 0.85 : age < 24 ? 0.65 : age < 48 ? 0.4 : 0.2;
     const cross = Math.min(1, (srcs.length - 1) / 2);
     const text = fold(g.signals.map((s) => s.topic + ' ' + (s.context || '')).join(' '));
     const relevance = Math.min(1, (nonTech.length ? 0.6 : 0.3) + (NICHE.some((n) => text.includes(n)) ? 0.4 : 0) + (srcs.includes('google_trends') || srcs.includes('google_news') ? 0.2 : 0));
     const confidence = Math.min(1, 0.4 + 0.2 * srcs.length);
     const score = +(0.30 * velocity + 0.20 * novelty + 0.20 * cross + 0.20 * relevance + 0.10 * confidence).toFixed(3);
-    return { topic: g.signals.sort((a, b) => a.rank - b.rank)[0].topic, score, sources: srcs, days_seen_before: days, niche: g.signals.some((s) => s.niche === 'tech') && !nonTech.length ? 'tech' : 'general', words: [...g.words], signals: g.signals };
+    return { topic: g.signals.sort((a, b) => a.rank - b.rank)[0].topic, score, age_h: +age.toFixed(1), sources: srcs, niche: g.signals.some((s) => s.niche === 'tech') && !nonTech.length ? 'tech' : 'general', signals: g.signals };
   }).sort((a, b) => b.score - a.score);
 
-  const day = { date: today, geo: GEO, lang: LANG, generated_at: now.toISOString(), failures, topics: groups };
-  fs.writeFileSync(path.join(OUT, `${today}.json`), JSON.stringify(day, null, 1));
-
+  if (AS_JSON) {
+    const out = JSON.stringify({ generated_at: now.toISOString(), geo: GEO, lang: LANG, failures, topics: groups }, null, 1);
+    if (OUT) fs.writeFileSync(OUT, out); else process.stdout.write(out + '\n');
+    return;
+  }
+  const since = (h) => (h < 1 ? 'hace minutos' : h < 24 ? `hace ${Math.round(h)} h` : `hace ${Math.round(h / 24)} día(s)`);
   const fmt = (g) => {
     const ev = g.signals.slice(0, 3).map((s) => `[${s.source}${s.metric ? ' · ' + s.metric.toLocaleString('es') + ' ' + (s.unit || '') : ''}](${s.url})`).join(' · ');
     const ctx = g.signals.map((s) => s.context).filter(Boolean)[0];
-    return `- **${g.topic}** — score ${g.score} · ${g.sources.length} fuente(s) · ${g.days_seen_before ? `visto ${g.days_seen_before} día(s) antes` : 'NUEVO hoy'}\n  ${ev}${ctx ? `\n  _${ctx.slice(0, 180)}_` : ''}`;
+    return `- **${g.topic}** — score ${g.score} · ${g.sources.length} fuente(s) · ${since(g.age_h)}\n  ${ev}${ctx ? `\n  _${ctx.slice(0, 180)}_` : ''}`;
   };
   const general = groups.filter((g) => g.niche === 'general');
+  const shown = new Set();
+  const pick = (list, n) => list.filter((g) => !shown.has(g)).slice(0, n).map((g) => (shown.add(g), fmt(g)));
   const md = [
-    `# Radar de tendencias — ${today} — ${GEO}`, '',
-    `Generado ${now.toLocaleString('es-CO')} · ${signals.length} señales de ${Object.keys(SOURCES).length - failures.length} fuentes · score = 0.30 velocidad + 0.20 novedad + 0.20 cruce entre plataformas + 0.20 relevancia + 0.10 confianza.`, '',
-    '## Oportunidades inmediatas (nuevas, con tracción)', ...general.filter((g) => g.days_seen_before <= 1).slice(0, 10).map(fmt), '',
-    '## Cruzadas entre plataformas (más confiables)', ...general.filter((g) => g.sources.length >= 2).slice(0, 8).map(fmt), '',
-    '## En observación / ya se están agotando (vistas 3+ días)', ...general.filter((g) => g.days_seen_before >= 3).slice(0, 8).map(fmt), '',
-    '## Tecnología y herramientas (para el propio motor)', ...groups.filter((g) => g.niche === 'tech').slice(0, 10).map(fmt), '',
+    `# Radar de tendencias — ${now.toLocaleString('es-CO')} — ${GEO} (en vivo)`, '',
+    `${signals.length} señales de ${names.length - failures.length} fuentes · score = 0.30 velocidad + 0.20 novedad + 0.20 cruce entre plataformas + 0.20 relevancia + 0.10 confianza.`, '',
+    '## Cruzadas entre plataformas (más confiables)', ...pick(general.filter((g) => g.sources.length >= 2), 8), '',
+    '## Explotando ahora (menos de 12 h)', ...pick(general.filter((g) => g.age_h < 12), 10), '',
+    '## Lo más fuerte de hoy', ...pick(general, 8), '',
+    '## Tecnología y herramientas (para el propio motor)', ...groups.filter((g) => g.niche === 'tech').slice(0, 8).map(fmt), '',
     '## Fuentes que fallaron / limitaciones', ...(failures.length ? failures.map((f) => `- ${f}`) : ['- ninguna']),
-    '- TikTok Creative Center y Reels no se pueden leer sin navegador/cuenta: revisión manual en https://ads.tiktok.com/business/creativecenter/trends',
-    '', '> Señales, no verdades: antes de hacer contenido sobre un tema, abre la evidencia, confirma el contexto y evita tragedias, política sensible o datos sin verificar.',
+    '- TikTok Creative Center y Reels requieren navegador/cuenta: revisión manual en https://ads.tiktok.com/business/creativecenter/trends',
+    '', '> Señales, no verdades: abre la evidencia antes de crear, confirma el contexto y evita tragedias, política sensible o datos sin verificar.',
   ].join('\n');
-  fs.writeFileSync(path.join(OUT, 'latest.md'), md);
-  console.log(`✔ ${signals.length} señales → ${groups.length} temas · ${path.join(OUT, 'latest.md')}${failures.length ? `\n⚠ fallaron: ${failures.join(' | ')}` : ''}`);
+  if (OUT) fs.writeFileSync(OUT, md);
+  process.stdout.write(md + '\n');
 }
 
 main().catch((e) => { console.error('✖ ' + e.message); process.exit(1); });

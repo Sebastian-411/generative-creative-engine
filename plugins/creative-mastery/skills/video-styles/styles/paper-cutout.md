@@ -4,6 +4,10 @@
 
 **Plantilla**: `paper-explainer` · **Kit**: `/__engine/kits/paper.js` · **Stage**: `fps: 24, drawings: 12`
 
+## Medio
+
+Cartulina recortada bajo una cámara de mesa: fondo de papel con fibras · cada objeto es su propio recorte con borde blanco y sombra corta (lo que se reconoce) · el naranja solo en el protagonista o la acción · rótulos manuscritos · el temblor por dibujo. Se mueve **a mano, en dos**: se desliza, se levanta y cae; nada se funde ni hierve.
+
 ## Paleta
 
 | Rol | Hex |
@@ -28,7 +32,7 @@ Rótulos manuscritos: **Patrick Hand**. Titulares recortados: **Archivo Black** 
 
 - **Nada hierve**: cada pieza tiene semilla fija; el borde es el mismo en todos los dibujos. El temblor es `Paper.jiggle` (±1.2 px, ±0.006 rad) **por dibujo**, no por fotograma.
 - Animar "en dos": `drawings: 12` en `Stage.create`. Los tiempos clave caen en doceavos de segundo.
-- Las piezas entran deslizándose o cayendo con un sobrepaso pequeño (`back.out(1.4–2)`); los papeles no se funden, se mueven.
+- Las piezas entran deslizándose o cayendo con un sobrepaso pequeño (`back.out(1.4–1.7)`, tope del plugin); los papeles no se funden, se mueven.
 - Lo que cambia de forma (vapor, chispas) se resuelve con 2–4 dibujos distintos alternados en dos.
 - Los cortes son de escena a escena con una pieza que sale y otra que entra en la misma dirección.
 

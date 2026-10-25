@@ -92,6 +92,11 @@
     const rand = makeRand(cfg.seed);
     const beatLen = cfg.bpm ? 60 / cfg.bpm : null;
     let lastT = 0;
+    const quantize = (t, n) => {
+      const hold = Math.max(1, Math.round(cfg.fps / n));
+      const f = Math.round(t * cfg.fps);
+      return (Math.floor(f / hold) * hold) / cfg.fps;
+    };
 
     const lineById = (id) => {
       const l = voice && voice.lines.find((x) => x.id === id);
@@ -114,7 +119,8 @@
       // Promesa que debe resolverse antes del primer fotograma (imágenes, datos).
       wait(promise) { pending.push(promise); return promise; },
       // Fuentes que solo usa un <canvas>: el navegador no las descarga solo; hay que pedirlas.
-      font(spec) { return stage.wait(document.fonts.load(spec)); },
+      // `text` pide los rangos unicode que ese texto necesita (Google Fonts parte por rangos).
+      font(spec, text) { return stage.wait(text === undefined ? document.fonts.load(spec) : document.fonts.load(spec, text)); },
       loadImage(src) {
         return stage.wait(new Promise((res, rej) => {
           const img = new Image();
@@ -123,8 +129,9 @@
           img.src = src;
         }));
       },
-      // Stop-motion: cuantiza t a `fps` dibujos por segundo (12 = "en dos" a 24fps).
-      step(t, fps = 12) { return Math.floor(t * fps + 1e-6) / fps; },
+      // Stop-motion local: sostiene cada dibujo round(fps/n) fotogramas (12 = "en dos" a 24fps).
+      // Cuantiza por índice entero de fotograma, no por segundos: así los holds son parejos.
+      step(t, n = 12) { return quantize(t, n); },
       // Tiempos de la narración.
       line(id) { return lineById(id); },
       at(id, offset = 0) { return lineById(id).start + offset; },
@@ -144,19 +151,22 @@
       sfx(name, t, db = -8) { cues.push({ name, t: +t.toFixed(3), db }); return stage; },
       seek(t) {
         lastT = Math.max(0, Math.min(t, cfg.duration));
-        // Stop-motion global: `drawings: 12` sostiene cada dibujo 1/12 s (animar "en dos" a 24 fps).
-        if (cfg.drawings) lastT = Math.floor(lastT * cfg.drawings + 1e-6) / cfg.drawings;
+        // Stop-motion global: `drawings: 12` sostiene cada dibujo round(fps/12) fotogramas
+        // (animar "en dos" a 24 fps). Cuantiza por índice de fotograma: cadencia regular.
+        if (cfg.drawings) lastT = quantize(lastT, cfg.drawings);
         // Siempre se reproduce desde 0 hasta t: el resultado no depende del fotograma anterior
         // (tweens ya terminados, varios tweens sobre la misma propiedad, onUpdate que escriben en el DOM).
         tl.totalTime(0, false);
-        tl.totalTime(lastT, false);
+        // 1e-4 s (0.1 ms, invisible): así un tl.set(…, 0) se aplica igual en una página en frío que al volver desde más adelante.
+        tl.totalTime(Math.max(lastT, 1e-4), false);
         for (const a of document.getAnimations()) { a.pause(); a.currentTime = lastT * 1000; }
         const frame = Math.round(lastT * cfg.fps);
         for (const fn of frameFns) fn(lastT, frame);
         const videos = [...root.querySelectorAll('video')];
         return Promise.all(videos.map((v) => new Promise((res) => {
           v.pause();
-          const target = Math.min(lastT - (parseFloat(v.dataset.start) || 0), v.duration || Infinity);
+          // `video.__time = (t) => segundos` permite recorrer el metraje a otro ritmo (p. ej. scroll de un sitio al compás de la voz).
+          const target = Math.min(v.__time ? v.__time(lastT) : lastT - (parseFloat(v.dataset.start) || 0), v.duration || Infinity);
           if (target < 0 || Math.abs(v.currentTime - target) < 1e-3) return res();
           v.addEventListener('seeked', res, { once: true });
           v.currentTime = target;
@@ -176,6 +186,8 @@
       ready,
       seek: (t) => stage.seek(t),
       timelineDuration: () => tl.duration(),
+      // Líneas de voz con id (las lee stills.mjs --review para armar beats y cortes).
+      lines: () => (voice ? voice.lines.map((l) => ({ id: l.id, start: l.start, end: l.end, text: l.text || (l.words || []).map((w) => w.w).join(' ') })) : []),
       // Lo lee mix.mjs: música, voz y efectos declarados por la pieza.
       audio: () => ({
         bpm: cfg.bpm || null,

@@ -1,9 +1,11 @@
 ---
 name: sound-design
-description: Diseño sonoro para los videos del motor - elegir voz, estilo de música procedural (paper, pulse, ambient, hype, lofi), bpm y secciones de energía, silencios (drops) antes del remate, efectos sintetizados en los momentos de contacto, niveles, ducking bajo la voz y loudness final (-14 LUFS, ≤ -1 dBTP). Úsala al declarar el audio de una pieza (music y stage.sfx en index.html), cuando el usuario trae su propia pista, o cuando la mezcla mide mal. Recuerda que no puedes escuchar: todo se decide con reglas y se verifica con números.
+description: Diseño sonoro para los videos del motor - elegir voz, estilo de música procedural (paper, pulse, ambient, hype, lofi), bpm y secciones de energía, silencios (drops) antes del remate, efectos sintetizados en los momentos de contacto, niveles, recorte por bandas (carve) y ducking bajo la voz, efectos con el pico alineado y loudness final (-14 LUFS, pico -2 dBTP). Úsala al declarar el audio de una pieza (music y stage.sfx en index.html), cuando el usuario trae su propia pista, o cuando la mezcla mide mal. Recuerda que no puedes escuchar: todo se decide con reglas y se verifica con números.
 ---
 
 # Diseño sonoro
+
+> Esencia común: lee el **Contrato creativo** de `brief.md` (`creative-contract`). El sonido del gancho suena en el fotograma 0, hay silencio antes del payoff y el payoff lleva el golpe más fuerte.
 
 No escuchas el audio. Por eso el sonido se diseña con reglas, se **mide** (`mix.mjs` reporta LUFS y pico real) y en la entrega dices que está medido, no oído.
 
@@ -24,7 +26,11 @@ Se declara en `Stage.create({ bpm, music: {...} })` y la compone `mix.mjs` a la 
 | `lofi` | teclado eléctrico con swing, batería suave | 84 | lifestyle, relajado |
 | `dread` | zumbido grave disonante, latido que se acelera, campanas lejanas en trítono; sin melodía | 60 | terror, suspenso, true crime |
 
-**Música con IA local (ACE-Step 1.5, MIT, salida de uso comercial)**: `music: { ai: 'ace', prompt: 'dark cinematic horror score, low droning strings, eerie music box, no drums', bpm: 60, key: 'D minor', seed: 7, db: -15 }`. Instrumental, a la duración exacta de la pieza, cacheada por parámetros. Suena a producción real (cuerdas, piano, texturas), muy por encima de la procedural; tarda 2–5 min en una GPU de 6 GB. Prompt en inglés, con género + instrumentos + energía + "no drums"/"no vocals" según el caso; nunca nombres de artistas ni canciones. Instalación: clonar `ace-step/ACE-Step-1.5`, `uv sync`, y `node <engine>/voices.mjs config --acestep-dir <ruta>`. Úsala para piezas finales; la procedural sirve para borradores rápidos.
+**Música con IA local (ACE-Step 1.5, MIT, salida de uso comercial)**: `music: { ai: 'ace', prompt: 'dark cinematic horror score, low droning strings, eerie music box, no drums', bpm: 60, key: 'D minor', seed: 7, db: -15 }`. Instrumental, a la duración exacta de la pieza, cacheada por parámetros. Suena a producción real (cuerdas, piano, texturas), muy por encima de la procedural; tarda 2–5 min en una GPU de 6 GB. Prompt en inglés, con género + instrumentos + energía + "no drums"/"no vocals" según el caso; nunca nombres de artistas ni canciones. Instalación: clonar `ace-step/ACE-Step-1.5`, `uv sync`, y `node <engine>/voices.mjs config --acestep-dir <ruta>`. Úsala para piezas finales; la procedural sirve para borradores rápidos. Pide **por sensación y tempo, no por tema** ("tense minimal pulse building to a bright drop, 120 bpm"). La tabla tema → prompt + bpm + tonalidad está en `references/ace-prompts.md`.
+
+**La línea de sonido** va al Contrato creativo de `brief.md`, en una sola línea: sensación y tempo de la música · **el único momento en que la música cambia** · qué acciones llevan efecto · dónde hay silencio y por qué. Ej.: "cumbia acústica cálida a 96 · se corta medio segundo antes del payoff y vuelve con golpe · efectos solo en el plato que aterriza, el QR y el precio".
+
+**Que el sonido actúe la historia**: la forma vieja casi en silencio; la música se abre cuando aparece el producto; el golpe se guarda para el remate. Entra en el compás más fuerte de la pista (no en una intro floja) y cierra en barra bajo la tarjeta final. Un silencio deliberado se queda en silencio. La apertura no asusta: los primeros 2 s no suenan más fuerte que el resto. Con el sonido apagado (así arranca el feed) la pieza la cargan la tipografía y los subtítulos.
 
 Opciones de `music`:
 - `key`: tónica (`'C'`, `'A'`, `'F#'`…).
@@ -32,8 +38,10 @@ Opciones de `music`:
 - `drops: [{ at, dur }]`: silencio total (con cola de reverb) y **golpe** al terminar. Úsalo una vez, antes del remate: 0.3–0.75 s con voz, 1 tiempo en promos.
 - `hits: [t, …]`: golpes sueltos (sin silencio previo).
 - `end`: cuándo cierra la música con el acorde final (por defecto, duración − 1.6 s).
-- `db`: dB **relativos a la voz** (la mezcla mide e iguala cada pista antes de mezclar): −12 por defecto con voz (cama clara pero detrás), −8/−10 para piezas atmosféricas (terror, épico), −15 para explicadores densos; sin voz, 0. `duck`: cuánto más baja mientras alguien habla (6 dB por defecto). `fallback`: estilo procedural si la música con IA falla.
-- `file: 'assets/pista.mp3'`: usa una pista del usuario en lugar de componer. Mide su bpm (o pregúntalo) y corta a sus compases.
+- `db`: dB **relativos a la voz** (la mezcla mide e iguala cada pista antes de mezclar): −12 por defecto con voz (cama clara pero detrás), −8/−10 para piezas atmosféricas (terror, épico), −15 para explicadores densos; sin voz, 0. `fallback`: estilo procedural si la música con IA falla.
+- `carve`: **recorte por bandas bajo la voz** (por defecto `true` = fuerza 0.25 cuando hay voz). La música cede solo las 3 bandas que más ocupa la voz (elegidas midiendo la voz, con más peso en 1–3 kHz) y conserva graves y agudos. El recorte sigue la envolvente real del habla (ataque 15 ms, suelta 300 ms): en las pausas la música queda intacta. Fuerza 0.25 → −6/−3/−3 dB; 0.5 → −10/−5/−5 (ya se oye «ahuecado»; no pases de ahí). `carve: 0` lo apaga.
+- `duck`: duck de nivel mientras alguien habla (6 dB por defecto; con carve se aplica al 60 %: 6 → 3.6, 5 → 3). Ataque 0.25 s, suelta 0.6 s. Las pausas de menos de 0.6 s entre líneas se funden en un solo tramo para que la música no bombee entre frases. Si aun así bombea, baja la fuerza del carve.
+- `file: 'assets/pista.mp3'`: usa una pista del usuario en lugar de componer. Si es **más corta** que la pieza, se repite con crossfade de 1 compás (1 s sin bpm); si es más larga, no se corta seco. Con `bpm` declarado, la música de archivo o de ACE **cierra con un fundido de 1 compás que termina en línea de compás** (`floor((duración − 0.3) / compás) · compás`); sin bpm, fundido de 2 s al final. `end: t` fuerza el punto de cierre. Declara el bpm de la pista: sin él no hay cierre en barra.
 
 ## Efectos
 
@@ -58,25 +66,49 @@ Prefiere grabaciones reales para contactos físicos (golpes, puertas, pasos, obj
 - Música del usuario: declara `music: { file, license: 'CC0-1.0', source: 'url' }`; sin licencia queda como no publicable.
 - Nunca: Freesound sin filtrar CC0, MusicGen/AudioCraft (pesos no comerciales), canales "no copyright music" sin licencia escrita, Sonniss para entrenar modelos.
 
-`stage.sfx(nombre, t, db)` en el **fotograma de contacto** (cuando el objeto llega, no cuando empieza a moverse). También acepta la ruta a un `.wav` propio (queda como licencia desconocida salvo que la declares).
+## Efectos en la pieza: cuándo, dónde y cuánto
 
-| Tipo | Nivel |
-|---|---|
-| Transiciones (whoosh, swish) | −14 a −18 dB |
-| Contactos (pop, tap, snap, paper) | −10 a −14 dB |
-| Golpe del remate (impact, boom) | −8 a −10 dB |
-| Acentos (ding, chime, sparkle) | −9 a −14 dB |
+`stage.sfx(nombre, t, db)` con `t` = el **fotograma del evento visible** (cuando el objeto llega, no cuando empieza a moverse). También acepta la ruta a un `.wav` propio (queda como licencia desconocida salvo que la declares).
 
-- Un efecto por evento que lo merece; no sonorices todo. Un short de 30 s lleva 5–12.
-- El `riser` termina exactamente en el golpe: ponlo en `t_golpe − 2`.
+**Pico alineado (lo hace `mix.mjs`)**: la mayoría de los archivos tienen el golpe después de su inicio. Un whoosh de 0.6 s pica a 0.3 s: puesto por su inicio, caería 9 fotogramas tarde. El motor mide el pico de cada efecto (envolvente RMS de 5 ms) y lo coloca **1 fotograma después de `t`**, porque la luz llega antes que el sonido y un sonido adelantado se siente peor que uno atrasado. Excepción: los sonidos de subida (pico a más de 0.6 s del inicio: `riser`, `creak`, `breath`) se anclan por su **inicio**, y `mix.md` dice dónde cae su pico. El `riser` sintetizado pica a 1.98 s: ponlo en `t_golpe − 2` y verifícalo en el reporte.
+
+**Nivel relativo, no del archivo crudo**: cada efecto se normaliza por su golpe (sonoridad K-weighted máxima en 100 ms) a las sílabas fuertes de la voz de la pieza (P95 en ventanas de 100 ms; sin voz, −13 LUFS). Así `db` significa lo mismo en un `click` que en un `boom`: **dB respecto a la voz** (0 = tan fuerte como la voz). Antes de aplicar `db`, ningún efecto supera −1 dBFS de pico. `mix.md` compara cada golpe con la música en ese instante: lo cómodo es **3–6 dB sobre la música**. Avisa si queda por debajo o a más de +14 dB.
+
+**Tomas rotadas**: los sintetizados repetidos alternan 3 tomas (original, +3 % de tono y más brillo, −3 % y más oscuro). El mismo whoosh en cada corte es la delación más común de una plantilla. Los `@` de la biblioteca ya rotan variantes reales.
+
+| Efecto | Única causa visible que lo justifica | Nivel |
+|---|---|---|
+| `click` | un clic real de cursor | −14 a −18 dB |
+| `whoosh`, `swish` | corte de escena o una tarjeta grande que se mueve rápido | −14 a −18 dB |
+| `key`, `tick` | texto que llega letra a letra | −16 a −20 dB |
+| `pop`, `tap`, `snap`, `paper` | insignia, chip o número que aterriza | −10 a −14 dB |
+| `ding`, `chime`, `sparkle` | acento de logro o de marca | −9 a −14 dB |
+| `riser` → golpe | **una vez en toda la pieza**, hacia el remate o la marca | −14 a −20 dB |
+| `impact`, `boom` | golpe del remate | −8 a −10 dB |
+
+- **Pocos y exactos**: cada efecto tiene una causa en pantalla. Un short de 30 s lleva 5–12; demasiados suenan a plantilla. Si dos cosas hacen lo mismo, se queda la más clara. Con música fuerte, quita clics y teclas antes de subir niveles.
+- **Un solo riser por pieza** (el reporte avisa si hay más).
 - Con voz: ningún efecto fuerte encima de una palabra clave; ponlos en las pausas.
 
 ## Mezcla (la hace `mix.mjs`)
 
-- Normalización en dos pasadas a **−14 LUFS integrados**, pico real ≤ −1.5 dBTP.
-- Ducking de la música bajo la voz: ataque 0.25 s antes de cada línea, suelta 0.6 s después.
+Orden de la señal: igualar (voz a −18 LUFS, música relativa a ella) → duck de nivel → **carve** → efectos y ambientes → loudnorm (el techo siempre al final).
+
+- Normalización en dos pasadas a **−14 LUFS integrados**, pico real objetivo **−2 dBTP**: 2 dB de margen, porque el limitador deja pasar picos entre muestras y el AAC los aumenta. Si `loudnorm` no puede trabajar en modo lineal (cae en silencio a modo dinámico), el motor limita antes a −3 dBFS y repite; el reporte lo dice.
+- **Voz sobre música por línea** (tabla en `audio/mix.md`): una pista de ACE puede subir justo en el clímax y los LUFS integrados no lo ven. Lo cómodo es ≥ +10 dB en cada línea; con < +8 el reporte avisa ⚠ con el id de la línea. Un carve no arregla una música que simplemente está más fuerte que la voz: esa brecha es aritmética, y se arregla bajando `music.db`.
+- **Prueba del parlante de celular**: si más del 55 % de la energía de la música está bajo 150 Hz, en un teléfono suena a nada y el reporte avisa. Pide en el prompt más medios ("bright", "plucked", "piano", "marimba") o sube la voz.
 - Si el reporte da más de 1 LU de diferencia con el objetivo o el pico pasa de −1 dBTP, algo está mal: un efecto muy alto o una pista del usuario saturada.
+- Pendiente: el pico se mide sobre `mix.wav`, no sobre el AAC del mp4 (suma ~0.5 dB). Con el objetivo de −2 dBTP hay margen.
+
+## Lo que no tiene respuesta honesta (dilo en la entrega)
+
+- **Ruido bajo la voz**: una compuerta cierra las pausas, pero el siseo debajo de las palabras no se quita. `afftdn`/`arnndn` sirven para limpiar clips de referencia de casting, no para TTS.
+- **Igualar una voz con otra**: no hay curva automática; es EQ a mano y a oído.
+- **Envolventes sobre compresor, limitador o pitch** no hacen nada: lo que se automatiza es la ganancia antes de esa etapa.
+- **No escuchas**: el balance se mide (LUFS, pico, voz sobre música por línea, golpe sobre la música). El gusto lo decide un humano con audífonos y con el parlante de un celular.
 
 ## Entrega
 
-Di siempre: "el audio está medido (−14 LUFS, pico −1.5 dBTP), no escuchado; revisa el balance de la música con audífonos".
+Di siempre: "el audio está medido (−14 LUFS, pico ≤ −2 dBTP, voz sobre música mínima +X dB en la línea Y), no escuchado; revísalo una vez con audífonos y otra en el parlante del celular".
+
+Fuentes: EBU R128 / ITU-R BS.1770 (K-weighting), Audio EQ Cookbook (RBJ), Regalia-Mitra (peaking paralelo) · parte destilada de HyperFrames (Apache-2.0)

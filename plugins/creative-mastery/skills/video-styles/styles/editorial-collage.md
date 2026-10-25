@@ -4,6 +4,10 @@
 
 **Plantilla**: `paper-explainer` (cambia piezas y paleta) · **Kit**: `paper.js` · **Stage**: `fps: 24, drawings: 12`
 
+## Medio
+
+Recortes de prensa pegados sobre cartón: cartón plano de fondo · fotos en semitono (la evidencia) · tiras de papel con el titular (lo que se lee) · marcador rojo o amarillo que se **dibuja** encima (el único foco) · cinta que sostiene. Se mueve como una mesa de trabajo: los recortes se deslizan y se pegan, el marcador traza, la cámara empuja sobre la mesa.
+
 ## Paleta
 
 | Rol | Hex |
@@ -16,7 +20,7 @@
 ## Material
 
 - **Fotos**: solo imágenes que el usuario provee o de dominio público/CC0 (descárgalas a `assets/`). Se convierten a semitono: dibuja la foto en un canvas, lee su luminancia y úsala como `size` de `Paper.halftone` (tinta oscura sobre papel). Se recortan con `Paper.piece({ fill: (g) => g.drawImage(foto, …) })` para que tengan borde rasgado.
-- **Titulares**: tiras de papel (`Paper.piece` con `rect`, borde rasgado) con texto en serif condensada (**Oswald** o **Anton**) o máquina de escribir (**Special Elite**).
+- **Titulares**: tiras de papel (`Paper.piece` con `rect`, borde rasgado) con texto en grotesca condensada (**Oswald** o **Anton**) o máquina de escribir (**Special Elite**).
 - **Anotaciones**: círculos y flechas a mano en el color reservado, que se **dibujan** (stroke-dashoffset o recorrido progresivo de puntos), no aparecen.
 - Cinta: rectángulos semitransparentes con bordes dentados en las esquinas de las fotos.
 

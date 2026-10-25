@@ -131,3 +131,15 @@ export const SFX = {
 };
 
 export const SFX_NAMES = Object.keys(SFX);
+
+// Tomas rotadas de un efecto sintetizado (el mismo whoosh en cada corte delata la plantilla):
+// 0 = original; 1 = +3 % de tono y más brillo; 2 = −3 % de tono y más oscuro. La duración cambia con el tono (±3 %).
+export function sfxVariant(name, k = 0) {
+  const x = SFX[name]();
+  const v = ((k % 3) + 3) % 3;
+  if (v === 0) return x;
+  const rate = v === 1 ? 1.03 : 0.97, out = new Float32Array(Math.floor(x.length / rate));
+  for (let i = 0; i < out.length; i++) { const p = i * rate, j = Math.floor(p), f = p - j; out[i] = (x[j] || 0) * (1 - f) + (x[j + 1] || 0) * f; }
+  if (v === 1) { const h = hp(out, 3000); return out.map((s, i) => s + 0.25 * h[i]); }
+  const l = lp(out, 5000); return out.map((s, i) => 0.6 * s + 0.4 * l[i]);
+}
