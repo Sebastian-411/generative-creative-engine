@@ -52,6 +52,20 @@ Antes de releer el brief, recorre `review-beats.png` en orden y **describe cada 
 - Envelope entrada / quietud / salida: entrada y salida fijas, solo la quietud se estira; nunca `timeScale()`.
 - Un número nunca pasa de su valor (el contador que llega a 47 y baja a 42 reporta una cifra falsa).
 
+### Texto en pantalla, sin sonido
+
+La hoja de beats muestra cada línea en dos instantes; un rótulo puede estar bien en ambos y fallar en medio. Por cada rótulo o titular, mira una tira desde que entra hasta que sale (`stills.mjs --times` en su entrada, su mitad y justo antes de salir) y verifica:
+
+| | Revisa | Falla típica |
+|---|---|---|
+| a | **Estable**: una vez escrito, el texto no se reescribe, no se acorta ni pierde palabras. Si se llena tipo karaoke, su estado final dice lo mismo que la frase completa | el rótulo llega a "la mitad de X" y luego queda en "X": la afirmación cambia |
+| b | **Palabras enteras**: ninguna palabra se parte con guion ni entre líneas. Un nombre propio largo va en su propia línea o a menor tamaño; en rótulos, `hyphens: none` y nunca `word-break: break-all` ni `overflow-wrap: anywhere` | "Super-" / "Kamiokande" |
+| c | **Rótulo y subtítulo no chocan**: el rótulo no pisa la franja del subtítulo (`story-grammar` §6.4) ni dice lo mismo que el riel al mismo tiempo; si lo repite, sobra una capa (`skip` del riel o se quita el rótulo) | el mismo nombre dos veces, una encima de la otra |
+| d | **Dice lo mismo sin voz**: leído solo, cada texto afirma lo mismo que la narración, con sus matices ("la mitad", "hasta", "casi", la cifra exacta). Si con el sonido apagado dice algo más fuerte o distinto, es **Bloqueante** (pregunta 7) | la voz dice "casi la mitad" y la pantalla "todo" |
+| e | **Objetos con nombre**: cada objeto rotulado se reconoce al primer vistazo y su rótulo lo nombra a él, no a otra cosa | una flecha rotulada que apunta al objeto equivocado; un objeto clave sin nombre |
+
+Cada falla es al menos **Corregir**; si cambia el sentido o confunde al primer espectador, **Bloqueante**.
+
 ## Hallazgos
 
 Cada hallazgo lleva **tiempo + fotograma + qué está mal + el cambio exacto + lo que se queda**:

@@ -92,6 +92,7 @@ Cruza el formato con el estilo: las cronologías piden transformaciones; las lis
 - ≤ 6 palabras por línea (explicador ≤ 10), una línea a la vez, sin punto final salvo copia literal de marca.
 - Tamaño: titular al 4–9 % del alto en 1–2 líneas; líneas tranquilas al 2.5–4 % (nunca bajo el piso de `check.mjs`: 48 px a 1080 de ancho); palabra héroe al 60–90 % del ancho. **Una** palabra en el color de acento, y que cargue significado.
 - La salida es con el movimiento de la escena o blur + fundido de 0.13–0.25 s; un texto no se mueve mientras se lee.
+- Un texto, una vez escrito, no se reescribe ni pierde palabras; ninguna palabra se parte con guion ni entre líneas (nombre propio largo: su propia línea o menor tamaño); y leído sin voz afirma lo mismo que la narración. Se verifica con el checklist **Texto en pantalla, sin sonido** de `video-review`.
 
 ### 6.2 Subtítulos (riel)
 - **Palabras por página según energía**: alta 2–3 · conversación 3–5 · calma 4–6 → `Stage.captions(stage, {maxWords})`. Hoy corta en signo de puntuación y en fin de línea; el corte en **pausa ≥ 150 ms** está pendiente en el motor, así que escribe las frases separadas en `script.json`.
