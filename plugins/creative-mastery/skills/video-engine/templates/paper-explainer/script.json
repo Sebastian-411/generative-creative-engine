@@ -1,0 +1,13 @@
+{
+  "voice": "es-MX-DaliaNeural",
+  "rate": "+0%",
+  "lead": 0.6,
+  "gap": 0.35,
+  "tail": 1.6,
+  "lines": [
+    { "id": "hook", "text": "Cada mensaje que envías hace un viaje que nunca ves." },
+    { "id": "lock", "text": "Sale de tu teléfono dentro de un sobre cerrado con llave." },
+    { "id": "server", "text": "Cruza un servidor que lo lleva, pero no puede abrirlo.", "pause": 0.6 },
+    { "id": "payoff", "text": "Y solo tu amigo tiene la llave." }
+  ]
+}

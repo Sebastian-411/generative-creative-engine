@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>kinetic-promo</title>
+<!-- Plantilla: promo horizontal guiada por música (sin voz). Tipografía cinética cortada a compás.
+     El reloj es el bpm: cada corte cae en stage.bar()/stage.beat(); el remate llega tras un silencio (drop). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;800&display=block" rel="stylesheet">
+<script src="/__engine/gsap.min.js"></script>
+<script src="/__engine/stage.js"></script>
+<style>
+  :root { --bg: #0e0f12; --ink: #f2f0ea; --accent: #c6ff3d; --dim: #6c6e74; }
+  #stage { font-family: 'Inter Tight', sans-serif; color: var(--ink); }
+  .shot { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; }
+  .word { font-weight: 800; font-size: 210px; letter-spacing: -0.045em; line-height: .9; white-space: nowrap; }
+  .word .a { color: var(--accent); }
+  .mask { overflow: hidden; padding: 0 .05em; }
+  .mask > span { display: inline-block; }
+  .stack { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+  .small { font-weight: 500; font-size: 64px; color: var(--dim); letter-spacing: -0.01em; }
+  .bar { position: absolute; left: 0; top: 0; height: 100%; width: 100%; background: var(--accent); transform-origin: 0 50%; }
+  #grid { position: absolute; inset: 0; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="grid" width="1920" height="1080"></canvas>
+  <div class="shot" id="s1"><div class="word mask"><span>Menos ruido.</span></div></div>
+  <div class="shot" id="s2"><div class="word mask"><span>Más <span class="a">foco</span>.</span></div></div>
+  <div class="shot" id="s3"><div class="bar"></div></div>
+  <div class="shot" id="s4"><div class="stack"><div class="small">Presentamos</div><div class="word mask"><span>Quietud<span class="a">.</span></span></div></div></div>
+  <div class="shot" id="s5"><div class="stack"><div class="word" style="font-size:120px">Tu día, en silencio.</div><div class="small">quietud.app</div></div></div>
+</div>
+<script>
+  const BPM = 124;
+  const stage = Stage.create({
+    width: 1920, height: 1080, fps: 30, seed: 'quietud', background: '#0e0f12',
+    bpm: BPM, duration: (60 / BPM) * 4 * 6 + 1.5, // 6 compases + cola
+    // Drop: silencio de 1 tiempo antes del remate (compás 4), que llega con golpe.
+    music: { style: 'hype', energy: [[0, 1], [(60 / BPM) * 4, 2], [(60 / BPM) * 16, 3]], drops: [{ at: (60 / BPM) * 4 * 3 - 60 / BPM, dur: 60 / BPM }] },
+  });
+  const { tl, bar, beat } = stage;
+
+  // Fondo vivo: rejilla de puntos que deriva y "late" en cada tiempo.
+  const g = document.getElementById('grid').getContext('2d');
+  stage.onFrame((t) => {
+    g.clearRect(0, 0, 1920, 1080);
+    const phase = (t / beat(1)) % 1, pulse = Math.exp(-phase * 6);
+    const off = (t * 22) % 60;
+    g.fillStyle = `rgba(242,240,234,${0.05 + 0.05 * pulse})`;
+    for (let x = -60; x < 1980; x += 60) for (let y = -60; y < 1140; y += 60) g.fillRect(x + off, y + off * 0.4, 3, 3);
+  });
+
+  const show = (sel, a, b) => tl.set(sel, { opacity: 1 }, a).set(sel, { opacity: 0 }, b);
+  // Texto que sube desde la máscara, ya en movimiento: el corte cae a mitad del gesto.
+  const rise = (sel, at) => tl.fromTo(`${sel} .mask > span`, { yPercent: 105 }, { yPercent: 0, duration: 0.42, ease: 'power4.out' }, at);
+  const leave = (sel, at) => tl.to(`${sel} .mask > span`, { yPercent: -105, duration: 0.3, ease: 'power4.in' }, at);
+
+  show('#s1', 0, bar(1));               rise('#s1', 0);            leave('#s1', bar(1) - 0.3);
+  show('#s2', bar(1), bar(2));          rise('#s2', bar(1));       leave('#s2', bar(2) - 0.3);
+  tl.fromTo('#s2 .a', { color: '#f2f0ea' }, { color: '#c6ff3d', duration: 0.1 }, bar(1) + beat(2));
+  // Barrido de color a compás, luego el silencio (la pantalla se queda en negro 1 tiempo).
+  show('#s3', bar(2), bar(3) - beat(1));
+  tl.fromTo('#s3 .bar', { scaleX: 0 }, { scaleX: 1, duration: beat(1), ease: 'power3.inOut' }, bar(2))
+    .to('#s3 .bar', { scaleX: 0, transformOrigin: '100% 50%', duration: beat(1), ease: 'power3.inOut' }, bar(2) + beat(2));
+  // Remate en el golpe tras el drop: el nombre llega desde grande.
+  show('#s4', bar(3), bar(5));
+  tl.fromTo('#s4 .small', { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.3, ease: 'power3.out' }, bar(3));
+  tl.fromTo('#s4 .word', { scale: 1.8, transformOrigin: '0% 50%' }, { scale: 1, duration: 0.5, ease: 'expo.out' }, bar(3));
+  rise('#s4', bar(3));
+  tl.to('#s4 .word', { x: 30, duration: bar(2), ease: 'none' }, bar(3) + 0.5);
+  // Cierre: claim + dirección, sostenido ~1.5s.
+  show('#s5', bar(5), stage.duration);
+  tl.fromTo('#s5 .word', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power4.out' }, bar(5))
+    .fromTo('#s5 .small', { opacity: 0 }, { opacity: 1, duration: 0.3 }, bar(5) + beat(2));
+
+  stage.sfx('whoosh', bar(1) - 0.15, -16).sfx('whoosh', bar(2) - 0.15, -16)
+       .sfx('riser', bar(3) - beat(1) - 2, -18).sfx('impact', bar(3), -8).sfx('tick', bar(5) + beat(2), -14);
+</script>
+</body>
+</html>

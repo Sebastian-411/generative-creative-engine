@@ -1,0 +1,56 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "skills": [
+    "./plugins/creative-mastery/skills"
+  ],
+  "agent": {
+    "scriptwriter": {
+      "description": "Escribe brief.md y script.json de un video (idea en una frase, beats, guion medido para voz). No anima.",
+      "mode": "subagent",
+      "prompt": "{file:./plugins/creative-mastery/agents/scriptwriter.md}",
+      "permission": {
+        "edit": "allow",
+        "bash": "deny",
+        "webfetch": "allow"
+      }
+    },
+    "art-director": {
+      "description": "Fija la dirección de arte (design.md) y construye una prueba de look de 4-6 s revisada con hoja de contacto.",
+      "mode": "subagent",
+      "prompt": "{file:./plugins/creative-mastery/agents/art-director.md}",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow"
+      }
+    },
+    "motion-designer": {
+      "description": "Implementa la animación de una pieza o escena en index.html con el motor del plugin y la deja pasando check.mjs.",
+      "mode": "subagent",
+      "prompt": "{file:./plugins/creative-mastery/agents/motion-designer.md}",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow"
+      }
+    },
+    "critic": {
+      "description": "Crítico de solo lectura: hoja de contacto + QA + rúbrica de 8 preguntas, hallazgos con tiempo y veredicto.",
+      "mode": "subagent",
+      "prompt": "{file:./plugins/creative-mastery/agents/critic.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny"
+      }
+    },
+    "fact-checker": {
+      "description": "Verifica cifras, fechas y hechos del guion y licencias de assets antes de sintetizar la voz.",
+      "mode": "subagent",
+      "prompt": "{file:./plugins/creative-mastery/agents/fact-checker.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow"
+      }
+    }
+  }
+}

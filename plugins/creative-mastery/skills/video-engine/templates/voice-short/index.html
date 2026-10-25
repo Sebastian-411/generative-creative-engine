@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>voice-short</title>
+<!-- Plantilla: short vertical guiado por voz. Tipografía cinética + dato grande + subtítulos palabra a palabra.
+     Todo el timing sale de voice.json (stage.at / stage.word / stage.end): cambia el guion y la pieza se reacomoda. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800&display=block" rel="stylesheet">
+<script src="/__engine/gsap.min.js"></script>
+<script src="/__engine/stage.js"></script>
+<style>
+  :root { --paper: #f3ead8; --ink: #1d1a24; --accent: #e8552d; --muted: #6f675b; }
+  #stage { font-family: 'Archivo', sans-serif; color: var(--ink); }
+  #bg { position: absolute; inset: 0; }
+  .scene { position: absolute; inset: 0; opacity: 0; }
+  .big { position: absolute; left: 90px; right: 150px; font-weight: 800; font-size: 124px; line-height: .98; letter-spacing: -0.03em; }
+  .big em { font-style: normal; color: var(--accent); }
+  .num { position: absolute; left: 84px; font-weight: 800; font-size: 300px; line-height: .8; letter-spacing: -0.05em; color: var(--accent); }
+  .label { position: absolute; left: 92px; font-weight: 500; font-size: 68px; color: var(--muted); }
+  .cap { position: absolute; left: 90px; right: 150px; top: 1270px; text-align: left; font-weight: 800; font-size: 76px; line-height: 1.08; }
+  .cap .cw { opacity: .28; }
+  .cap .cw.on { opacity: 1; }
+  .route { position: absolute; inset: 0; opacity: 0; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <svg class="route" width="1080" height="1920" viewBox="0 0 1080 1920">
+    <path id="path" d="M 130 1080 C 360 760, 640 1180, 900 880" fill="none" stroke="#1d1a24" stroke-width="9" stroke-linecap="round" stroke-dasharray="1 24"/>
+    <circle id="dot" r="24" fill="#e8552d" cx="130" cy="1080"/>
+  </svg>
+  <div class="scene" id="s1"><div class="big" style="top:560px">Tu café viajó <em>más que tú.</em></div></div>
+  <div class="scene" id="s2"><div class="num" style="top:470px">2.000</div><div class="label" style="top:740px">metros de altura</div></div>
+  <div class="scene" id="s3"><div class="num" style="top:470px">21</div><div class="label" style="top:740px">días en el mar</div></div>
+  <div class="scene" id="s4"><div class="big" style="top:560px">Y te lo tomas en <em>5 minutos.</em></div></div>
+</div>
+<script>
+  const stage = Stage.create({
+    width: 1080, height: 1920, fps: 30, seed: 'cafe',
+    background: '#f3ead8',
+    voice: 'voice.json', duration: 'voice',
+    bpm: 112,
+    music: { style: 'paper' },
+  });
+  const { tl, rand } = stage;
+  Stage.captions(stage, { maxWords: 3 });
+
+  // Fondo con vida: grano de papel fijo + granos de café que derivan lento (nunca un cuadro congelado).
+  const g = document.getElementById('bg').getContext('2d');
+  const grain = Array.from({ length: 1400 }, () => [rand() * 1080, rand() * 1920, rand() * 0.06]);
+  const beans = Array.from({ length: 9 }, (_, i) => ({ x: rand.range(60, 1020), y: rand.range(80, 1840), r: rand.range(16, 30), a: rand() * 6.28, sp: rand.range(8, 22), id: i }));
+  stage.onFrame((t) => {
+    g.fillStyle = '#f3ead8'; g.fillRect(0, 0, 1080, 1920);
+    for (const [x, y, a] of grain) { g.fillStyle = `rgba(60,40,20,${a})`; g.fillRect(x, y, 2, 2); }
+    for (const b of beans) {
+      const y = (b.y - t * b.sp + 1920) % 1920, x = b.x + Stage.noise('bx' + b.id, t * 0.3) * 30;
+      g.save(); g.translate(x, y); g.rotate(b.a + t * 0.15);
+      g.fillStyle = 'rgba(29,26,36,.08)'; g.beginPath(); g.ellipse(0, 0, b.r, b.r * 0.68, 0, 0, 7); g.fill();
+      g.strokeStyle = 'rgba(243,234,216,.9)'; g.lineWidth = 3; g.beginPath(); g.moveTo(0, -b.r * 0.6); g.quadraticCurveTo(b.r * 0.25, 0, 0, b.r * 0.6); g.stroke();
+      g.restore();
+    }
+  });
+
+  // Cada escena se muestra entre el inicio de su línea y el final (+ salida).
+  const show = (sel, from, to) => tl.set(sel, { opacity: 1 }, from).set(sel, { opacity: 0 }, to);
+  const exitLeft = (sel, at) => tl.to(sel, { x: -240, opacity: 0, duration: 0.28, ease: 'power4.in' }, at);
+  const enterRight = (sel, at) => tl.fromTo(sel, { x: 240, opacity: 0.35 }, { x: 0, opacity: 1, duration: 0.42, ease: 'power4.out' }, at);
+
+  // 1 · Gancho: entra ya en movimiento en el fotograma 0 y luego respira (deriva lenta).
+  show('#s1', 0, stage.end('hook', 0.4));
+  tl.fromTo('#s1 .big', { y: 90, opacity: 0.35 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power4.out' }, 0)
+    .to('#s1 .big', { y: -24, duration: stage.end('hook') - 0.45, ease: 'none' }, 0.45)
+    .fromTo('#s1 em', { color: '#1d1a24' }, { color: '#e8552d', duration: 0.15 }, stage.word('hook', 'más'));
+  exitLeft('#s1', stage.end('hook', 0.12));
+
+  // 2 · Finca: el número aterriza desde grande en la palabra "dos".
+  const s2 = stage.at('farm');
+  show('#s2', s2, stage.end('farm', 0.4));
+  enterRight('#s2 .label', s2);
+  tl.fromTo('#s2 .num', { scale: 1.35, opacity: 0, transformOrigin: '0% 60%' }, { scale: 1, opacity: 1, duration: 0.4, ease: 'expo.out' }, stage.word('farm', 'dos', -0.05))
+    .to('#s2 .num', { x: 18, duration: 1.6, ease: 'none' }, stage.word('farm', 'dos', 0.35));
+  exitLeft('#s2', stage.end('farm', 0.12));
+
+  // 3 · Viaje: la ruta se dibuja durante toda la línea.
+  const s3 = stage.at('ship');
+  const path = document.getElementById('path'), dot = document.getElementById('dot');
+  const len = path.getTotalLength();
+  const route = { p: 0 };
+  show('#s3', s3, stage.end('ship', 0.4));
+  show('.route', s3, stage.end('ship', 0.4));
+  enterRight('#s3 .label', s3);
+  tl.fromTo(route, { p: 0 }, { p: 1, duration: stage.end('ship') - s3, ease: 'power1.inOut',
+      onUpdate: () => { const pt = path.getPointAtLength(route.p * len); dot.setAttribute('cx', pt.x); dot.setAttribute('cy', pt.y); } }, s3)
+    .fromTo('#s3 .num', { scale: 1.35, opacity: 0, transformOrigin: '0% 60%' }, { scale: 1, opacity: 1, duration: 0.4, ease: 'expo.out' }, stage.word('ship', 'tres', -0.05));
+  tl.to(['#s3', '.route'], { y: -180, opacity: 0, duration: 0.28, ease: 'power4.in' }, stage.end('ship', 0.12));
+
+  // 4 · Remate: llega tras la pausa, el acento se enciende en "minutos" y sostiene ~1s.
+  const s4 = stage.at('payoff');
+  show('#s4', s4, stage.duration);
+  tl.fromTo('#s4 .big', { y: 120, opacity: 0.35 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power4.out' }, s4)
+    .fromTo('#s4 em', { color: '#1d1a24' }, { color: '#e8552d', duration: 0.15 }, stage.word('payoff', 'minutos'))
+    .to('#s4 .big', { scale: 1.04, transformOrigin: '0% 50%', duration: stage.duration - stage.word('payoff', 'minutos'), ease: 'none' }, stage.word('payoff', 'minutos'));
+
+  stage.sfx('swish', stage.end('hook', 0.08), -16)
+       .sfx('pop', stage.word('farm', 'dos'), -12)
+       .sfx('swish', stage.end('farm', 0.08), -16)
+       .sfx('pop', stage.word('ship', 'tres'), -12)
+       .sfx('impact', stage.word('payoff', 'minutos'), -10);
+</script>
+</body>
+</html>

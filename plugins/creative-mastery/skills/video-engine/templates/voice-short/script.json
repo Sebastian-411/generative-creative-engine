@@ -1,0 +1,13 @@
+{
+  "voice": "es-CO-GonzaloNeural",
+  "rate": "+4%",
+  "lead": 0.4,
+  "gap": 0.3,
+  "tail": 1.4,
+  "lines": [
+    { "id": "hook", "text": "Tu café de la mañana viajó más que tú este año." },
+    { "id": "farm", "text": "Nace en una finca a dos mil metros de altura." },
+    { "id": "ship", "text": "Cruza el océano en un contenedor durante tres semanas.", "pause": 0.5 },
+    { "id": "payoff", "text": "Y tú te lo tomas en cinco minutos." }
+  ]
+}

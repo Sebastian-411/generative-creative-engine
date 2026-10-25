@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>paper-explainer</title>
+<!-- Plantilla: explicador vertical en papel recortado (stop-motion, 12 dibujos/s), guiado por voz.
+     Patrón: un objeto `S` con el estado de la escena lo animan los tweens de GSAP; onFrame lo dibuja.
+     Las piezas de papel se fabrican una vez (Paper.piece) y cada fotograma solo se colocan. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Archivo+Black&display=block" rel="stylesheet">
+<script src="/__engine/gsap.min.js"></script>
+<script src="/__engine/stage.js"></script>
+<script src="/__engine/kits/paper.js"></script>
+<style>
+  #stage { font-family: 'Patrick Hand', cursive; }
+  #c { position: absolute; inset: 0; }
+  .cap { position: absolute; left: 90px; right: 150px; top: 1360px; text-align: center; font-size: 88px; line-height: 1.05; color: #f4ecda; text-shadow: 0 4px 0 #2a1826; }
+  .cap .cw { opacity: .4; }
+  .cap .cw.on { opacity: 1; }
+</style>
+</head>
+<body>
+<div id="stage"><canvas id="c" width="1080" height="1920"></canvas></div>
+<script>
+  const stage = Stage.create({
+    width: 1080, height: 1920, fps: 24, drawings: 12, seed: 'mensaje',
+    background: '#3a2146',
+    voice: 'voice.json', duration: 'voice',
+    bpm: 112,
+    music: { style: 'paper' },
+  });
+  const { tl } = stage;
+  const P = Paper.shapes;
+  const C = { bg: '#3a2146', orange: '#f2643c', mint: '#6cc9a1', yellow: '#e9b949', ink: '#2a1826', cream: '#f4ecda' };
+
+  // ---- Piezas (se fabrican una sola vez) ---------------------------------------------
+  const phone = Paper.piece({ pts: P.rect(-130, -240, 260, 480, 38), fill: C.cream, seed: 'phone' });
+  const screen = Paper.piece({ pts: P.rect(-104, -190, 208, 360, 14), fill: C.mint, seed: 'screen', border: 0, shadow: false });
+  const env = Paper.piece({ pts: P.rect(-120, -78, 240, 156, 6), fill: C.yellow, seed: 'env' });
+  const flap = Paper.piece({ pts: [[-120, 0], [120, 0], [0, 96]], fill: '#d9a53a', seed: 'flap', border: 4, shadowOffset: [2, 4] });
+  const lockBody = Paper.piece({ pts: P.rect(-46, -34, 92, 72, 10), fill: C.orange, seed: 'lockb' });
+  const shackle = Paper.piece({ pts: [...P.ellipse(0, 0, 34, 40, 24).slice(12, 25), ...P.ellipse(0, 0, 18, 24, 24).slice(12, 25).reverse()], fill: C.ink, seed: 'shk', border: 3 });
+  const server = Paper.piece({ pts: P.rect(-170, -300, 340, 600, 16), fill: C.ink, seed: 'server', edgeColor: '#f4ecda' });
+  const slot = Paper.piece({ pts: P.rect(-120, -16, 240, 32, 8), fill: '#120a12', seed: 'slot', border: 0, shadow: false });
+  const light = Paper.piece({ pts: P.circle(0, 0, 14, 20), fill: C.mint, seed: 'light', border: 3, shadow: false });
+  const keyHead = Paper.piece({ pts: P.circle(0, 0, 54, 40), fill: C.yellow, seed: 'keyh' });
+  const keyBit = Paper.piece({ pts: [[0, -16], [190, -16], [190, 40], [160, 40], [160, 16], [130, 16], [130, 40], [100, 40], [100, 16], [0, 16]], fill: C.yellow, seed: 'keyb' });
+  const cross = Paper.piece({ pts: P.star(0, 0, 70, 26, 4), fill: C.orange, seed: 'cross' });
+  const stars = Array.from({ length: 7 }, (_, i) => Paper.piece({ pts: P.star(0, 0, 40 + (i % 3) * 14, 16, 5), fill: [C.yellow, C.mint, C.orange][i % 3], seed: 'st' + i }));
+  // Las fuentes de canvas se piden explícitamente; las piezas con texto se fabrican al primer dibujo.
+  stage.font('400 150px "Archivo Black"');
+  const TITLE = 'UN VIAJE';
+  let title = null;
+
+  // ---- Estado animable ------------------------------------------------------------------
+  const S = {
+    phoneL: { x: 540, y: 2400 }, phoneR: { x: 1500, y: 930 },
+    env: { x: 540, y: 930, s: 0, rot: 0 }, flap: 0, lock: 0, lockOpen: 0,
+    server: { x: 540, y: 2400 }, shake: 0, cross: 0,
+    key: { s: 0, rot: -0.6 }, title: [], titleY: 0, burst: 0,
+  };
+  for (const ch of TITLE) if (ch.trim()) S.title.push({ s: 0 });
+
+  // ---- Coreografía (todo anclado a la voz) ------------------------------------------------
+  // 1 · Gancho: el teléfono entra ya en movimiento; las letras caen en "viaje" una por dibujo.
+  tl.to(S.phoneL, { y: 930, duration: 0.5, ease: 'power4.out' }, 0)
+    .to(S.phoneL, { y: 900, duration: 3, ease: 'none' }, 0.5);
+  S.title.forEach((_, i) => tl.fromTo(S.title[i], { s: 0 }, { s: 1, duration: 0.25, ease: 'back.out(1.6)' }, stage.word('hook', 'viaje', -0.15) + i * (1 / 12)));
+  stage.sfx('pop', stage.word('hook', 'viaje', -0.1), -14);
+
+  // 2 · Candado: el sobre sale del teléfono, la solapa se cierra en "cerrado", el candado cae en "llave".
+  const a2 = stage.at('lock');
+  tl.to(S, { titleY: -900, duration: 0.35, ease: 'power4.in' }, a2 - 0.2)
+    .to(S.env, { s: 1, y: 430, duration: 0.5, ease: 'back.out(1.4)' }, a2 + 0.2)
+    .to(S, { flap: 1, duration: 0.25, ease: 'power2.inOut' }, stage.word('lock', 'cerrado'))
+    .to(S, { lock: 1, duration: 0.3, ease: 'back.out(2)' }, stage.word('lock', 'llave', -0.05));
+  stage.sfx('paper', a2 + 0.2, -12).sfx('snap', stage.word('lock', 'cerrado', 0.2), -12).sfx('thud', stage.word('lock', 'llave'), -10);
+
+  // 3 · Servidor: el teléfono se va, el servidor sube y se traga el sobre; tiembla en "abrirlo".
+  const a3 = stage.at('server');
+  tl.to(S.phoneL, { x: -400, duration: 0.4, ease: 'power4.in' }, a3 - 0.1)
+    .to(S.server, { y: 880, duration: 0.55, ease: 'power4.out' }, a3)
+    .to(S.env, { x: 540, y: 640, rot: 0.08, duration: 0.6, ease: 'power3.inOut' }, a3 + 0.15)
+    .to(S, { shake: 1, duration: 0.6, ease: 'none' }, stage.word('server', 'abrirlo', -0.1))
+    .to(S, { shake: 0, duration: 0.01 }, stage.word('server', 'abrirlo', 0.55))
+    .to(S, { cross: 1, duration: 0.3, ease: 'back.out(2)' }, stage.word('server', 'abrirlo'))
+    .to(S, { cross: 0, duration: 0.2, ease: 'power2.in' }, stage.end('server', 0.3));
+  stage.sfx('whoosh', a3, -14).sfx('glitch', stage.word('server', 'abrirlo'), -12);
+
+  // 4 · Remate: el amigo aparece a la derecha, llega el sobre, la llave gira y el candado se abre.
+  const a4 = stage.at('payoff');
+  tl.to(S.server, { x: -460, duration: 0.45, ease: 'power4.in' }, a4 - 0.2)
+    .to(S.phoneR, { x: 540, duration: 0.5, ease: 'power4.out' }, a4 - 0.1)
+    .to(S.env, { x: 540, y: 470, rot: -0.05, duration: 0.6, ease: 'power3.inOut' }, a4)
+    .to(S.key, { s: 1, rot: 0, duration: 0.4, ease: 'back.out(1.8)' }, stage.word('payoff', 'llave', -0.15))
+    .to(S, { lockOpen: 1, duration: 0.3, ease: 'power2.out' }, stage.word('payoff', 'llave', 0.3))
+    .to(S, { burst: 1, duration: 0.6, ease: 'expo.out' }, stage.word('payoff', 'llave', 0.3));
+  stage.sfx('whoosh', a4 - 0.15, -14).sfx('chime', stage.word('payoff', 'llave', 0.3), -9);
+
+  Stage.captions(stage, { maxWords: 3 });
+
+  // ---- Dibujo ------------------------------------------------------------------------------
+  const g = document.getElementById('c').getContext('2d');
+  const J = (id, t, amt = 1.2) => Paper.jiggle(id, t, { move: amt });
+  const K = 1.35; // escala general de las piezas
+  stage.onFrame((t) => {
+    title ||= Paper.word(TITLE, { font: '400 150px "Archivo Black"', fill: C.orange, seed: 'title' });
+    Paper.background(g, 1080, 1920, { color: C.bg, seed: 'bg', fibers: 0.07, vignette: 0.3 });
+
+    // título
+    title.pieces.forEach((L, i) => {
+      const s = S.title[i].s; if (s <= 0.01) return;
+      const j = J('t' + i, t);
+      Paper.draw(g, L.p, 540 - title.width / 2 + L.x + j.dx, 330 + L.dy + S.titleY + j.dy, { rot: L.rot + j.rot, scale: s });
+    });
+
+    const drawPhone = (pos, id) => { const j = J(id, t); Paper.draw(g, phone, pos.x + j.dx, pos.y + j.dy, { rot: j.rot, scale: K }); Paper.draw(g, screen, pos.x + j.dx, pos.y + j.dy - 13, { rot: j.rot, scale: K }); };
+    drawPhone(S.phoneL, 'pl');
+    drawPhone(S.phoneR, 'pr');
+
+    // servidor (tiembla al intentar abrir)
+    const sj = J('sv', t, 1.2 + S.shake * 9);
+    const sx = S.server.x + sj.dx, sy = S.server.y + sj.dy;
+    Paper.draw(g, server, sx, sy, { rot: sj.rot + S.shake * 0.02 * Math.sin(t * 60), scale: K });
+    [-140, 0, 140].forEach((oy, k) => { Paper.draw(g, slot, sx, sy + (oy - 40) * K, { scale: K }); Paper.draw(g, light, sx + 110 * K, sy + (oy + 60) * K, { alpha: 0.6 + 0.4 * (Math.floor(t * 6 + k) % 2), scale: K }); });
+    if (S.cross > 0.01) Paper.draw(g, cross, sx + 200, sy - 400, { scale: S.cross * K, rot: 0.3 });
+
+    // sobre + solapa + candado
+    if (S.env.s > 0.01) {
+      const j = J('env', t);
+      const ex = S.env.x + j.dx, ey = S.env.y + j.dy;
+      const es = S.env.s * K;
+      Paper.draw(g, env, ex, ey, { scale: es, rot: S.env.rot + j.rot });
+      Paper.draw(g, flap, ex, ey - 78 * es, { sy: es * (S.flap * 2 - 1), sx: es, rot: S.env.rot });
+      if (S.lock > 0.01) {
+        const ly = ey + 8 - (1 - S.lock) * 100;
+        Paper.draw(g, shackle, ex, ly - (36 + S.lockOpen * 30) * K, { scale: S.lock * K, rot: -S.lockOpen * 0.5 });
+        Paper.draw(g, lockBody, ex, ly, { scale: S.lock * K, rot: S.lockOpen * 0.15 });
+      }
+    }
+
+    // llave
+    if (S.key.s > 0.01) {
+      const j = J('key', t);
+      Paper.draw(g, keyBit, 400 + j.dx, 300 + j.dy, { scale: S.key.s * K, rot: S.key.rot - 0.35 });
+      Paper.draw(g, keyHead, 400 + j.dx, 300 + j.dy, { scale: S.key.s * K, rot: S.key.rot });
+    }
+
+    // estallido final
+    if (S.burst > 0.01) stars.forEach((st, i) => {
+      const a = (i / stars.length) * Math.PI * 2 - 0.4, r = 120 + S.burst * 260;
+      const j = J('s' + i, t, 2);
+      Paper.draw(g, st, 540 + Math.cos(a) * r + j.dx, 520 + Math.sin(a) * r * 0.8 + j.dy, { scale: Math.min(1, S.burst * 1.4), rot: a + j.rot * 10 });
+    });
+  });
+</script>
+</body>
+</html>

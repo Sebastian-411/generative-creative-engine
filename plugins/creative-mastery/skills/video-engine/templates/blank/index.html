@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>blank</title>
+<!-- Esqueleto mínimo. DOM + GSAP para tipografía y layout; <canvas> + onFrame para dibujo procedural.
+     Reglas: nada de Math.random / Date / setTimeout / requestAnimationFrame / transiciones CSS;
+     todo tween va en stage.tl; todo dibujo es función pura de t. -->
+<script src="/__engine/gsap.min.js"></script>
+<script src="/__engine/stage.js"></script>
+<style>
+  #stage { font-family: system-ui, sans-serif; color: #f2f0ea; }
+  #c { position: absolute; inset: 0; }
+  .title { position: absolute; left: 90px; right: 150px; top: 760px; font-weight: 800; font-size: 120px; line-height: 1; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="c" width="1080" height="1920"></canvas>
+  <div class="title" id="title">Título</div>
+</div>
+<script>
+  const stage = Stage.create({
+    width: 1080, height: 1920, fps: 30, duration: 8, seed: 'blank', background: '#111216',
+    // voice: 'voice.json', duration: 'voice',     // narración (corre voice.mjs)
+    // bpm: 112, music: { style: 'pulse' },          // música procedural
+  });
+  const { tl, rand } = stage;
+
+  const g = document.getElementById('c').getContext('2d');
+  stage.onFrame((t) => {
+    g.clearRect(0, 0, 1080, 1920);
+    // dibuja aquí en función de t
+  });
+
+  tl.fromTo('#title', { y: 80, opacity: 0.3 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power4.out' }, 0);
+  // stage.sfx('pop', 0.2, -12);
+</script>
+</body>
+</html>
