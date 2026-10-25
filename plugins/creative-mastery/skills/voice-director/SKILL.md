@@ -7,11 +7,29 @@ description: Dirección de voz para la narración de los videos - convierte un p
 
 Una voz sintética suena plana por tres razones, y hay que atacar las tres: **el motor** (edge-tts no actúa), **la dirección** (sin emoción por línea todo sale igual) y **el guion** (texto escrito para leer, no para decir). Este skill resuelve las tres sin costo.
 
+## Motor por defecto: Qwen3-TTS (Apache 2.0) actuando de corrido
+
+Ganó en la comparación de oído contra Chatterbox, edge y VoxCPM2. Dos claves:
+1. **Voz diseñada por descripción** (VoiceDesign 1.7B): edad, género, acento, timbre y tipo de pieza en inglés.
+2. **La narración se actúa entera, de corrido**, no frase por frase: así hay continuidad, respiración y arco emocional. `voice.mjs` genera 2–3 tomas completas por bloque de hablante, Whisper elige la más fiel y corta cada línea por la alineación de palabras (la animación sigue anclada a `stage.word`).
+
+```json
+{ "engine": "qwen", "takes": 3, "direction": "terror psicológico contado en voz baja",
+  "cast": { "narrador": { "description": "A natural, expressive Latin American Spanish narrator. A mature male voice with a subtle Colombian accent, warm timbre and realistic human phrasing. This is a psychological horror story, not a news report or a commercial voiceover." },
+            "abuela": { "description": "An elderly Colombian grandmother, soft and slightly raspy, tender, almost a whisper." } },
+  "lines": [ { "id": "solo", "text": "Yo pensé que estaba solo.", "emotion": "confidencial" }, … ] }
+```
+- `emotion` por línea se convierte en un arco escrito ("sentence by sentence: 1) …; 2) …") dentro de la descripción.
+- Puntuación = actuación: `…` crea suspenso, saltos de línea separan respiraciones.
+- **Dónde corre**: la GPU gratuita del Space oficial de Hugging Face (~36 s por toma). Sin cuota o sin internet cae solo a esta máquina (CPU: ~10× la duración del audio). Con una cuenta gratis de HF hay más cuota: `node <engine>/voices.mjs config --hf-token hf_…`.
+- No clona voces de la biblioteca (diseña la voz por texto). Para un acento exacto de una persona real, usa Chatterbox con su clip.
+
 ## Motores (todos gratis)
 
 | Motor | Qué da | Acento regional | Cuándo |
 |---|---|---|---|
-| `chatterbox` (local, MIT) | Actuación real: intensidad (`exaggeration`), ritmo dramático (`cfg_weight`), clona timbre **y acento** de un clip de 10–15 s | **Sí, el del clip de referencia** | Por defecto si está instalado (`setup-voice.mjs`). Corre en GPU NVIDIA ≥ 6 GB o CPU |
+| `qwen` (defecto, Apache 2.0) | La más natural y expresiva: voz diseñada por descripción, actuada de corrido | Por descripción ("subtle Colombian accent"); no exacto por ciudad | Siempre, salvo que necesites clonar a una persona concreta |
+| `chatterbox` (local, MIT) | Clonado de una voz concreta: intensidad (`exaggeration`), ritmo dramático (`cfg_weight`), clona timbre **y acento** de un clip de 10–15 s | **Sí, el del clip de referencia** | Por defecto si está instalado (`setup-voice.mjs`). Corre en GPU NVIDIA ≥ 6 GB o CPU |
 | `gemini` (nube, nivel gratis) | La dirección más fina por lenguaje natural ("susurra con miedo, se le quiebra la voz") y etiquetas `<sigh>`, `<whispers>`, `<long pause>` | Poco fiable por texto; Google recomienda no pedir acento en el estilo | Cuando no hay voz con acento grabada y la emoción importa más que el acento. Requiere llave gratis; límite diario; Google puede usar el contenido del nivel gratis |
 | `edge` | Voces neurales planas (`es-CO-GonzaloNeural`…) con timing perfecto | Colombiano/venezolano genérico | Respaldo, borradores |
 

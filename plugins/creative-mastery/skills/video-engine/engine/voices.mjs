@@ -66,6 +66,10 @@ Luego: node voices.mjs add <nombre> --ref <archivo> --emotion <emoción> --accen
   if (args['gemini-model']) cfg.geminiModel = args['gemini-model'];
   if (args['chatterbox-python']) cfg.chatterboxPython = args['chatterbox-python'];
   if (args['acestep-dir']) cfg.acestepDir = args['acestep-dir'];
+  if (args['hf-token']) cfg.hfToken = args['hf-token'];
+  if (args['youtube-key']) cfg.youtubeApiKey = args['youtube-key'];
+  if (args['qwen-python']) cfg.qwenPython = args['qwen-python'];
+  if (args['qwen-backend']) cfg.qwenBackend = args['qwen-backend'];
   fs.mkdirSync(path.dirname(CONFIG_FILE), { recursive: true });
   fs.writeFileSync(CONFIG_FILE, JSON.stringify(cfg, null, 2));
   console.log('✔ configuración guardada en ' + CONFIG_FILE + (cfg.geminiApiKey ? ' (llave de Gemini presente)' : ''));

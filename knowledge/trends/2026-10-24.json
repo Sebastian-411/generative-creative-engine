@@ -1,0 +1,3296 @@
+{
+ "date": "2026-10-24",
+ "geo": "CO",
+ "lang": "es",
+ "generated_at": "2026-10-25T03:47:49.384Z",
+ "failures": [
+  "youtube: sin llave (opcional): node voices.mjs config --youtube-key …"
+ ],
+ "topics": [
+  {
+   "topic": "huracan otis",
+   "score": 0.84,
+   "sources": [
+    "google_trends",
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "huracan",
+    "otis"
+   ],
+   "signals": [
+    {
+     "source": "google_trends",
+     "topic": "huracan otis",
+     "rank": 10,
+     "url": "https://trends.google.com/trends/explore?geo=CO&q=huracan%20otis",
+     "metric": 100,
+     "unit": "búsquedas aprox.",
+     "context": "",
+     "links": [],
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    },
+    {
+     "source": "wikipedia",
+     "topic": "Huracán Otis",
+     "rank": 11,
+     "url": "https://es.wikipedia.org/wiki/Huracán_Otis",
+     "metric": 9862,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "¿Quién es el candidato favorito para ganar las elecciones en Brasil? Esto dicen las encuestas sobre Lula y Flávio Bolsonaro",
+   "score": 0.783,
+   "sources": [
+    "google_news",
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "quien",
+    "candidato",
+    "favorito",
+    "ganar",
+    "elecciones",
+    "brasil",
+    "esto",
+    "dicen",
+    "encuestas",
+    "lula",
+    "flavio",
+    "bolsonaro",
+    "generales",
+    "2026",
+    "espana"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "¿Quién es el candidato favorito para ganar las elecciones en Brasil? Esto dicen las encuestas sobre Lula y Flávio Bolsonaro",
+     "rank": 11,
+     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQSWpYOURYeFZNazJoWUx2WW5STU1Ub1UxcjdDeEZOQWZzcF9VNXg2SWFCaWhJUEp5Uk55bTBtd2tmaUt4VmxzNGoyTjJPd3lMTDlXR2tRYkxQWHBkNWVuNG40cU9YMGllODI0MldYeXVqZ2k2ZXNLYnNlcF9BdEQwbVdtazMzLWNsMnlXNG1YODBhclpwOFZsTjF5TW5WX0FiZWxxd2h4U21wMUNWZDFWUnJQdEpMNlRQcTBQeFpCLWY2MDJWUnQ4Zg?oc=5",
+     "metric": 0,
+     "context": "CNN en Español",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    },
+    {
+     "source": "wikipedia",
+     "topic": "Elecciones generales de Brasil de 2026",
+     "rank": 16,
+     "url": "https://es.wikipedia.org/wiki/Elecciones_generales_de_Brasil_de_2026",
+     "metric": 8079,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    },
+    {
+     "source": "wikipedia",
+     "topic": "Flávio Bolsonaro",
+     "rank": 33,
+     "url": "https://es.wikipedia.org/wiki/Flávio_Bolsonaro",
+     "metric": 5863,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    },
+    {
+     "source": "wikipedia",
+     "topic": "Elecciones generales de España de 2026",
+     "rank": 40,
+     "url": "https://es.wikipedia.org/wiki/Elecciones_generales_de_España_de_2026",
+     "metric": 5143,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "posiciones de santos futebol clube contra esporte clube bahia",
+   "score": 0.681,
+   "sources": [
+    "google_trends"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "posiciones",
+    "santos",
+    "futebol",
+    "clube",
+    "esporte",
+    "bahia"
+   ],
+   "signals": [
+    {
+     "source": "google_trends",
+     "topic": "posiciones de santos futebol clube contra esporte clube bahia",
+     "rank": 6,
+     "url": "https://trends.google.com/trends/explore?geo=CO&q=posiciones%20de%20santos%20futebol%20clube%20contra%20esporte%20clube%20bahia",
+     "metric": 2000,
+     "unit": "búsquedas aprox.",
+     "context": "Santos 1 x 1 Bahia | Campeonato Brasileiro: melhores momentos · Com reformas na Vila Belmiro, setor tem interdição parcial e capacidade é reduzida; veja fotos",
+     "links": [
+      "https://ge.globo.com/sp/santos-e-regiao/futebol/brasileirao-serie-a/jogo/24-10-2026/santos-bahia.ghtml",
+      "https://www.lance.com.br/santos/com-reformas-na-vila-belmiro-setor-tem-interdicao-parcial-e-capacidade-e-reduzida-veja-fotos.html"
+     ],
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Patti Smith",
+   "score": 0.68,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "patti",
+    "smith"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Patti Smith",
+     "rank": 1,
+     "url": "https://es.wikipedia.org/wiki/Patti_Smith",
+     "metric": 22505,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "YouTube",
+   "score": 0.677,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "youtube"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "YouTube",
+     "rank": 2,
+     "url": "https://es.wikipedia.org/wiki/YouTube",
+     "metric": 20791,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Clayface (película)",
+   "score": 0.666,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "clayface",
+    "pelicula",
+    "bola",
+    "negra"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Clayface (película)",
+     "rank": 3,
+     "url": "https://es.wikipedia.org/wiki/Clayface_(película)",
+     "metric": 14001,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    },
+    {
+     "source": "wikipedia",
+     "topic": "La bola negra (película)",
+     "rank": 6,
+     "url": "https://es.wikipedia.org/wiki/La_bola_negra_(película)",
+     "metric": 10902,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "WhatsApp",
+   "score": 0.66,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "whatsapp"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "WhatsApp",
+     "rank": 4,
+     "url": "https://es.wikipedia.org/wiki/WhatsApp",
+     "metric": 12991,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Luiz Inácio Lula da Silva",
+   "score": 0.655,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "luiz",
+    "inacio",
+    "lula",
+    "silva"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Luiz Inácio Lula da Silva",
+     "rank": 5,
+     "url": "https://es.wikipedia.org/wiki/Luiz_Inácio_Lula_da_Silva",
+     "metric": 12074,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "pumas - tigres",
+   "score": 0.647,
+   "sources": [
+    "google_trends"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "pumas",
+    "tigres"
+   ],
+   "signals": [
+    {
+     "source": "google_trends",
+     "topic": "pumas - tigres",
+     "rank": 2,
+     "url": "https://trends.google.com/trends/explore?geo=CO&q=pumas%20-%20tigres",
+     "metric": 200,
+     "unit": "búsquedas aprox.",
+     "context": "Pumas recibe a Tigres con urgencia de una victoria · Tomamos este partido como una final: Pablo Bennevendo",
+     "links": [
+      "https://es-us.noticias.yahoo.com/pumas-recibe-tigres-urgencia-victoria-180826097.html",
+      "https://www.gaceta.unam.mx/tomamos-este-partido-como-una-final-pablo-bennevendo/"
+     ],
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "moto gp",
+   "score": 0.647,
+   "sources": [
+    "google_trends"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "moto"
+   ],
+   "signals": [
+    {
+     "source": "google_trends",
+     "topic": "moto gp",
+     "rank": 7,
+     "url": "https://trends.google.com/trends/explore?geo=CO&q=moto%20gp",
+     "metric": 500,
+     "unit": "búsquedas aprox.",
+     "context": "LATEST: MotoGP Phillip Island track activity delayed · MotoGP Australia Prediction and Tips",
+     "links": [
+      "https://www.motogp.com/en/news/2026/10/24/latest-motogp-phillip-island-track-activity-delayed/1180939",
+      "https://news.bet365.com/en-gb/article/motorsport-motogp-australia-prediction-and-tips/2026102409452873655"
+     ],
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "ChatGPT",
+   "score": 0.644,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "chatgpt"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "ChatGPT",
+     "rank": 7,
+     "url": "https://es.wikipedia.org/wiki/ChatGPT",
+     "metric": 10374,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Festival de la Canción de Eurovisión Junior 2026",
+   "score": 0.64,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "festival",
+    "cancion",
+    "eurovision",
+    "junior",
+    "2026"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Festival de la Canción de Eurovisión Junior 2026",
+     "rank": 8,
+     "url": "https://es.wikipedia.org/wiki/Festival_de_la_Canción_de_Eurovisión_Junior_2026",
+     "metric": 10176,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "lvbp",
+   "score": 0.636,
+   "sources": [
+    "google_trends"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "lvbp"
+   ],
+   "signals": [
+    {
+     "source": "google_trends",
+     "topic": "lvbp",
+     "rank": 1,
+     "url": "https://trends.google.com/trends/explore?geo=CO&q=lvbp",
+     "metric": 100,
+     "unit": "búsquedas aprox.",
+     "context": "LVBP: Disfruta del Magallanes Vs. Caracas en vivo por BeisbolPlay · ¡Duelo de Titanes! Leones y Magallanes disputan su primer juego de la temporada en el Monumental este sábado",
+     "links": [
+      "https://www.beisbolplay.com/video/lvbp-disfruta-del-magallanes-vs-caracas-en-vivo-por-beisbolplay-131531",
+      "https://www.eluniversal.com/deportes/243893/navegantes-del-magallanes-y-leones-del-caracas-disputan-su-primer-enfrentamiento-de-la-temporada"
+     ],
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Charly García",
+   "score": 0.636,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "charly",
+    "garcia",
+    "federico",
+    "lorca",
+    "macarena"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Charly García",
+     "rank": 9,
+     "url": "https://es.wikipedia.org/wiki/Charly_García",
+     "metric": 10110,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    },
+    {
+     "source": "wikipedia",
+     "topic": "Federico García Lorca",
+     "rank": 13,
+     "url": "https://es.wikipedia.org/wiki/Federico_García_Lorca",
+     "metric": 9086,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    },
+    {
+     "source": "wikipedia",
+     "topic": "Macarena García",
+     "rank": 34,
+     "url": "https://es.wikipedia.org/wiki/Macarena_García",
+     "metric": 5706,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Raphael (cantante)",
+   "score": 0.631,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "raphael",
+    "cantante"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Raphael (cantante)",
+     "rank": 10,
+     "url": "https://es.wikipedia.org/wiki/Raphael_(cantante)",
+     "metric": 9962,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "tampa bay rays",
+   "score": 0.628,
+   "sources": [
+    "google_trends"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "tampa",
+    "bay",
+    "rays"
+   ],
+   "signals": [
+    {
+     "source": "google_trends",
+     "topic": "tampa bay rays",
+     "rank": 3,
+     "url": "https://trends.google.com/trends/explore?geo=CO&q=tampa%20bay%20rays",
+     "metric": 100,
+     "unit": "búsquedas aprox.",
+     "context": "Tampa Bay Rays tradition: Inside the Tropicana Field cowbell origin · Bruins 6-4 Sharks (25 Oct, 2026) Game Recap",
+     "links": [
+      "https://www.fox13news.com/news/tampa-bay-rays-tradition-inside-tropicana-field-cowbell-origin",
+      "https://www.espn.co.uk/nhl/recap?gameId=401892568"
+     ],
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "milwaukee brewers",
+   "score": 0.624,
+   "sources": [
+    "google_trends"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "milwaukee",
+    "brewers"
+   ],
+   "signals": [
+    {
+     "source": "google_trends",
+     "topic": "milwaukee brewers",
+     "rank": 4,
+     "url": "https://trends.google.com/trends/explore?geo=CO&q=milwaukee%20brewers",
+     "metric": 100,
+     "unit": "búsquedas aprox.",
+     "context": "Best Milwaukee Brewers World Series Game 2 fashion · Licensable picture: In section 106 tonight, a 45-minute drive from home, was a man wearing his lucky Jake Bauers shirt. Stu Bauers has worn his",
+     "links": [
+      "https://sports.yahoo.com/articles/best-milwaukee-brewers-world-series-024925015.html",
+      "https://www.reutersconnect.com/item/in-section-106-tonight-a-45-minute-drive-from-home-was-a-man-wearing-his-lucky-jake-bauers-shirt-stu-bauers-has-worn-his/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX01UMVVTQVRPREFZMzAwODc4NzQ"
+     ],
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "serie mundial",
+   "score": 0.623,
+   "sources": [
+    "google_trends"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "serie",
+    "mundial"
+   ],
+   "signals": [
+    {
+     "source": "google_trends",
+     "topic": "serie mundial",
+     "rank": 8,
+     "url": "https://trends.google.com/trends/explore?geo=CO&q=serie%20mundial",
+     "metric": 200,
+     "unit": "búsquedas aprox.",
+     "context": "Lo que debes saber sobre el J2 de la Serie Mundial entre Rays y Cerveceros (EN VIVO) · Una década después de firmar, mexicano Jonathan Aranda triunfa con TB Rays",
+     "links": [
+      "https://www.mlb.com/es/news/lo-que-debes-saber-juego-2-serie-mundial-2026-rays-cerveceros",
+      "https://www.espn.com.co/beisbol/nota/_/id/17422641/mlb-serie-mundial-jonathan-aranda-firma-triunfa-rays"
+     ],
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Evento:Mes de América Latina 2026",
+   "score": 0.622,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "evento",
+    "mes",
+    "america",
+    "latina",
+    "2026"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Evento:Mes de América Latina 2026",
+     "rank": 12,
+     "url": "https://es.wikipedia.org/wiki/Evento:Mes_de_América_Latina_2026",
+     "metric": 9403,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "fonseca",
+   "score": 0.62,
+   "sources": [
+    "google_trends"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "fonseca"
+   ],
+   "signals": [
+    {
+     "source": "google_trends",
+     "topic": "fonseca",
+     "rank": 5,
+     "url": "https://trends.google.com/trends/explore?geo=CO&q=fonseca",
+     "metric": 100,
+     "unit": "búsquedas aprox.",
+     "context": "Joao Fonseca confirms he will play Carlos Alcaraz in an exhibition match in Brazil this year · Carlos Alcaraz confirmed to play another exhibition match before the 2026 season is over",
+     "links": [
+      "https://sports.yahoo.com/articles/joao-fonseca-confirms-play-carlos-120000745.html",
+      "https://www.tennis365.com/tennis-news/carlos-alcaraz-exhibition-match-2026-season"
+     ],
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Radio AM 750",
+   "score": 0.613,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "radio",
+    "750"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Radio AM 750",
+     "rank": 14,
+     "url": "https://es.wikipedia.org/wiki/Radio_AM_750",
+     "metric": 8888,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Tesh Sidi",
+   "score": 0.609,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "tesh",
+    "sidi"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Tesh Sidi",
+     "rank": 15,
+     "url": "https://es.wikipedia.org/wiki/Tesh_Sidi",
+     "metric": 8705,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "nuggets - pelicans",
+   "score": 0.604,
+   "sources": [
+    "google_trends"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "nuggets",
+    "pelicans"
+   ],
+   "signals": [
+    {
+     "source": "google_trends",
+     "topic": "nuggets - pelicans",
+     "rank": 9,
+     "url": "https://trends.google.com/trends/explore?geo=CO&q=nuggets%20-%20pelicans",
+     "metric": 100,
+     "unit": "búsquedas aprox.",
+     "context": "Preview: Denver Nuggets look for first win of the season against New Orleans Pelicans · Photos: Pelicans at Nuggets | Game Action 10/24/26",
+     "links": [
+      "https://www.denverstiffs.com/preview-denver-nuggets-look-for-first-win-of-the-season-against-new-orleans-pelicans/",
+      "https://www.nba.com/pelicans/photos/new-orleans-pelicans-vs-denver-nuggets-photos-game-action-10-24-26"
+     ],
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Premios Princesa de Asturias",
+   "score": 0.599,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "premios",
+    "princesa",
+    "asturias"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Premios Princesa de Asturias",
+     "rank": 17,
+     "url": "https://es.wikipedia.org/wiki/Premios_Princesa_de_Asturias",
+     "metric": 7826,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Facebook",
+   "score": 0.595,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "facebook"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Facebook",
+     "rank": 18,
+     "url": "https://es.wikipedia.org/wiki/Facebook",
+     "metric": 7729,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Rafael Rodríguez Rapún",
+   "score": 0.591,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "rafael",
+    "rodriguez",
+    "rapun"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Rafael Rodríguez Rapún",
+     "rank": 19,
+     "url": "https://es.wikipedia.org/wiki/Rafael_Rodríguez_Rapún",
+     "metric": 7723,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Lizzie Borden",
+   "score": 0.586,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "lizzie",
+    "borden"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Lizzie Borden",
+     "rank": 20,
+     "url": "https://es.wikipedia.org/wiki/Lizzie_Borden",
+     "metric": 7592,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Kehlsteinhaus",
+   "score": 0.582,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "kehlsteinhaus"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Kehlsteinhaus",
+     "rank": 21,
+     "url": "https://es.wikipedia.org/wiki/Kehlsteinhaus",
+     "metric": 7565,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Jordi Wild",
+   "score": 0.578,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "jordi",
+    "wild"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Jordi Wild",
+     "rank": 22,
+     "url": "https://es.wikipedia.org/wiki/Jordi_Wild",
+     "metric": 7389,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Pedro Sánchez",
+   "score": 0.574,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "pedro",
+    "sanchez"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Pedro Sánchez",
+     "rank": 23,
+     "url": "https://es.wikipedia.org/wiki/Pedro_Sánchez",
+     "metric": 7326,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Frente Amplio (España)",
+   "score": 0.569,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "frente",
+    "amplio",
+    "espana"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Frente Amplio (España)",
+     "rank": 24,
+     "url": "https://es.wikipedia.org/wiki/Frente_Amplio_(España)",
+     "metric": 7222,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Jair Bolsonaro",
+   "score": 0.565,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "jair",
+    "bolsonaro"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Jair Bolsonaro",
+     "rank": 25,
+     "url": "https://es.wikipedia.org/wiki/Jair_Bolsonaro",
+     "metric": 7088,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Michael Rockefeller",
+   "score": 0.561,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "michael",
+    "rockefeller"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Michael Rockefeller",
+     "rank": 26,
+     "url": "https://es.wikipedia.org/wiki/Michael_Rockefeller",
+     "metric": 7086,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Mex Urtizberea",
+   "score": 0.556,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "mex",
+    "urtizberea"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Mex Urtizberea",
+     "rank": 27,
+     "url": "https://es.wikipedia.org/wiki/Mex_Urtizberea",
+     "metric": 6687,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Leonor de Borbón",
+   "score": 0.552,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "leonor",
+    "borbon"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Leonor de Borbón",
+     "rank": 28,
+     "url": "https://es.wikipedia.org/wiki/Leonor_de_Borbón",
+     "metric": 6626,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Sergio Rico",
+   "score": 0.548,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "sergio",
+    "rico"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Sergio Rico",
+     "rank": 29,
+     "url": "https://es.wikipedia.org/wiki/Sergio_Rico",
+     "metric": 6603,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Guitarricadelafuente",
+   "score": 0.543,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "guitarricadelafuente"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Guitarricadelafuente",
+     "rank": 30,
+     "url": "https://es.wikipedia.org/wiki/Guitarricadelafuente",
+     "metric": 6287,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Santiago Corella",
+   "score": 0.543,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "santiago",
+    "corella"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Santiago Corella",
+     "rank": 31,
+     "url": "https://es.wikipedia.org/wiki/Santiago_Corella",
+     "metric": 6210,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Vito Quiles",
+   "score": 0.542,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "vito",
+    "quiles"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Vito Quiles",
+     "rank": 32,
+     "url": "https://es.wikipedia.org/wiki/Vito_Quiles",
+     "metric": 5968,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Kim Jong-un",
+   "score": 0.54,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "kim",
+    "jong"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Kim Jong-un",
+     "rank": 35,
+     "url": "https://es.wikipedia.org/wiki/Kim_Jong-un",
+     "metric": 5456,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Lionel Messi",
+   "score": 0.54,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "lionel",
+    "messi"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Lionel Messi",
+     "rank": 36,
+     "url": "https://es.wikipedia.org/wiki/Lionel_Messi",
+     "metric": 5380,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Copa Libertadores de América",
+   "score": 0.54,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "copa",
+    "libertadores",
+    "america"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Copa Libertadores de América",
+     "rank": 37,
+     "url": "https://es.wikipedia.org/wiki/Copa_Libertadores_de_América",
+     "metric": 5364,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Richard Gere",
+   "score": 0.54,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "richard",
+    "gere"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Richard Gere",
+     "rank": 38,
+     "url": "https://es.wikipedia.org/wiki/Richard_Gere",
+     "metric": 5362,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Cayetana Álvarez de Toledo",
+   "score": 0.539,
+   "sources": [
+    "wikipedia"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "cayetana",
+    "alvarez",
+    "toledo"
+   ],
+   "signals": [
+    {
+     "source": "wikipedia",
+     "topic": "Cayetana Álvarez de Toledo",
+     "rank": 39,
+     "url": "https://es.wikipedia.org/wiki/Cayetana_Álvarez_de_Toledo",
+     "metric": 5231,
+     "unit": "vistas (ayer)",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Emergencias por lluvias en el Caribe: primeros balances de inundaciones y desbordamientos en varias ciudades; se esperan más precipitaciones",
+   "score": 0.536,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "emergencias",
+    "lluvias",
+    "caribe",
+    "primeros",
+    "balances",
+    "inundaciones",
+    "desbordamientos",
+    "varias",
+    "ciudades",
+    "esperan",
+    "mas",
+    "precipitaciones"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Emergencias por lluvias en el Caribe: primeros balances de inundaciones y desbordamientos en varias ciudades; se esperan más precipitaciones",
+     "rank": 1,
+     "url": "https://news.google.com/rss/articles/CBMipwJBVV95cUxPY0tqSHZOeVhhSzFGazNrOXJHQlVKX1JGNGc0eFI1eVJBcnBrTjQ2Nm5HeVdtbTBSLTJzajNZQkJPRXRPWE9yQnZCRzllOUR3Z3VrLU53NGRhellWdTFDSHJLeEM4dk81TUtTS0ZLTmVfYzB0djhRTUsteDg0c2c1Q3NYeDhaVlVJQWJLMS0tM1ZnUjd5T1ZvOU1iVVR2eGZpcG9QcnA1RnNWMTM1S2VfVXhhY1hZams2M2ZxMzRVaTJiS3lBSUVXa0hLWWR3YkRfMVh1Y3RINU9jdHBzMmpfNE5IRFRsNWVXdFFqVGpycHVudld2WmxsVzF1NEN4TFh0Q2Z1VmxCd2ZyYU5HSlFGcy05VmdOR1ZRNnJMR3ktN3lrdzFtd2pz?oc=5",
+     "metric": 0,
+     "context": "El Tiempo",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Colapsó una edificación en Pereira pendiente de demolición este sábado: hallaron dos cuerpos sin vida entre los escombros",
+   "score": 0.532,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "colapso",
+    "edificacion",
+    "pereira",
+    "pendiente",
+    "demolicion",
+    "este",
+    "sabado",
+    "hallaron",
+    "dos",
+    "cuerpos",
+    "sin",
+    "vida",
+    "entre",
+    "escombros"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Colapsó una edificación en Pereira pendiente de demolición este sábado: hallaron dos cuerpos sin vida entre los escombros",
+     "rank": 2,
+     "url": "https://news.google.com/rss/articles/CBMirgJBVV95cUxOOUVCa2JwOXpSQnFPVm45bXR3WEpLRUJEN3ZJVG9BUXRxSDI2WGxQRUFWLU9xQ255enAxRzRFNWVGMTFLZ0lnS2lUb3dlem5nTnNKdGxTRUZqZk44Wm1fbXdDR1dXY0kwMFRiWE5DaTlRc3c3eGZTaFNnMGxHSk5wbi0xRXNpZmlidXRpTGZ4ellrVkd2RVlmNXdVUVR6UFpqRlFTQmdKTHdabUlPQWhKUl9WNEhFa0JNTExaN2ZPZmhnS09fS2JqQXAwNW1TMFV0WVJLZFFYdk5iRWRVZWw5ZnNWOTVJMlVqMVNnT3UtRXc2NmVfaUtsMFhKNlhmQkg1clJRRlRBaTZtckhtSjhjcFllV3kyaUVSSVphcHRxSTh6WFgxaGQ4TzZ0T0I3UQ?oc=5",
+     "metric": 0,
+     "context": "El Tiempo",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "MinJusticia desmiente acusaciones contra el presidente Abelardo De La Espriella por captura de Nassim Orfale Vásquez",
+   "score": 0.528,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "minjusticia",
+    "desmiente",
+    "acusaciones",
+    "presidente",
+    "abelardo",
+    "espriella",
+    "captura",
+    "nassim",
+    "orfale",
+    "vasquez"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "MinJusticia desmiente acusaciones contra el presidente Abelardo De La Espriella por captura de Nassim Orfale Vásquez",
+     "rank": 3,
+     "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxPdWdmaXlvSXpVRXdaaEswQzZaamM3a0M5aGpyWE8xVUVJc3VOTmMyckVoS3RtVDdLdmVhQkhLVllIYjFyQzVXZWtQMHgyMG5HdnlVelJZTk1IWlBVSkZXZ3V1QUJNaEcxSGRhY0lEb0VYcHo5cmFOTG9oaEFFc0tGeGVBSW1CajJ0MHFueTZXbHJ2NmFfSC0xdUtZOXB1ckNKT1dsenhZSWRHYzBWNEVJeFM5MHVKREo0QlFHcVd5WlNyb1lGRzFTc2lFTDI2cGYyaHJjMTNZVG54MDlVZVpLNEJSd0ZqTEN2bjdCSEh3b3AxUk9hR1E?oc=5",
+     "metric": 0,
+     "context": "Revista Semana",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Levy Rincón denunció que lo querían “censurar” y Jota Pe Hernández le respondió que la primera dama ya lo demandó: “Tres Doritos después...”",
+   "score": 0.524,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "levy",
+    "rincon",
+    "denuncio",
+    "querian",
+    "censurar",
+    "jota",
+    "hernandez",
+    "respondio",
+    "primera",
+    "dama",
+    "demando",
+    "tres",
+    "doritos",
+    "despues"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Levy Rincón denunció que lo querían “censurar” y Jota Pe Hernández le respondió que la primera dama ya lo demandó: “Tres Doritos después...”",
+     "rank": 4,
+     "url": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxObE5HZVpGRFdUa2pSbjF1VEU4VzZnZmZVSDVjejdFX0drdE00ZGMyTlZlZTQxVzNkSFQ2M2h2TFNGXzNmVnN2Nzk4aXEwRncxWHN1LW1UWEVMejhETGk3TmZfZ01lVXdJeWJYMU85QUtibW1zOFpXcWxhUjMxb254OUduRWQtUS1PMEYzUkphVGxYR3A3S3Q3Y2dqVGNQRkthQW4wRlhJZWhXR3pRVm5kWk1xNVE0bjh6aWY4MzZ2dy1rSjVXbUJucWtPY0YyRkhTcF9YOW04RC05MUozM2VlQ0ptZWw0aFpqcEU2N1FDZHFrR1B4S1pVbm5haUt1QVVqb0pTVnRzOXrSAaMCQVVfeXFMTlhMMzRWa0ZGZno4ZV9VeV9UWE5PTGtPdW8zR2I0My00UjZNa3FaSGktbmdnY2U5QTk2WVV5VzRHUTRaREpBWURLUWdjRFZzZDRodUxiTkRfWWxwZW5jRlAwU0YzZ19ITmxNbWpmdk1keklvMEFnRE8xb20zNlo1T1pkVmUyOTI1S1dmMmd6MHRoVl9fMl9lRjE4Sm1FbjNkQ1FoaW9TTUZ0YlpXc3RyT2hPb3B2RlpQTmlIRGg1MEJ0dzJhU0FBaVlkajA1ZXhFSHEtOWZzUzA2bjVOZEtfbjJGdzNKU0hwQ1dSdTd4YjA2VEh2NkxKOXJWTVQ4SmxPM3pzVWJoRG9LVmZCSkd3MG5SeThfN1N4UnZRbDBaSm93Yi1F?oc=5",
+     "metric": 0,
+     "context": "Infobae",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Soldado desapareció tras un ataque con drones explosivos en Antioquia y fue hallado con vida seis días después",
+   "score": 0.52,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "soldado",
+    "desaparecio",
+    "ataque",
+    "drones",
+    "explosivos",
+    "antioquia",
+    "fue",
+    "hallado",
+    "vida",
+    "seis",
+    "dias",
+    "despues"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Soldado desapareció tras un ataque con drones explosivos en Antioquia y fue hallado con vida seis días después",
+     "rank": 5,
+     "url": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxPZjVxX295dmN1Mnk4aHRJODUxNjFNMnVJdkZWQ2dpZm1ydGR4ejFObGVRUEhxdDBSVWFudVN6LXRoWVRZS05tNlJRTnZaelZGZHFLMXA3eGwzcDJ3dGlmN0FIb0NtcGFWcGhTMU9EaGlrWV8tMjN4Q2tacWVpVlA1THF6aE44SmY2Njl1dGlZRWtsT19WNFlTaG5DU3AzOWg3T3Ixb1psWjNmeWdLXzVHX3BqQk1jTmFCRE1wTlFqMUNMY1pxX1BxMHNvMG05eVpDLWlLRjZwUzlXV29KQ0Z0WDBxdUVVTHh4RVdHTVZ0MTRRZVZYT090TmFud01UNmdERW43YnZsc0LSAY4CQVVfeXFMTkRrd0xYR0xUZjhTa20wNHR1LTV3TWstR0xlcEVyalQzNF81bjZsd1FUaWRTd3hWSzhhR0w4d2N6NUc0Z3JjMkpfMXhHR1ltVzFmS1RTQTY1bWFQdlFYN3BFUElLMkg0YjdRRUhGd0ZMZW01ZWo2TU9kMmp3Vnl2cG9UajdycE1RSHd6MS1kc3lGQWNRNjF2UExZckYwNTY5ZUQtUlVBLW9TTG5lZmt5WWlMYzZubmdkQThTQWU1dm5aVFhmdzdjTmZMNkRrc2pwRUdWUk92QmtQdUFBVWpGd1p1UDROc0paS3QyMUhQV3N5aVpjMHpCakhwc2RMUWx5Ym5zQnNHWDBtYm1qS3ln?oc=5",
+     "metric": 0,
+     "context": "El Tiempo",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Falleció uno de los heridos que dejó el accidente de un bus en el barrio Prado, de Medellín | El Colombiano",
+   "score": 0.516,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "fallecio",
+    "uno",
+    "heridos",
+    "dejo",
+    "accidente",
+    "bus",
+    "barrio",
+    "prado",
+    "medellin",
+    "colombiano"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Falleció uno de los heridos que dejó el accidente de un bus en el barrio Prado, de Medellín | El Colombiano",
+     "rank": 6,
+     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNUFdDU2NSbFFKZEZqWjlyMzJYajBhdV9rTUhJX3FPLWsyLXp4OEpMd1dCZlZGREVyekZPcGVxR1FZWHpZSV9MWldfYUVTWG5OOXY5eUZRVDhEQnQtUEx5a2NKRE1rYV9SOHlNY1ZWNU40cVpPRUdFVjBBd3lDc0s1ajJncTJleWdnWGl5aQ?oc=5",
+     "metric": 0,
+     "context": "El Colombiano",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Abelardo De La Espriella visitó a la familia de la patrullera asesinada en Cali: “Su muerte no quedará impune”",
+   "score": 0.512,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "abelardo",
+    "espriella",
+    "visito",
+    "familia",
+    "patrullera",
+    "asesinada",
+    "cali",
+    "muerte",
+    "quedara",
+    "impune"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Abelardo De La Espriella visitó a la familia de la patrullera asesinada en Cali: “Su muerte no quedará impune”",
+     "rank": 7,
+     "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQQnJ2Tmp1R3ZSZ3NnQ3IzNmFoS21EdHlmb2tmeEhlYWpVemE0MVRYZ2ZyQ0tiLUwtMUpsSGY2ZFliVXY5dUJzOVFMcXdXX1Z4YTZHcnlYbWVwMTZPeTB6ZE9VY0E5QnJ4RDRUYmZTZEdycEpnNFhWbGV6eUltdXdHdE9fQlhXcXUxb2hJSTJtSzBBNGg1OVdzVkFyUHNlMUpMNmswM2xCWUtkUVBvNUZHRmtnaGRLRmF3dGlrc2FwRHdlUTBEXzRLcjdiYnFjNDBXMk9lQldKM3RQOU5DMzRwN1h6UmozUlYxWmc?oc=5",
+     "metric": 0,
+     "context": "Revista Semana",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "¿Cuándo pagan Colombia Mayor? Prosperidad Social revela fechas del nuevo ciclo | El Colombiano",
+   "score": 0.508,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "cuando",
+    "pagan",
+    "colombia",
+    "mayor",
+    "prosperidad",
+    "social",
+    "revela",
+    "fechas",
+    "nuevo",
+    "ciclo",
+    "colombiano"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "¿Cuándo pagan Colombia Mayor? Prosperidad Social revela fechas del nuevo ciclo | El Colombiano",
+     "rank": 8,
+     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQTDVQMElWaEpEeVJzbnc2bGdjZExhWk9OaUpaQjY0LXRpMWoydlo3dlRqd0tjb09IQV9uU2VxS3dGa3Rxa2k4U3hJVUtra05LQkowd09mdHN4enhRd1F1MTVhMkViV3lmQUJDVnFlSnlHQTJlS0tvazVGNVFXeHlQVGphNE9COS1SWXlGcW1hZ0o5d19tUW5UckZfano2X3E0YXBzeUdFSWZLUQ?oc=5",
+     "metric": 0,
+     "context": "El Colombiano",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Reconstrucción sube a $54,3 billones y no hay plata para vivienda de los no afectados: MinVivienda",
+   "score": 0.504,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "reconstruccion",
+    "sube",
+    "billones",
+    "hay",
+    "plata",
+    "vivienda",
+    "afectados",
+    "minvivienda"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Reconstrucción sube a $54,3 billones y no hay plata para vivienda de los no afectados: MinVivienda",
+     "rank": 9,
+     "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOb3A5Y0tuZ2VpMWJfdGwwMEx0enJOampTdGo3cTRGSmN0Ul9palBFQ3FSVG9CQlBCcjZNeXQ0ajFrVm5HT2dVd19EWUx5NGpTdGpwcm94c3BpYnNad3RrY3o0YmhkdHFvZmZVWTc2enhOTlpud1pBclI1MDNCTExETDRabUJSYU1vWURQYVI0UFBRekp5c1kwbXJVMUM0QThHS2dOdkJhc0lpemZuV1lVSEVrN244ZktYdE1WRmpDUHRvbmx1SzdsRUt30gHeAUFVX3lxTE9TVWtWcHR2OUE1eXdPS09zTFc3eHRFVW9ERWg2V3hKWGtnd0ZscGhuZGV1N1pZZXduZVNWU1oxZFEwN2RqcVQ1ZjVXbE4ySHpiaEQwVWpGOUFDR1czQWZPN0dBNE1KczV4QkJKWmlBZjJ3U196cjk3dmZEbDZCOEpEYVVGODVaMkVmcjEyNXVscEt5eGhiR3dqOW5mUmpncmozRVpydzByTGlsdk5lRk5xSHhfaURNMzVjT3VoczJEVi1zaG9aMmtjM1NMTy05LTlSV29IMVhBNE9JRWhyZw?oc=5",
+     "metric": 0,
+     "context": "Caracol Radio",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Matador y Ana Lucía Pineda: Fiscalía abre indagación por hostigamiento a la primera dama | El Colombiano",
+   "score": 0.5,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "matador",
+    "ana",
+    "lucia",
+    "pineda",
+    "fiscalia",
+    "abre",
+    "indagacion",
+    "hostigamiento",
+    "primera",
+    "dama",
+    "colombiano"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Matador y Ana Lucía Pineda: Fiscalía abre indagación por hostigamiento a la primera dama | El Colombiano",
+     "rank": 10,
+     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPRHVubFVHVERoNWllQlhXb0tZX252RTBQRVh5MS1HOE5UdFJSWUxtSUY1OFVVWGFIVU42U081Tnk5WTlFQXRWN21lWmQwMnJNTXNvU0hmSTZ3X0hvWld2aW8ybFZzTkNLVUtlUExJdDdBNWlCZHV5UFMyRHFrcE8wTDdjdjQ2ZWp5UVRsVzZUUHVEUFFHSklhS1dwczJzc29YaGlkaldMQnRnZ9IBrwFBVV95cUxOZmFqWHk3aVM0blBsUVNXb0NvajZxbngwX09yVmVNWnEtWHRNMVoxb2VZWkc0bDFqUFVpMEl3VDBYVXlmb2p0c0pfSGVqOTQtSENMNTlEX3pweE1ndVN3ZkktMWdsallUZ3pqQ0t4NmttMnJwazJtcVNZYVd4d1QzWV9lUWtQM3djVThiWm5DNDVhaWg5ampMTjBKX1RqVGRnc29tSFRZamFOTEdLWWRZ?oc=5",
+     "metric": 0,
+     "context": "El Colombiano",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Talarico's Texas Senate race",
+   "score": 0.496,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "talarico",
+    "texas",
+    "senate",
+    "race"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Talarico's Texas Senate race",
+     "rank": 1,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/f66d7249e0ed",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Casi 1.000 detenidos en Francia después de que miles de personas salieran a las calles a protestar",
+   "score": 0.492,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "casi",
+    "000",
+    "detenidos",
+    "francia",
+    "despues",
+    "miles",
+    "personas",
+    "salieran",
+    "calles",
+    "protestar"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Casi 1.000 detenidos en Francia después de que miles de personas salieran a las calles a protestar",
+     "rank": 12,
+     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9LVmV4alFmdHF5aV84a3dsUkpPS0hUU3RtX3YxWTJRQmx5VDNwY3d4VVMxOHlubGpCaHJ1elhwQi1zb1FaQlhENE52a3FPZFVnTG1qVEdsYkdXOTZn0gFiQVVfeXFMTnA2SlVpZmlWUzd6MmtqMGtxN3k1SmstV19oNUlBTEwxSWZ4NEZCemViMi1MckNMMWg0NWxjdndnLWx5LVFYRGd5VnRKVXBQOVZnMEd3VlpMbEdlaGk0UFR5cEE?oc=5",
+     "metric": 0,
+     "context": "BBC",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Alberta separation referendum results",
+   "score": 0.492,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "alberta",
+    "separation",
+    "referendum",
+    "results"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Alberta separation referendum results",
+     "rank": 2,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/8bc52074293b",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "El Salvador despliega tropas en Haití para buscar a cuatro soldados desaparecidos",
+   "score": 0.488,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "salvador",
+    "despliega",
+    "tropas",
+    "haiti",
+    "buscar",
+    "cuatro",
+    "soldados",
+    "desaparecidos"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "El Salvador despliega tropas en Haití para buscar a cuatro soldados desaparecidos",
+     "rank": 13,
+     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOemMtYndCM3RqdWNHVXp2OHNaR0Q2cmREZDd2MVh6MXhXZkxpR1JVMVl5Vlk2R2J5Uzh0U2l4SVFtTWFIcmM2MHVRTGZ6enpkMFRGdm03VWFwY3pLOVE2a1JiM3lzb0ZVT1hMdWRKWkQzU204Q0dJVEdwa1RuQnBWWVVsRW9zQXptT2xXcVJKNXNLei1OczJ6Zl91WmlrVTlNWDYyUnRpeWtCMl9MLTFXR3FVOHhqbU9hYXRV0gG7AUFVX3lxTE9JeWdrcjFCdUotejZreUFIYWszeGZLLTJ4RWp5THJTVENEdmQtZU1ZV0NYcUY3UkFSVG45aFM0Vmx6amlraVRVbkFlMVZqZ3NjX3BKNkxVdUhwRl9TNnBuVUJXSzRTNlFpY2pTNXk5YS1rNERBeDFqVUd4YmI2S1VtQkp3OHpTRFpJaWplb1JubWVlc2QwSVo5bzlhRnZkckJVcWFka0thbHFkZEZkM3RmM2JmYnV3SG0yY3M?oc=5",
+     "metric": 0,
+     "context": "DW.com",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "First five role-playing games played",
+   "score": 0.488,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "first",
+    "five",
+    "role",
+    "playing",
+    "games",
+    "played"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "First five role-playing games played",
+     "rank": 3,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/930c3797b762",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Alias Araña busca acuerdo con la justicia de EE. UU. y hablaría sobre el caso de Miguel Uribe Turbay",
+   "score": 0.484,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "alias",
+    "arana",
+    "busca",
+    "acuerdo",
+    "justicia",
+    "hablaria",
+    "caso",
+    "miguel",
+    "uribe",
+    "turbay"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Alias Araña busca acuerdo con la justicia de EE. UU. y hablaría sobre el caso de Miguel Uribe Turbay",
+     "rank": 14,
+     "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNekZ3QllOcGxJWkMySVYyOXNyaTNzVTJOelZyMEJnNXp5WWZlOFRRQWdNeWNJVldsRHk4ZEtQX0JFRnF2VjNzMjU5QmE5S1V4VXVHd2RKR3hCQzlZSzh3bEdudXpCMTJSSHg5bG5pU1FjM1UxTkhuaGpLcUlsN1JEalVka2lKNVd3V0VGQm1WamsyazlnRm1fLWlWb1F2RG41czhUdEM2bndQMEhtbDVVT1pYZDdfTmxfcGc0NEVwUEd0VzJKNU9qUUJta19UV3ZIcTJnSWJod084czZGSDFTQkttaVlSTnky0gHuAUFVX3lxTFBkVHRiNjJvREJOakdaVXM3VUpZY0lPdWtsbm81aVBlWXctY0pUTjZ5dWdKaDJsRmY4dnlsamJvSW1OdWpiaWxfSm43NGFaMEsxeEtfVFBkbGluNWpKYTdrMDF2OFdzNlFGV1c3WXZidW83TWV4Z3REalBTZHdPeXNkdW9mMGZvanNtR09DaXN4RHVneVpvelR6bkZpNFRtWkpmQXcyMDBWcmtYb3VWaHdmTVJaX2Z2VTRRbjlZUkhRUEp0M2VxdU1HUGVObC1nQUoxM3dZcXZFSmhFS0k5ZldWVWRtUHVxWmptZHMtWXc?oc=5",
+     "metric": 0,
+     "context": "Revista Semana",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Sonic the Hedgehog fan creations",
+   "score": 0.484,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "sonic",
+    "hedgehog",
+    "fan",
+    "creations"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Sonic the Hedgehog fan creations",
+     "rank": 4,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/419227c4b2ac",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Las compras del Grupo Nutresa bajo la era de Jaime Gilinski desde su llegada",
+   "score": 0.48,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "compras",
+    "grupo",
+    "nutresa",
+    "bajo",
+    "era",
+    "jaime",
+    "gilinski",
+    "desde",
+    "llegada"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Las compras del Grupo Nutresa bajo la era de Jaime Gilinski desde su llegada",
+     "rank": 15,
+     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOV1V4QjJjc3NZVkdVYkhMdXc0QjhVaXhmTkkyQU11bDNsdmVDekN5ZXF2QlktNU1FSTFmQTNfX0pvZHVScDFnSW05MzE5U1lya0NiZVJ6MURUa3RPR25wM2cwTUM0eXhfVkZ5dUY2c1lXM0ZkSDBXY1JRZ0tjc3F0dk0xUmt2OEVVMGtjM3ZqeFBUQTZPVHYyUHJyN2VoZ2tJaWcyQ0J4Z0Z5MHpJRXJ3Z3NWNEtxcWYyQU9OOdIBvAFBVV95cUxPa2hPQnlCMHdJSlpmdDh0UHZxNlJzLThzMUF0bEpNMENmTXk1RUlNWXdVS29BWE01b1o2WEdUSndvc3pDN1Nab2Qxa282dXFnbFNQRXlmT1ZfR0dKVFFBMndtanRkbjBzUGpsemV0endOdmc5Z0xweUhFeFgwbzNidmlsMU9faE5LV2ZLUXlManNxZW5hNl91cWpqdmFNTDdYdllJOHdFWDEwNllDemdSU2dnWjEzU1pWS21qcQ?oc=5",
+     "metric": 0,
+     "context": "LaRepublica.co",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Letterboxd Friday recent watches",
+   "score": 0.48,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "letterboxd",
+    "friday",
+    "recent",
+    "watches"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Letterboxd Friday recent watches",
+     "rank": 5,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/f88ed544be51",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Lotería del Quindío del jueves 22 de octubre de 2026: resultado, número ganador y premios del sorteo de hoy",
+   "score": 0.476,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "loteria",
+    "quindio",
+    "jueves",
+    "octubre",
+    "2026",
+    "resultado",
+    "numero",
+    "ganador",
+    "premios",
+    "sorteo",
+    "fuiste",
+    "todo",
+    "super",
+    "astro",
+    "luna",
+    "viernes"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Lotería del Quindío del jueves 22 de octubre de 2026: resultado, número ganador y premios del sorteo de hoy",
+     "rank": 16,
+     "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxQWDMwNGtWR2x0WDNJRW1SS05EM2h4RXp2UDNoMUFueDY4UnR3R1h1YXdZRmM2ZjhvNnJ6MzJZMkp1M1FkX0Fzb2hxRlVoRGp1QWpjUG4xUjVra3FETnJCT0psaHNoOFJGZkhHOGNKaHdqLW9kQ2NxNzdSZE5YbV91U0UzVXJiTG4xbF92TWlxR0daZ2ZfRldpMzRwMjRzNmFJTkMwOFlrLTlNQW11UTVZVzJCRTVldXV1OGp6S0VIOWczQ2c4cHZINUZ5SjFhUDFaT1A3cmJ2OVppTnZTYjZ3dlpZcDFlUm5ZTGRJLVJJa0N1MG1ROWJrbVlQQQ?oc=5",
+     "metric": 0,
+     "context": "El Tiempo",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    },
+    {
+     "source": "google_news",
+     "topic": "¿Fuiste el ganador? Todo sobre el sorteo del Super Astro Luna de hoy viernes 23 de octubre de 2026",
+     "rank": 18,
+     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOWldWOW14WV90b1F6c1Myc1lPQUdTQ0paVF8xSkF3X2dzeHhjOGpOeG4wRGNKTFh1ZDZUb016b1F6X2FubGZNSGlzWVZkaWcyV212bmtNRkxXMDh4TE9lUHRvSlZSd0poWjJ3bTFaTTNGdDdzT2N4OTc0amxDd2M5a0ctYW9aMkpnN0RyR2xyeHdhbUxsSTROamxRa0RQenhRcndV?oc=5",
+     "metric": 0,
+     "context": "Colombia.com",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Favorite Simpsons quotes",
+   "score": 0.476,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "favorite",
+    "simpsons",
+    "quotes"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Favorite Simpsons quotes",
+     "rank": 6,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/1cb716c90023",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Efecto Tesla en Colombia: cuatro modelos de carros eléctricos bajaron hasta $40 millones",
+   "score": 0.472,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "efecto",
+    "tesla",
+    "colombia",
+    "cuatro",
+    "modelos",
+    "carros",
+    "electricos",
+    "bajaron",
+    "hasta",
+    "millones"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Efecto Tesla en Colombia: cuatro modelos de carros eléctricos bajaron hasta $40 millones",
+     "rank": 17,
+     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQbUd0RnBNbU5mS0MyQjQ3cDAwUGNzRFBucHVPa3VGbGlFV3p5cjZ6Um5GelFWVVYzTnFJaUMxTDE2ckJjMUNNemh3QjhaaENYUFM0dHFFdXdvdlh4SVFueGVIaV96d2pqZ0dGdGpNWVFJcl9kWFFiOTF2Rm1WUGx3RGIweGpxUjNsRkFVN3ozSG5veWM1MnB1VF80QXRsY1paNzg5YkNLTmRPcmlEOENqX29B0gG3AUFVX3lxTE5LdlhlTThRWGpydXpSU3Y5NGtyalYzMGlxSEttQl9QSXptWk1vYmlmQ3JVVHd4VThodm0xQU03MmxGOTNCQ3lJRklORjBZdWtheTFOeU5IXzRYb2JLazljTkh1SVMzdEgwTjZBbGNTc0V4cTBjTFAzQjBQS3VDcmZQNFM0VDhOYS1hVERBY1NTTEdPMDl6T0JuVDRuN2p3ZF9qVHkwcEJmenlPNC1jaDZZN3g4M0stZw?oc=5",
+     "metric": 0,
+     "context": "Portafolio.co",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Art Spiegelman uses AI artwork",
+   "score": 0.472,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "art",
+    "spiegelman",
+    "uses",
+    "artwork"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Art Spiegelman uses AI artwork",
+     "rank": 7,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/e1ea61866e5c",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Data center community impacts",
+   "score": 0.468,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "data",
+    "center",
+    "community",
+    "impacts"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Data center community impacts",
+     "rank": 8,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/6c19c0bde8c3",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Amina Helmi, la científica argentina que recibió el \"Nobel de astrofísica\" por encontrar los restos de la última gran fusión de la Vía Láctea",
+   "score": 0.464,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "amina",
+    "helmi",
+    "cientifica",
+    "argentina",
+    "recibio",
+    "nobel",
+    "astrofisica",
+    "encontrar",
+    "restos",
+    "ultima",
+    "gran",
+    "fusion",
+    "via",
+    "lactea"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Amina Helmi, la científica argentina que recibió el \"Nobel de astrofísica\" por encontrar los restos de la última gran fusión de la Vía Láctea",
+     "rank": 19,
+     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5ySHlwMDRRclc4eFNMaHhDTkVMc1g2N29lT1Q4U0R2d1JLSmZiYWhxeEppZkNyOWFNLUFmaEtSOEx6NlZrOWhFOWp0NE0zRTRPVTRwTzdURHNCNW950gFiQVVfeXFMTzV0U2Z1eGNPMzFleUtVeXlELXpWMnFZM1FKcmJ3UTAyUVEwa0FJNUJVSGVJdjY2Y0ZnMkh3LUpiQnhRelhhcmR2ckhDU3hseFZEaXZFcDR4ZU50ektBUUtCYWc?oc=5",
+     "metric": 0,
+     "context": "BBC",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "World Series: Brewers vs. Rays",
+   "score": 0.464,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "world",
+    "series",
+    "brewers",
+    "rays"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "World Series: Brewers vs. Rays",
+     "rank": 9,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/4749ee8415f3",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "¿Cuántos días se necesita trabajar en Colombia con un salario mínimo para comprar el iPhone Duo? El primer celular plegable de Apple",
+   "score": 0.46,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "cuantos",
+    "dias",
+    "necesita",
+    "trabajar",
+    "colombia",
+    "salario",
+    "minimo",
+    "comprar",
+    "iphone",
+    "duo",
+    "primer",
+    "celular",
+    "plegable",
+    "apple"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "¿Cuántos días se necesita trabajar en Colombia con un salario mínimo para comprar el iPhone Duo? El primer celular plegable de Apple",
+     "rank": 20,
+     "url": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxQSDRIbndySjBPbEI5Y1JVdnVGaWlDaFR2OTZHQU9jYWE2N256NThadTU4cFpzT2l6RUtOU1hpTl94SExURllGeTBFd3pDSlRaaWRGZFFqLWJRSGo5NHNXR1pWeW81S0dqMVNoZ25mNElsWmUtOEZuMEpVSmVtTk9mUzYzWW1MWEdWOVhXTGZtVTAyWnhzbmdZQ001dUw1cU50endtcEdITWZjNHoyTnpwemQ0bEdFQTBuaUhwek1iM0xVYjRyMUVsWk5hRThQVDRxZDVCUzVianJUak1rRnlMbkNib0hOczVKR1IzOXN6WHNaUjROWW9DWHQxc0owU3hGS0Nacm0xdFA?oc=5",
+     "metric": 0,
+     "context": "El Tiempo",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Fire hits Hitler's Eagle's Nest",
+   "score": 0.46,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "fire",
+    "hits",
+    "hitler",
+    "eagle",
+    "nest"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Fire hits Hitler's Eagle's Nest",
+     "rank": 10,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/7f655298a665",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "El truco de los cinco minutos que debería aplicar todos los días para proteger su celular de fraudes y estafas",
+   "score": 0.456,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "truco",
+    "cinco",
+    "minutos",
+    "deberia",
+    "aplicar",
+    "todos",
+    "dias",
+    "proteger",
+    "celular",
+    "fraudes",
+    "estafas"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "El truco de los cinco minutos que debería aplicar todos los días para proteger su celular de fraudes y estafas",
+     "rank": 21,
+     "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxNTXFyTGFLUnl2THJDUzJKRGl3eDVubHpPa3RHbFQxeENqamxxN2VqX0NoSFFXUUNjd2t2LUppQUg5bDlJT0hDS2QzWVhPaGVTY2MzeUYxdTBsZ01vTkZmdFlUbmtjUTZfd3NWcUU1aXAwRFQwcXdCR1IzRDRPT251ZFRoVjVVTUlBdEcyQ05XZWVYajdOLWJfX3IwV2JfTGI0SmdBdHo0bEVhUUxlTkJDZ1lXTHNPRnl0WGhqOTZxMnV1SmxyMTh0UmlKTEYyNU5XNEVkeXNCUFotQ1ZrcXhEQkVRTlJId0FQVlY3TDRnRTZmdUk?oc=5",
+     "metric": 0,
+     "context": "Revista Semana",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Texas GOP warns of furries",
+   "score": 0.456,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "texas",
+    "gop",
+    "warns",
+    "furries"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Texas GOP warns of furries",
+     "rank": 11,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/0e29cc083290",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Halo 5: Guardians ya permite jugar sus 15 misiones en PC con Halo5OnPC - Guia de Instalación y Video",
+   "score": 0.452,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "halo",
+    "guardians",
+    "permite",
+    "jugar",
+    "misiones",
+    "halo5onpc",
+    "guia",
+    "instalacion",
+    "video"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Halo 5: Guardians ya permite jugar sus 15 misiones en PC con Halo5OnPC - Guia de Instalación y Video",
+     "rank": 22,
+     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5VdElpVzZCSVl4bnRCTjBfTUhJRHBnVFNwbUFHa1hnRF9jSnAtd2pWclh1eGhrU0hyVTREXzJKRlRZc2I1aFdjRDVPd3RmQjlTa3RkTmt6akVZLS0yUkc5bktLTzdMUGt0RU92ampvVEZRMWtrM2c?oc=5",
+     "metric": 0,
+     "context": "PC Master Race Latinoamérica",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Justice Department sues over Alaska race",
+   "score": 0.452,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "justice",
+    "department",
+    "sues",
+    "over",
+    "alaska",
+    "race"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Justice Department sues over Alaska race",
+     "rank": 12,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/1817951e5646",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Ariadna Gutiérrez dejó ver su vestido de novia: video al entrar a la iglesia para su matrimonio",
+   "score": 0.448,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "ariadna",
+    "gutierrez",
+    "dejo",
+    "ver",
+    "vestido",
+    "novia",
+    "video",
+    "entrar",
+    "iglesia",
+    "matrimonio"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Ariadna Gutiérrez dejó ver su vestido de novia: video al entrar a la iglesia para su matrimonio",
+     "rank": 23,
+     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNcjFzeXktN1lNVjMtYzh4eU92S3Y5UzNNc2pIMElQa0xXeG4zQ3AyTlN1bU45QTRlRGZ5ZXdWdi0zNlpWbHVtU1hkR2tMeEFkYWQyTXJVd3d4VENLYk9oYms3WlNOWlRPZzhyZXFEQlkwV0xKZWJ1aEFlWHpocFpvOUpuaFlFSmNDZkF6WnhyUDNfNkRoQko3UXRSTm54aWpXZ2dRTlY3Z08zWnotejdteFoyMEhMSkV0R2huQ0RB0gHLAUFVX3lxTE9mRjF3eURpN3B3NDhGUGNPR3R2Rzd1VUdyS3VEWDUxdlB6QXhvSHZDcEVsSzk2VEVLSkVBQlhrbkk0dDYwUE5lLVVmdWpGTUM1Y0J4UmkxS3JIR0RGS0ppTVUyRVU0cXVySjJTaVE5Wk1jUnpMSk8tTVpuQm5UUTBkUk9HRzZscklMQm43SjRiWlRzVjRDZWpGNk84M1pKaWh5LUltZl9sSl93cFh0VjdCeGxBUXI3SUkwajZVa1k0eW9mWmNZV0pTaEx3?oc=5",
+     "metric": 0,
+     "context": "Caracol TV",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Trump says Ukraine Starlink restored",
+   "score": 0.448,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "trump",
+    "says",
+    "ukraine",
+    "starlink",
+    "restored"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Trump says Ukraine Starlink restored",
+     "rank": 13,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/58b562d979b8",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Falleció Sergio Rangel Consuegra, escritor y columnista santandereano",
+   "score": 0.444,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "fallecio",
+    "sergio",
+    "rangel",
+    "consuegra",
+    "escritor",
+    "columnista",
+    "santandereano"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Falleció Sergio Rangel Consuegra, escritor y columnista santandereano",
+     "rank": 24,
+     "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxON2dacnBVenFQZWJHT2x3N2lGZVpmNzczTmhJdkhjR1NQdTZPakJSRmJOQ2FjSGxEaFZybVdPQm1uZGJvYmJJSUVBSDEtWjV6Ym45cGd3TGJOLUlOcF9rUExEblJBS2RYNmI5a2t1Y3I1VVNYN29BRW95VnNhejlaaUdNZC04RkduRkJkc3lEYzFsLVpGay1JUUc4ajA2eWE4WDE0eXdueU1td0pfMWFQRTdtMnkxaV9Ya1c1TnJPbDlIQlE4WHBfV21DVWs1YmtKNDNsS21reUQ2V0RNU3ZRcXZR?oc=5",
+     "metric": 0,
+     "context": "Vanguardia",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Ramaswamy doubles down on campaign ad",
+   "score": 0.444,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "ramaswamy",
+    "doubles",
+    "down",
+    "campaign"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Ramaswamy doubles down on campaign ad",
+     "rank": 14,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/61bc81bfb286",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "“Te amaré por siempre”: Karen Martínez sufre dolorosa pérdida y conmueve con sentido mensaje en redes",
+   "score": 0.44,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "amare",
+    "siempre",
+    "karen",
+    "martinez",
+    "sufre",
+    "dolorosa",
+    "perdida",
+    "conmueve",
+    "sentido",
+    "mensaje",
+    "redes"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "“Te amaré por siempre”: Karen Martínez sufre dolorosa pérdida y conmueve con sentido mensaje en redes",
+     "rank": 25,
+     "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNcllBc21jZ2ROYVN6UzVEalcxQ19RUE9Icmo3SkpnbW10aC10ZW01dlJHUHlpZWw2NzFLQ2RBcUFPM1k1OFZTVTREcHZSMUQtaVNyckdqRGdjVFJRUnlNMU9OUmRxeDVLRVNpNHJHOXRRV2gxX19VdWdvV1IyRm1Ma0NqZWJteklaRWFZdy1ld1Q0SUxULUw2X243NDNIenphWGNJc0ZielBwMXFXMGdVa0tfdm52SDNXYnNVWDhwbWx1X2FCUWtOblpwVWs2OGp0RHR3ekhEOXIzOFEt0gHiAUFVX3lxTE8tbGhBZkxqMk84Nk5QS3lrVUVpYl9uanVRdHozcGtaQU9qOGNBRjdDcm9tcFVLM1lMbDVYaVRYZzhVdVE1dXJkMko1RnE4Rk5lY0poQ19BcTVqcVp6dkNPRXh3Vk9OcF95eVZnTk9hYTdzZjlwX3ZUbllPdmdwNmhYS3k2WTB1ZXExV05ZaHNSZ3FqaHJsaTdMQWNUNkVTZTV0Rk5VS1o2RmtIMXhWWGVNUUFsN2o5ZHdmMVJUMjNSWjVnVV8tekFlRGVRX3docG5rdTBmNWZFNnJWOHhrQWZiNUE?oc=5",
+     "metric": 0,
+     "context": "Revista Semana",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Spooky month stream schedules",
+   "score": 0.44,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "spooky",
+    "month",
+    "stream",
+    "schedules"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Spooky month stream schedules",
+     "rank": 15,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/5417c6b9b399",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Ópera al Parque 2026: conciertos gratis del 25 de octubre al 4 de noviembre",
+   "score": 0.436,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "opera",
+    "parque",
+    "2026",
+    "conciertos",
+    "gratis",
+    "octubre",
+    "noviembre"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Ópera al Parque 2026: conciertos gratis del 25 de octubre al 4 de noviembre",
+     "rank": 26,
+     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOUXoxcnFpMzVLMTJ3Rjl3NWVJRUo0bFE4Z3NZbDFiZHJnUjVNY0VWMjYzYmRtcURKYlVOY3AwUm14Skc1aDE1RmhYRzhCSmNLeXVXRC04ck91OHhqMTI1QUNQRFFNQTJvZzFOWGMyWVFQT3M2NWJXRlpYcldMY1lpTEZid3NTTVZzODNVQkE2OUx1YzU3VGF5U1p2bUVvRFJtZHJPbDNFLTRaQUc1ZkE?oc=5",
+     "metric": 0,
+     "context": "Bogota.gov.co",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "EA shuts down BioWare",
+   "score": 0.436,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "shuts",
+    "down",
+    "bioware"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "EA shuts down BioWare",
+     "rank": 16,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/1bd34c21a6c6",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Xbox Turns Down Netflix $500M Offer",
+   "score": 0.436,
+   "sources": [
+    "hackernews"
+   ],
+   "days_seen_before": 0,
+   "niche": "tech",
+   "words": [
+    "xbox",
+    "turns",
+    "down",
+    "netflix",
+    "500m",
+    "offer"
+   ],
+   "signals": [
+    {
+     "source": "hackernews",
+     "topic": "Xbox Turns Down Netflix $500M Offer",
+     "rank": 1,
+     "url": "https://www.darkhorizons.com/xbox-turns-down-netflix-500-million-offer/",
+     "metric": 31,
+     "unit": "puntos",
+     "niche": "tech",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Santa Fe elimina a Palmeiras en penales y va a semis de Copa",
+   "score": 0.432,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "santa",
+    "elimina",
+    "palmeiras",
+    "penales",
+    "semis",
+    "copa"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Santa Fe elimina a Palmeiras en penales y va a semis de Copa",
+     "rank": 27,
+     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPUDRXTzM1bmcwSC1vbWFlamR4bkdWYWdTZlZCUG52TFVEZWk1ZEhlY093alVVRXByVFJWcm01RFdoUzZQbHNmMHFlYUhXeGVwQlNyeTV3R2l6OG9UZTRDWGU2RjctUnd6WEU3NU16OFhmajZENXYwZUE2d1RkS1lNOXdsa1hPTFh3d2tZdjhKUUR2UjFDNThnN1NFaEN5Z1dmVWRBbtIBuAFBVV95cUxPa1hNMllHS3ptMGRqOGctZ1hrdkJGa1h3Yi1QYWR1cTFHajVUdkU1QjBqUzRvNnVhZHhiTWJjc1RFcW04RkFscjRFcFpsLUZNU3BpRWJKbC1NaTRSWGpaYkFlVzd2Wl9ZbkdTYUFZU2tCWWNjdFVEVFpmWThxWk5kVzAwNE5GQjh0ZHpEVWNVM2dIdGEwbGFnS1RhZ3ZGMGg5MG8tR3Q1OU5yV2JwYjhPT3JDLUNNS1R6?oc=5",
+     "metric": 0,
+     "context": "AS Colombia",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Democrats' congressional agenda",
+   "score": 0.432,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "democrats",
+    "congressional",
+    "agenda"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Democrats' congressional agenda",
+     "rank": 17,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/705a58b62059",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "We should be more ambitious with the software we build",
+   "score": 0.432,
+   "sources": [
+    "hackernews"
+   ],
+   "days_seen_before": 0,
+   "niche": "tech",
+   "words": [
+    "should",
+    "more",
+    "ambitious",
+    "software",
+    "build"
+   ],
+   "signals": [
+    {
+     "source": "hackernews",
+     "topic": "We should be more ambitious with the software we build",
+     "rank": 2,
+     "url": "https://danluu.com/ambitious/",
+     "metric": 251,
+     "unit": "puntos",
+     "niche": "tech",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Adrián Bustamante gana la octava etapa del Clásico RCN Sistecrédito y Javier Jamaica acaricia el título",
+   "score": 0.428,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "adrian",
+    "bustamante",
+    "gana",
+    "octava",
+    "etapa",
+    "clasico",
+    "rcn",
+    "sistecredito",
+    "javier",
+    "jamaica",
+    "acaricia",
+    "titulo"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Adrián Bustamante gana la octava etapa del Clásico RCN Sistecrédito y Javier Jamaica acaricia el título",
+     "rank": 28,
+     "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOaC11N3VDN3pJS2t6ZlgzZTBfNDVHS0pGV3Q5U19oZThWcFhYZDNVOTByaVYtQV8zbjlCdW9BVFVkQ3YtT2ctVUpSdHJ3VnhTVjZUNU9mYkNqeEZ5SjZWV3hzNWExUVZ1c21VRVJFaXIzRk5TN0N1d2pSdnA5by1FdzM1MHA1cURsOTAxaFpLdDVlZnRnb0FReUNzMXZlOUdhYlExZGdtX3QxclZTMm9NRDhVQ1BEOUxJSXc0WlRpNGFKRnBqdWlIaTVHSEZVU1NZVEdzYUhhcE52OU93TlRpVjJR0gHnAUFVX3lxTFBsaUhSMVJPZ0E0Nkt1Z0M4aVRVSUJUamhkR0tfZjdKcmN4WERfbDlWcG05QmZObmVQNFVycDlOWU5LLU1xN2ZucWlnd0M1eWdEM0pjSDc2NkNqS3FnYmVoRFFkTVg4bFN3eEdDYklIY1FQRzBhclFMS1dSUG1rYXo2Nko5dG12N1Q2Zy1seXZJYzFwaXlQVXRncUJjb0tXQXIzX2xvU19Qb3BHWGVBUE45R0NfcmFLeEhnUHhTRm0yRDJpbzhneHhFbkp2SElrM2JqeGNJRV9wT0I0b2pkeEkwaS10cExoQQ?oc=5",
+     "metric": 0,
+     "context": "Revista Mundo Ciclístico",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "El-Sayed's viral town hall response",
+   "score": 0.428,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "sayed",
+    "viral",
+    "town",
+    "hall",
+    "response"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "El-Sayed's viral town hall response",
+     "rank": 18,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/bf8f1620-d6de-43e6-b23f-80bd26c28462",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Cerebras Deploys Trillion-Parameter AI Models",
+   "score": 0.428,
+   "sources": [
+    "hackernews"
+   ],
+   "days_seen_before": 0,
+   "niche": "tech",
+   "words": [
+    "cerebras",
+    "deploys",
+    "trillion",
+    "parameter",
+    "models"
+   ],
+   "signals": [
+    {
+     "source": "hackernews",
+     "topic": "Cerebras Deploys Trillion-Parameter AI Models",
+     "rank": 3,
+     "url": "https://www.cerebras.ai/blog/how-we-deploy-trillion-parameter-frontier-models-on-cerebras",
+     "metric": 25,
+     "unit": "puntos",
+     "niche": "tech",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Torneo BetPlay: Quedaron definidos los ocho clasificados a los cuadrangulares",
+   "score": 0.424,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "torneo",
+    "betplay",
+    "quedaron",
+    "definidos",
+    "ocho",
+    "clasificados",
+    "cuadrangulares"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Torneo BetPlay: Quedaron definidos los ocho clasificados a los cuadrangulares",
+     "rank": 29,
+     "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPRWVmbkpoUk50X0FINE9nSTBqV2JlZF9hVmlrX1h4NWppbVZEa0ZValhzcm9Mc1MyeEotUEs4M3RhbHFWUDhwTnhQb1RhQUZaSjc2U0hSeVJ1dWZiMTBFSE4weWZwNkQwdTNEOEdlbHZfTXl1UHFpSU9wSmJlVXJoWmNFeTR5amxDNnFSemg3N2lMU05rV1hORkcyZkNMLXotNWVfY0d1aFFfVzFHdFpIbUplZld6RmZLcUFRU0ZTdm5JdUlreklxZW4xRC1SQTJY?oc=5",
+     "metric": 0,
+     "context": "ESPN Colombia",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Trump cites Amy Acton's mother",
+   "score": 0.424,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "trump",
+    "cites",
+    "amy",
+    "acton",
+    "mother"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Trump cites Amy Acton's mother",
+     "rank": 19,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/70eafc904cfe",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "The Goose Programming Language",
+   "score": 0.424,
+   "sources": [
+    "hackernews"
+   ],
+   "days_seen_before": 0,
+   "niche": "tech",
+   "words": [
+    "goose",
+    "programming",
+    "language"
+   ],
+   "signals": [
+    {
+     "source": "hackernews",
+     "topic": "The Goose Programming Language",
+     "rank": 4,
+     "url": "https://aardappel.github.io/goose/",
+     "metric": 280,
+     "unit": "puntos",
+     "niche": "tech",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "América consiguió un gran triunfo ante Cúcuta",
+   "score": 0.42,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "america",
+    "consiguio",
+    "gran",
+    "triunfo",
+    "ante",
+    "cucuta"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "América consiguió un gran triunfo ante Cúcuta",
+     "rank": 30,
+     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPZlFaSXBPUDhzbmxtVkdwRFo1eFRRbm1QZkhWcnVXSWFnb3dIUG4taEpwYTk5cGtuLWo3REFCQXZ5NWxHdVpRVFNfWmpKRk1wNnRyRkRDLTdhanFjRVNXT09uNG9vVmVyNEJjU0ZyMTJJbjJGN1Iwbm1SWjdRNW1HdzRSV3lmY1l0SThiNGo3ZjNLQnFydFpieFFoMGVsYjYzYUV6aXB4Z3QwOTgwdXhlRFVZT1JsMnpX?oc=5",
+     "metric": 0,
+     "context": "Win Sports",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "¿Qué es Shamonda, el virus que afecta al ganado y que se ha detectado por primera vez en una persona en Francia?",
+   "score": 0.42,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "shamonda",
+    "virus",
+    "afecta",
+    "ganado",
+    "detectado",
+    "primera",
+    "vez",
+    "persona",
+    "francia"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "¿Qué es Shamonda, el virus que afecta al ganado y que se ha detectado por primera vez en una persona en Francia?",
+     "rank": 31,
+     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQVHZmTFdxTkJWRkMzQ1laVG5KZERfYjJJaTc4V1VuZzNkTVZKQ19JVTdkRkV3SVN5V19YQW1zaldZWkxjVEdmdXAtMTdmOVZBT0d2RnFCSHRsVEZuVEFKMjdHT0M1bFRNcDZLdVRrVkxYR1dDMzd1ZmhiQjE2bWpVdUxOdjl0STl0VDZVRXhGcw?oc=5",
+     "metric": 0,
+     "context": "CNN en Español",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "¿Qué deben comer los adultos mayores de 60 años? Un estudio analiza la relación entre las proteínas y la salud",
+   "score": 0.42,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "deben",
+    "comer",
+    "adultos",
+    "mayores",
+    "anos",
+    "estudio",
+    "analiza",
+    "relacion",
+    "entre",
+    "proteinas",
+    "salud"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "¿Qué deben comer los adultos mayores de 60 años? Un estudio analiza la relación entre las proteínas y la salud",
+     "rank": 32,
+     "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPX043Z2JXNTdLU0laOFNvUEJndkxMQy13dkd5OXhTZGxSdlhTTkQ5OWdhTUR4WFhQeXJBZEpyOGxPUTItejFSS1ZFZFBUUjVQTXNuTWVQZU1ONm9VVW5tdmY0X3NOSkxZQXRnX2xCMnRrX0xxeWlBaE1uZWFXaVJjSVlEMHcxN19FQzdyanFhR2ctc0VhaEF4MjZkbVRRbnoxallIYTdIaVVvWTFpcURaQnB5TXBhUUUyYkhwTFBnTXBYdm1zdnB0LWJBd2g1Rm82Y0VRaUhwY2Zmc0Y3LTJlS293QWVPOUFtUGlZ?oc=5",
+     "metric": 0,
+     "context": "El Tiempo",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Un brote de sarampión en Estados Unidos está resultando particularmente mortal. He aquí por qué",
+   "score": 0.42,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "brote",
+    "sarampion",
+    "estados",
+    "unidos",
+    "esta",
+    "resultando",
+    "particularmente",
+    "mortal",
+    "aqui"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Un brote de sarampión en Estados Unidos está resultando particularmente mortal. He aquí por qué",
+     "rank": 33,
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNejR4d0luVXh4a183VVN5bTVhX0J6Y0JGdjZYY2tTcjI3Q3lucnQzckxHQUlDWm01QktwZFdZanlaZVdqdnJidWFGdDFDYWRyS1EzWmRpbWh1X0tIZ0haWV9NQjJESnNiNUxlcEFqSUtBVU1BcTlVVEI3UWVIbnl3UG53djhLMmM?oc=5",
+     "metric": 0,
+     "context": "CNN en Español",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Con la menopausia termina la etapa reproductiva, no la vida sexual, pero es un tránsito que se debe hacer de la mano de especialistas",
+   "score": 0.42,
+   "sources": [
+    "google_news"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "menopausia",
+    "termina",
+    "etapa",
+    "reproductiva",
+    "vida",
+    "sexual",
+    "pero",
+    "transito",
+    "debe",
+    "hacer",
+    "mano",
+    "especialistas"
+   ],
+   "signals": [
+    {
+     "source": "google_news",
+     "topic": "Con la menopausia termina la etapa reproductiva, no la vida sexual, pero es un tránsito que se debe hacer de la mano de especialistas",
+     "rank": 34,
+     "url": "https://news.google.com/rss/articles/CBMiigJBVV95cUxNLTFmaXBXVjJJVEFyZzk1ZDVTOW1IenRLSW9rWGo1bWZFYzFuTHYzWGFVbUpUeVJvY01ZV3NfbGtpaDRsRm9VNXZCVUhONEY4YlFsSGF4Q2VxMUNZZEdQM2ZFLVpPZmp0MGFrc0VkMGkzTlpOdlJhQ3lEYmcxTnRCVlFDcDVLRmZzNGN1YlJEU3piUnVsNFZMZ1g2WHdaWFVCcW0wdkRoSk5OQmtXQWg1ejg1V3JmRGZuMVJsSXdnVVhic2hpSzQ3amd1MnpudUZlZUFXYVRjUi1mQWM5V1VwSjJqb08wa0pXMVFHdko0eFNmeHRGT095Q3U3Zm1VN1RKMkQzSEZIMVo3d9IBjwJBVV95cUxPRnNZczRhMlp0bWVTdlhoT2t2MnVmeVB1SnlORjA0dkdKZkFMb05mYTFKa20zTG1Hc1M0cXA1MTV6YkNHRFFBdm5lWjhGTUhLWmZMRXBveS1wV0ZOTXdvUFd5alctbFZvcV9rVkZBMzlQU05lT0hESW5IY2lMX2w4LTdhSnl0dzZjU1RZdlRrdDdMTmtvaDBpUVBpMC1jRGVvUGpLT2dmZGtGS05XRC14YUJIODVuckc0OUpMNWJSQ1BjbHJyU3Y0U3Y0NDRHS2pBZjg5OHVjRFNqalY4b3pPVVFLRTliTkhRazc5SmhUeEZGcnlfVlY3ZXhJeGs1WDVUc0EzeGlWSWlKc0xLX3Qw?oc=5",
+     "metric": 0,
+     "context": "El Tiempo",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Obama rallies in Cleveland",
+   "score": 0.42,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "obama",
+    "rallies",
+    "cleveland"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Obama rallies in Cleveland",
+     "rank": 20,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/88ba45fd7f99",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Listen and read USA nuclear forces Emergency Action Messages, heard on 11175 kHz",
+   "score": 0.42,
+   "sources": [
+    "hackernews"
+   ],
+   "days_seen_before": 0,
+   "niche": "tech",
+   "words": [
+    "listen",
+    "read",
+    "usa",
+    "nuclear",
+    "forces",
+    "emergency",
+    "action",
+    "messages",
+    "heard",
+    "11175",
+    "khz"
+   ],
+   "signals": [
+    {
+     "source": "hackernews",
+     "topic": "Listen and read USA nuclear forces Emergency Action Messages, heard on 11175 kHz",
+     "rank": 5,
+     "url": "https://missileer.watch",
+     "metric": 139,
+     "unit": "puntos",
+     "niche": "tech",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "'You Can See Everything' premieres",
+   "score": 0.416,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "you",
+    "can",
+    "see",
+    "everything",
+    "premieres"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "'You Can See Everything' premieres",
+     "rank": 21,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/05d016ea2a01",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "America has lost 200k of jobs in media, film and the arts. How much is AI?",
+   "score": 0.416,
+   "sources": [
+    "hackernews"
+   ],
+   "days_seen_before": 0,
+   "niche": "tech",
+   "words": [
+    "america",
+    "has",
+    "lost",
+    "200k",
+    "jobs",
+    "media",
+    "film",
+    "arts",
+    "much"
+   ],
+   "signals": [
+    {
+     "source": "hackernews",
+     "topic": "America has lost 200k of jobs in media, film and the arts. How much is AI?",
+     "rank": 6,
+     "url": "https://www.apricitas.io/p/ai-and-the-fall-of-the-creative-class",
+     "metric": 224,
+     "unit": "puntos",
+     "niche": "tech",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Push to vote early in US election",
+   "score": 0.412,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "push",
+    "vote",
+    "early",
+    "election"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Push to vote early in US election",
+     "rank": 22,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/a478bd2b6a1b",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Small Programs and Languages",
+   "score": 0.412,
+   "sources": [
+    "hackernews"
+   ],
+   "days_seen_before": 0,
+   "niche": "tech",
+   "words": [
+    "small",
+    "programs",
+    "languages"
+   ],
+   "signals": [
+    {
+     "source": "hackernews",
+     "topic": "Small Programs and Languages",
+     "rank": 7,
+     "url": "https://ratfactor.com/cards/pl-small",
+     "metric": 56,
+     "unit": "puntos",
+     "niche": "tech",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "\"Liberals are the new racists\" ad",
+   "score": 0.408,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "liberals",
+    "are",
+    "racists"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "\"Liberals are the new racists\" ad",
+     "rank": 23,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/8e6558d920a4",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "SpeedCrunch 1.1",
+   "score": 0.408,
+   "sources": [
+    "hackernews"
+   ],
+   "days_seen_before": 0,
+   "niche": "tech",
+   "words": [
+    "speedcrunch"
+   ],
+   "signals": [
+    {
+     "source": "hackernews",
+     "topic": "SpeedCrunch 1.1",
+     "rank": 8,
+     "url": "https://www.speedcrunch.org/",
+     "metric": 97,
+     "unit": "puntos",
+     "niche": "tech",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Clinton and Obama on White House redo",
+   "score": 0.404,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "clinton",
+    "obama",
+    "white",
+    "house",
+    "redo"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Clinton and Obama on White House redo",
+     "rank": 24,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/ed1905f56c87",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "FindMyWeb: Apple Find My, reverse enginiered",
+   "score": 0.404,
+   "sources": [
+    "hackernews"
+   ],
+   "days_seen_before": 0,
+   "niche": "tech",
+   "words": [
+    "findmyweb",
+    "apple",
+    "find",
+    "reverse",
+    "enginiered"
+   ],
+   "signals": [
+    {
+     "source": "hackernews",
+     "topic": "FindMyWeb: Apple Find My, reverse enginiered",
+     "rank": 9,
+     "url": "https://codeberg.org/Misom/FindMyWeb",
+     "metric": 34,
+     "unit": "puntos",
+     "niche": "tech",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Trump's comments on men's looks",
+   "score": 0.4,
+   "sources": [
+    "bluesky"
+   ],
+   "days_seen_before": 0,
+   "niche": "general",
+   "words": [
+    "trump",
+    "comments",
+    "men",
+    "looks"
+   ],
+   "signals": [
+    {
+     "source": "bluesky",
+     "topic": "Trump's comments on men's looks",
+     "rank": 25,
+     "url": "https://bsky.app/profile/did:plc:qrz3lhbyuxbeilrc6nekdqme/feed/1f093ef18136",
+     "metric": 0,
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "I Built a Stereo Vision Board for Hardware Hackers",
+   "score": 0.4,
+   "sources": [
+    "hackernews"
+   ],
+   "days_seen_before": 0,
+   "niche": "tech",
+   "words": [
+    "built",
+    "stereo",
+    "vision",
+    "board",
+    "hardware",
+    "hackers"
+   ],
+   "signals": [
+    {
+     "source": "hackernews",
+     "topic": "I Built a Stereo Vision Board for Hardware Hackers",
+     "rank": 10,
+     "url": "https://rootkitlabs.com/2026/10/06/i-built-a-stereo-vision-board-for-hardware-hackers/",
+     "metric": 44,
+     "unit": "puntos",
+     "niche": "tech",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Social dynamics of toxic metal industry in medieval Europe",
+   "score": 0.396,
+   "sources": [
+    "hackernews"
+   ],
+   "days_seen_before": 0,
+   "niche": "tech",
+   "words": [
+    "social",
+    "dynamics",
+    "toxic",
+    "metal",
+    "industry",
+    "medieval",
+    "europe"
+   ],
+   "signals": [
+    {
+     "source": "hackernews",
+     "topic": "Social dynamics of toxic metal industry in medieval Europe",
+     "rank": 11,
+     "url": "https://www.cambridge.org/core/journals/antiquity/article/social-dynamics-of-toxic-metal-industry-in-medieval-europe-peak-district-lead-production-ad-6001500/34A2A16AC99B1B12E3EB99CEA1DDB829",
+     "metric": 23,
+     "unit": "puntos",
+     "niche": "tech",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Why Gopher in 2026?",
+   "score": 0.392,
+   "sources": [
+    "hackernews"
+   ],
+   "days_seen_before": 0,
+   "niche": "tech",
+   "words": [
+    "gopher",
+    "2026"
+   ],
+   "signals": [
+    {
+     "source": "hackernews",
+     "topic": "Why Gopher in 2026?",
+     "rank": 12,
+     "url": "https://gopher.muffinlabs.com/sdf.org/users/nervtoji/phlog/001.txt",
+     "metric": 41,
+     "unit": "puntos",
+     "niche": "tech",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "Show HN: Steal My Bitcoin",
+   "score": 0.388,
+   "sources": [
+    "hackernews"
+   ],
+   "days_seen_before": 0,
+   "niche": "tech",
+   "words": [
+    "show",
+    "steal",
+    "bitcoin"
+   ],
+   "signals": [
+    {
+     "source": "hackernews",
+     "topic": "Show HN: Steal My Bitcoin",
+     "rank": 13,
+     "url": "https://stealmybitcoin.com/",
+     "metric": 433,
+     "unit": "puntos",
+     "niche": "tech",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "FreeDNS",
+   "score": 0.384,
+   "sources": [
+    "hackernews"
+   ],
+   "days_seen_before": 0,
+   "niche": "tech",
+   "words": [
+    "freedns"
+   ],
+   "signals": [
+    {
+     "source": "hackernews",
+     "topic": "FreeDNS",
+     "rank": 14,
+     "url": "https://freedns.afraid.org/",
+     "metric": 262,
+     "unit": "puntos",
+     "niche": "tech",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  },
+  {
+   "topic": "I don't understand quantum physics (2018)",
+   "score": 0.38,
+   "sources": [
+    "hackernews"
+   ],
+   "days_seen_before": 0,
+   "niche": "tech",
+   "words": [
+    "don",
+    "understand",
+    "quantum",
+    "physics",
+    "2018"
+   ],
+   "signals": [
+    {
+     "source": "hackernews",
+     "topic": "I don't understand quantum physics (2018)",
+     "rank": 15,
+     "url": "https://www.southampton.ac.uk/~doug/quantum_physics/index.html",
+     "metric": 289,
+     "unit": "puntos",
+     "niche": "tech",
+     "observed_at": "2026-10-25T03:47:49.384Z"
+    }
+   ]
+  }
+ ]
+}

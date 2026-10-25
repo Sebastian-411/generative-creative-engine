@@ -7,6 +7,7 @@ Este repo es un plugin multi-host (Claude Code, Cursor, Codex, OpenCode) para ge
 - "Hazme un video / reel / short / explicador / promo" → skill `video-oneshot`.
 - Escribir o depurar una pieza, un render que falla o un comando del motor → skill `video-engine`.
 - Revisar un video ya hecho → skill `video-review` (o el agente `critic`).
+- "¿Qué está pegando?", ideas para redes, contenido reactivo → skill `trend-radar` (lee `knowledge/trends/latest.md`).
 - Tono, emoción, personaje o acento de la voz ("que suene caleño", "de terror") → skill `voice-director`.
 
 ## Agentes

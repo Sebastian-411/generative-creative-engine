@@ -15,6 +15,10 @@ Motor y comandos: skill `video-engine` (carpeta `../video-engine/engine/` relati
 
 Si cualquier script responde `Falta la dependencia`, corre `node ../video-engine/engine/setup.mjs` y sigue. No preguntes: es idempotente. Para voz expresiva, `node ../video-engine/engine/setup-voice.mjs` (pesado: ~8 GB; pregunta en qué disco si el principal tiene poco espacio).
 
+## Paso 0bis — Lee el presente
+
+Si el usuario no trae el tema (o pide "algo que esté pegando"), lee `knowledge/trends/latest.md` con la skill `trend-radar` (córrelo si tiene más de 24 h) y propone desde ahí, con evidencia. Si trae el tema, igual revisa si hay un ángulo en tendencia que lo haga más oportuno.
+
 ## Paso 1 — Decide sin preguntar (≤ 10 líneas en `brief.md`)
 
 Pregunta **solo** si falta algo que no puedes inferir y cambia todo el video (por ejemplo, el nombre del producto en una promo). Una pregunta, con tu recomendación. Todo lo demás lo decides con estos defaults y lo anotas en `## Supuestos`:
@@ -24,7 +28,7 @@ Pregunta **solo** si falta algo que no puedes inferir y cambia todo el video (po
 | Formato | 1080×1920, 30 fps (vertical para redes) | pide YouTube/web/presentación → 1920×1080; feed → 1080×1350 |
 | Duración | 20–35 s con voz; 12–15 s promo sin voz | lo pide explícito |
 | Reloj | **voz** si hay algo que explicar; **música** (bpm) si es promo/teaser | — |
-| Voz | la voz de la biblioteca más acorde (`voices.mjs list`) con motor `chatterbox`; si no hay ninguna, edge (`es-CO-GonzaloNeural`) y avisa | pide un acento, personaje o emoción → skill `voice-director` |
+| Voz | Qwen3-TTS (`engine: "qwen"`) con una descripción de voz acorde al público y al tono, actuada de corrido | pide clonar a una persona concreta → Chatterbox con su clip (`voice-director`) |
 | Estilo | elige con `video-styles` según tema y tono | nombra un estilo o una referencia |
 | Música | estilo procedural acorde (`sound-design`) | trae su pista |
 | Subtítulos | sí, palabra a palabra, si hay voz | lo pide sin subtítulos |

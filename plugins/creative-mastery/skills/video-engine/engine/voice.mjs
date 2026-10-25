@@ -101,6 +101,130 @@ if (Array.isArray(script.emotion_arc) && script.emotion_arc.length) {
   });
 }
 
+// ---- Qwen3-TTS (motor por defecto): la narración se ACTÚA DE CORRIDO, no frase por frase ----------------------
+// Una sola interpretación por bloque de hablante da continuidad, respiración y arco emocional reales.
+// Los tiempos de cada línea y palabra salen después de la alineación con Whisper.
+const qwenMode = script.engine === 'qwen' || (!script.engine && (!script.voice || String(script.voice).startsWith('qwen:')));
+if (qwenMode) {
+  await narrateQwen();
+  process.exit(0);
+}
+
+async function narrateQwen() {
+  const { emotionOf } = await import('./lib/voice-direction.mjs');
+  const descOf = (speaker) => {
+    const c = (script.cast || {})[speaker] || {};
+    const base = c.description || (String(c.voice || '').startsWith('qwen:') ? c.voice.slice(5) : null) || script.voice_description
+      || (String(script.voice || '').startsWith('qwen:') ? script.voice.slice(5) : null)
+      || 'A natural, expressive Latin American Spanish narrator with a warm, realistic human voice.';
+    return base;
+  };
+  // Bloques contiguos del mismo hablante: cada uno se actúa entero.
+  const blocks = [];
+  script.lines.forEach((l, i) => {
+    const sp = l.speaker || 'narrador';
+    if (!blocks.length || blocks.at(-1).speaker !== sp) blocks.push({ speaker: sp, lines: [] });
+    blocks.at(-1).lines.push({ ...l, index: i });
+  });
+  const takes = Math.max(1, args.takes ?? script.takes ?? 3);
+  const backend = script.qwenBackend || cfg.qwenBackend || 'space';
+  // El Space corre con gradio_client; si falla, el mismo proceso cae a local, así que usa el Python que tenga qwen-tts.
+  const py = cfg.qwenPython || alignPython();
+  const allFiles = [];
+  for (const b of blocks) {
+    const arc = b.lines.map((l, k) => `${k + 1}) ${emotionOf(l.emotion || 'neutral').style}${l.direction ? ', ' + l.direction : ''}`).join('; ');
+    b.description = [
+      descOf(b.speaker),
+      script.direction ? `Overall: ${script.direction}.` : '',
+      b.lines.length > 1 ? `Performance arc, sentence by sentence: ${arc}.` : `Performance: ${arc.slice(3)}.`,
+      'Realistic human phrasing with natural pauses at ellipses and line breaks, varied pitch and pace, never monotone, never theatrical.',
+    ].filter(Boolean).join(' ');
+    b.text = b.lines.map((l) => l.say || l.text).join('\n');
+    const key = crypto.createHash('md5').update(JSON.stringify([b.text, b.description, backend])).digest('hex').slice(0, 10);
+    b.files = Array.from({ length: takes }, (_, k) => path.join(linesDir, `qwen-${b.speaker}-${key}-t${k + 1}.wav`));
+    const missing = b.files.filter((f) => args.force || !fs.existsSync(f));
+    if (missing.length) {
+      console.log(`→ Qwen3-TTS (${backend === 'space' ? 'GPU gratuita de Hugging Face; si no hay cuota, cae a esta máquina' : 'local'}): ${b.speaker}, ${missing.length} toma(s) de ${b.lines.length} líneas…`);
+      const raw = missing.map((f) => f.replace(/\.wav$/, '.raw.wav'));
+      const jf = path.join(os.tmpdir(), `cme-qwen-${process.pid}.json`);
+      fs.writeFileSync(jf, JSON.stringify({ text: b.text, description: b.description, language: script.language || 'Spanish', outs: raw, backend, hf_token: cfg.hfToken || undefined }));
+      const r = spawnSync(py, [path.join(ENGINE_DIR, 'lib', 'tts_qwen.py'), jf], { encoding: 'utf8', env: pyEnv, maxBuffer: 32 * 1024 * 1024 });
+      if (r.status !== 0) throw new Error('Qwen3-TTS falló: ' + String(r.stderr).split(/\r?\n/).filter((l) => /Error|error|SystemExit|no respondió/.test(l)).slice(-5).join(' | ') + (backend === 'space' ? '\n¿Instalaste gradio_client? pip install gradio_client · o usa "qwenBackend": "local"' : ''));
+      missing.forEach((f, k) => { decode(raw[k], f); writeWav(f, [trimSilence(readWav(f).channels[0])]); });
+    }
+    allFiles.push(...b.files);
+  }
+  // Verificación y alineación de todas las tomas.
+  const toAlign = allFiles.filter((f) => args.force || !fs.existsSync(f + '.asr.json'));
+  if (toAlign.length) {
+    console.log(`→ verificando ${toAlign.length} tomas con faster-whisper…`);
+    const list = path.join(os.tmpdir(), `cme-align-${process.pid}.json`);
+    fs.writeFileSync(list, JSON.stringify(toAlign));
+    const r = spawnSync(alignPython(), [path.join(ENGINE_DIR, 'lib', 'align.py'), list, '--model', script.asrModel || 'small'], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024, env: pyEnv });
+    if (r.status !== 0) throw new Error('La verificación (faster-whisper) falló: ' + r.stderr.slice(-600));
+    for (const [f, v] of Object.entries(JSON.parse(r.stdout))) fs.writeFileSync(f + '.asr.json', JSON.stringify(v));
+  }
+  // Por bloque: elige la toma más fiel, ubica cada línea y arma la pista con las pausas pedidas.
+  const out = [];
+  const lines = [];
+  const report = [];
+  const pushSilence = (sec) => { const k = Math.max(0, Math.round(sec * SR)); for (let i = 0; i < k; i++) out.push(0); };
+  pushSilence(lead);
+  for (const [bi, b] of blocks.entries()) {
+    const target = norm(b.text);
+    const scored = b.files.map((f, k) => {
+      const asr = JSON.parse(fs.readFileSync(f + '.asr.json', 'utf8'));
+      const pcm = readWav(f).channels[0];
+      return { f, k, asr, pcm, dur: pcm.length / SR, err: editDistance(target, norm(asr.text)) / Math.max(1, target.length) };
+    }).sort((a, z) => a.err - z.err);
+    const forced = b.lines.find((l) => l.take)?.take;
+    const best = (forced && scored.find((s) => s.k === forced - 1)) || scored[0];
+    if (best.err > 0.12) report.push(`⚠ bloque "${b.speaker}" (${b.lines[0].id}…): la mejor toma difiere ${Math.round(best.err * 100)}% del guion. Escúchala o sube "takes".`);
+    const shown = b.lines.flatMap((l, li) => l.text.split(/\s+/).filter(Boolean).map((w) => ({ w, li })));
+    const words = mapWords(shown.map((s) => s.w), best.asr.words, best.dur);
+    // Límites de cada línea dentro de la toma: corte en el medio del silencio entre líneas.
+    const span = b.lines.map((_, li) => {
+      const ws = words.filter((_, k) => shown[k].li === li);
+      return { a: ws[0]?.start ?? 0, z: ws.at(-1)?.end ?? best.dur, ws };
+    });
+    const cuts = span.map((s, li) => (li === 0 ? 0 : (span[li - 1].z + s.a) / 2));
+    cuts.push(best.dur);
+    b.lines.forEach((l, li) => {
+      const seg = best.pcm.subarray(Math.round(cuts[li] * SR), Math.round(cuts[li + 1] * SR));
+      const t0 = out.length / SR, offset = t0 - cuts[li];
+      for (const v of seg) out.push(v);
+      lines.push({ id: l.id, text: l.text, speaker: b.speaker, engine: 'qwen', voice: 'qwen:voice-design', emotion: emotionOf(l.emotion || 'neutral').key,
+        take: best.k + 1, start: +(span[li].a + offset).toFixed(3), end: +(span[li].z + offset).toFixed(3),
+        words: span[li].ws.map((w) => ({ w: w.w, start: +(w.start + offset).toFixed(3), end: +(w.end + offset).toFixed(3) })),
+        takes: scored.map((s) => ({ take: s.k + 1, file: path.relative(pieceDir, s.f).replace(/\\/g, '/'), err: +s.err.toFixed(3), dur: +s.dur.toFixed(2), heard: s.asr.text })) });
+      // Pausa extra si la línea la pide y la natural es más corta.
+      const isLast = li === b.lines.length - 1;
+      const natural = isLast ? 0 : span[li + 1].a - span[li].z;
+      if (l.pause && l.pause > natural) pushSilence(l.pause - natural);
+    });
+    if (bi < blocks.length - 1) pushSilence(b.lines.at(-1).pause ?? gap);
+  }
+  pushSilence(tail);
+  const buf = Float32Array.from(out);
+  const master = script.master !== false;
+  const rawFile = path.join(pieceDir, 'audio', master ? 'voice-raw.wav' : 'voice.wav');
+  let peak = 0; for (const v of buf) peak = Math.max(peak, Math.abs(v));
+  if (peak > 0) for (let i = 0; i < buf.length; i++) buf[i] *= 0.89 / peak;
+  writeWav(rawFile, [buf]);
+  if (master) masterVoice(rawFile, path.join(pieceDir, 'audio', 'voice.wav'), script.room || 'seco');
+  const duration = +(buf.length / SR).toFixed(3);
+  const totalWords = lines.reduce((a, l) => a + l.words.length, 0);
+  const speech = lines.reduce((a, l) => a + (l.end - l.start), 0);
+  fs.writeFileSync(path.join(pieceDir, 'voice.json'), JSON.stringify({ engine: 'qwen', duration, wordsPerSecond: +(totalWords / speech).toFixed(2), descriptions: blocks.map((b) => ({ speaker: b.speaker, description: b.description })), lines }, null, 1));
+  fs.mkdirSync(path.join(pieceDir, 'review'), { recursive: true });
+  fs.writeFileSync(path.join(pieceDir, 'review', 'voice.html'), `<!doctype html><meta charset="utf-8"><title>Audición · ${path.basename(pieceDir)}</title>
+<style>body{font:15px system-ui;background:#111;color:#ddd;max-width:980px;margin:30px auto;padding:0 16px}.t{display:flex;gap:12px;align-items:center;margin:8px 0}.t.best{color:#8f8}small{color:#888}</style>
+<h1>Audición · ${path.basename(pieceDir)} (Qwen3-TTS)</h1><p><small>Cada toma es la narración completa actuada de corrido. Verde = la más fiel al guion. Para elegir otra, pon "take": n en la primera línea del bloque y corre voice.mjs de nuevo.</small></p>
+${blocks.map((b) => `<h3>${b.speaker}</h3><p><small>${b.description}</small></p>` + b.files.map((f, k) => { const a = JSON.parse(fs.readFileSync(f + '.asr.json', 'utf8')); const best = lines.find((l) => l.speaker === b.speaker)?.take === k + 1; return `<div class="t${best ? ' best' : ''}"><span>toma ${k + 1}</span><audio controls preload="none" src="../${path.relative(pieceDir, f).replace(/\\/g, '/')}"></audio><small>oyó: “${a.text}”</small></div>`; }).join('')).join('')}`);
+  console.log(`✔ voz (Qwen3-TTS, de corrido): ${lines.length} líneas en ${blocks.length} bloque(s), ${duration}s, ${(totalWords / speech).toFixed(2)} palabras/s → audio/voice.wav + voice.json · audición: review/voice.html`);
+  for (const r of report) console.log(r);
+}
+
 const plan = script.lines.map((line) => {
   const castEntry = (script.cast || {})[line.speaker || 'narrador'] || {};
   const voice = resolveVoice(castEntry.voice || script.voice || 'es-CO-GonzaloNeural', pieceDir, castEntry.engine || script.engine);

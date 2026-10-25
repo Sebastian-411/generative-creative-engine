@@ -4,3 +4,4 @@ node_modules/
 # Audio de los demos: pesado y con voces clonadas de datasets (solo uso interno)
 demos/*/audio/
 demos/voz-prueba/
+knowledge/trends/radar.log

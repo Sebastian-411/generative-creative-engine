@@ -77,6 +77,7 @@ Las piezas quedan en `videos/<slug>/`, con el entregable en `render/final.mp4`.
 | `motion-craft` | Duraciones, curvas, coreografía, cortes en movimiento, tics prohibidos |
 | `video-styles` | 8 estilos con paleta, tipografía, reglas y receta |
 | `voice-director` | Voz que actúa: emoción/intensidad/ritmo por línea, voces con acento (caleño, paisa, venezolano…) clonadas de grabaciones autorizadas, varias tomas verificadas con Whisper |
+| `trend-radar` | Radar diario de tendencias (Google Trends/News por país, Wikipedia, Bluesky, YouTube, HN, GitHub) con score y evidencia en `knowledge/trends/latest.md` |
 | `sound-design` | Música procedural, efectos, ducking, −14 LUFS |
 | `video-review` | Rúbrica de 8 preguntas, hallazgos con evidencia, rondas |
 
