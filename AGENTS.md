@@ -19,6 +19,7 @@ Este repo es un plugin multi-host (Claude Code, Cursor, Codex, OpenCode) para ge
 | `motion-designer` | lectura y escritura | Anima la pieza o una escena |
 | `critic` | solo lectura | Hallazgos con evidencia y veredicto |
 | `fact-checker` | solo lectura y web | Verifica datos y licencias |
+| `trend-scout` | lectura, web y radar | Convierte el radar diario en 3–5 ideas con evidencia, ángulo y ventana |
 
 Cada agente y cada ronda deben justificarse. Un short de 15 s lo hace el orquestador solo. Los agentes entran en piezas de más de 45 s, piezas para publicar o piezas con marca.
 

@@ -88,6 +88,7 @@ Las piezas quedan en `videos/<slug>/`, con el entregable en `render/final.mp4`.
 | `motion-designer` | lectura y escritura | Anima la pieza o una escena hasta que pasa el QA |
 | `critic` | solo lectura | Segundo par de ojos y veredicto de publicación |
 | `fact-checker` | solo lectura y web | Verifica datos y licencias |
+| `trend-scout` | lectura, web y radar | Convierte el radar diario en 3–5 ideas con evidencia, ángulo y ventana |
 
 Para piezas cortas, el orquestador trabaja solo. Los agentes entran cuando la pieza es larga, se va a publicar o trae marca o referencias.
 

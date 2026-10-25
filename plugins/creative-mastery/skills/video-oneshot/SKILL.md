@@ -17,7 +17,7 @@ Si cualquier script responde `Falta la dependencia`, corre `node ../video-engine
 
 ## Paso 0bis — Lee el presente
 
-Si el usuario no trae el tema (o pide "algo que esté pegando"), lee `knowledge/trends/latest.md` con la skill `trend-radar` (córrelo si tiene más de 24 h) y propone desde ahí, con evidencia. Si trae el tema, igual revisa si hay un ángulo en tendencia que lo haga más oportuno.
+Si el usuario no trae el tema (o pide "algo que esté pegando"), lanza al agente `trend-scout` (o lee tú `knowledge/trends/latest.md` con la skill `trend-radar` si es algo rápido) y propone desde ahí, con evidencia. Si trae el tema, igual revisa si hay un ángulo en tendencia que lo haga más oportuno.
 
 ## Paso 1 — Decide sin preguntar (≤ 10 líneas en `brief.md`)
 

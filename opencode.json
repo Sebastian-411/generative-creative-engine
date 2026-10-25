@@ -51,6 +51,16 @@
         "bash": "deny",
         "webfetch": "allow"
       }
+    },
+    "trend-scout": {
+      "description": "Lee o corre el radar de tendencias, verifica la evidencia y propone 3-5 ideas de video con ángulo, gancho y ventana de oportunidad.",
+      "mode": "subagent",
+      "prompt": "{file:./plugins/creative-mastery/agents/trend-scout.md}",
+      "permission": {
+        "edit": "deny",
+        "bash": "allow",
+        "webfetch": "allow"
+      }
     }
   }
 }
