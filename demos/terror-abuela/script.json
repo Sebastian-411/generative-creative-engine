@@ -1,0 +1,75 @@
+{
+ "direction": "historia de terror contada a un amigo en voz baja: arranca íntimo, la tensión sube línea a línea, el remate cae seco después de un silencio",
+ "cast": {
+  "narrador": {
+   "description": "A natural, expressive Latin American Spanish narrator. A mature male voice with a subtle Colombian accent, warm timbre and realistic human phrasing. This is a psychological horror story told to a friend late at night, not a news report or a commercial voiceover."
+  },
+  "abuela": {
+   "description": "An elderly Colombian grandmother, around 80 years old, soft and slightly raspy voice, tender and calling gently from a dark hallway at night, slow and sweet, almost a whisper, which makes it unsettling."
+  }
+ },
+ "takes": 2,
+ "lead": 0.8,
+ "gap": 0.5,
+ "tail": 3.2,
+ "lines": [
+  {
+   "id": "regla",
+   "text": "Mi abuela tenía una sola regla en esa casa.",
+   "emotion": "confidencial",
+   "intensity": 0.4,
+   "pace": "pausado"
+  },
+  {
+   "id": "pasillo",
+   "text": "Después de medianoche, si alguien te llama desde el pasillo… no contestes.",
+   "emotion": "misterio",
+   "intensity": 0.55,
+   "pace": "lento",
+   "pause": 0.9
+  },
+  {
+   "id": "noche",
+   "text": "La primera noche que dormí allá, a las doce y diez, escuché su voz.",
+   "emotion": "suspenso",
+   "intensity": 0.6,
+   "pace": "lento",
+   "pause": 0.8
+  },
+  {
+   "id": "llamado",
+   "speaker": "abuela",
+   "text": "Mijo… venga un momentico.",
+   "emotion": "ternura",
+   "intensity": 0.5,
+   "pace": "muy lento",
+   "pause": 1.0
+  },
+  {
+   "id": "casi",
+   "text": "Casi me levanto. Pero entonces me acordé de algo.",
+   "emotion": "suspenso",
+   "intensity": 0.7,
+   "pace": "lento",
+   "pause": 1.2
+  },
+  {
+   "id": "muerta",
+   "text": "Mi abuela llevaba tres años muerta.",
+   "emotion": "terror",
+   "intensity": 0.85,
+   "pace": "lento",
+   "pause": 1.3
+  },
+  {
+   "id": "sigue",
+   "text": "Y la voz… todavía me llama.",
+   "emotion": "terror",
+   "intensity": 0.95,
+   "pace": "muy lento"
+  }
+ ],
+ "engine": "qwen",
+ "master": true,
+ "room": "seco"
+}

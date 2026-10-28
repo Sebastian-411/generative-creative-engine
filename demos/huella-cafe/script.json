@@ -1,0 +1,14 @@
+{
+  "voice": "es-MX-JorgeNeural",
+  "rate": "+0%",
+  "lead": 0.5,
+  "gap": 0.35,
+  "tail": 2.2,
+  "lines": [
+    { "id": "hook", "text": "Esta taza de café necesitó 140 litros de agua.", "say": "Esta taza de café necesitó ciento cuarenta litros de agua." },
+    { "id": "brew", "text": "Y casi nada se usó para prepararla." },
+    { "id": "farm", "text": "La mayor parte se fue en cultivar los granos." },
+    { "id": "scale", "text": "Son 140 botellas de un litro, por cada taza.", "say": "Son ciento cuarenta botellas de un litro, por cada taza.", "pause": 0.7 },
+    { "id": "payoff", "text": "No se trata de dejar el café. Se trata de saber cuánto vale." }
+  ]
+}

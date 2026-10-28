@@ -1,0 +1,15 @@
+{
+  "voice": "es-CO-SalomeNeural",
+  "rate": "+5%",
+  "lead": 0.35,
+  "gap": 0.3,
+  "tail": 2.4,
+  "lines": [
+    { "id": "hook", "text": "Tu negocio merece una página que venda, no solo que exista." },
+    { "id": "what", "text": "En Distecnoweb diseñamos páginas web y tiendas online para pymes y empresas." },
+    { "id": "tech", "text": "En WordPress, PrestaShop o Shopify, listas para el celular." },
+    { "id": "fast", "text": "Y tu página web, lista en 8 días.", "say": "Y tu página web, lista en ocho días.", "pause": 0.45 },
+    { "id": "proof", "text": "Más de 800 proyectos en 12 años nos respaldan.", "say": "Más de ochocientos proyectos en doce años nos respaldan." },
+    { "id": "cta", "text": "Solicita tu cotización en distecnoweb.com.", "say": "Solicita tu cotización en distecnoweb punto com." }
+  ]
+}

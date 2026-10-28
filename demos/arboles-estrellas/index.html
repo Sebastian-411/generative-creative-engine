@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>arboles-estrellas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=Hanken+Grotesk:wght@600&display=block" rel="stylesheet">
+<script src="/__engine/gsap.min.js"></script>
+<script src="/__engine/stage.js"></script>
+<style>
+  :root { --paper: #e9ece4; --ink: #1b2421; --ink72: rgba(27,36,33,.72); --ink45: rgba(27,36,33,.45); --ink18: rgba(27,36,33,.18); --ver: #d9481c; }
+  #stage { font-family: 'Hanken Grotesk', sans-serif; color: var(--ink); overflow: hidden; }
+  canvas#w { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+  .t { position: absolute; opacity: 0; }
+  .d { font-family: 'Archivo', sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: .92; }
+  .num { font-family: 'Archivo', sans-serif; font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; line-height: .9; }
+  .lab { font-weight: 600; font-size: 52px; color: var(--ink72); }
+  .mask { display: block; overflow: hidden; padding-bottom: .12em; margin-bottom: -.12em; }
+  .mask > span { display: block; }
+  .strike { position: absolute; overflow: visible; }
+  .cap { position: absolute; left: 65px; width: 875px; top: 1385px; text-align: center; font-weight: 600; font-size: 58px; line-height: 1.1; }
+  .cap .cw { color: var(--ink45); }
+  .cap .cw.on { color: var(--ink); text-decoration: underline; text-decoration-thickness: 4px; text-underline-offset: 8px; }
+  #empate { left: 250px; top: 860px; padding: 6px 34px 14px; border: 6px solid var(--ink); font-size: 150px; transform-origin: 50% 50%; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="w" width="1080" height="1920"></canvas>
+
+  <!-- gancho / cierre (mismo encuadre) -->
+  <div class="t lab" id="lblS" style="left:65px; top:262px; opacity:1">ESTRELLAS · Vía Láctea</div>
+  <div class="t d" id="q" style="left:65px; top:660px; width:875px; font-size:150px; opacity:1">
+    <span class="mask"><span id="qA">¿QUÉ HAY<br>MÁS?</span></span>
+    <span class="mask" style="position:absolute; left:0; top:0"><span id="qB" style="color:var(--ink)">ÁRBOLES.</span></span>
+  </div>
+  <div class="t lab" id="lblT" style="left:65px; top:1225px; opacity:1">ÁRBOLES · Tierra</div>
+
+  <!-- unidad -->
+  <div class="t d" id="unit" style="left:65px; top:1010px; width:875px; font-size:96px; transform-origin:0 0">1 punto =<br>1.000 millones</div>
+
+  <!-- galaxia -->
+  <div class="t" id="gal" style="left:65px; top:262px; width:875px">
+    <div class="num" style="font-size:96px"><span id="galLo">100.000 –</span> <span id="galHi">100.000</span></div>
+    <div class="lab" style="margin-top:14px">millones de estrellas<span id="galPts" style="opacity:0"> · 400 puntos</span></div>
+    <svg class="strike" id="galStrike" viewBox="0 0 400 40" style="left:-6px; top:30px; width:420px; height:44px"><path id="galS" d="M4 26 C 120 14, 260 30, 396 16" fill="none" stroke="#1b2421" stroke-width="9" stroke-linecap="round"/></svg>
+  </div>
+
+  <!-- antes de 2015 / giro -->
+  <div class="t" id="tre" style="left:65px; top:262px; width:875px">
+    <div class="lab">Árboles antes de 2015:</div>
+    <div class="num" style="font-size:96px; position:relative; display:inline-block; margin-top:8px">~400.000 millones
+      <svg class="strike" viewBox="0 0 400 40" style="left:-6px; top:36px; width:880px; height:44px"><path id="treS" d="M4 26 C 120 14, 260 30, 396 16" fill="none" stroke="#1b2421" stroke-width="7" stroke-linecap="round"/></svg></div>
+  </div>
+  <div class="t" id="big" style="left:65px; top:262px; width:875px">
+    <div class="mask"><span class="num" style="font-size:180px">3,04</span></div>
+    <div class="mask"><span class="d" style="font-size:80px">billones de árboles</span></div>
+    <div class="num" id="zeros" style="font-size:56px; margin-top:10px; color:var(--ink72)">3.040.000.000.000</div>
+  </div>
+  <div class="t d" id="empate">EMPATE</div>
+
+  <!-- conteo -->
+  <div class="t" id="cnt" style="left:65px; top:262px; width:875px">
+    <div class="lab">más de</div>
+    <div class="num" style="font-size:150px"><span id="cntN">0</span></div>
+    <div class="lab">parcelas de bosque</div>
+  </div>
+  <div class="t d" id="sat" style="left:65px; top:262px; font-size:96px">+ satélite</div>
+  <div class="t d" id="map" style="left:65px; top:262px; font-size:96px">1 mapa,<br><span style="font-size:64px">km² por km²</span></div>
+
+  <!-- respiro: rótulos junto a los bloques -->
+  <div class="t lab" id="rS" style="left:615px; top:375px">ESTRELLAS</div>
+  <div class="t" id="rT" style="left:720px; top:860px"><div class="num" style="font-size:150px">×7</div><div class="lab" style="font-size:48px">ÁRBOLES</div></div>
+
+  <!-- payoff -->
+  <div class="t num" id="pay" style="left:0; width:1080px; text-align:center; top:875px; font-size:300px; color:var(--ver)">0</div>
+  <div class="t d" id="pay2" style="left:65px; width:875px; text-align:center; top:1140px; font-size:72px">árboles por estrella</div>
+  <div class="t lab" id="pay3" style="left:65px; width:875px; text-align:center; top:1235px; font-size:48px">con la cifra más alta de estrellas</div>
+
+  <!-- cierre -->
+  <div class="t d" id="end1" style="left:65px; width:875px; text-align:center; top:1165px; font-size:64px">más de 7 por estrella</div>
+  <div class="t lab" id="src" style="left:65px; width:875px; text-align:center; top:1262px; font-size:48px">Crowther et al., Nature 2015 · ESA/Gaia</div>
+</div>
+
+<script>
+  const stage = Stage.create({
+    width: 1080, height: 1920, fps: 30, seed: 'arboles', background: '#e9ece4',
+    voice: 'voice.json', duration: 'voice',
+    music: { ai: 'ace', prompt: 'curious playful counting pulse, muted marimba and pizzicato strings, soft clicks, light and warm, opens into warm low strings in the second half, no vocals, no drums', bpm: 92, key: 'D', seed: 23, db: -8, duck: 5, fallback: 'paper', drops: [{ at: 51.15, dur: 0.69 }] },
+  });
+  const { tl, rand } = stage;
+  Stage.captions(stage, { maxWords: 4, className: 'cap', skip: ['payoff', 'cierre'] });
+  const $ = (s) => document.querySelector(s);
+  const A = (id, o = 0) => stage.at(id, o), E = (id, o = 0) => stage.end(id, o), Wd = (id, w, o = 0) => stage.word(id, w, o);
+  const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+  const eio = gsap.parseEase('power2.inOut'), eout = gsap.parseEase('power3.out');
+  const INK = '#1b2421', VER = '#d9481c', FPS = stage.fps;
+  const rise = (sel, t, d = 0.45) => { tl.set(sel, { opacity: 1 }, t); tl.fromTo(`${sel} .mask > span`, { yPercent: 105 }, { yPercent: 0, duration: d, ease: 'expo.out', stagger: 0.06, immediateRender: false }, t); };
+  const show = (sel, a, b, d = 0.3) => { tl.fromTo(sel, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: d, ease: 'power3.out', immediateRender: false }, a); if (b != null) tl.to(sel, { opacity: 0, y: -16, duration: 0.25, ease: 'power3.in' }, b); };
+  const strike = (pathSel, t, d = 0.35) => { const p = $(pathSel), L = p.getTotalLength(); gsap.set(p, { strokeDasharray: L, strokeDashoffset: L }); tl.to(p, { strokeDashoffset: 0, duration: d, ease: 'power2.inOut' }, t); };
+
+  // ---- Tiempos (todo anclado a la voz) --------------------------------------------------------------
+  const T = {
+    unidad: A('unidad', -0.2), punto: Wd('unidad', 'punto'), galaxia: A('galaxia', -0.2), estrellas: Wd('galaxia', 'estrellas'),
+    alta: Wd('generosa', 'alta'), puntos: Wd('generosa', 'puntos'), antes: A('antes', -0.1), arb: Wd('antes', 'Árboles'),
+    empate: Wd('empate', 'Empate'), conteo: A('conteo', -0.2), parcelas: Wd('conteo', 'parcelas'), satelite: Wd('conteo', 'satélite'),
+    km: Wd('conteo', 'kilómetro'), resultado: A('resultado'), tres: Wd('billones', 'tres'),
+    siete: Wd('siete', 'Siete'), finSiete: E('siete'), aun: A('aun'), finAun: E('aun'), payoff: A('payoff'),
+    estrella: Wd('payoff', 'estrella'), siete2: Wd('payoff', 'siete'), cierre: A('cierre', -0.2), arriba: Wd('cierre', 'arriba'), abajo: Wd('cierre', 'abajo'),
+  };
+  const END = stage.duration;
+
+  // ---- Mundo: pliego con atlas (arriba) y plano forestal (abajo); bloques de 20×20 a paso 19 ---------------
+  const r = rand.fork('mundo');
+  const STEP = 19, BLK = 20 * STEP;
+  const SB = { x: 540 - BLK / 2, y: 2110 };                                    // bloque de estrellas
+  const TBpos = Array.from({ length: 8 }, (_, k) => ({ x: (k % 2 ? 750 : 330) - BLK / 2, y: 2550 + Math.floor(k / 2) * (BLK + 40) }));
+  // 400 estrellas del atlas: posición dispersa del gancho → celda del bloque (por orden de y, luego x)
+  const stars = Array.from({ length: 400 }, () => ({ sx: r.range(110, 970), sy: r.range(345, 600), m: r.pick([7, 7, 7, 11, 11, 15]) }));
+  stars.sort((a, b) => a.sy - b.sy);
+  for (let g = 0; g < 20; g++) stars.slice(g * 20, g * 20 + 20).sort((a, b) => a.sx - b.sx).forEach((s, c) => { s.row = g; s.col = c; });
+  stars.forEach((s) => { s.bx = SB.x + s.col * STEP + STEP / 2; s.by = SB.y + s.row * STEP + STEP / 2; s.hookAt = (s.sy - 345) / 255; });
+  const hilo = stars.find((s) => s.row === 3 && s.col === 17); hilo.m = 15;
+  const hookRings = Array.from({ length: 400 }, () => ({ x: r.range(110, 970), y: r.range(1010, 1195) })).sort((a, b) => a.y - b.y);
+  hookRings.forEach((h, i) => { h.at = i / 400; });
+  // horarios de estampado de los 8 bloques de árboles (fila por fotograma)
+  const blockRowT = (k, row) => {
+    if (k === 0) return T.arb + row / FPS;
+    if (k < 7) return T.siete + (k - 1) * 0.06 + row * 0.25 / 20;
+    if (row < 2) return T.siete + 0.36 + row / FPS;
+    return T.finSiete + 0.2 + (row - 2) * 5 / FPS;   // el octavo termina en el respiro: una fila cada 5 fotogramas
+  };
+  const blockRows = (k) => (k === 7 ? 12 : 20);
+  // parcela (P5): 24 copas lobuladas
+  const crowns = Array.from({ length: 24 }, (_, i) => ({ x: r.range(250, 830), y: r.range(560, 1160), d: r.range(60, 110), lobes: r.int(6, 9), seed: i }));
+  const kmCells = []; for (let y = 0; y < 14; y++) for (let x = 0; x < 14; x++) kmCells.push({ x, y, v: r.pick([0, 0.08, 0.08, 0.18, 0.18, 0.45]) });
+
+  // ---- Estados animados por el timeline --------------------------------------------------------------------
+  const CAM = { x: 540, y: 960, s: 1, blur: 0 };
+  const S = { fly: 0, back: 0, oth: 1, hookR: 1, world: 1, parc: 0, crown: 0, shrink: 0, band: -1, grid: 0, pay: 0, ringsIn: 0, cl: 0, unitDot: 0 };
+
+  // ---- Papel con grano (se construye una vez) ---------------------------------------------------------------
+  const paper = document.createElement('canvas'); paper.width = 540; paper.height = 960;
+  { const g = paper.getContext('2d'), img = g.createImageData(540, 960), rp = rand.fork('papel');
+    for (let i = 0; i < img.data.length; i += 4) { const n = (rp() - 0.5) * 16; img.data[i] = 233 + n; img.data[i + 1] = 236 + n; img.data[i + 2] = 228 + n; img.data[i + 3] = 255; }
+    g.putImageData(img, 0, 0); }
+
+  const cv = $('#w'), g = cv.getContext('2d');
+  const W2S = (wx, wy) => [540 + (wx - CAM.x) * CAM.s, 960 + (wy - CAM.y) * CAM.s];
+  const pop = (t, at) => { const k = clamp((t - at) * FPS / 3); return k <= 0 ? 0 : 1.25 - 0.25 * eout(k); };   // escala de estampado: 1.25→1 en 3 fotogramas
+  const dot = (x, y, d, col, a) => { g.globalAlpha = a; g.fillStyle = col; g.beginPath(); g.arc(x, y, d / 2, 0, Math.PI * 2); g.fill(); };
+  const ring = (x, y, d, col, a, lw, frac = 1) => {
+    g.globalAlpha = a; g.strokeStyle = col; g.lineWidth = lw; g.beginPath(); g.arc(x, y, d / 2, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * frac); g.stroke();
+    if (frac >= 1) { g.fillStyle = col; g.beginPath(); g.arc(x, y, Math.max(1, d * 0.12), 0, Math.PI * 2); g.fill(); }
+  };
+
+  stage.onFrame((t) => {
+    g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1;
+    g.drawImage(paper, 0, 0, 1080, 1920);
+    cv.style.filter = CAM.blur > 0.3 ? `blur(${CAM.blur.toFixed(1)}px)` : 'none';
+    const s = CAM.s, W = S.world;
+
+    if (W > 0.001) {
+      // horizonte del gancho
+      const [hx0, hy] = W2S(100, 960), [hx1] = W2S(980, 960);
+      g.globalAlpha = W * (1 - S.parc); g.fillStyle = INK; g.fillRect(hx0, hy - 1.5 * s, hx1 - hx0, 3 * s);
+      // plano forestal del gancho (400 anillos)
+      for (const h of hookRings) {
+        const at = 0.0 - 0.35 + h.at * 1.2;       // en t=0 ya va a un cuarto: el gancho está en movimiento
+        const k = pop(t, at); if (!k) continue;
+        const [x, y] = W2S(h.x, h.y); if (y < -40 || y > 1960) continue;
+        ring(x, y, 13 * s * k, INK, W * S.hookR * (1 - S.parc), 2.5 * s);
+      }
+      // estrellas: del atlas al bloque (fly) y de vuelta al atlas (back)
+      for (const st of stars) {
+        const at = -0.35 + st.hookAt * 1.2, k = pop(t, at); if (!k) continue;
+        const fp = clamp((t - (T.galaxia + 0.5 + st.row * 0.03)) / 0.8), bp = clamp((t - (T.cierre + 0.2 + (19 - st.row) * 0.02)) / 0.9);
+        const p = eio(fp) * (1 - eio(bp));
+        const wx = st.sx + (st.bx - st.sx) * p, wy = st.sy + (st.by - st.sy) * p;
+        const [x, y] = W2S(wx, wy); if (y < -200 || y > 2120 || x < -200 || x > 1280) continue;
+        const isH = st === hilo, size = (st.m + (11 - st.m) * p) * s * k;
+        const a = isH ? 1 : W * S.oth * (1 - S.parc);
+        if (!isH && a < 0.01) continue;
+        dot(x, y, isH ? Math.max(size, 15 * s * k * (1 - p) + 11 * s * k * p) : size, isH ? VER : INK, a);
+      }
+      // bloques de árboles
+      for (let kb = 0; kb < 8; kb++) {
+        const B = TBpos[kb], rows = blockRows(kb);
+        for (let row = 0; row < rows; row++) {
+          const at = blockRowT(kb, row), k = pop(t, at); if (!k) continue;
+          const [x0, y0] = W2S(B.x + STEP / 2, B.y + row * STEP + STEP / 2); if (y0 < -40 || y0 > 1960) continue;
+          for (let c = 0; c < 20; c++) ring(x0 + c * STEP * s, y0, 13 * s * k, INK, W * S.oth * (1 - S.parc), 2.5 * s);
+        }
+      }
+    }
+
+    // parcela y mapa de km (P5), en pantalla
+    if (S.parc > 0.001) {
+      g.globalAlpha = 1;
+      const sc = 1 - 0.9 * S.shrink, cx = 540, cy = 860, half = 320 * sc;
+      // retícula de km y celdas sombreadas (aparecen cuando pasa la banda del satélite)
+      if (S.grid > 0.001) {
+        for (const c of kmCells) {
+          const x = 92 + c.x * 64, y = 520 + c.y * 64;
+          if (S.band >= 0 && y + 64 < S.band && c.v) { g.globalAlpha = S.parc * S.grid * c.v; g.fillStyle = INK; g.fillRect(x, y, 64, 64); }
+        }
+        g.globalAlpha = S.parc * S.grid * 0.15; g.fillStyle = INK;
+        for (let i = 0; i <= 14; i++) g.fillRect(92 + i * 64 - 1, 520, 2, 896);
+        for (let j = 0; j <= 14; j++) g.fillRect(92, 520 + j * 64 - 1, 896, 2);
+      }
+      // la parcela con sus estacas
+      g.globalAlpha = S.parc; g.strokeStyle = INK; g.lineWidth = 3; g.strokeRect(cx - half, cy - half, half * 2, half * 2);
+      g.fillStyle = INK; for (const [dx, dy] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) g.fillRect(cx + dx * half - 6, cy + dy * half - 6, 12, 12);
+      // copas lobuladas que se trazan (escalonadas 50 ms, 0.5 s cada una)
+      for (const cr of crowns) {
+        const prog = clamp((S.crown * (1.65) - cr.seed * 0.05) / 0.5); if (prog <= 0) continue;
+        const px = cx + (cr.x - 540) * sc, py = cy + (cr.y - 860) * sc, R = cr.d / 2 * sc, N = 72, upto = Math.round(N * eio(prog));
+        g.globalAlpha = S.parc; g.lineWidth = 4 * Math.max(0.4, sc); g.beginPath();
+        for (let i = 0; i <= upto; i++) { const a = (i / N) * Math.PI * 2, rr = R * (1 + 0.12 * Math.sin(a * cr.lobes + cr.seed) + 0.04 * Stage.noise('c' + cr.seed, i * 0.3)); const x = px + Math.cos(a) * rr, y = py + Math.sin(a) * rr; i ? g.lineTo(x, y) : g.moveTo(x, y); }
+        g.stroke(); if (prog >= 1) { g.beginPath(); g.arc(px, py, 4 * Math.max(0.4, sc), 0, Math.PI * 2); g.fill(); }
+      }
+      // banda del satélite
+      if (S.band >= 0 && S.band < 1600) { g.globalAlpha = S.parc * 0.12; g.fillRect(0, S.band - 48, 1080, 48); g.globalAlpha = S.parc * 0.45; g.fillRect(0, S.band - 2, 1080, 2); }
+    }
+
+    // payoff y cierre: los 7,6 árboles bermellón de la estrella (en pantalla)
+    if (S.ringsIn > 0.001) {
+      const [hx, hy] = W2S(hilo.sx + (hilo.bx - hilo.sx), hilo.by);
+      for (let i = 0; i < 8; i++) {
+        const k = eio(clamp((S.ringsIn * 1.5 - i * 0.06))), cl = eio(S.cl);
+        const ang = -Math.PI / 2 + i * Math.PI * 2 / 8;
+        const cxp = 540 + Math.cos(ang) * 200, cyp = 600 + Math.sin(ang) * 200;      // círculo alrededor de la estrella
+        const sxp = 540 + (i - 3.5) * 110, syp = 2050;                                // vienen desde sus bloques (abajo)
+        const exp = 540 + (i - 3.5) * 100, eyp = 1085;                                // cierre: en el bosque, bajo el horizonte
+        const x = (sxp + (cxp - sxp) * k) * (1 - cl) + exp * cl, y = (syp + (cyp - syp) * k) * (1 - cl) + eyp * cl;
+        ring(x, y, 64 - 8 * cl, VER, 1, 6, i === 7 ? 0.6 : 1);
+      }
+    }
+  });
+
+  // ===== P1 · gancho (0–unidad): todo ya se está estampando en el fotograma 0 ===============================
+  tl.fromTo(CAM, { s: 1 }, { s: 1.04, duration: Math.max(1, T.unidad), ease: 'power1.inOut' }, 0);
+  for (let i = 0; i < 6; i++) stage.sfx('tick', i * 0.15, -34);
+  tl.to(['#lblS', '#lblT', '#q'], { opacity: 0, duration: 0.3 }, T.unidad);
+
+  // ===== P2 · la unidad: un punto crece y deja la regla ================================================
+  tl.to(CAM, { x: 540, y: 760, s: 1.25, duration: 1.2, ease: 'power2.inOut' }, T.unidad);
+  tl.to(S, { hookR: 0.15, duration: 0.8, ease: 'power1.inOut' }, T.unidad + 0.3);   // el bosque del gancho se retira: deja leer la regla
+  tl.set('#unit', { opacity: 1 }, T.punto - 0.1);
+  tl.fromTo('#unit', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out', immediateRender: false }, T.punto - 0.1);
+  stage.sfx('pop', T.punto, -18);
+  // la regla se encoge a pie de unidad y se queda
+  tl.to('#unit', { scale: 52 / 96, x: 490, y: 240, duration: 0.6, ease: 'power2.inOut' }, E('unidad', 0.4));
+  tl.to('#unit', { opacity: 0, duration: 0.25 }, T.conteo);
+  tl.to('#unit', { opacity: 1, duration: 0.3 }, T.resultado);
+
+  // ===== P3 · la galaxia se cuenta: el atlas se vuelve un bloque de 400 ==================================
+  tl.to(CAM, { x: 540, y: SB.y + BLK / 2 + 60, s: 1.5, duration: 1.3, ease: 'power2.inOut' }, T.galaxia + 0.3);
+  tl.to(CAM, { s: 1.56, duration: Math.max(0.5, T.antes - T.galaxia - 1.6), ease: 'power1.inOut' }, T.galaxia + 1.6);   // deriva mientras se cuenta
+  show('#gal', T.galaxia + 0.2, T.antes - 0.1);
+  const G = { v: 100000 };
+  tl.fromTo(G, { v: 100000 }, { v: 400000, duration: 1.4, ease: 'power2.out', immediateRender: false }, T.estrellas - 1.4);
+  stage.onFrame(() => { $('#galHi').textContent = G.v >= 399999.5 ? '400.000' : Math.round(G.v).toLocaleString('es-CO'); });
+  strike('#galS', T.alta);
+  tl.to('#galLo', { opacity: 0.25, duration: 0.3 }, T.alta + 0.3);
+  tl.to('#galPts', { opacity: 1, duration: 0.3 }, T.alta + 0.2);
+  stage.sfx('thud', T.galaxia + 1.6 + 19 * 0.03, -16);
+
+  // ===== P4 · antes de 2015: un bloque idéntico de árboles → EMPATE ======================================
+  tl.to(CAM, { x: 470, y: 2454, s: 0.9, duration: 1.2, ease: 'power2.inOut' }, T.antes);
+  tl.to(CAM, { s: 0.94, duration: T.empate - T.antes - 1.3, ease: 'power1.inOut' }, T.antes + 1.2);   // deriva: el mundo sigue vivo
+  show('#tre', T.arb - 0.1, T.conteo - 0.1);
+  tl.set('#empate', { opacity: 1 }, T.empate - 0.58);
+  tl.fromTo('#empate', { scale: 1.6, opacity: 0, rotation: -4 }, { scale: 1, opacity: 1, rotation: -4, duration: 0.58, ease: 'expo.out', immediateRender: false }, T.empate - 0.58);
+  tl.to(CAM, { x: '+=6', duration: 1 / FPS }, T.empate).to(CAM, { x: '-=10', duration: 1 / FPS }, '>').to(CAM, { x: '+=4', duration: 1 / FPS }, '>');
+  stage.sfx('@impact wood heavy', T.empate, -14);
+  tl.to('#empate', { opacity: 0, duration: 0.25 }, T.conteo - 0.15);
+
+  // ===== P5 · cómo se contó: parcela → copas → km → satélite ==============================================
+  const ringPos = { x: TBpos[0].x + 10 * STEP + STEP / 2, y: TBpos[0].y + 10 * STEP + STEP / 2 };
+  tl.to(CAM, { x: ringPos.x, y: ringPos.y, s: 9, duration: 1.0, ease: 'power2.in' }, T.conteo);
+  tl.to(CAM, { blur: 10, duration: 0.5, ease: 'power2.in' }, T.conteo + 0.3).to(CAM, { blur: 0, duration: 0.3 }, '>');
+  tl.to(S, { parc: 1, duration: 0.4, ease: 'none' }, T.conteo + 0.7);
+  tl.to(S, { crown: 1, duration: 1.65, ease: 'none' }, T.conteo + 0.9);
+  show('#cnt', T.conteo + 0.6, T.satelite - 0.1);
+  const P = { v: 0 };
+  tl.fromTo(P, { v: 0 }, { v: 400000, duration: 1.4, ease: 'power2.out', immediateRender: false }, T.parcelas - 1.4);
+  stage.onFrame(() => { $('#cntN').textContent = P.v >= 399999.5 ? '400.000' : Math.round(P.v).toLocaleString('es-CO'); });
+  tl.to(S, { shrink: 1, duration: 1.0, ease: 'power2.inOut' }, T.satelite - 0.6);
+  tl.to(S, { grid: 1, duration: 0.5, ease: 'none' }, T.satelite - 0.4);
+  tl.fromTo(S, { band: 520 }, { band: 1440, duration: 1.2, ease: 'none', immediateRender: false }, T.satelite);
+  show('#sat', T.satelite, T.km - 0.05);
+  stage.sfx('swish', T.satelite, -20);
+  show('#map', T.km, T.resultado - 0.15);
+  // el mapa se comprime de vuelta en el bloque
+  tl.to(S, { parc: 0, duration: 0.45, ease: 'power2.in' }, T.resultado - 0.5);
+  tl.set(CAM, { x: 470, y: 2454, s: 0.9, blur: 0 }, T.resultado - 0.5);
+  tl.to(CAM, { s: 0.95, duration: T.siete - T.resultado, ease: 'power1.inOut' }, T.resultado);
+
+  // ===== P6 · el giro: no eran 400.000 millones, eran 3,04 billones; ×7 ==================================
+  tl.set('#tre', { opacity: 1, y: 0 }, T.resultado - 0.05);
+  strike('#treS', T.resultado + 0.25, 0.4);
+  tl.to('#tre', { opacity: 0, duration: 0.15 }, T.tres - 0.05);
+  rise('#big', T.tres - 0.03, 0.3);
+  stage.sfx('snap', T.tres, -14);
+  tl.to('#big', { opacity: 0, y: -20, duration: 0.25, ease: 'power3.in' }, T.siete - 0.2);
+  const CAMfar = { x: 640, y: 3320, s: 0.55 };
+  tl.to(CAM, { ...CAMfar, duration: 1.1, ease: 'power2.inOut' }, T.siete);
+  for (let k = 1; k < 7; k++) stage.sfx('thud', T.siete + (k - 1) * 0.06 + 0.12, -18);
+  stage.sfx('whoosh', T.siete, -18);
+  tl.to('#unit', { opacity: 0, duration: 0.2 }, T.siete);
+  show('#rS', T.siete + 0.5); show('#rT', T.siete + 0.7);
+
+  // ===== P7 · RESPIRO: cámara quieta, termina el octavo bloque =================================================
+  // (blockRowT ya programa una fila cada 5 fotogramas después de "siete")
+
+  // ===== P8 · payoff: buceo a la estrella-hilo, silencio, llegan sus 7,6 árboles ===============================
+  tl.to(['#rS', '#rT'], { opacity: 0, duration: 0.25 }, T.aun);
+  const zs = 120 / 11;
+  tl.to(CAM, { x: hilo.bx, y: hilo.by + (960 - 600) / zs, s: zs, duration: 1.3, ease: 'power2.inOut' }, T.aun + 0.1);
+  tl.to(CAM, { blur: 10, duration: 0.65, ease: 'power2.in' }, T.aun + 0.1).to(CAM, { blur: 0, duration: 0.65, ease: 'power2.out' }, '>');
+  tl.to(S, { oth: 0.03, duration: 0.9, ease: 'power1.in' }, T.aun + 0.2);
+  tl.set(S, { hookR: 0.08 }, T.aun + 0.2);
+  tl.to(S, { ringsIn: 1, duration: 1.4, ease: 'none' }, T.estrella - 0.2);
+  rise('#pay', T.siete2 - 1.4);
+  const PV = { v: 0 };
+  tl.fromTo(PV, { v: 0 }, { v: 7.6, duration: 1.4, ease: 'power2.out', immediateRender: false }, T.siete2 - 1.4);
+  stage.onFrame(() => { $('#pay').textContent = PV.v >= 7.599 ? '7,6' : PV.v.toFixed(1).replace('.', ','); });
+  tl.set('#pay', { opacity: 1 }, T.siete2 - 1.4);
+  show('#pay2', T.siete2 - 0.4); show('#pay3', T.estrella);
+  stage.sfx('@impact soft', T.siete2 + 0.05, -12);
+
+  // ===== P9 · cierre: el mismo encuadre del fotograma 0; la pregunta se vuelve la respuesta ====================
+  tl.to(['#pay', '#pay2', '#pay3'], { opacity: 0, duration: 0.3 }, T.cierre);
+  tl.to(CAM, { x: 540, y: 960, s: 1, duration: 1.5, ease: 'power2.inOut' }, T.cierre);
+  tl.to(S, { oth: 0.18, duration: 1.0 }, T.cierre + 0.3);
+  tl.to(S, { cl: 1, duration: 1.5, ease: 'none' }, T.cierre);
+  // la cámara obedece a la voz: "mira para arriba" sube hacia la estrella; "aquí abajo" baja a sus árboles
+  tl.to(CAM, { y: 880, s: 1.05, duration: 1.1, ease: 'power2.inOut' }, T.arriba - 0.2);
+  tl.to(CAM, { y: 1030, duration: T.abajo + 0.4 - (T.arriba + 0.9), ease: 'power1.inOut' }, T.arriba + 0.9);   // baja con la frase, de la estrella a sus árboles
+  stage.sfx('paper', T.cierre + 0.2, -20);
+  tl.set(['#lblS', '#q'], { opacity: 1 }, T.cierre + 1.2);
+  tl.fromTo(['#lblS'], { opacity: 0 }, { opacity: 1, duration: 0.4, immediateRender: false }, T.cierre + 1.2);
+  tl.set('#qB', { yPercent: 105 }, 0);
+  tl.fromTo('#qA', { yPercent: 0 }, { yPercent: -115, duration: 0.35, ease: 'power2.in', immediateRender: false }, T.abajo - 0.4);
+  tl.fromTo('#qB', { yPercent: 105 }, { yPercent: 0, duration: 0.5, ease: 'power4.out', immediateRender: false }, T.abajo - 0.15);
+  tl.set('#qA', { yPercent: 0 }, 0);
+  show('#end1', T.abajo + 0.2); show('#src', T.arriba);
+  tl.set({}, {}, END);
+</script>
+</body>
+</html>

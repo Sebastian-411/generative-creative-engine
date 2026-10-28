@@ -1,0 +1,15 @@
+{
+  "voice": "es-CO-SalomeNeural",
+  "rate": "+2%",
+  "lead": 0.4,
+  "gap": 0.32,
+  "tail": 1.8,
+  "lines": [
+    { "id": "hook", "text": "¿Por qué el cielo es azul y no blanco?" },
+    { "id": "sun", "text": "La luz del sol trae todos los colores mezclados." },
+    { "id": "air", "text": "Cuando choca con el aire, el azul rebota mucho más que el rojo." },
+    { "id": "spread", "text": "Por eso el azul se riega por todo el cielo y te llega desde cualquier lado." },
+    { "id": "violet", "text": "El violeta rebota aún más, pero el sol trae poco y tus ojos casi no lo notan.", "pause": 0.7 },
+    { "id": "payoff", "text": "Y al atardecer, cuando la luz cruza más aire, el azul se pierde y llega el naranja." }
+  ]
+}

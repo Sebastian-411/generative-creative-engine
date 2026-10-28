@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>cielo-azul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Archivo+Black&display=block" rel="stylesheet">
+<script src="/__engine/gsap.min.js"></script>
+<script src="/__engine/stage.js"></script>
+<script src="/__engine/kits/paper.js"></script>
+<style>
+  #stage { font-family: 'Patrick Hand', cursive; }
+  #c { position: absolute; inset: 0; }
+  .cap { position: absolute; left: 90px; right: 150px; top: 1330px; text-align: center; font-size: 88px; line-height: 1.02; color: #fbf6ea; text-shadow: 0 4px 0 #2a1826, 0 0 18px rgba(42,24,38,.35); }
+  .cap .cw { opacity: .45; }
+  .cap .cw.on { opacity: 1; }
+</style>
+</head>
+<body>
+<div id="stage"><canvas id="c" width="1080" height="1920"></canvas></div>
+<script>
+  const W = 1080, H = 1920;
+  const stage = Stage.create({
+    width: W, height: H, fps: 24, drawings: 12, seed: 'cielo-azul',
+    background: '#efe4cf',
+    voice: 'voice.json', duration: 'voice',
+    bpm: 108,
+    music: { style: 'paper', key: 'D', energy: [[0, 1], [7, 2], [17, 1], [23, 2]], drops: [{ at: 22.75, dur: 0.6 }] },
+  });
+  const { tl, rand } = stage;
+  const P = Paper.shapes;
+  const C = { ink: '#2a1826', cream: '#f4ecda', sun: '#f6c43a', ray: '#f2a33a', blue: '#3f7fd1', violet: '#8a5cc7', red: '#e2493a', orange: '#f2643c', yellow: '#efd13c', green: '#5fb27a', hill1: '#6aa36b', hill2: '#4b7f55' };
+  const SPECTRUM = [C.red, C.orange, C.yellow, C.green, C.blue, C.violet];
+
+  stage.font('400 150px "Archivo Black"');
+
+  // ---- Piezas ------------------------------------------------------------------
+  const sun = Paper.piece({ pts: P.circle(0, 0, 110, 60), fill: C.sun, seed: 'sun' });
+  const rays = Paper.piece({ pts: P.star(0, 0, 175, 120, 12), fill: C.ray, seed: 'rays', border: 4 });
+  const strips = SPECTRUM.map((c, i) => Paper.piece({ pts: P.rect(0, -11, 1000, 22), fill: c, seed: 'strip' + i, border: 3, jag: 1.6, shadowOffset: [2, 4] }));
+  const molecules = Array.from({ length: 16 }, (_, i) => ({
+    p: Paper.piece({ pts: P.blob(0, 0, 24, 'm' + i, 0.25), fill: C.cream, seed: 'mol' + i, border: 3 }),
+    x: 150 + (i % 8) * 110 + rand.jitter(30), y: 860 + Math.floor(i / 8) * 120 + rand.jitter(30),
+  }));
+  const dotB = Paper.piece({ pts: P.circle(0, 0, 15, 20), fill: C.blue, seed: 'db', border: 3, shadow: false });
+  const dotV = Paper.piece({ pts: P.circle(0, 0, 13, 20), fill: C.violet, seed: 'dv', border: 3, shadow: false });
+  const dotR = Paper.piece({ pts: P.circle(0, 0, 15, 20), fill: C.orange, seed: 'dr', border: 3, shadow: false });
+  const hillBack = Paper.piece({ pts: P.ellipse(0, 0, 820, 300, 90), fill: C.hill1, seed: 'hb' });
+  const hillFront = Paper.piece({ pts: P.ellipse(0, 0, 760, 260, 90), fill: C.hill2, seed: 'hf' });
+  const head = Paper.piece({ pts: P.circle(0, 0, 34, 30), fill: '#f0c39a', seed: 'head', border: 4 });
+  const body = Paper.piece({ pts: P.rect(-38, 0, 76, 120, 26), fill: C.orange, seed: 'body', border: 4 });
+  const eyeWhite = Paper.piece({ pts: P.ellipse(0, 0, 300, 170, 70), fill: '#fbf6ea', seed: 'eyew' });
+  const iris = Paper.piece({ pts: P.circle(0, 0, 120, 50), fill: C.blue, seed: 'iris', border: 0, shadow: false });
+  const pupil = Paper.piece({ pts: P.circle(0, 0, 54, 40), fill: C.ink, seed: 'pupil', border: 0, shadow: false });
+  const cloud = Paper.piece({ pts: P.blob(0, 0, 120, 'cloud', 0.18), fill: '#fbf6ea', seed: 'cloud', sx: 1 });
+  let title1 = null, title2 = null;
+
+  // Rayos dispersos: cada punto nace en una molécula con dirección fija (función cerrada del tiempo).
+  const scatter = Array.from({ length: 46 }, (_, i) => {
+    const m = molecules[i % molecules.length];
+    const a = rand.range(0, Math.PI * 2);
+    return { x: m.x, y: m.y, a, sp: rand.range(260, 520), delay: rand.range(0, 1.2) };
+  });
+
+  // ---- Estado ---------------------------------------------------------------------
+  const S = {
+    sky: 'rgb(239,228,207)', dusk: 0,
+    t1: 0, t1y: 0, t1flash: 0, t2: 0, cloud: { x: -300 },
+    sun: { x: 230, y: -260, s: 1 }, beam: 0, beamAng: 0.52, braid: 0,
+    mol: 0, scatterOn: 0, redPass: 0,
+    hills: 0, person: 0, converge: 0,
+    eye: 0, violet: 0, violetFade: 0,
+    sunset: 0,
+  };
+
+  // ---- Coreografía -------------------------------------------------------------------
+  // 1 · Gancho: cielo de papel crema ("¿blanco?"), el título cae letra por letra en "azul"; una nube blanca cruza en "blanco".
+  tl.to(S, { hills: 1, duration: 0.5, ease: 'power4.out' }, 0);
+  tl.to(S, { t1: 1, duration: 0.5, ease: 'none' }, 0.05)
+    .fromTo(S, { t1y: 60 }, { t1y: 0, duration: 2.2, ease: 'power1.out' }, 0.05)
+    .to(S, { t1flash: 1, duration: 0.12 }, stage.word('hook', 'azul', -0.05));
+  tl.to(S.cloud, { x: 1400, duration: 2.4, ease: 'none' }, stage.word('hook', 'blanco', -1.2));
+  stage.sfx('pop', 0.1, -14).sfx('pop', stage.word('hook', 'azul', -0.05), -12).sfx('paper', stage.word('hook', 'blanco', -0.5), -15);
+
+  // 2 · Sol: el papel se oscurece (espacio), el sol baja y suelta una cinta de seis colores en "colores".
+  const s2 = stage.at('sun');
+  tl.to(S, { t1y: -1100, duration: 0.35, ease: 'power4.in' }, s2 - 0.25)
+    .to(S, { sky: 'rgb(38,36,70)', duration: 0.5, ease: 'power2.inOut' }, s2 - 0.1)
+    .to(S, { hills: 0, duration: 0.4, ease: 'power4.in' }, s2 - 0.1)
+    .to(S.sun, { y: 330, duration: 0.6, ease: 'back.out(1.3)' }, s2)
+    .to(S, { beam: 1, duration: 1.0, ease: 'power2.out' }, stage.word('sun', 'colores', -0.2))
+    .to(S, { braid: 1, duration: 0.8, ease: 'power2.inOut' }, stage.word('sun', 'mezclados', -0.1));
+  stage.sfx('whoosh', s2 - 0.1, -16).sfx('slide', stage.word('sun', 'colores', -0.2), -12);
+
+  // 3 · Aire: aparecen las moléculas; el azul rebota en todas direcciones, el rojo sigue de largo.
+  const s3 = stage.at('air');
+  tl.to(S, { mol: 1, duration: 0.5, ease: 'back.out(1.6)' }, stage.word('air', 'aire', -0.25))
+    .to(S, { scatterOn: 1, duration: 0.01 }, stage.word('air', 'rebota', -0.1))
+    .to(S, { redPass: 1, duration: 1.1, ease: 'power1.in' }, stage.word('air', 'rojo', -0.4));
+  stage.sfx('bubble', stage.word('air', 'aire', -0.2), -14).sfx('sparkle', stage.word('air', 'rebota', -0.1), -11);
+
+  // 4 · Se riega: el cielo se vuelve azul, vuelven las colinas y una persona ve azul desde todos lados.
+  const s4 = stage.at('spread');
+  tl.to(S, { sky: 'rgb(96,158,216)', duration: 1.2, ease: 'power2.inOut' }, stage.word('spread', 'riega', -0.2))
+    .to(S, { hills: 1, duration: 0.5, ease: 'power4.out' }, stage.word('spread', 'cielo', -0.2))
+    .to(S, { person: 1, duration: 0.4, ease: 'back.out(1.8)' }, stage.word('spread', 'llega', -0.3))
+    .to(S, { converge: 1, duration: 1.4, ease: 'power2.in' }, stage.word('spread', 'llega', -0.1))
+    .to(S, { mol: 0, beam: 0, duration: 0.4, ease: 'power2.in' }, stage.word('spread', 'riega', 0.3));
+  stage.sfx('paper', stage.word('spread', 'cielo', -0.2), -14).sfx('pop', stage.word('spread', 'llega', -0.25), -13);
+
+  // 5 · Violeta: el ojo en primer plano; los puntos violeta llegan y se desvanecen antes de tocarlo.
+  const s5 = stage.at('violet');
+  tl.to(S, { eye: 1, duration: 0.5, ease: 'expo.out' }, s5 - 0.1)
+    .to(S, { violet: 1, duration: 2.6, ease: 'none' }, stage.word('violet', 'violeta', -0.2))
+    .to(S, { violetFade: 1, duration: 0.8, ease: 'power2.out' }, stage.word('violet', 'ojos', -0.2))
+    .to(S, { eye: 0, duration: 0.3, ease: 'power4.in' }, stage.end('violet', 0.15));
+  stage.sfx('swish', s5 - 0.1, -15).sfx('tick', stage.word('violet', 'notan'), -14);
+
+  // 6 · Remate (tras el silencio): el sol baja al horizonte, el cielo se vuelve naranja; título final en "naranja".
+  const s6 = stage.at('payoff');
+  tl.to(S, { sunset: 1, duration: 2.6, ease: 'power2.inOut' }, s6)
+    // azul → malva → naranja: interpolar directo en RGB pasa por un gris sucio
+    .to(S, { sky: 'rgb(206,140,178)', duration: 1.1, ease: 'power1.in' }, s6 + 0.3)
+    .to(S, { sky: 'rgb(242,138,74)', duration: 1.5, ease: 'power2.out' }, s6 + 1.4)
+    .to(S, { dusk: 1, duration: 2.6, ease: 'power2.inOut' }, s6 + 0.3)
+    .to(S, { t2: 1, duration: 0.6, ease: 'none' }, stage.word('payoff', 'naranja', -0.25));
+  stage.sfx('impact', stage.word('payoff', 'naranja', -0.1), -10);
+
+  Stage.captions(stage, { maxWords: 3 });
+
+  // ---- Dibujo ------------------------------------------------------------------------------
+  const g = document.getElementById('c').getContext('2d');
+  const J = (id, t, amt = 1.2) => Paper.jiggle(id, t, { move: amt });
+  const drawTitle = (word, prog, y, k = 1) => {
+    const n = word.pieces.length;
+    word.pieces.forEach((L, i) => {
+      const s = Math.min(1, Math.max(0, prog * n - i)); if (s <= 0) return;
+      const j = J('tt' + i + y, stage.RENDER ? 0 : 0);
+      Paper.draw(g, L.p, 540 - word.width / 2 + L.x + j.dx, y + L.dy, { rot: L.rot, scale: k * (0.6 + 0.4 * Stage.spring(s * 0.4, { stiffness: 260, damping: 14 })) });
+    });
+  };
+
+  stage.onFrame((t) => {
+    title1 ||= Paper.word('¿AZUL?', { font: '400 170px "Archivo Black"', fill: C.blue, seed: 't1' });
+    title2 ||= Paper.word('¡NARANJA!', { font: '400 140px "Archivo Black"', fill: C.orange, seed: 't2' });
+
+    // cielo (color plano animado + textura de papel encima)
+    g.fillStyle = S.sky; g.fillRect(0, 0, W, H);
+    Paper.background(g, W, H, { color: 'rgba(0,0,0,0)', seed: 'fib', fibers: 0.08, vignette: 0.25 });
+
+    // nube (gancho)
+    if (S.cloud.x > -280 && S.cloud.x < 1380) { const j = J('cl', t); Paper.draw(g, cloud, S.cloud.x + j.dx, 820 + j.dy, { sx: 1.4 }); }
+
+    // sol: en el remate baja hasta el horizonte
+    const sx = S.sun.x - S.sunset * 80, sy = S.sun.y + S.sunset * 1220;
+    if (sy > -200) {
+      Paper.draw(g, rays, sx, sy, { rot: stage.step(t, 4) * 0.12 });
+      const j = J('sun', t); Paper.draw(g, sun, sx + j.dx, sy + j.dy);
+    }
+
+    // cinta de colores desde el sol
+    if (S.beam > 0.01) {
+      strips.forEach((st, i) => {
+        const off = (i - 2.5) * 24;
+        const ang = S.beamAng + Math.sin(i * 1.7 + stage.step(t, 6) * 2) * 0.02 * S.braid;
+        const ox = sx + Math.cos(ang + Math.PI / 2) * off, oy = sy + Math.sin(ang + Math.PI / 2) * off;
+        let len = S.beam;
+        if (S.mol > 0.5 && i !== 0) len = Math.min(len, 0.62);           // el aire frena todo menos el rojo…
+        if (i === 0) len = Math.min(1.3, S.beam + S.redPass * 0.6);        // …que sigue de largo
+        Paper.draw(g, st, ox, oy, { rot: ang, sx: len, sy: 1 });
+      });
+    }
+
+    // moléculas de aire
+    if (S.mol > 0.01) molecules.forEach((m, i) => { const j = J('m' + i, t, 2); Paper.draw(g, m.p, m.x + j.dx, m.y + j.dy, { scale: S.mol }); });
+
+    // azul disperso
+    if (S.scatterOn > 0) {
+      const t0 = stage.word('air', 'rebota', -0.1);
+      scatter.forEach((d, i) => {
+        const tt = stage.step(t, 12) - t0 - d.delay * 0.5; if (tt < 0) return;
+        const k = (tt % 3.2);
+        let x = d.x + Math.cos(d.a) * d.sp * k, y = d.y + Math.sin(d.a) * d.sp * k;
+        if (S.converge > 0) { x += (790 - x) * S.converge; y += (1500 - y) * S.converge; }
+        if (x < -40 || x > W + 40 || y < -40 || y > H + 40) return;
+        Paper.draw(g, dotB, x, y, { alpha: S.converge > 0.95 ? 0 : 1 });
+      });
+      // ya convergidos: el azul sigue llegando a la persona desde todas direcciones
+      if (S.converge >= 1 && S.dusk < 0.4) for (let k = 0; k < 14; k++) {
+        const a = -Math.PI * (0.08 + 0.84 * (k / 13)), p = (stage.step(t, 12) * 0.35 + (k * 0.37) % 1) % 1;
+        const r = 900 * (1 - p);
+        Paper.draw(g, dotB, 790 + Math.cos(a) * r, 1500 + Math.sin(a) * r, { alpha: (1 - S.dusk * 2.5) * Math.min(1, p * 4) * (1 - S.eye) });
+      }
+    }
+
+    // colinas + persona
+    if (S.hills > 0.01) {
+      const hy = (1 - S.hills) * 600;
+      Paper.draw(g, hillBack, 260, 1760 + hy);
+      Paper.draw(g, hillFront, 900, 1820 + hy);
+      if (S.person > 0.01) {
+        const j = J('per', t);
+        Paper.draw(g, body, 790 + j.dx, 1550 + hy + (1 - S.person) * 200, { rot: j.rot });
+        Paper.draw(g, head, 790 + j.dx, 1515 + hy + (1 - S.person) * 200, { rot: j.rot });
+      }
+    }
+
+    // atardecer: tinte naranja multiplicado sobre todo
+    if (S.dusk > 0.01) {
+      g.save(); g.globalCompositeOperation = 'multiply';
+      g.fillStyle = `rgba(250,150,90,${0.35 * S.dusk})`; g.fillRect(0, 0, W, H); g.restore();
+      // la luz llega a la persona en naranja
+      for (let k = 0; k < 7; k++) {
+        const p = (stage.step(t, 12) * 0.5 + k / 7) % 1;
+        Paper.draw(g, dotR, sx + (790 - sx) * p, sy + (1500 - sy) * p - Math.sin(p * Math.PI) * 120, { alpha: S.dusk });
+      }
+    }
+
+    // ojo en primer plano con violetas que no llegan
+    if (S.eye > 0.01) {
+      const e = S.eye, j = J('eye', t);
+      Paper.draw(g, eyeWhite, 540 + j.dx, 860 + j.dy, { scale: e });
+      Paper.draw(g, iris, 540 + j.dx, 860 + j.dy, { scale: e });
+      Paper.draw(g, pupil, 540 + j.dx, 860 + j.dy, { scale: e });
+      for (let k = 0; k < 9; k++) {
+        const a = (k / 9) * Math.PI * 2 + 0.3, p = (S.violet * 2.2 + k / 9) % 1;
+        const r = 620 - p * 420;
+        Paper.draw(g, dotV, 540 + Math.cos(a) * r, 860 + Math.sin(a) * r * 0.8, { alpha: e * (1 - S.violetFade * p) * (k % 3 === 0 ? 1 : 0.85) });
+      }
+    }
+
+    // títulos
+    if (S.t1 > 0) drawTitle(title1, S.t1, 560 + S.t1y, 1 + 0.08 * S.t1flash * (1 - Math.min(1, (t - stage.word('hook', 'azul')) * 3)));
+    if (S.t2 > 0) drawTitle(title2, S.t2, 480);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+{
+ "direction": "un amigo que te cuenta un dato en la sobremesa y te reta a apostar: arranca retador y cómplice, explica claro sin sermón, se divierte en el empate, baja la voz antes del giro, golpe de asombro en 'tres millones de millones', y la respuesta final cálida y cercana, nunca épica ni de documental. Ritmo conversacional ágil, unas tres palabras por segundo, sin arrastrar.",
+ "engine": "qwen",
+ "cast": {
+  "narrador": {
+   "description": "A warm, natural Colombian man in his mid thirties from Bogotá, telling a friend a surprising fact over coffee and challenging him to bet. Latin American Spanish with a soft Bogotá accent, playful and curious, a smile in the voice, clear and conversational, medium pace. Realistic human phrasing, never a commercial announcer or a documentary narrator."
+  }
+ },
+ "takes": 2,
+ "lead": 0.35,
+ "gap": 0.3,
+ "tail": 2.6,
+ "lines": [
+  {
+   "id": "hook",
+   "text": "¿Qué hay más: estrellas en nuestra galaxia, o árboles en la Tierra?",
+   "emotion": "curiosidad",
+   "intensity": 0.55,
+   "pace": "natural",
+   "pause": 0.35
+  },
+  {
+   "id": "unidad",
+   "text": "Contemos. Aquí, cada punto es mil millones.",
+   "emotion": "complicidad",
+   "intensity": 0.5,
+   "pace": "natural",
+   "pause": 0.35
+  },
+  {
+   "id": "galaxia",
+   "text": "La Vía Láctea tiene entre 100.000 y 400.000 millones de estrellas.",
+   "say": "La Vía Láctea tiene entre cien mil y cuatrocientos mil millones de estrellas.",
+   "emotion": "asombro",
+   "intensity": 0.5,
+   "pace": "natural",
+   "pause": 0.3
+  },
+  {
+   "id": "generosa",
+   "text": "Démosle la más alta: cuatrocientos puntos.",
+   "emotion": "juguetón",
+   "intensity": 0.5,
+   "pace": "natural",
+   "pause": 0.45
+  },
+  {
+   "id": "antes",
+   "text": "Árboles. Antes de 2015, se calculaban unos 400.000 millones.",
+   "say": "Árboles. Antes de dos mil quince, se calculaban unos cuatrocientos mil millones.",
+   "emotion": "narrativo",
+   "intensity": 0.45,
+   "pace": "natural",
+   "pause": 0.3
+  },
+  {
+   "id": "empate",
+   "text": "Empate. Si apostaste por las estrellas, ibas bien.",
+   "emotion": "divertido",
+   "intensity": 0.55,
+   "pace": "natural",
+   "pause": 0.4
+  },
+  {
+   "id": "conteo",
+   "text": "Ese año, un equipo cruzó datos de más de 400.000 parcelas de bosque con imágenes de satélite, kilómetro por kilómetro.",
+   "say": "Ese año, un equipo cruzó datos de más de cuatrocientas mil parcelas de bosque con imágenes de satélite, kilómetro por kilómetro.",
+   "emotion": "interés",
+   "intensity": 0.55,
+   "pace": "ágil",
+   "pause": 0.4
+  },
+  {
+   "id": "resultado",
+   "text": "No eran 400.000 millones.",
+   "say": "No eran cuatrocientos mil millones.",
+   "emotion": "conspirativo",
+   "intensity": 0.55,
+   "pace": "natural",
+   "pause": 0.3
+  },
+  {
+   "id": "billones",
+   "text": "Eran tres millones de millones.",
+   "emotion": "asombro",
+   "intensity": 0.75,
+   "pace": "natural",
+   "pause": 0.35
+  },
+  {
+   "id": "siete",
+   "text": "Siete veces más de lo que creíamos.",
+   "emotion": "asombro",
+   "intensity": 0.6,
+   "pace": "natural",
+   "pause": 2.4
+  },
+  {
+   "id": "aun",
+   "text": "Así que, incluso con la cifra más alta de estrellas…",
+   "emotion": "íntimo",
+   "intensity": 0.5,
+   "pace": "natural",
+   "pause": 0.7
+  },
+  {
+   "id": "payoff",
+   "text": "a cada estrella le tocan más de siete árboles.",
+   "emotion": "revelación",
+   "intensity": 0.8,
+   "pace": "natural",
+   "pause": 0.6
+  },
+  {
+   "id": "cierre",
+   "text": "Esta noche, mira para arriba. Por cada estrella, más de siete árboles aquí abajo.",
+   "emotion": "cálido",
+   "intensity": 0.6,
+   "pace": "natural"
+  }
+ ],
+ "master": true,
+ "room": "seco",
+ "tempo": 1.16
+}

@@ -1,0 +1,1000 @@
+{
+ "engine": "qwen",
+ "duration": 66.08,
+ "wordsPerSecond": 2.22,
+ "descriptions": [
+  {
+   "speaker": "narrador",
+   "description": "A warm, natural Colombian man in his mid thirties from Bogotá, telling a friend a surprising fact over coffee and challenging him to bet. Latin American Spanish with a soft Bogotá accent, playful and curious, a smile in the voice, clear and conversational, medium pace. Realistic human phrasing, never a commercial announcer or a documentary narrator. Overall: un amigo que te cuenta un dato en la sobremesa y te reta a apostar: arranca retador y cómplice, explica claro sin sermón, se divierte en el empate, baja la voz antes del giro, golpe de asombro en 'tres millones de millones', y la respuesta final cálida y cercana, nunca épica ni de documental. Ritmo conversacional ágil, unas tres palabras por segundo, sin arrastrar.. Performance arc, sentence by sentence: 1) natural, conversational and clear; 2) natural, conversational and clear; 3) natural, conversational and clear; 4) natural, conversational and clear; 5) natural, conversational and clear; 6) natural, conversational and clear; 7) natural, conversational and clear; 8) natural, conversational and clear; 9) natural, conversational and clear; 10) natural, conversational and clear; 11) natural, conversational and clear; 12) natural, conversational and clear; 13) warm, close and friendly, with a gentle smile in the voice. Realistic human phrasing with natural pauses at ellipses and line breaks, varied pitch and pace, never monotone, never theatrical."
+  }
+ ],
+ "lines": [
+  {
+   "id": "hook",
+   "text": "¿Qué hay más: estrellas en nuestra galaxia, o árboles en la Tierra?",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 0.302,
+   "end": 4.06,
+   "words": [
+    {
+     "w": "¿Qué",
+     "start": 0.302,
+     "end": 0.44
+    },
+    {
+     "w": "hay",
+     "start": 0.44,
+     "end": 0.681
+    },
+    {
+     "w": "más:",
+     "start": 0.681,
+     "end": 0.905
+    },
+    {
+     "w": "estrellas",
+     "start": 1.319,
+     "end": 1.905
+    },
+    {
+     "w": "en",
+     "start": 1.905,
+     "end": 2.009
+    },
+    {
+     "w": "nuestra",
+     "start": 2.009,
+     "end": 2.129
+    },
+    {
+     "w": "galaxia,",
+     "start": 2.129,
+     "end": 2.905
+    },
+    {
+     "w": "o",
+     "start": 2.905,
+     "end": 3.164
+    },
+    {
+     "w": "árboles",
+     "start": 3.164,
+     "end": 3.405
+    },
+    {
+     "w": "en",
+     "start": 3.405,
+     "end": 3.595
+    },
+    {
+     "w": "la",
+     "start": 3.595,
+     "end": 3.681
+    },
+    {
+     "w": "Tierra?",
+     "start": 3.681,
+     "end": 4.06
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-986d60de13-t2.wav",
+     "err": 0.023,
+     "dur": 71.13,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra contemos. Aquí cada punto es mil millones. La Via Láctea tiene entre cien mil y cuatrocientos mil millones de estrellas. ¿Demosle la más alta? Cuatrocientos puntos árboles. Antes de dos mil quince se calculaban unos cuatrocientos mil millones. Empate. Se apostaste por las estrellas y vas bien. Ese año un equipo cruzó datos de más de cuatrocientas mil parcelas de bosque con imágenes de satélite. Kilómetro por kilómetro. No eran cuatrocientos mil millones. Eran tres millones de millones siete veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. ¿A cada estrella le tocan más de siete árboles? Esta noche mira para arriba. Por cada estrella más de siete árboles aquí abajo."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-986d60de13-t1.wav",
+     "err": 0.209,
+     "dur": 46.04,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra? Contemos. Aquí, cada punto es mil millones. La Via Láctea tiene entre 100.000 y 400.000 millones de estrellas. Demos de la más alta, 400 puntos. Árboles. Antes de 2015 se calculaban unos 400.000 millones. Empate. Si apostaste por las estrellas, ibas bien. Ese año, un equipo cruzó datos de más de 400.000 parcelas de bosque con imágenes de satélite kilómetro por kilómetro. No eran 400.000 millones. Eran 3 millones de millones, 7 veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. A cada estrella le tocan más de 7 árboles aquí abajo."
+    }
+   ]
+  },
+  {
+   "id": "unidad",
+   "text": "Contemos. Aquí, cada punto es mil millones.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 4.362,
+   "end": 7.741,
+   "words": [
+    {
+     "w": "Contemos.",
+     "start": 4.362,
+     "end": 5.138
+    },
+    {
+     "w": "Aquí,",
+     "start": 5.707,
+     "end": 5.948
+    },
+    {
+     "w": "cada",
+     "start": 5.948,
+     "end": 6.224
+    },
+    {
+     "w": "punto",
+     "start": 6.224,
+     "end": 6.552
+    },
+    {
+     "w": "es",
+     "start": 6.552,
+     "end": 6.914
+    },
+    {
+     "w": "mil",
+     "start": 6.914,
+     "end": 7.241
+    },
+    {
+     "w": "millones.",
+     "start": 7.241,
+     "end": 7.741
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-986d60de13-t2.wav",
+     "err": 0.023,
+     "dur": 71.13,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra contemos. Aquí cada punto es mil millones. La Via Láctea tiene entre cien mil y cuatrocientos mil millones de estrellas. ¿Demosle la más alta? Cuatrocientos puntos árboles. Antes de dos mil quince se calculaban unos cuatrocientos mil millones. Empate. Se apostaste por las estrellas y vas bien. Ese año un equipo cruzó datos de más de cuatrocientas mil parcelas de bosque con imágenes de satélite. Kilómetro por kilómetro. No eran cuatrocientos mil millones. Eran tres millones de millones siete veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. ¿A cada estrella le tocan más de siete árboles? Esta noche mira para arriba. Por cada estrella más de siete árboles aquí abajo."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-986d60de13-t1.wav",
+     "err": 0.209,
+     "dur": 46.04,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra? Contemos. Aquí, cada punto es mil millones. La Via Láctea tiene entre 100.000 y 400.000 millones de estrellas. Demos de la más alta, 400 puntos. Árboles. Antes de 2015 se calculaban unos 400.000 millones. Empate. Si apostaste por las estrellas, ibas bien. Ese año, un equipo cruzó datos de más de 400.000 parcelas de bosque con imágenes de satélite kilómetro por kilómetro. No eran 400.000 millones. Eran 3 millones de millones, 7 veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. A cada estrella le tocan más de 7 árboles aquí abajo."
+    }
+   ]
+  },
+  {
+   "id": "galaxia",
+   "text": "La Vía Láctea tiene entre 100.000 y 400.000 millones de estrellas.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 8.466,
+   "end": 13.483,
+   "words": [
+    {
+     "w": "La",
+     "start": 8.466,
+     "end": 9.155
+    },
+    {
+     "w": "Vía",
+     "start": 9.155,
+     "end": 9.31
+    },
+    {
+     "w": "Láctea",
+     "start": 9.31,
+     "end": 9.672
+    },
+    {
+     "w": "tiene",
+     "start": 9.672,
+     "end": 10.017
+    },
+    {
+     "w": "entre",
+     "start": 10.017,
+     "end": 10.431
+    },
+    {
+     "w": "100.000",
+     "start": 10.862,
+     "end": 11.103
+    },
+    {
+     "w": "y",
+     "start": 11.103,
+     "end": 11.293
+    },
+    {
+     "w": "400.000",
+     "start": 11.897,
+     "end": 12.052
+    },
+    {
+     "w": "millones",
+     "start": 12.052,
+     "end": 12.5
+    },
+    {
+     "w": "de",
+     "start": 12.5,
+     "end": 12.741
+    },
+    {
+     "w": "estrellas.",
+     "start": 12.741,
+     "end": 13.483
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-986d60de13-t2.wav",
+     "err": 0.023,
+     "dur": 71.13,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra contemos. Aquí cada punto es mil millones. La Via Láctea tiene entre cien mil y cuatrocientos mil millones de estrellas. ¿Demosle la más alta? Cuatrocientos puntos árboles. Antes de dos mil quince se calculaban unos cuatrocientos mil millones. Empate. Se apostaste por las estrellas y vas bien. Ese año un equipo cruzó datos de más de cuatrocientas mil parcelas de bosque con imágenes de satélite. Kilómetro por kilómetro. No eran cuatrocientos mil millones. Eran tres millones de millones siete veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. ¿A cada estrella le tocan más de siete árboles? Esta noche mira para arriba. Por cada estrella más de siete árboles aquí abajo."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-986d60de13-t1.wav",
+     "err": 0.209,
+     "dur": 46.04,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra? Contemos. Aquí, cada punto es mil millones. La Via Láctea tiene entre 100.000 y 400.000 millones de estrellas. Demos de la más alta, 400 puntos. Árboles. Antes de 2015 se calculaban unos 400.000 millones. Empate. Si apostaste por las estrellas, ibas bien. Ese año, un equipo cruzó datos de más de 400.000 parcelas de bosque con imágenes de satélite kilómetro por kilómetro. No eran 400.000 millones. Eran 3 millones de millones, 7 veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. A cada estrella le tocan más de 7 árboles aquí abajo."
+    }
+   ]
+  },
+  {
+   "id": "generosa",
+   "text": "Démosle la más alta: cuatrocientos puntos.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 13.845,
+   "end": 16.655,
+   "words": [
+    {
+     "w": "Démosle",
+     "start": 13.845,
+     "end": 14.328
+    },
+    {
+     "w": "la",
+     "start": 14.328,
+     "end": 14.414
+    },
+    {
+     "w": "más",
+     "start": 14.414,
+     "end": 14.569
+    },
+    {
+     "w": "alta:",
+     "start": 14.569,
+     "end": 14.776
+    },
+    {
+     "w": "cuatrocientos",
+     "start": 15.586,
+     "end": 16.31
+    },
+    {
+     "w": "puntos.",
+     "start": 16.31,
+     "end": 16.655
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-986d60de13-t2.wav",
+     "err": 0.023,
+     "dur": 71.13,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra contemos. Aquí cada punto es mil millones. La Via Láctea tiene entre cien mil y cuatrocientos mil millones de estrellas. ¿Demosle la más alta? Cuatrocientos puntos árboles. Antes de dos mil quince se calculaban unos cuatrocientos mil millones. Empate. Se apostaste por las estrellas y vas bien. Ese año un equipo cruzó datos de más de cuatrocientas mil parcelas de bosque con imágenes de satélite. Kilómetro por kilómetro. No eran cuatrocientos mil millones. Eran tres millones de millones siete veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. ¿A cada estrella le tocan más de siete árboles? Esta noche mira para arriba. Por cada estrella más de siete árboles aquí abajo."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-986d60de13-t1.wav",
+     "err": 0.209,
+     "dur": 46.04,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra? Contemos. Aquí, cada punto es mil millones. La Via Láctea tiene entre 100.000 y 400.000 millones de estrellas. Demos de la más alta, 400 puntos. Árboles. Antes de 2015 se calculaban unos 400.000 millones. Empate. Si apostaste por las estrellas, ibas bien. Ese año, un equipo cruzó datos de más de 400.000 parcelas de bosque con imágenes de satélite kilómetro por kilómetro. No eran 400.000 millones. Eran 3 millones de millones, 7 veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. A cada estrella le tocan más de 7 árboles aquí abajo."
+    }
+   ]
+  },
+  {
+   "id": "antes",
+   "text": "Árboles. Antes de 2015, se calculaban unos 400.000 millones.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 17.043,
+   "end": 23.371,
+   "words": [
+    {
+     "w": "Árboles.",
+     "start": 17.043,
+     "end": 18.233
+    },
+    {
+     "w": "Antes",
+     "start": 18.991,
+     "end": 19.371
+    },
+    {
+     "w": "de",
+     "start": 19.371,
+     "end": 19.595
+    },
+    {
+     "w": "2015,",
+     "start": 19.94,
+     "end": 20.353
+    },
+    {
+     "w": "se",
+     "start": 20.353,
+     "end": 20.784
+    },
+    {
+     "w": "calculaban",
+     "start": 20.784,
+     "end": 21.388
+    },
+    {
+     "w": "unos",
+     "start": 21.388,
+     "end": 21.664
+    },
+    {
+     "w": "400.000",
+     "start": 22.578,
+     "end": 22.819
+    },
+    {
+     "w": "millones.",
+     "start": 22.819,
+     "end": 23.371
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-986d60de13-t2.wav",
+     "err": 0.023,
+     "dur": 71.13,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra contemos. Aquí cada punto es mil millones. La Via Láctea tiene entre cien mil y cuatrocientos mil millones de estrellas. ¿Demosle la más alta? Cuatrocientos puntos árboles. Antes de dos mil quince se calculaban unos cuatrocientos mil millones. Empate. Se apostaste por las estrellas y vas bien. Ese año un equipo cruzó datos de más de cuatrocientas mil parcelas de bosque con imágenes de satélite. Kilómetro por kilómetro. No eran cuatrocientos mil millones. Eran tres millones de millones siete veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. ¿A cada estrella le tocan más de siete árboles? Esta noche mira para arriba. Por cada estrella más de siete árboles aquí abajo."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-986d60de13-t1.wav",
+     "err": 0.209,
+     "dur": 46.04,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra? Contemos. Aquí, cada punto es mil millones. La Via Láctea tiene entre 100.000 y 400.000 millones de estrellas. Demos de la más alta, 400 puntos. Árboles. Antes de 2015 se calculaban unos 400.000 millones. Empate. Si apostaste por las estrellas, ibas bien. Ese año, un equipo cruzó datos de más de 400.000 parcelas de bosque con imágenes de satélite kilómetro por kilómetro. No eran 400.000 millones. Eran 3 millones de millones, 7 veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. A cada estrella le tocan más de 7 árboles aquí abajo."
+    }
+   ]
+  },
+  {
+   "id": "empate",
+   "text": "Empate. Si apostaste por las estrellas, ibas bien.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 23.974,
+   "end": 27.112,
+   "words": [
+    {
+     "w": "Empate.",
+     "start": 23.974,
+     "end": 24.422
+    },
+    {
+     "w": "Si",
+     "start": 25.009,
+     "end": 25.147
+    },
+    {
+     "w": "apostaste",
+     "start": 25.147,
+     "end": 25.578
+    },
+    {
+     "w": "por",
+     "start": 25.578,
+     "end": 25.733
+    },
+    {
+     "w": "las",
+     "start": 25.733,
+     "end": 25.871
+    },
+    {
+     "w": "estrellas,",
+     "start": 25.871,
+     "end": 26.422
+    },
+    {
+     "w": "ibas",
+     "start": 26.836,
+     "end": 26.94
+    },
+    {
+     "w": "bien.",
+     "start": 26.94,
+     "end": 27.112
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-986d60de13-t2.wav",
+     "err": 0.023,
+     "dur": 71.13,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra contemos. Aquí cada punto es mil millones. La Via Láctea tiene entre cien mil y cuatrocientos mil millones de estrellas. ¿Demosle la más alta? Cuatrocientos puntos árboles. Antes de dos mil quince se calculaban unos cuatrocientos mil millones. Empate. Se apostaste por las estrellas y vas bien. Ese año un equipo cruzó datos de más de cuatrocientas mil parcelas de bosque con imágenes de satélite. Kilómetro por kilómetro. No eran cuatrocientos mil millones. Eran tres millones de millones siete veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. ¿A cada estrella le tocan más de siete árboles? Esta noche mira para arriba. Por cada estrella más de siete árboles aquí abajo."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-986d60de13-t1.wav",
+     "err": 0.209,
+     "dur": 46.04,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra? Contemos. Aquí, cada punto es mil millones. La Via Láctea tiene entre 100.000 y 400.000 millones de estrellas. Demos de la más alta, 400 puntos. Árboles. Antes de 2015 se calculaban unos 400.000 millones. Empate. Si apostaste por las estrellas, ibas bien. Ese año, un equipo cruzó datos de más de 400.000 parcelas de bosque con imágenes de satélite kilómetro por kilómetro. No eran 400.000 millones. Eran 3 millones de millones, 7 veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. A cada estrella le tocan más de 7 árboles aquí abajo."
+    }
+   ]
+  },
+  {
+   "id": "conteo",
+   "text": "Ese año, un equipo cruzó datos de más de 400.000 parcelas de bosque con imágenes de satélite, kilómetro por kilómetro.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 27.681,
+   "end": 36.284,
+   "words": [
+    {
+     "w": "Ese",
+     "start": 27.681,
+     "end": 27.974
+    },
+    {
+     "w": "año,",
+     "start": 27.974,
+     "end": 28.284
+    },
+    {
+     "w": "un",
+     "start": 28.284,
+     "end": 28.767
+    },
+    {
+     "w": "equipo",
+     "start": 28.767,
+     "end": 28.991
+    },
+    {
+     "w": "cruzó",
+     "start": 28.991,
+     "end": 29.353
+    },
+    {
+     "w": "datos",
+     "start": 29.353,
+     "end": 29.612
+    },
+    {
+     "w": "de",
+     "start": 29.612,
+     "end": 29.836
+    },
+    {
+     "w": "más",
+     "start": 29.836,
+     "end": 30.009
+    },
+    {
+     "w": "de",
+     "start": 30.009,
+     "end": 30.198
+    },
+    {
+     "w": "400.000",
+     "start": 31.043,
+     "end": 31.198
+    },
+    {
+     "w": "parcelas",
+     "start": 31.198,
+     "end": 31.681
+    },
+    {
+     "w": "de",
+     "start": 31.681,
+     "end": 31.836
+    },
+    {
+     "w": "bosque",
+     "start": 31.836,
+     "end": 32.129
+    },
+    {
+     "w": "con",
+     "start": 32.129,
+     "end": 32.336
+    },
+    {
+     "w": "imágenes",
+     "start": 32.336,
+     "end": 32.784
+    },
+    {
+     "w": "de",
+     "start": 32.784,
+     "end": 33.216
+    },
+    {
+     "w": "satélite,",
+     "start": 33.216,
+     "end": 33.905
+    },
+    {
+     "w": "kilómetro",
+     "start": 34.474,
+     "end": 35.078
+    },
+    {
+     "w": "por",
+     "start": 35.078,
+     "end": 35.491
+    },
+    {
+     "w": "kilómetro.",
+     "start": 35.491,
+     "end": 36.284
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-986d60de13-t2.wav",
+     "err": 0.023,
+     "dur": 71.13,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra contemos. Aquí cada punto es mil millones. La Via Láctea tiene entre cien mil y cuatrocientos mil millones de estrellas. ¿Demosle la más alta? Cuatrocientos puntos árboles. Antes de dos mil quince se calculaban unos cuatrocientos mil millones. Empate. Se apostaste por las estrellas y vas bien. Ese año un equipo cruzó datos de más de cuatrocientas mil parcelas de bosque con imágenes de satélite. Kilómetro por kilómetro. No eran cuatrocientos mil millones. Eran tres millones de millones siete veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. ¿A cada estrella le tocan más de siete árboles? Esta noche mira para arriba. Por cada estrella más de siete árboles aquí abajo."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-986d60de13-t1.wav",
+     "err": 0.209,
+     "dur": 46.04,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra? Contemos. Aquí, cada punto es mil millones. La Via Láctea tiene entre 100.000 y 400.000 millones de estrellas. Demos de la más alta, 400 puntos. Árboles. Antes de 2015 se calculaban unos 400.000 millones. Empate. Si apostaste por las estrellas, ibas bien. Ese año, un equipo cruzó datos de más de 400.000 parcelas de bosque con imágenes de satélite kilómetro por kilómetro. No eran 400.000 millones. Eran 3 millones de millones, 7 veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. A cada estrella le tocan más de 7 árboles aquí abajo."
+    }
+   ]
+  },
+  {
+   "id": "resultado",
+   "text": "No eran 400.000 millones.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 37.095,
+   "end": 39.802,
+   "words": [
+    {
+     "w": "No",
+     "start": 37.095,
+     "end": 37.457
+    },
+    {
+     "w": "eran",
+     "start": 37.457,
+     "end": 37.767
+    },
+    {
+     "w": "400.000",
+     "start": 38.991,
+     "end": 39.233
+    },
+    {
+     "w": "millones.",
+     "start": 39.233,
+     "end": 39.802
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-986d60de13-t2.wav",
+     "err": 0.023,
+     "dur": 71.13,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra contemos. Aquí cada punto es mil millones. La Via Láctea tiene entre cien mil y cuatrocientos mil millones de estrellas. ¿Demosle la más alta? Cuatrocientos puntos árboles. Antes de dos mil quince se calculaban unos cuatrocientos mil millones. Empate. Se apostaste por las estrellas y vas bien. Ese año un equipo cruzó datos de más de cuatrocientas mil parcelas de bosque con imágenes de satélite. Kilómetro por kilómetro. No eran cuatrocientos mil millones. Eran tres millones de millones siete veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. ¿A cada estrella le tocan más de siete árboles? Esta noche mira para arriba. Por cada estrella más de siete árboles aquí abajo."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-986d60de13-t1.wav",
+     "err": 0.209,
+     "dur": 46.04,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra? Contemos. Aquí, cada punto es mil millones. La Via Láctea tiene entre 100.000 y 400.000 millones de estrellas. Demos de la más alta, 400 puntos. Árboles. Antes de 2015 se calculaban unos 400.000 millones. Empate. Si apostaste por las estrellas, ibas bien. Ese año, un equipo cruzó datos de más de 400.000 parcelas de bosque con imágenes de satélite kilómetro por kilómetro. No eran 400.000 millones. Eran 3 millones de millones, 7 veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. A cada estrella le tocan más de 7 árboles aquí abajo."
+    }
+   ]
+  },
+  {
+   "id": "billones",
+   "text": "Eran tres millones de millones.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 40.44,
+   "end": 42.267,
+   "words": [
+    {
+     "w": "Eran",
+     "start": 40.44,
+     "end": 40.802
+    },
+    {
+     "w": "tres",
+     "start": 40.802,
+     "end": 41.147
+    },
+    {
+     "w": "millones",
+     "start": 41.147,
+     "end": 41.647
+    },
+    {
+     "w": "de",
+     "start": 41.647,
+     "end": 41.853
+    },
+    {
+     "w": "millones.",
+     "start": 41.853,
+     "end": 42.267
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-986d60de13-t2.wav",
+     "err": 0.023,
+     "dur": 71.13,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra contemos. Aquí cada punto es mil millones. La Via Láctea tiene entre cien mil y cuatrocientos mil millones de estrellas. ¿Demosle la más alta? Cuatrocientos puntos árboles. Antes de dos mil quince se calculaban unos cuatrocientos mil millones. Empate. Se apostaste por las estrellas y vas bien. Ese año un equipo cruzó datos de más de cuatrocientas mil parcelas de bosque con imágenes de satélite. Kilómetro por kilómetro. No eran cuatrocientos mil millones. Eran tres millones de millones siete veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. ¿A cada estrella le tocan más de siete árboles? Esta noche mira para arriba. Por cada estrella más de siete árboles aquí abajo."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-986d60de13-t1.wav",
+     "err": 0.209,
+     "dur": 46.04,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra? Contemos. Aquí, cada punto es mil millones. La Via Láctea tiene entre 100.000 y 400.000 millones de estrellas. Demos de la más alta, 400 puntos. Árboles. Antes de 2015 se calculaban unos 400.000 millones. Empate. Si apostaste por las estrellas, ibas bien. Ese año, un equipo cruzó datos de más de 400.000 parcelas de bosque con imágenes de satélite kilómetro por kilómetro. No eran 400.000 millones. Eran 3 millones de millones, 7 veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. A cada estrella le tocan más de 7 árboles aquí abajo."
+    }
+   ]
+  },
+  {
+   "id": "siete",
+   "text": "Siete veces más de lo que creíamos.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 42.569,
+   "end": 45.448,
+   "words": [
+    {
+     "w": "Siete",
+     "start": 42.569,
+     "end": 43.759
+    },
+    {
+     "w": "veces",
+     "start": 43.759,
+     "end": 44.19
+    },
+    {
+     "w": "más",
+     "start": 44.19,
+     "end": 44.5
+    },
+    {
+     "w": "de",
+     "start": 44.5,
+     "end": 44.724
+    },
+    {
+     "w": "lo",
+     "start": 44.724,
+     "end": 44.828
+    },
+    {
+     "w": "que",
+     "start": 44.828,
+     "end": 44.983
+    },
+    {
+     "w": "creíamos.",
+     "start": 44.983,
+     "end": 45.448
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-986d60de13-t2.wav",
+     "err": 0.023,
+     "dur": 71.13,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra contemos. Aquí cada punto es mil millones. La Via Láctea tiene entre cien mil y cuatrocientos mil millones de estrellas. ¿Demosle la más alta? Cuatrocientos puntos árboles. Antes de dos mil quince se calculaban unos cuatrocientos mil millones. Empate. Se apostaste por las estrellas y vas bien. Ese año un equipo cruzó datos de más de cuatrocientas mil parcelas de bosque con imágenes de satélite. Kilómetro por kilómetro. No eran cuatrocientos mil millones. Eran tres millones de millones siete veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. ¿A cada estrella le tocan más de siete árboles? Esta noche mira para arriba. Por cada estrella más de siete árboles aquí abajo."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-986d60de13-t1.wav",
+     "err": 0.209,
+     "dur": 46.04,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra? Contemos. Aquí, cada punto es mil millones. La Via Láctea tiene entre 100.000 y 400.000 millones de estrellas. Demos de la más alta, 400 puntos. Árboles. Antes de 2015 se calculaban unos 400.000 millones. Empate. Si apostaste por las estrellas, ibas bien. Ese año, un equipo cruzó datos de más de 400.000 parcelas de bosque con imágenes de satélite kilómetro por kilómetro. No eran 400.000 millones. Eran 3 millones de millones, 7 veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. A cada estrella le tocan más de 7 árboles aquí abajo."
+    }
+   ]
+  },
+  {
+   "id": "aun",
+   "text": "Así que, incluso con la cifra más alta de estrellas…",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 47.517,
+   "end": 51.103,
+   "words": [
+    {
+     "w": "Así",
+     "start": 47.517,
+     "end": 47.966
+    },
+    {
+     "w": "que,",
+     "start": 47.966,
+     "end": 48.172
+    },
+    {
+     "w": "incluso",
+     "start": 48.448,
+     "end": 48.81
+    },
+    {
+     "w": "con",
+     "start": 48.81,
+     "end": 49.241
+    },
+    {
+     "w": "la",
+     "start": 49.241,
+     "end": 49.362
+    },
+    {
+     "w": "cifra",
+     "start": 49.362,
+     "end": 49.776
+    },
+    {
+     "w": "más",
+     "start": 49.776,
+     "end": 50.207
+    },
+    {
+     "w": "alta",
+     "start": 50.207,
+     "end": 50.483
+    },
+    {
+     "w": "de",
+     "start": 50.483,
+     "end": 50.621
+    },
+    {
+     "w": "estrellas…",
+     "start": 50.621,
+     "end": 51.103
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-986d60de13-t2.wav",
+     "err": 0.023,
+     "dur": 71.13,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra contemos. Aquí cada punto es mil millones. La Via Láctea tiene entre cien mil y cuatrocientos mil millones de estrellas. ¿Demosle la más alta? Cuatrocientos puntos árboles. Antes de dos mil quince se calculaban unos cuatrocientos mil millones. Empate. Se apostaste por las estrellas y vas bien. Ese año un equipo cruzó datos de más de cuatrocientas mil parcelas de bosque con imágenes de satélite. Kilómetro por kilómetro. No eran cuatrocientos mil millones. Eran tres millones de millones siete veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. ¿A cada estrella le tocan más de siete árboles? Esta noche mira para arriba. Por cada estrella más de siete árboles aquí abajo."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-986d60de13-t1.wav",
+     "err": 0.209,
+     "dur": 46.04,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra? Contemos. Aquí, cada punto es mil millones. La Via Láctea tiene entre 100.000 y 400.000 millones de estrellas. Demos de la más alta, 400 puntos. Árboles. Antes de 2015 se calculaban unos 400.000 millones. Empate. Si apostaste por las estrellas, ibas bien. Ese año, un equipo cruzó datos de más de 400.000 parcelas de bosque con imágenes de satélite kilómetro por kilómetro. No eran 400.000 millones. Eran 3 millones de millones, 7 veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. A cada estrella le tocan más de 7 árboles aquí abajo."
+    }
+   ]
+  },
+  {
+   "id": "payoff",
+   "text": "a cada estrella le tocan más de siete árboles.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 51.897,
+   "end": 55.483,
+   "words": [
+    {
+     "w": "a",
+     "start": 51.897,
+     "end": 52.328
+    },
+    {
+     "w": "cada",
+     "start": 52.328,
+     "end": 52.81
+    },
+    {
+     "w": "estrella",
+     "start": 52.81,
+     "end": 53.31
+    },
+    {
+     "w": "le",
+     "start": 53.31,
+     "end": 53.569
+    },
+    {
+     "w": "tocan",
+     "start": 53.569,
+     "end": 53.931
+    },
+    {
+     "w": "más",
+     "start": 53.931,
+     "end": 54.259
+    },
+    {
+     "w": "de",
+     "start": 54.259,
+     "end": 54.569
+    },
+    {
+     "w": "siete",
+     "start": 54.569,
+     "end": 55.034
+    },
+    {
+     "w": "árboles.",
+     "start": 55.034,
+     "end": 55.483
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-986d60de13-t2.wav",
+     "err": 0.023,
+     "dur": 71.13,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra contemos. Aquí cada punto es mil millones. La Via Láctea tiene entre cien mil y cuatrocientos mil millones de estrellas. ¿Demosle la más alta? Cuatrocientos puntos árboles. Antes de dos mil quince se calculaban unos cuatrocientos mil millones. Empate. Se apostaste por las estrellas y vas bien. Ese año un equipo cruzó datos de más de cuatrocientas mil parcelas de bosque con imágenes de satélite. Kilómetro por kilómetro. No eran cuatrocientos mil millones. Eran tres millones de millones siete veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. ¿A cada estrella le tocan más de siete árboles? Esta noche mira para arriba. Por cada estrella más de siete árboles aquí abajo."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-986d60de13-t1.wav",
+     "err": 0.209,
+     "dur": 46.04,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra? Contemos. Aquí, cada punto es mil millones. La Via Láctea tiene entre 100.000 y 400.000 millones de estrellas. Demos de la más alta, 400 puntos. Árboles. Antes de 2015 se calculaban unos 400.000 millones. Empate. Si apostaste por las estrellas, ibas bien. Ese año, un equipo cruzó datos de más de 400.000 parcelas de bosque con imágenes de satélite kilómetro por kilómetro. No eran 400.000 millones. Eran 3 millones de millones, 7 veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. A cada estrella le tocan más de 7 árboles aquí abajo."
+    }
+   ]
+  },
+  {
+   "id": "cierre",
+   "text": "Esta noche, mira para arriba. Por cada estrella, más de siete árboles aquí abajo.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "cálido",
+   "take": 2,
+   "start": 56.362,
+   "end": 63.759,
+   "words": [
+    {
+     "w": "Esta",
+     "start": 56.362,
+     "end": 56.776
+    },
+    {
+     "w": "noche,",
+     "start": 56.776,
+     "end": 57.069
+    },
+    {
+     "w": "mira",
+     "start": 57.069,
+     "end": 57.741
+    },
+    {
+     "w": "para",
+     "start": 57.741,
+     "end": 58.017
+    },
+    {
+     "w": "arriba.",
+     "start": 58.017,
+     "end": 58.293
+    },
+    {
+     "w": "Por",
+     "start": 59.328,
+     "end": 59.621
+    },
+    {
+     "w": "cada",
+     "start": 59.621,
+     "end": 59.931
+    },
+    {
+     "w": "estrella,",
+     "start": 59.931,
+     "end": 60.534
+    },
+    {
+     "w": "más",
+     "start": 60.534,
+     "end": 61.207
+    },
+    {
+     "w": "de",
+     "start": 61.207,
+     "end": 61.5
+    },
+    {
+     "w": "siete",
+     "start": 61.5,
+     "end": 61.862
+    },
+    {
+     "w": "árboles",
+     "start": 61.862,
+     "end": 62.414
+    },
+    {
+     "w": "aquí",
+     "start": 62.414,
+     "end": 63.138
+    },
+    {
+     "w": "abajo.",
+     "start": 63.138,
+     "end": 63.759
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-986d60de13-t2.wav",
+     "err": 0.023,
+     "dur": 71.13,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra contemos. Aquí cada punto es mil millones. La Via Láctea tiene entre cien mil y cuatrocientos mil millones de estrellas. ¿Demosle la más alta? Cuatrocientos puntos árboles. Antes de dos mil quince se calculaban unos cuatrocientos mil millones. Empate. Se apostaste por las estrellas y vas bien. Ese año un equipo cruzó datos de más de cuatrocientas mil parcelas de bosque con imágenes de satélite. Kilómetro por kilómetro. No eran cuatrocientos mil millones. Eran tres millones de millones siete veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. ¿A cada estrella le tocan más de siete árboles? Esta noche mira para arriba. Por cada estrella más de siete árboles aquí abajo."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-986d60de13-t1.wav",
+     "err": 0.209,
+     "dur": 46.04,
+     "heard": "¿Qué hay más? Estrellas en nuestra galaxia o árboles en la tierra? Contemos. Aquí, cada punto es mil millones. La Via Láctea tiene entre 100.000 y 400.000 millones de estrellas. Demos de la más alta, 400 puntos. Árboles. Antes de 2015 se calculaban unos 400.000 millones. Empate. Si apostaste por las estrellas, ibas bien. Ese año, un equipo cruzó datos de más de 400.000 parcelas de bosque con imágenes de satélite kilómetro por kilómetro. No eran 400.000 millones. Eran 3 millones de millones, 7 veces más de lo que creíamos. Así que, incluso con la cifra más alta de estrellas. A cada estrella le tocan más de 7 árboles aquí abajo."
+    }
+   ]
+  }
+ ]
+}

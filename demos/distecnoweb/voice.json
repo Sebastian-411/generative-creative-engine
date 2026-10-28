@@ -1,0 +1,327 @@
+{
+ "engine": "edge",
+ "voice": "es-CO-SalomeNeural",
+ "rate": "+5%",
+ "duration": 30.224,
+ "wordsPerSecond": 2.09,
+ "lines": [
+  {
+   "id": "hook",
+   "text": "Tu negocio merece una página que venda, no solo que exista.",
+   "start": 0.35,
+   "end": 4.598,
+   "words": [
+    {
+     "w": "Tu",
+     "start": 0.448,
+     "end": 0.567
+    },
+    {
+     "w": "negocio",
+     "start": 0.591,
+     "end": 0.996
+    },
+    {
+     "w": "merece",
+     "start": 1.02,
+     "end": 1.377
+    },
+    {
+     "w": "una",
+     "start": 1.377,
+     "end": 1.52
+    },
+    {
+     "w": "página",
+     "start": 1.591,
+     "end": 1.889
+    },
+    {
+     "w": "que",
+     "start": 1.96,
+     "end": 2.055
+    },
+    {
+     "w": "venda",
+     "start": 2.079,
+     "end": 2.436
+    },
+    {
+     "w": "no",
+     "start": 2.686,
+     "end": 2.841
+    },
+    {
+     "w": "solo",
+     "start": 2.865,
+     "end": 3.091
+    },
+    {
+     "w": "que",
+     "start": 3.151,
+     "end": 3.21
+    },
+    {
+     "w": "exista",
+     "start": 3.21,
+     "end": 3.674
+    }
+   ]
+  },
+  {
+   "id": "what",
+   "text": "En Distecnoweb diseñamos páginas web y tiendas online para pymes y empresas.",
+   "start": 4.898,
+   "end": 10.442,
+   "words": [
+    {
+     "w": "En",
+     "start": 4.996,
+     "end": 5.15
+    },
+    {
+     "w": "Distecnoweb",
+     "start": 5.198,
+     "end": 5.769
+    },
+    {
+     "w": "diseñamos",
+     "start": 5.817,
+     "end": 6.365
+    },
+    {
+     "w": "páginas",
+     "start": 6.424,
+     "end": 6.829
+    },
+    {
+     "w": "web",
+     "start": 6.877,
+     "end": 7.234
+    },
+    {
+     "w": "y",
+     "start": 7.281,
+     "end": 7.329
+    },
+    {
+     "w": "tiendas",
+     "start": 7.412,
+     "end": 7.793
+    },
+    {
+     "w": "online",
+     "start": 7.817,
+     "end": 8.21
+    },
+    {
+     "w": "para",
+     "start": 8.222,
+     "end": 8.412
+    },
+    {
+     "w": "pymes",
+     "start": 8.496,
+     "end": 8.841
+    },
+    {
+     "w": "y",
+     "start": 8.877,
+     "end": 8.9
+    },
+    {
+     "w": "empresas",
+     "start": 8.912,
+     "end": 9.603
+    }
+   ]
+  },
+  {
+   "id": "tech",
+   "text": "En WordPress, PrestaShop o Shopify, listas para el celular.",
+   "start": 10.742,
+   "end": 15.734,
+   "words": [
+    {
+     "w": "En",
+     "start": 10.84,
+     "end": 10.982
+    },
+    {
+     "w": "WordPress",
+     "start": 11.066,
+     "end": 11.756
+    },
+    {
+     "w": "PrestaShop",
+     "start": 12.066,
+     "end": 12.744
+    },
+    {
+     "w": "o",
+     "start": 12.744,
+     "end": 12.828
+    },
+    {
+     "w": "Shopify",
+     "start": 12.852,
+     "end": 13.363
+    },
+    {
+     "w": "listas",
+     "start": 13.685,
+     "end": 14.066
+    },
+    {
+     "w": "para",
+     "start": 14.125,
+     "end": 14.292
+    },
+    {
+     "w": "el",
+     "start": 14.292,
+     "end": 14.363
+    },
+    {
+     "w": "celular",
+     "start": 14.375,
+     "end": 14.84
+    }
+   ]
+  },
+  {
+   "id": "fast",
+   "text": "Y tu página web, lista en 8 días.",
+   "start": 16.034,
+   "end": 19.466,
+   "words": [
+    {
+     "w": "Y",
+     "start": 16.132,
+     "end": 16.239
+    },
+    {
+     "w": "tu",
+     "start": 16.31,
+     "end": 16.382
+    },
+    {
+     "w": "página",
+     "start": 16.441,
+     "end": 16.786
+    },
+    {
+     "w": "web",
+     "start": 16.846,
+     "end": 17.167
+    },
+    {
+     "w": "lista",
+     "start": 17.477,
+     "end": 17.774
+    },
+    {
+     "w": "en",
+     "start": 17.774,
+     "end": 17.846
+    },
+    {
+     "w": "ocho",
+     "start": 17.87,
+     "end": 18.108
+    },
+    {
+     "w": "días",
+     "start": 18.191,
+     "end": 18.596
+    }
+   ]
+  },
+  {
+   "id": "proof",
+   "text": "Más de 800 proyectos en 12 años nos respaldan.",
+   "start": 19.916,
+   "end": 23.9,
+   "words": [
+    {
+     "w": "Más",
+     "start": 20.014,
+     "end": 20.252
+    },
+    {
+     "w": "de",
+     "start": 20.311,
+     "end": 20.359
+    },
+    {
+     "w": "ochocientos",
+     "start": 20.371,
+     "end": 20.954
+    },
+    {
+     "w": "proyectos",
+     "start": 21.014,
+     "end": 21.537
+    },
+    {
+     "w": "en",
+     "start": 21.549,
+     "end": 21.633
+    },
+    {
+     "w": "doce",
+     "start": 21.704,
+     "end": 21.942
+    },
+    {
+     "w": "años",
+     "start": 21.942,
+     "end": 22.228
+    },
+    {
+     "w": "nos",
+     "start": 22.264,
+     "end": 22.371
+    },
+    {
+     "w": "respaldan",
+     "start": 22.395,
+     "end": 23.037
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "text": "Solicita tu cotización en distecnoweb.com.",
+   "start": 24.2,
+   "end": 27.824,
+   "words": [
+    {
+     "w": "Solicita",
+     "start": 24.298,
+     "end": 24.822
+    },
+    {
+     "w": "tu",
+     "start": 24.893,
+     "end": 24.965
+    },
+    {
+     "w": "cotización",
+     "start": 25.012,
+     "end": 25.584
+    },
+    {
+     "w": "en",
+     "start": 25.727,
+     "end": 26.298
+    },
+    {
+     "w": "distecnoweb.com.",
+     "start": 26.37,
+     "end": 26.643
+    }
+   ]
+  }
+ ]
+}

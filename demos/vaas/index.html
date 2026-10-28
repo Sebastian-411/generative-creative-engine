@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>vaas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=block" rel="stylesheet">
+<script src="/__engine/gsap.min.js"></script>
+<script src="/__engine/stage.js"></script>
+<style>
+  :root { --bg: #12032b; --ink: #ffffff; --violet: #9574f9; --cyan: #5bc0ec; --muted: rgba(255,255,255,.62); --glass: rgba(255,255,255,.07); --line: rgba(255,255,255,.16); }
+  #stage { font-family: 'Montserrat', sans-serif; color: var(--ink); }
+  #bg { position: absolute; inset: 0; }
+  .scene { position: absolute; inset: 0; opacity: 0; }
+  .left { position: absolute; left: 140px; width: 860px; }
+  .kicker { font-weight: 600; font-size: 54px; color: var(--muted); letter-spacing: -0.01em; }
+  .h { font-weight: 800; font-size: 120px; line-height: 1; letter-spacing: -0.035em; }
+  .h em { font-style: normal; background: linear-gradient(90deg, #5bc0ec, #9574f9 55%, #bf65ff); -webkit-background-clip: text; color: transparent; }
+  .mask { overflow: hidden; padding-bottom: .1em; }
+  .mask > span { display: inline-block; }
+  .card { position: absolute; width: 520px; height: 600px; border-radius: 34px; background: linear-gradient(160deg, #2c1458, #1a0838); border: 2px solid var(--line); box-shadow: 0 40px 80px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.18); backdrop-filter: blur(6px); }
+  .card .q { position: absolute; left: 40px; top: 30px; font-weight: 800; font-size: 150px; color: rgba(255,255,255,.9); }
+  .card .n { position: absolute; right: 40px; top: 46px; font-weight: 700; font-size: 48px; color: var(--muted); }
+  .doc { position: absolute; left: 110px; top: 150px; width: 300px; height: 380px; border-radius: 18px; background: #f4f1ff; }
+  .doc i { position: absolute; left: 36px; height: 16px; border-radius: 8px; background: #d9d2f5; }
+  .scan { position: absolute; left: 90px; width: 340px; height: 8px; border-radius: 4px; background: var(--cyan); box-shadow: 0 0 30px var(--cyan); }
+  .badge { position: absolute; width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #5bc0ec, #9574f9); display: grid; place-items: center; box-shadow: 0 20px 50px rgba(149,116,249,.5); }
+  .badge svg { width: 78px; height: 78px; }
+  .node { position: absolute; width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--line); background: rgba(255,255,255,.06); display: grid; place-items: center; font-weight: 700; font-size: 44px; }
+  .lab { position: absolute; font-weight: 600; font-size: 40px; color: var(--muted); width: 260px; text-align: center; }
+  .coin { position: absolute; width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #ffe08a, #f2b84b); box-shadow: 0 0 24px rgba(242,184,75,.6); }
+  .x { position: absolute; width: 110px; height: 110px; border-radius: 50%; background: #ff5d7a; display: grid; place-items: center; font-weight: 800; font-size: 70px; }
+  .list { position: absolute; left: 140px; top: 300px; }
+  .row { display: flex; align-items: center; gap: 34px; height: 150px; font-weight: 700; font-size: 72px; letter-spacing: -0.02em; }
+  .tick { width: 84px; height: 84px; border-radius: 50%; border: 3px solid var(--line); display: grid; place-items: center; }
+  .tick svg { width: 46px; height: 46px; opacity: 0; }
+  .stat { position: absolute; left: 140px; width: 760px; }
+  .stat b { display: block; font-weight: 800; font-size: 210px; line-height: .9; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+  .stat .sub { display: block; margin-top: 18px; font-weight: 600; font-size: 50px; color: var(--muted); line-height: 1.15; }
+  .mark { position: absolute; }
+  .end { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 36px; }
+  .brand { display: flex; align-items: center; gap: 40px; font-weight: 800; font-size: 200px; letter-spacing: -0.04em; }
+  .tag { font-weight: 600; font-size: 64px; color: var(--muted); }
+  .cta { margin-top: 14px; padding: 26px 56px; border-radius: 100px; background: #fff; color: #1c033b; font-weight: 700; font-size: 50px; }
+  .url { font-weight: 600; font-size: 48px; color: var(--muted); }
+  .cap { position: absolute; left: 140px; right: 700px; top: 905px; font-weight: 700; font-size: 58px; line-height: 1.1; }
+  .cap .cw { opacity: .35; }
+  .cap .cw.on { opacity: 1; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="bg" width="1920" height="1080"></canvas>
+
+  <!-- 1 · gancho -->
+  <div class="scene" id="s1">
+    <div class="left" style="top:360px"><div class="kicker mask"><span>Detrás de cada crédito privado</span></div><div class="h mask"><span><em>3</em> preguntas.</span></div></div>
+  </div>
+
+  <!-- tarjetas de las tres preguntas (persisten entre escenas 1–4) -->
+  <div id="cards">
+    <div class="card" id="c1" style="left:1180px;top:230px"><div class="q">?</div><div class="n">01</div>
+      <div class="doc" id="doc"><i style="top:60px;width:200px"></i><i style="top:100px;width:228px"></i><i style="top:140px;width:170px"></i><i style="top:200px;width:228px"></i><i style="top:240px;width:150px"></i><i style="top:300px;width:200px"></i></div>
+      <div class="scan" id="scan" style="top:150px"></div>
+      <div class="badge" id="b1" style="left:330px;top:400px"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+    <div class="card" id="c2" style="left:1180px;top:230px"><div class="q">?</div><div class="n">02</div>
+      <div class="node" style="left:40px;top:240px">$</div><div class="lab" style="left:-15px;top:410px">Deudor</div>
+      <div class="node" id="you" style="left:330px;top:240px">Tú</div><div class="lab" style="left:275px;top:410px">Prestamista</div>
+      <div class="coin" id="coin" style="left:83px;top:283px"></div>
+    </div>
+    <div class="card" id="c3" style="left:1180px;top:230px"><div class="q">?</div><div class="n">03</div>
+      <div class="node" style="left:185px;top:170px">Activo</div>
+      <div class="node" id="o1" style="left:40px;top:400px">A</div>
+      <div class="node" id="o2" style="left:330px;top:400px">B</div>
+      <div class="x" id="x2" style="left:350px;top:420px">×</div>
+    </div>
+  </div>
+
+  <!-- 2–4 · las preguntas -->
+  <div class="scene" id="s2"><div class="left" style="top:380px"><div class="h mask"><span>¿Existe</span></div><div class="h mask"><span>el activo?</span></div></div></div>
+  <div class="scene" id="s3"><div class="left" style="top:380px"><div class="h mask"><span>¿Recibe usted</span></div><div class="h mask"><span>el dinero?</span></div></div></div>
+  <div class="scene" id="s4"><div class="left" style="top:380px"><div class="h mask"><span>¿Ya fue cedido</span></div><div class="h mask"><span>antes?</span></div></div></div>
+
+  <!-- 5 · la respuesta -->
+  <div class="scene" id="s5">
+    <div class="list">
+      <div class="row"><div class="tick"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#5bc0ec" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Existe el activo</div>
+      <div class="row"><div class="tick"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#5bc0ec" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>El dinero llega</div>
+      <div class="row"><div class="tick"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#5bc0ec" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Un solo dueño</div>
+    </div>
+    <img class="mark" id="m5" src="assets/vaas-mark.svg" style="left:1250px;top:300px;width:460px">
+  </div>
+
+  <!-- 6 · prueba -->
+  <div class="scene" id="s6">
+    <div class="stat" id="st1" style="top:150px"><b><i id="n1" style="font-style:normal">0</i>M+</b><span class="sub">Documentos verificados automáticamente</span></div>
+    <div class="stat" id="st2" style="top:150px;left:1040px"><b>$<i id="n2" style="font-style:normal">0</i>B+</b><span class="sub">Capital fluyendo en los rieles de Vaas</span></div>
+  </div>
+
+  <!-- 7 · cierre -->
+  <div class="scene" id="s7">
+    <div class="end">
+      <div class="brand"><img src="assets/vaas-mark.svg" style="width:230px">Vaas</div>
+      <div class="tag">Rieles públicos para el crédito privado</div>
+      <div class="cta">Reserva una reunión</div>
+      <div class="url">getvaas.com</div>
+    </div>
+  </div>
+</div>
+<script>
+  const W = 1920, H = 1080;
+  const stage = Stage.create({
+    width: W, height: H, fps: 30, seed: 'vaas', background: '#12032b',
+    voice: 'voice.json', duration: 'voice',
+    bpm: 100,
+    music: { style: 'pulse', key: 'D', energy: [[0, 1], [4, 2], [11.4, 3], [22, 2]], drops: [{ at: 10.85, dur: 0.5 }], hits: [22.2] },
+  });
+  const { tl, rand } = stage;
+  Stage.captions(stage, { maxWords: 4, skip: ['hook', 'doc', 'cash', 'own', 'payoff'] });
+
+  // ---- Fondo: orbes de luz de la marca que derivan + rieles con capital fluyendo ------------------------
+  const g = document.getElementById('bg').getContext('2d');
+  const orbs = [
+    { c: '91,192,236', x: 1500, y: 260, r: 620, a: 0.20 },
+    { c: '149,116,249', x: 380, y: 900, r: 760, a: 0.26 },
+    { c: '191,101,255', x: 1700, y: 980, r: 520, a: 0.16 },
+  ];
+  const rails = { on: 0 };
+  const particles = Array.from({ length: 60 }, () => ({ lane: rand.int(0, 5), off: rand(), sp: rand.range(0.18, 0.4), len: rand.range(40, 140) }));
+  stage.onFrame((t) => {
+    g.fillStyle = '#12032b'; g.fillRect(0, 0, W, H);
+    orbs.forEach((o, i) => {
+      const x = o.x + Stage.noise('ox' + i, t * 0.12) * 160, y = o.y + Stage.noise('oy' + i, t * 0.12) * 120;
+      const grd = g.createRadialGradient(x, y, 0, x, y, o.r);
+      grd.addColorStop(0, `rgba(${o.c},${o.a})`); grd.addColorStop(1, `rgba(${o.c},0)`);
+      g.fillStyle = grd; g.fillRect(0, 0, W, H);
+    });
+    if (rails.on > 0.01) {
+      for (let k = 0; k < 6; k++) {
+        const y = 760 + k * 50;
+        g.strokeStyle = `rgba(255,255,255,${0.10 * rails.on})`; g.lineWidth = 2;
+        g.beginPath(); g.moveTo(0, y); g.lineTo(W, y); g.stroke();
+      }
+      for (const p of particles) {
+        const x = ((p.off + t * p.sp) % 1.2) * (W + 300) - 300, y = 760 + p.lane * 50;
+        const grd = g.createLinearGradient(x, 0, x + p.len, 0);
+        grd.addColorStop(0, 'rgba(91,192,236,0)'); grd.addColorStop(1, `rgba(91,192,236,${0.9 * rails.on})`);
+        g.strokeStyle = grd; g.lineWidth = 5; g.lineCap = 'round';
+        g.beginPath(); g.moveTo(x, y); g.lineTo(x + p.len, y); g.stroke();
+      }
+    }
+  });
+
+  const show = (sel, a, b) => tl.set(sel, { opacity: 1 }, a).set(sel, { opacity: 0 }, b);
+  const rise = (sel, at) => tl.fromTo(`${sel} .mask > span`, { yPercent: 110 }, { yPercent: 0, duration: 0.45, ease: 'power4.out', stagger: 0.07 }, at);
+  const leave = (sel, at) => tl.to(`${sel} .mask > span`, { yPercent: -110, duration: 0.28, ease: 'power4.in', stagger: 0.03 }, at);
+
+  // Las tarjetas: apiladas en abanico; la activa pasa al frente.
+  const cards = ['#c1', '#c2', '#c3'];
+  const fan = (i, front) => ({ x: (i - front) * 70, y: (i - front) * -40, rotation: (i - front) * 4, scale: i === front ? 1 : 0.9, opacity: i < front ? 0 : 1, zIndex: 10 - Math.abs(i - front) });
+  tl.set('#cards .doc, #scan, #b1, #coin, #x2', { opacity: 0 }, 0);
+
+  // 1 · Gancho: titular desde la máscara; las tres tarjetas llegan en "tres".
+  show('#s1', 0, stage.end('hook', 0.3));
+  rise('#s1', 0.05);
+  cards.forEach((c, i) => tl.fromTo(c, { x: 500, y: 0, rotation: 12, opacity: 0, zIndex: 10 - i }, { ...fan(i, 0), duration: 0.6, ease: 'expo.out' }, stage.word('hook', 'tres', -0.2) + i * 0.08));
+  leave('#s1', stage.end('hook', 0.02));
+  stage.sfx('swish', stage.word('hook', 'tres', -0.2), -16).sfx('tap', stage.word('hook', 'preguntas'), -15);
+
+  // 2 · ¿Existe el activo? — el documento se escanea y recibe el sello.
+  const a2 = stage.at('doc');
+  show('#s2', a2 - 0.1, stage.end('doc', 0.3)); rise('#s2', a2 - 0.1); leave('#s2', stage.end('doc', 0.02));
+  tl.to('#c1 .q', { opacity: 0, duration: 0.2 }, a2)
+    .fromTo('#doc', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }, a2)
+    .fromTo('#scan', { opacity: 1, y: 0 }, { y: 380, duration: 1.0, ease: 'power1.inOut' }, a2 + 0.3)
+    .to('#scan', { opacity: 0, duration: 0.15 }, a2 + 1.3)
+    .fromTo('#b1', { opacity: 0, scale: 1.8 }, { opacity: 1, scale: 1, duration: 0.4, ease: 'expo.out' }, stage.word('doc', 'activo', 0.25));
+  stage.sfx('slide', a2 + 0.3, -18).sfx('pop', stage.word('doc', 'activo', 0.25), -13);
+
+  // 3 · ¿Recibe usted el dinero? — la moneda viaja del deudor a ti.
+  const a3 = stage.at('cash');
+  cards.forEach((c, i) => tl.to(c, { ...fan(i, 1), duration: 0.45, ease: 'power3.inOut' }, a3 - 0.25));
+  show('#s3', a3 - 0.1, stage.end('cash', 0.3)); rise('#s3', a3 - 0.1); leave('#s3', stage.end('cash', 0.02));
+  tl.to('#c2 .q', { opacity: 0, duration: 0.2 }, a3)
+    .set('#coin', { opacity: 1 }, a3 + 0.2)
+    .fromTo('#coin', { x: 0, y: 0 }, { x: 290, duration: 1.0, ease: 'power2.inOut' }, a3 + 0.3)
+    .fromTo('#coin', { y: 0 }, { y: -90, duration: 0.5, ease: 'power2.out', yoyo: true, repeat: 1 }, a3 + 0.3)
+    .fromTo('#you', { borderColor: 'rgba(255,255,255,.16)' }, { borderColor: '#5bc0ec', duration: 0.2 }, stage.word('cash', 'dinero', 0.1));
+  stage.sfx('swish', a3 - 0.25, -17).sfx('ding', stage.word('cash', 'dinero', 0.15), -16);
+
+  // 4 · ¿Ya fue cedido antes? — el activo intenta ir a dos dueños; el segundo se bloquea.
+  const a4 = stage.at('own');
+  cards.forEach((c, i) => tl.to(c, { ...fan(i, 2), duration: 0.45, ease: 'power3.inOut' }, a4 - 0.25));
+  show('#s4', a4 - 0.1, stage.end('own', 0.25)); rise('#s4', a4 - 0.1); leave('#s4', stage.end('own', 0.02));
+  tl.to('#c3 .q', { opacity: 0, duration: 0.2 }, a4)
+    .fromTo('#o1', { borderColor: 'rgba(255,255,255,.16)' }, { borderColor: '#5bc0ec', duration: 0.2 }, a4 + 0.4)
+    .fromTo('#x2', { opacity: 0, scale: 1.8 }, { opacity: 1, scale: 1, duration: 0.35, ease: 'expo.out' }, stage.word('own', 'antes', 0.1))
+    .to('#cards', { opacity: 0, x: 120, duration: 0.3, ease: 'power4.in' }, stage.end('own', 0.15));
+  stage.sfx('swish', a4 - 0.25, -17).sfx('glitch', stage.word('own', 'antes', 0.1), -15);
+
+  // 5 · La respuesta (tras el silencio): marca de Vaas y las tres preguntas resueltas.
+  const a5 = stage.at('turn');
+  show('#s5', a5 - 0.1, stage.end('turn', 0.3));
+  tl.fromTo('#m5', { scale: 1.6, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.6, ease: 'expo.out' }, stage.word('turn', 'vaas', -0.1))
+    .to('#m5', { y: -20, rotation: 3, duration: stage.end('turn') - a5, ease: 'none' }, a5 + 0.5)
+    .fromTo('#s5 .row', { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: 'power3.out', stagger: 0.12 }, stage.word('turn', 'responde', -0.15));
+  ['automática', 'todos', 'días'].forEach((w, i) => {
+    tl.fromTo(`#s5 .row:nth-child(${i + 1}) .tick svg`, { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(1.6)' }, stage.word('turn', w, -0.05))
+      .fromTo(`#s5 .row:nth-child(${i + 1}) .tick`, { borderColor: 'rgba(255,255,255,.16)' }, { borderColor: '#5bc0ec', duration: 0.2 }, stage.word('turn', w, -0.05));
+    stage.sfx('tick', stage.word('turn', w, -0.05), -13);
+  });
+  tl.to('#s5', { y: -80, opacity: 0, duration: 0.3, ease: 'power4.in' }, stage.end('turn', 0.05));
+  stage.sfx('impact', stage.word('turn', 'vaas', -0.1), -11);
+
+  // 6 · Prueba: contadores que aterrizan en la palabra; los rieles se encienden con capital fluyendo.
+  const a6 = stage.at('proof');
+  show('#s6', a6 - 0.1, stage.end('proof', 0.35));
+  const count = (el, to, at, dur) => { const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: dur, ease: 'power2.out', onUpdate: () => (document.getElementById(el).textContent = Math.round(o.v)) }, at); };
+  tl.fromTo('#st1', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power4.out' }, a6 - 0.1);
+  count('n1', 20, a6, stage.word('proof', 'millones') - a6);
+  tl.fromTo('#st2', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power4.out' }, stage.word('proof', 'y', -0.1));
+  count('n2', 1, stage.word('proof', 'mil', -0.4), 0.45);
+  tl.fromTo(rails, { on: 0 }, { on: 1, duration: 0.8, ease: 'power2.out' }, stage.word('proof', 'capital', -0.2))
+    .to(rails, { on: 0, duration: 0.5 }, stage.end('proof', 0.3))
+    .to('#s6', { y: -60, opacity: 0, duration: 0.3, ease: 'power4.in' }, stage.end('proof', 0.05));
+  stage.sfx('pop', stage.word('proof', 'millones'), -14).sfx('pop', stage.word('proof', 'mil', 0.05), -14).sfx('riser', stage.end('proof') - 1.5, -22);
+
+  // 7 · Cierre: marca, promesa y llamado.
+  const a7 = stage.at('payoff');
+  show('#s7', a7 - 0.1, stage.duration);
+  tl.fromTo('#s7 .brand', { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: 'expo.out' }, a7 - 0.1)
+    .fromTo('#s7 .tag', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power4.out' }, stage.word('payoff', 'rieles', -0.1))
+    .fromTo('#s7 .cta', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power4.out' }, stage.word('payoff', 'privado', -0.1))
+    .fromTo(rails, { on: 0 }, { on: 0.5, duration: 1.2, ease: 'power2.out' }, stage.word('payoff', 'rieles', -0.2))
+    .fromTo('#s7 .url', { opacity: 0 }, { opacity: 1, duration: 0.4 }, stage.end('payoff', 0.2))
+    .to('#s7 .end', { scale: 1.03, duration: stage.duration - a7 - 0.5, ease: 'none' }, a7 + 0.5);
+</script>
+</body>
+</html>

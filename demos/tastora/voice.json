@@ -1,0 +1,1124 @@
+{
+ "engine": "qwen",
+ "duration": 55.321,
+ "wordsPerSecond": 2.96,
+ "descriptions": [
+  {
+   "speaker": "narrador",
+   "description": "A warm, natural Colombian woman in her late thirties who owns a small restaurant, speaking to another restaurant owner like a friend over coffee. Friendly Latin American Spanish with a subtle Colombian accent, conversational and playful, a little ironic when complaining, genuinely relieved and happy when sharing the solution. Realistic human phrasing, not a commercial announcer. Overall: de dueña a dueña: arranca cómplice y con ironía sobre la carta tachada, se cansa un poco en el PDF, se ilumina con alivio cuando aparece Tastora, baja a confidencial en '¿y cuánto cuesta?', explota de alegría en 'nada', y el payoff es satisfacción tranquila y clara. Performance arc, sentence by sentence: 1) dry, ironic and playful, a knowing half-smile; 2) dry, ironic and playful, a knowing half-smile. Realistic human phrasing with natural pauses at ellipses and line breaks, varied pitch and pace, never monotone, never theatrical."
+  },
+  {
+   "speaker": "comensal",
+   "description": "A young Colombian man in his twenties, casual and friendly, ordering food at a restaurant table, relaxed everyday tone. Overall: de dueña a dueña: arranca cómplice y con ironía sobre la carta tachada, se cansa un poco en el PDF, se ilumina con alivio cuando aparece Tastora, baja a confidencial en '¿y cuánto cuesta?', explota de alegría en 'nada', y el payoff es satisfacción tranquila y clara. Performance: natural, conversational and clear. Realistic human phrasing with natural pauses at ellipses and line breaks, varied pitch and pace, never monotone, never theatrical."
+  },
+  {
+   "speaker": "narrador",
+   "description": "A warm, natural Colombian woman in her late thirties who owns a small restaurant, speaking to another restaurant owner like a friend over coffee. Friendly Latin American Spanish with a subtle Colombian accent, conversational and playful, a little ironic when complaining, genuinely relieved and happy when sharing the solution. Realistic human phrasing, not a commercial announcer. Overall: de dueña a dueña: arranca cómplice y con ironía sobre la carta tachada, se cansa un poco en el PDF, se ilumina con alivio cuando aparece Tastora, baja a confidencial en '¿y cuánto cuesta?', explota de alegría en 'nada', y el payoff es satisfacción tranquila y clara. Performance arc, sentence by sentence: 1) dry, ironic and playful, a knowing half-smile; 2) natural, conversational and clear; 3) natural, conversational and clear; 4) warm, close and friendly, with a gentle smile in the voice; 5) natural, conversational and clear; 6) natural, conversational and clear; 7) natural, conversational and clear; 8) confidential, almost whispering a secret to a friend; 9) natural, conversational and clear; 10) natural, conversational and clear; 11) confidential, almost whispering a secret to a friend; 12) natural, conversational and clear; 13) natural, conversational and clear; 14) warm, close and friendly, with a gentle smile in the voice. Realistic human phrasing with natural pauses at ellipses and line breaks, varied pitch and pace, never monotone, never theatrical."
+  }
+ ],
+ "lines": [
+  {
+   "id": "hook",
+   "text": "Bajaste la bandeja paisa. La carta sigue diciendo $32.000.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "ironía",
+   "take": 2,
+   "start": 0.4,
+   "end": 5,
+   "words": [
+    {
+     "w": "Bajaste",
+     "start": 0.4,
+     "end": 0.88
+    },
+    {
+     "w": "la",
+     "start": 0.88,
+     "end": 1
+    },
+    {
+     "w": "bandeja",
+     "start": 1,
+     "end": 1.38
+    },
+    {
+     "w": "paisa.",
+     "start": 1.38,
+     "end": 2.28
+    },
+    {
+     "w": "La",
+     "start": 2.52,
+     "end": 2.56
+    },
+    {
+     "w": "carta",
+     "start": 2.56,
+     "end": 2.8
+    },
+    {
+     "w": "sigue",
+     "start": 2.8,
+     "end": 3.12
+    },
+    {
+     "w": "diciendo",
+     "start": 3.12,
+     "end": 3.58
+    },
+    {
+     "w": "$32.000.",
+     "start": 4.26,
+     "end": 5
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-04b18607ee-t2.wav",
+     "err": 0.19,
+     "dur": 8.28,
+     "heard": "Bajaste la bandeja paisa, la carta sigue diciendo 32.000, otra vez a imprimir o a tachar con lapicero."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-04b18607ee-t1.wav",
+     "err": 0.238,
+     "dur": 10.15,
+     "heard": "Bajaste la bandeja paisa. La carta sigue diciendo 32 mil. Otra vez a imprimir o a tachar con la piscero."
+    }
+   ]
+  },
+  {
+   "id": "tachar",
+   "text": "Otra vez a imprimir. O a tachar con lapicero.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "ironía",
+   "take": 2,
+   "start": 5.52,
+   "end": 8.56,
+   "words": [
+    {
+     "w": "Otra",
+     "start": 5.52,
+     "end": 5.76
+    },
+    {
+     "w": "vez",
+     "start": 5.76,
+     "end": 6.1
+    },
+    {
+     "w": "a",
+     "start": 6.1,
+     "end": 6.22
+    },
+    {
+     "w": "imprimir.",
+     "start": 6.22,
+     "end": 6.78
+    },
+    {
+     "w": "O",
+     "start": 6.78,
+     "end": 7.26
+    },
+    {
+     "w": "a",
+     "start": 7.26,
+     "end": 7.4
+    },
+    {
+     "w": "tachar",
+     "start": 7.4,
+     "end": 7.8
+    },
+    {
+     "w": "con",
+     "start": 7.8,
+     "end": 7.94
+    },
+    {
+     "w": "lapicero.",
+     "start": 7.94,
+     "end": 8.56
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-04b18607ee-t2.wav",
+     "err": 0.19,
+     "dur": 8.28,
+     "heard": "Bajaste la bandeja paisa, la carta sigue diciendo 32.000, otra vez a imprimir o a tachar con lapicero."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-04b18607ee-t1.wav",
+     "err": 0.238,
+     "dur": 10.15,
+     "heard": "Bajaste la bandeja paisa. La carta sigue diciendo 32 mil. Otra vez a imprimir o a tachar con la piscero."
+    }
+   ]
+  },
+  {
+   "id": "pide",
+   "text": "¿Me trae un ajiaco?",
+   "speaker": "comensal",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 9.476,
+   "end": 10.556,
+   "words": [
+    {
+     "w": "¿Me",
+     "start": 9.476,
+     "end": 9.616
+    },
+    {
+     "w": "trae",
+     "start": 9.616,
+     "end": 9.996
+    },
+    {
+     "w": "un",
+     "start": 9.996,
+     "end": 10.096
+    },
+    {
+     "w": "ajiaco?",
+     "start": 10.096,
+     "end": 10.556
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-comensal-b836132579-t1.wav",
+     "err": 0,
+     "dur": 1.21,
+     "heard": "Me trae un ajíaco."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-comensal-b836132579-t2.wav",
+     "err": 0.25,
+     "dur": 1.25,
+     "heard": "¿Me trae un agiaco?"
+    }
+   ]
+  },
+  {
+   "id": "acabo",
+   "text": "Se acabó a la una. La carta no se enteró.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "ironía",
+   "take": 1,
+   "start": 11.289,
+   "end": 13.649,
+   "words": [
+    {
+     "w": "Se",
+     "start": 11.289,
+     "end": 11.449
+    },
+    {
+     "w": "acabó",
+     "start": 11.449,
+     "end": 11.689
+    },
+    {
+     "w": "a",
+     "start": 11.689,
+     "end": 11.689
+    },
+    {
+     "w": "la",
+     "start": 11.689,
+     "end": 11.789
+    },
+    {
+     "w": "una.",
+     "start": 11.789,
+     "end": 11.989
+    },
+    {
+     "w": "La",
+     "start": 12.709,
+     "end": 12.909
+    },
+    {
+     "w": "carta",
+     "start": 12.909,
+     "end": 13.109
+    },
+    {
+     "w": "no",
+     "start": 13.109,
+     "end": 13.289
+    },
+    {
+     "w": "se",
+     "start": 13.289,
+     "end": 13.389
+    },
+    {
+     "w": "enteró.",
+     "start": 13.389,
+     "end": 13.649
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-68bf853051-t1.wav",
+     "err": 0.165,
+     "dur": 38.6,
+     "heard": "Se acabó la una, la carta no se enteró, y el pdf borroso, tampoco ayuda. Contastora armas tu carta digital en cinco minutos, cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escenían con la cámara y la carta abre al instante, sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre en una sede sin tarjeta. ¿Y no pagas comisión por pedido? Ahora sí, la bandeja paisa, 32 mil, 29 mil, el ajíaco ha gotado. Cada mesa lo ve al instante. Tu menú en la mesa, crea lo gratis en tastora."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-68bf853051-t2.wav",
+     "err": 0.175,
+     "dur": 53.44,
+     "heard": "Se acabó el 1. La carta no se enteró. Y el PDF borroso. Tampoco ayuda. Contastora armas tu carta digital en 5 minutos. Cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escanean con la cámara y la carta. Abre el instante. Sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre, en una sede, sin tarjeta. Y no pagas comisión por pedido. Ahora sí. La bandeja paisa, 32 mil, 29 mil. El agiaco. Agotado. Cada mesa lo ve al instante. Tu menú en la mesa. Crea lo gratis en tastora."
+    }
+   ]
+  },
+  {
+   "id": "pdf",
+   "text": "Y el PDF borroso… tampoco ayuda.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 13.999,
+   "end": 17.119,
+   "words": [
+    {
+     "w": "Y",
+     "start": 13.999,
+     "end": 14.459
+    },
+    {
+     "w": "el",
+     "start": 14.459,
+     "end": 14.599
+    },
+    {
+     "w": "PDF",
+     "start": 14.599,
+     "end": 14.999
+    },
+    {
+     "w": "borroso…",
+     "start": 14.999,
+     "end": 15.719
+    },
+    {
+     "w": "tampoco",
+     "start": 16.239,
+     "end": 16.639
+    },
+    {
+     "w": "ayuda.",
+     "start": 16.639,
+     "end": 17.119
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-68bf853051-t1.wav",
+     "err": 0.165,
+     "dur": 38.6,
+     "heard": "Se acabó la una, la carta no se enteró, y el pdf borroso, tampoco ayuda. Contastora armas tu carta digital en cinco minutos, cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escenían con la cámara y la carta abre al instante, sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre en una sede sin tarjeta. ¿Y no pagas comisión por pedido? Ahora sí, la bandeja paisa, 32 mil, 29 mil, el ajíaco ha gotado. Cada mesa lo ve al instante. Tu menú en la mesa, crea lo gratis en tastora."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-68bf853051-t2.wav",
+     "err": 0.175,
+     "dur": 53.44,
+     "heard": "Se acabó el 1. La carta no se enteró. Y el PDF borroso. Tampoco ayuda. Contastora armas tu carta digital en 5 minutos. Cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escanean con la cámara y la carta. Abre el instante. Sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre, en una sede, sin tarjeta. Y no pagas comisión por pedido. Ahora sí. La bandeja paisa, 32 mil, 29 mil. El agiaco. Agotado. Cada mesa lo ve al instante. Tu menú en la mesa. Crea lo gratis en tastora."
+    }
+   ]
+  },
+  {
+   "id": "tastora",
+   "text": "Con Tastora armas tu carta digital en cinco minutos.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 17.919,
+   "end": 21.079,
+   "words": [
+    {
+     "w": "Con",
+     "start": 17.919,
+     "end": 18.659
+    },
+    {
+     "w": "Tastora",
+     "start": 18.659,
+     "end": 19.219
+    },
+    {
+     "w": "armas",
+     "start": 19.219,
+     "end": 19.499
+    },
+    {
+     "w": "tu",
+     "start": 19.499,
+     "end": 19.719
+    },
+    {
+     "w": "carta",
+     "start": 19.719,
+     "end": 19.919
+    },
+    {
+     "w": "digital",
+     "start": 19.919,
+     "end": 20.359
+    },
+    {
+     "w": "en",
+     "start": 20.359,
+     "end": 20.499
+    },
+    {
+     "w": "cinco",
+     "start": 20.499,
+     "end": 20.699
+    },
+    {
+     "w": "minutos.",
+     "start": 20.699,
+     "end": 21.079
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-68bf853051-t1.wav",
+     "err": 0.165,
+     "dur": 38.6,
+     "heard": "Se acabó la una, la carta no se enteró, y el pdf borroso, tampoco ayuda. Contastora armas tu carta digital en cinco minutos, cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escenían con la cámara y la carta abre al instante, sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre en una sede sin tarjeta. ¿Y no pagas comisión por pedido? Ahora sí, la bandeja paisa, 32 mil, 29 mil, el ajíaco ha gotado. Cada mesa lo ve al instante. Tu menú en la mesa, crea lo gratis en tastora."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-68bf853051-t2.wav",
+     "err": 0.175,
+     "dur": 53.44,
+     "heard": "Se acabó el 1. La carta no se enteró. Y el PDF borroso. Tampoco ayuda. Contastora armas tu carta digital en 5 minutos. Cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escanean con la cámara y la carta. Abre el instante. Sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre, en una sede, sin tarjeta. Y no pagas comisión por pedido. Ahora sí. La bandeja paisa, 32 mil, 29 mil. El agiaco. Agotado. Cada mesa lo ve al instante. Tu menú en la mesa. Crea lo gratis en tastora."
+    }
+   ]
+  },
+  {
+   "id": "plato",
+   "text": "Cada plato con su foto y su precio.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "cálido",
+   "take": 1,
+   "start": 21.599,
+   "end": 23.359,
+   "words": [
+    {
+     "w": "Cada",
+     "start": 21.599,
+     "end": 21.799
+    },
+    {
+     "w": "plato",
+     "start": 21.799,
+     "end": 22.239
+    },
+    {
+     "w": "con",
+     "start": 22.239,
+     "end": 22.399
+    },
+    {
+     "w": "su",
+     "start": 22.399,
+     "end": 22.539
+    },
+    {
+     "w": "foto",
+     "start": 22.539,
+     "end": 22.799
+    },
+    {
+     "w": "y",
+     "start": 22.799,
+     "end": 22.939
+    },
+    {
+     "w": "su",
+     "start": 22.939,
+     "end": 23.079
+    },
+    {
+     "w": "precio.",
+     "start": 23.079,
+     "end": 23.359
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-68bf853051-t1.wav",
+     "err": 0.165,
+     "dur": 38.6,
+     "heard": "Se acabó la una, la carta no se enteró, y el pdf borroso, tampoco ayuda. Contastora armas tu carta digital en cinco minutos, cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escenían con la cámara y la carta abre al instante, sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre en una sede sin tarjeta. ¿Y no pagas comisión por pedido? Ahora sí, la bandeja paisa, 32 mil, 29 mil, el ajíaco ha gotado. Cada mesa lo ve al instante. Tu menú en la mesa, crea lo gratis en tastora."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-68bf853051-t2.wav",
+     "err": 0.175,
+     "dur": 53.44,
+     "heard": "Se acabó el 1. La carta no se enteró. Y el PDF borroso. Tampoco ayuda. Contastora armas tu carta digital en 5 minutos. Cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escanean con la cámara y la carta. Abre el instante. Sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre, en una sede, sin tarjeta. Y no pagas comisión por pedido. Ahora sí. La bandeja paisa, 32 mil, 29 mil. El agiaco. Agotado. Cada mesa lo ve al instante. Tu menú en la mesa. Crea lo gratis en tastora."
+    }
+   ]
+  },
+  {
+   "id": "qr",
+   "text": "Pones un QR en cada mesa.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 24.059,
+   "end": 25.219,
+   "words": [
+    {
+     "w": "Pones",
+     "start": 24.059,
+     "end": 24.199
+    },
+    {
+     "w": "un",
+     "start": 24.199,
+     "end": 24.399
+    },
+    {
+     "w": "QR",
+     "start": 24.399,
+     "end": 24.679
+    },
+    {
+     "w": "en",
+     "start": 24.679,
+     "end": 24.799
+    },
+    {
+     "w": "cada",
+     "start": 24.799,
+     "end": 24.939
+    },
+    {
+     "w": "mesa.",
+     "start": 24.939,
+     "end": 25.219
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-68bf853051-t1.wav",
+     "err": 0.165,
+     "dur": 38.6,
+     "heard": "Se acabó la una, la carta no se enteró, y el pdf borroso, tampoco ayuda. Contastora armas tu carta digital en cinco minutos, cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escenían con la cámara y la carta abre al instante, sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre en una sede sin tarjeta. ¿Y no pagas comisión por pedido? Ahora sí, la bandeja paisa, 32 mil, 29 mil, el ajíaco ha gotado. Cada mesa lo ve al instante. Tu menú en la mesa, crea lo gratis en tastora."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-68bf853051-t2.wav",
+     "err": 0.175,
+     "dur": 53.44,
+     "heard": "Se acabó el 1. La carta no se enteró. Y el PDF borroso. Tampoco ayuda. Contastora armas tu carta digital en 5 minutos. Cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escanean con la cámara y la carta. Abre el instante. Sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre, en una sede, sin tarjeta. Y no pagas comisión por pedido. Ahora sí. La bandeja paisa, 32 mil, 29 mil. El agiaco. Agotado. Cada mesa lo ve al instante. Tu menú en la mesa. Crea lo gratis en tastora."
+    }
+   ]
+  },
+  {
+   "id": "camara",
+   "text": "Lo escanean con la cámara y la carta abre al instante.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 25.959,
+   "end": 28.539,
+   "words": [
+    {
+     "w": "Lo",
+     "start": 25.959,
+     "end": 26.079
+    },
+    {
+     "w": "escanean",
+     "start": 26.079,
+     "end": 26.419
+    },
+    {
+     "w": "con",
+     "start": 26.419,
+     "end": 26.599
+    },
+    {
+     "w": "la",
+     "start": 26.599,
+     "end": 26.739
+    },
+    {
+     "w": "cámara",
+     "start": 26.739,
+     "end": 27.059
+    },
+    {
+     "w": "y",
+     "start": 27.059,
+     "end": 27.219
+    },
+    {
+     "w": "la",
+     "start": 27.219,
+     "end": 27.299
+    },
+    {
+     "w": "carta",
+     "start": 27.299,
+     "end": 27.579
+    },
+    {
+     "w": "abre",
+     "start": 27.579,
+     "end": 27.979
+    },
+    {
+     "w": "al",
+     "start": 27.979,
+     "end": 28.139
+    },
+    {
+     "w": "instante.",
+     "start": 28.139,
+     "end": 28.539
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-68bf853051-t1.wav",
+     "err": 0.165,
+     "dur": 38.6,
+     "heard": "Se acabó la una, la carta no se enteró, y el pdf borroso, tampoco ayuda. Contastora armas tu carta digital en cinco minutos, cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escenían con la cámara y la carta abre al instante, sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre en una sede sin tarjeta. ¿Y no pagas comisión por pedido? Ahora sí, la bandeja paisa, 32 mil, 29 mil, el ajíaco ha gotado. Cada mesa lo ve al instante. Tu menú en la mesa, crea lo gratis en tastora."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-68bf853051-t2.wav",
+     "err": 0.175,
+     "dur": 53.44,
+     "heard": "Se acabó el 1. La carta no se enteró. Y el PDF borroso. Tampoco ayuda. Contastora armas tu carta digital en 5 minutos. Cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escanean con la cámara y la carta. Abre el instante. Sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre, en una sede, sin tarjeta. Y no pagas comisión por pedido. Ahora sí. La bandeja paisa, 32 mil, 29 mil. El agiaco. Agotado. Cada mesa lo ve al instante. Tu menú en la mesa. Crea lo gratis en tastora."
+    }
+   ]
+  },
+  {
+   "id": "sinapp",
+   "text": "Sin descargar nada.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 29.199,
+   "end": 30.139,
+   "words": [
+    {
+     "w": "Sin",
+     "start": 29.199,
+     "end": 29.479
+    },
+    {
+     "w": "descargar",
+     "start": 29.479,
+     "end": 29.859
+    },
+    {
+     "w": "nada.",
+     "start": 29.859,
+     "end": 30.139
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-68bf853051-t1.wav",
+     "err": 0.165,
+     "dur": 38.6,
+     "heard": "Se acabó la una, la carta no se enteró, y el pdf borroso, tampoco ayuda. Contastora armas tu carta digital en cinco minutos, cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escenían con la cámara y la carta abre al instante, sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre en una sede sin tarjeta. ¿Y no pagas comisión por pedido? Ahora sí, la bandeja paisa, 32 mil, 29 mil, el ajíaco ha gotado. Cada mesa lo ve al instante. Tu menú en la mesa, crea lo gratis en tastora."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-68bf853051-t2.wav",
+     "err": 0.175,
+     "dur": 53.44,
+     "heard": "Se acabó el 1. La carta no se enteró. Y el PDF borroso. Tampoco ayuda. Contastora armas tu carta digital en 5 minutos. Cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escanean con la cámara y la carta. Abre el instante. Sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre, en una sede, sin tarjeta. Y no pagas comisión por pedido. Ahora sí. La bandeja paisa, 32 mil, 29 mil. El agiaco. Agotado. Cada mesa lo ve al instante. Tu menú en la mesa. Crea lo gratis en tastora."
+    }
+   ]
+  },
+  {
+   "id": "cuesta",
+   "text": "¿Y cuánto cuesta?",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "confidencial",
+   "take": 1,
+   "start": 30.919,
+   "end": 31.539,
+   "words": [
+    {
+     "w": "¿Y",
+     "start": 30.919,
+     "end": 30.999
+    },
+    {
+     "w": "cuánto",
+     "start": 30.999,
+     "end": 31.239
+    },
+    {
+     "w": "cuesta?",
+     "start": 31.239,
+     "end": 31.539
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-68bf853051-t1.wav",
+     "err": 0.165,
+     "dur": 38.6,
+     "heard": "Se acabó la una, la carta no se enteró, y el pdf borroso, tampoco ayuda. Contastora armas tu carta digital en cinco minutos, cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escenían con la cámara y la carta abre al instante, sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre en una sede sin tarjeta. ¿Y no pagas comisión por pedido? Ahora sí, la bandeja paisa, 32 mil, 29 mil, el ajíaco ha gotado. Cada mesa lo ve al instante. Tu menú en la mesa, crea lo gratis en tastora."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-68bf853051-t2.wav",
+     "err": 0.175,
+     "dur": 53.44,
+     "heard": "Se acabó el 1. La carta no se enteró. Y el PDF borroso. Tampoco ayuda. Contastora armas tu carta digital en 5 minutos. Cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escanean con la cámara y la carta. Abre el instante. Sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre, en una sede, sin tarjeta. Y no pagas comisión por pedido. Ahora sí. La bandeja paisa, 32 mil, 29 mil. El agiaco. Agotado. Cada mesa lo ve al instante. Tu menú en la mesa. Crea lo gratis en tastora."
+    }
+   ]
+  },
+  {
+   "id": "gratis",
+   "text": "Nada. Gratis para siempre en una sede, sin tarjeta.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 32.139,
+   "end": 36.199,
+   "words": [
+    {
+     "w": "Nada.",
+     "start": 32.139,
+     "end": 32.439
+    },
+    {
+     "w": "Gratis",
+     "start": 33.279,
+     "end": 33.739
+    },
+    {
+     "w": "para",
+     "start": 33.739,
+     "end": 33.899
+    },
+    {
+     "w": "siempre",
+     "start": 33.899,
+     "end": 34.259
+    },
+    {
+     "w": "en",
+     "start": 34.259,
+     "end": 34.579
+    },
+    {
+     "w": "una",
+     "start": 34.579,
+     "end": 34.719
+    },
+    {
+     "w": "sede,",
+     "start": 34.719,
+     "end": 35.079
+    },
+    {
+     "w": "sin",
+     "start": 35.079,
+     "end": 35.719
+    },
+    {
+     "w": "tarjeta.",
+     "start": 35.719,
+     "end": 36.199
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-68bf853051-t1.wav",
+     "err": 0.165,
+     "dur": 38.6,
+     "heard": "Se acabó la una, la carta no se enteró, y el pdf borroso, tampoco ayuda. Contastora armas tu carta digital en cinco minutos, cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escenían con la cámara y la carta abre al instante, sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre en una sede sin tarjeta. ¿Y no pagas comisión por pedido? Ahora sí, la bandeja paisa, 32 mil, 29 mil, el ajíaco ha gotado. Cada mesa lo ve al instante. Tu menú en la mesa, crea lo gratis en tastora."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-68bf853051-t2.wav",
+     "err": 0.175,
+     "dur": 53.44,
+     "heard": "Se acabó el 1. La carta no se enteró. Y el PDF borroso. Tampoco ayuda. Contastora armas tu carta digital en 5 minutos. Cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escanean con la cámara y la carta. Abre el instante. Sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre, en una sede, sin tarjeta. Y no pagas comisión por pedido. Ahora sí. La bandeja paisa, 32 mil, 29 mil. El agiaco. Agotado. Cada mesa lo ve al instante. Tu menú en la mesa. Crea lo gratis en tastora."
+    }
+   ]
+  },
+  {
+   "id": "comision",
+   "text": "Y no pagas comisión por pedido.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 36.919,
+   "end": 38.619,
+   "words": [
+    {
+     "w": "Y",
+     "start": 36.919,
+     "end": 37.219
+    },
+    {
+     "w": "no",
+     "start": 37.219,
+     "end": 37.399
+    },
+    {
+     "w": "pagas",
+     "start": 37.399,
+     "end": 37.739
+    },
+    {
+     "w": "comisión",
+     "start": 37.739,
+     "end": 38.119
+    },
+    {
+     "w": "por",
+     "start": 38.119,
+     "end": 38.299
+    },
+    {
+     "w": "pedido.",
+     "start": 38.299,
+     "end": 38.619
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-68bf853051-t1.wav",
+     "err": 0.165,
+     "dur": 38.6,
+     "heard": "Se acabó la una, la carta no se enteró, y el pdf borroso, tampoco ayuda. Contastora armas tu carta digital en cinco minutos, cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escenían con la cámara y la carta abre al instante, sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre en una sede sin tarjeta. ¿Y no pagas comisión por pedido? Ahora sí, la bandeja paisa, 32 mil, 29 mil, el ajíaco ha gotado. Cada mesa lo ve al instante. Tu menú en la mesa, crea lo gratis en tastora."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-68bf853051-t2.wav",
+     "err": 0.175,
+     "dur": 53.44,
+     "heard": "Se acabó el 1. La carta no se enteró. Y el PDF borroso. Tampoco ayuda. Contastora armas tu carta digital en 5 minutos. Cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escanean con la cámara y la carta. Abre el instante. Sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre, en una sede, sin tarjeta. Y no pagas comisión por pedido. Ahora sí. La bandeja paisa, 32 mil, 29 mil. El agiaco. Agotado. Cada mesa lo ve al instante. Tu menú en la mesa. Crea lo gratis en tastora."
+    }
+   ]
+  },
+  {
+   "id": "ahora",
+   "text": "Ahora sí: la bandeja paisa.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "confidencial",
+   "take": 1,
+   "start": 40.219,
+   "end": 43.279,
+   "words": [
+    {
+     "w": "Ahora",
+     "start": 40.219,
+     "end": 41.299
+    },
+    {
+     "w": "sí:",
+     "start": 41.299,
+     "end": 41.579
+    },
+    {
+     "w": "la",
+     "start": 42.319,
+     "end": 42.419
+    },
+    {
+     "w": "bandeja",
+     "start": 42.419,
+     "end": 42.799
+    },
+    {
+     "w": "paisa.",
+     "start": 42.799,
+     "end": 43.279
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-68bf853051-t1.wav",
+     "err": 0.165,
+     "dur": 38.6,
+     "heard": "Se acabó la una, la carta no se enteró, y el pdf borroso, tampoco ayuda. Contastora armas tu carta digital en cinco minutos, cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escenían con la cámara y la carta abre al instante, sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre en una sede sin tarjeta. ¿Y no pagas comisión por pedido? Ahora sí, la bandeja paisa, 32 mil, 29 mil, el ajíaco ha gotado. Cada mesa lo ve al instante. Tu menú en la mesa, crea lo gratis en tastora."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-68bf853051-t2.wav",
+     "err": 0.175,
+     "dur": 53.44,
+     "heard": "Se acabó el 1. La carta no se enteró. Y el PDF borroso. Tampoco ayuda. Contastora armas tu carta digital en 5 minutos. Cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escanean con la cámara y la carta. Abre el instante. Sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre, en una sede, sin tarjeta. Y no pagas comisión por pedido. Ahora sí. La bandeja paisa, 32 mil, 29 mil. El agiaco. Agotado. Cada mesa lo ve al instante. Tu menú en la mesa. Crea lo gratis en tastora."
+    }
+   ]
+  },
+  {
+   "id": "payoff",
+   "text": "Treinta y dos mil… veintinueve mil. El ajiaco, agotado.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 43.879,
+   "end": 47.879,
+   "words": [
+    {
+     "w": "Treinta",
+     "start": 43.879,
+     "end": 44.359
+    },
+    {
+     "w": "y",
+     "start": 44.359,
+     "end": 44.359
+    },
+    {
+     "w": "dos",
+     "start": 44.359,
+     "end": 44.719
+    },
+    {
+     "w": "mil…",
+     "start": 44.719,
+     "end": 45.099
+    },
+    {
+     "w": "veintinueve",
+     "start": 45.439,
+     "end": 45.719
+    },
+    {
+     "w": "mil.",
+     "start": 45.719,
+     "end": 46.119
+    },
+    {
+     "w": "El",
+     "start": 46.639,
+     "end": 46.819
+    },
+    {
+     "w": "ajiaco,",
+     "start": 46.819,
+     "end": 47.199
+    },
+    {
+     "w": "agotado.",
+     "start": 47.499,
+     "end": 47.879
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-68bf853051-t1.wav",
+     "err": 0.165,
+     "dur": 38.6,
+     "heard": "Se acabó la una, la carta no se enteró, y el pdf borroso, tampoco ayuda. Contastora armas tu carta digital en cinco minutos, cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escenían con la cámara y la carta abre al instante, sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre en una sede sin tarjeta. ¿Y no pagas comisión por pedido? Ahora sí, la bandeja paisa, 32 mil, 29 mil, el ajíaco ha gotado. Cada mesa lo ve al instante. Tu menú en la mesa, crea lo gratis en tastora."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-68bf853051-t2.wav",
+     "err": 0.175,
+     "dur": 53.44,
+     "heard": "Se acabó el 1. La carta no se enteró. Y el PDF borroso. Tampoco ayuda. Contastora armas tu carta digital en 5 minutos. Cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escanean con la cámara y la carta. Abre el instante. Sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre, en una sede, sin tarjeta. Y no pagas comisión por pedido. Ahora sí. La bandeja paisa, 32 mil, 29 mil. El agiaco. Agotado. Cada mesa lo ve al instante. Tu menú en la mesa. Crea lo gratis en tastora."
+    }
+   ]
+  },
+  {
+   "id": "mesas",
+   "text": "Cada mesa lo ve al instante.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 48.259,
+   "end": 49.679,
+   "words": [
+    {
+     "w": "Cada",
+     "start": 48.259,
+     "end": 48.539
+    },
+    {
+     "w": "mesa",
+     "start": 48.539,
+     "end": 48.819
+    },
+    {
+     "w": "lo",
+     "start": 48.819,
+     "end": 48.979
+    },
+    {
+     "w": "ve",
+     "start": 48.979,
+     "end": 49.139
+    },
+    {
+     "w": "al",
+     "start": 49.139,
+     "end": 49.279
+    },
+    {
+     "w": "instante.",
+     "start": 49.279,
+     "end": 49.679
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-68bf853051-t1.wav",
+     "err": 0.165,
+     "dur": 38.6,
+     "heard": "Se acabó la una, la carta no se enteró, y el pdf borroso, tampoco ayuda. Contastora armas tu carta digital en cinco minutos, cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escenían con la cámara y la carta abre al instante, sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre en una sede sin tarjeta. ¿Y no pagas comisión por pedido? Ahora sí, la bandeja paisa, 32 mil, 29 mil, el ajíaco ha gotado. Cada mesa lo ve al instante. Tu menú en la mesa, crea lo gratis en tastora."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-68bf853051-t2.wav",
+     "err": 0.175,
+     "dur": 53.44,
+     "heard": "Se acabó el 1. La carta no se enteró. Y el PDF borroso. Tampoco ayuda. Contastora armas tu carta digital en 5 minutos. Cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escanean con la cámara y la carta. Abre el instante. Sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre, en una sede, sin tarjeta. Y no pagas comisión por pedido. Ahora sí. La bandeja paisa, 32 mil, 29 mil. El agiaco. Agotado. Cada mesa lo ve al instante. Tu menú en la mesa. Crea lo gratis en tastora."
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "text": "Tu menú en la mesa. Créalo gratis en Tastora.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "cálido",
+   "take": 1,
+   "start": 50.279,
+   "end": 52.799,
+   "words": [
+    {
+     "w": "Tu",
+     "start": 50.279,
+     "end": 50.399
+    },
+    {
+     "w": "menú",
+     "start": 50.399,
+     "end": 50.599
+    },
+    {
+     "w": "en",
+     "start": 50.599,
+     "end": 50.699
+    },
+    {
+     "w": "la",
+     "start": 50.699,
+     "end": 50.759
+    },
+    {
+     "w": "mesa.",
+     "start": 50.759,
+     "end": 51.019
+    },
+    {
+     "w": "Créalo",
+     "start": 51.899,
+     "end": 51.979
+    },
+    {
+     "w": "gratis",
+     "start": 51.979,
+     "end": 52.299
+    },
+    {
+     "w": "en",
+     "start": 52.299,
+     "end": 52.399
+    },
+    {
+     "w": "Tastora.",
+     "start": 52.399,
+     "end": 52.799
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-68bf853051-t1.wav",
+     "err": 0.165,
+     "dur": 38.6,
+     "heard": "Se acabó la una, la carta no se enteró, y el pdf borroso, tampoco ayuda. Contastora armas tu carta digital en cinco minutos, cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escenían con la cámara y la carta abre al instante, sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre en una sede sin tarjeta. ¿Y no pagas comisión por pedido? Ahora sí, la bandeja paisa, 32 mil, 29 mil, el ajíaco ha gotado. Cada mesa lo ve al instante. Tu menú en la mesa, crea lo gratis en tastora."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-68bf853051-t2.wav",
+     "err": 0.175,
+     "dur": 53.44,
+     "heard": "Se acabó el 1. La carta no se enteró. Y el PDF borroso. Tampoco ayuda. Contastora armas tu carta digital en 5 minutos. Cada plato con su foto y su precio. Pones un cuero en cada mesa. Lo escanean con la cámara y la carta. Abre el instante. Sin descargar nada. ¿Y cuánto cuesta? Nada. Gratis para siempre, en una sede, sin tarjeta. Y no pagas comisión por pedido. Ahora sí. La bandeja paisa, 32 mil, 29 mil. El agiaco. Agotado. Cada mesa lo ve al instante. Tu menú en la mesa. Crea lo gratis en tastora."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,462 @@
+{
+ "engine": "edge",
+ "voice": "es-CO-SalomeNeural",
+ "rate": "+2%",
+ "duration": 31.372,
+ "wordsPerSecond": 2.98,
+ "lines": [
+  {
+   "id": "hook",
+   "text": "¿Por qué el cielo es azul y no blanco?",
+   "start": 0.4,
+   "end": 3.16,
+   "words": [
+    {
+     "w": "Por",
+     "start": 0.499,
+     "end": 0.646
+    },
+    {
+     "w": "qué",
+     "start": 0.707,
+     "end": 0.756
+    },
+    {
+     "w": "el",
+     "start": 0.756,
+     "end": 0.854
+    },
+    {
+     "w": "cielo",
+     "start": 0.854,
+     "end": 1.112
+    },
+    {
+     "w": "es",
+     "start": 1.112,
+     "end": 1.21
+    },
+    {
+     "w": "azul",
+     "start": 1.222,
+     "end": 1.553
+    },
+    {
+     "w": "y",
+     "start": 1.565,
+     "end": 1.626
+    },
+    {
+     "w": "no",
+     "start": 1.663,
+     "end": 1.761
+    },
+    {
+     "w": "blanco",
+     "start": 1.798,
+     "end": 2.202
+    }
+   ]
+  },
+  {
+   "id": "sun",
+   "text": "La luz del sol trae todos los colores mezclados.",
+   "start": 3.48,
+   "end": 7.128,
+   "words": [
+    {
+     "w": "La",
+     "start": 3.579,
+     "end": 3.8
+    },
+    {
+     "w": "luz",
+     "start": 3.824,
+     "end": 3.996
+    },
+    {
+     "w": "del",
+     "start": 4.045,
+     "end": 4.192
+    },
+    {
+     "w": "sol",
+     "start": 4.216,
+     "end": 4.425
+    },
+    {
+     "w": "trae",
+     "start": 4.486,
+     "end": 4.67
+    },
+    {
+     "w": "todos",
+     "start": 4.743,
+     "end": 4.903
+    },
+    {
+     "w": "los",
+     "start": 4.915,
+     "end": 5.074
+    },
+    {
+     "w": "colores",
+     "start": 5.123,
+     "end": 5.478
+    },
+    {
+     "w": "mezclados",
+     "start": 5.515,
+     "end": 6.238
+    }
+   ]
+  },
+  {
+   "id": "air",
+   "text": "Cuando choca con el aire, el azul rebota mucho más que el rojo.",
+   "start": 7.448,
+   "end": 11.984,
+   "words": [
+    {
+     "w": "Cuando",
+     "start": 7.547,
+     "end": 7.841
+    },
+    {
+     "w": "choca",
+     "start": 7.902,
+     "end": 8.16
+    },
+    {
+     "w": "con",
+     "start": 8.233,
+     "end": 8.344
+    },
+    {
+     "w": "el",
+     "start": 8.368,
+     "end": 8.466
+    },
+    {
+     "w": "aire",
+     "start": 8.491,
+     "end": 8.822
+    },
+    {
+     "w": "el",
+     "start": 9.128,
+     "end": 9.238
+    },
+    {
+     "w": "azul",
+     "start": 9.263,
+     "end": 9.532
+    },
+    {
+     "w": "rebota",
+     "start": 9.557,
+     "end": 9.949
+    },
+    {
+     "w": "mucho",
+     "start": 9.986,
+     "end": 10.255
+    },
+    {
+     "w": "más",
+     "start": 10.292,
+     "end": 10.488
+    },
+    {
+     "w": "que",
+     "start": 10.537,
+     "end": 10.574
+    },
+    {
+     "w": "el",
+     "start": 10.574,
+     "end": 10.648
+    },
+    {
+     "w": "rojo",
+     "start": 10.697,
+     "end": 11.064
+    }
+   ]
+  },
+  {
+   "id": "spread",
+   "text": "Por eso el azul se riega por todo el cielo y te llega desde cualquier lado.",
+   "start": 12.304,
+   "end": 16.744,
+   "words": [
+    {
+     "w": "Por",
+     "start": 12.403,
+     "end": 12.575
+    },
+    {
+     "w": "eso",
+     "start": 12.575,
+     "end": 12.758
+    },
+    {
+     "w": "el",
+     "start": 12.758,
+     "end": 12.82
+    },
+    {
+     "w": "azul",
+     "start": 12.844,
+     "end": 13.138
+    },
+    {
+     "w": "se",
+     "start": 13.175,
+     "end": 13.285
+    },
+    {
+     "w": "riega",
+     "start": 13.322,
+     "end": 13.616
+    },
+    {
+     "w": "por",
+     "start": 13.69,
+     "end": 13.788
+    },
+    {
+     "w": "todo",
+     "start": 13.874,
+     "end": 14.008
+    },
+    {
+     "w": "el",
+     "start": 14.045,
+     "end": 14.119
+    },
+    {
+     "w": "cielo",
+     "start": 14.131,
+     "end": 14.45
+    },
+    {
+     "w": "y",
+     "start": 14.462,
+     "end": 14.462
+    },
+    {
+     "w": "te",
+     "start": 14.535,
+     "end": 14.597
+    },
+    {
+     "w": "llega",
+     "start": 14.646,
+     "end": 14.878
+    },
+    {
+     "w": "desde",
+     "start": 14.903,
+     "end": 15.099
+    },
+    {
+     "w": "cualquier",
+     "start": 15.16,
+     "end": 15.516
+    },
+    {
+     "w": "lado",
+     "start": 15.553,
+     "end": 15.81
+    }
+   ]
+  },
+  {
+   "id": "violet",
+   "text": "El violeta rebota aún más, pero el sol trae poco y tus ojos casi no lo notan.",
+   "start": 17.064,
+   "end": 22.68,
+   "words": [
+    {
+     "w": "El",
+     "start": 17.163,
+     "end": 17.322
+    },
+    {
+     "w": "violeta",
+     "start": 17.359,
+     "end": 17.788
+    },
+    {
+     "w": "rebota",
+     "start": 17.825,
+     "end": 18.241
+    },
+    {
+     "w": "aún",
+     "start": 18.241,
+     "end": 18.401
+    },
+    {
+     "w": "más",
+     "start": 18.438,
+     "end": 18.793
+    },
+    {
+     "w": "pero",
+     "start": 19.185,
+     "end": 19.381
+    },
+    {
+     "w": "el",
+     "start": 19.381,
+     "end": 19.455
+    },
+    {
+     "w": "sol",
+     "start": 19.467,
+     "end": 19.675
+    },
+    {
+     "w": "trae",
+     "start": 19.724,
+     "end": 19.933
+    },
+    {
+     "w": "poco",
+     "start": 20.018,
+     "end": 20.239
+    },
+    {
+     "w": "y",
+     "start": 20.264,
+     "end": 20.276
+    },
+    {
+     "w": "tus",
+     "start": 20.349,
+     "end": 20.521
+    },
+    {
+     "w": "ojos",
+     "start": 20.533,
+     "end": 20.766
+    },
+    {
+     "w": "casi",
+     "start": 20.803,
+     "end": 21.048
+    },
+    {
+     "w": "no",
+     "start": 21.085,
+     "end": 21.183
+    },
+    {
+     "w": "lo",
+     "start": 21.219,
+     "end": 21.305
+    },
+    {
+     "w": "notan",
+     "start": 21.33,
+     "end": 21.759
+    }
+   ]
+  },
+  {
+   "id": "payoff",
+   "text": "Y al atardecer, cuando la luz cruza más aire, el azul se pierde y llega el naranja.",
+   "start": 23.38,
+   "end": 29.572,
+   "words": [
+    {
+     "w": "Y",
+     "start": 23.479,
+     "end": 23.626
+    },
+    {
+     "w": "al",
+     "start": 23.638,
+     "end": 23.749
+    },
+    {
+     "w": "atardecer",
+     "start": 23.773,
+     "end": 24.533
+    },
+    {
+     "w": "cuando",
+     "start": 24.852,
+     "end": 25.097
+    },
+    {
+     "w": "la",
+     "start": 25.133,
+     "end": 25.219
+    },
+    {
+     "w": "luz",
+     "start": 25.244,
+     "end": 25.415
+    },
+    {
+     "w": "cruza",
+     "start": 25.464,
+     "end": 25.758
+    },
+    {
+     "w": "más",
+     "start": 25.795,
+     "end": 26.004
+    },
+    {
+     "w": "aire",
+     "start": 26.028,
+     "end": 26.334
+    },
+    {
+     "w": "el",
+     "start": 26.702,
+     "end": 26.812
+    },
+    {
+     "w": "azul",
+     "start": 26.837,
+     "end": 27.131
+    },
+    {
+     "w": "se",
+     "start": 27.156,
+     "end": 27.278
+    },
+    {
+     "w": "pierde",
+     "start": 27.352,
+     "end": 27.719
+    },
+    {
+     "w": "y",
+     "start": 27.731,
+     "end": 27.768
+    },
+    {
+     "w": "llega",
+     "start": 27.817,
+     "end": 28.05
+    },
+    {
+     "w": "el",
+     "start": 28.05,
+     "end": 28.111
+    },
+    {
+     "w": "naranja",
+     "start": 28.16,
+     "end": 28.651
+    }
+   ]
+  }
+ ]
+}

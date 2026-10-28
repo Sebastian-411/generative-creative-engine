@@ -1,0 +1,16 @@
+{
+  "voice": "es-CO-GonzaloNeural",
+  "rate": "+3%",
+  "lead": 0.4,
+  "gap": 0.35,
+  "tail": 2.2,
+  "lines": [
+    { "id": "hook", "text": "Detrás de cada crédito privado hay tres preguntas." },
+    { "id": "doc", "text": "¿Existe el activo?" },
+    { "id": "cash", "text": "¿Recibe usted el dinero?" },
+    { "id": "own", "text": "¿Ya fue cedido antes?", "pause": 0.6 },
+    { "id": "turn", "text": "Vaas las responde de forma automática, todos los días." },
+    { "id": "proof", "text": "Más de 20 millones de documentos verificados y más de mil millones en capital fluyendo por sus rieles.", "say": "Más de veinte millones de documentos verificados, y más de mil millones en capital fluyendo por sus rieles.", "pause": 0.5 },
+    { "id": "payoff", "text": "Vaas. Rieles públicos para el crédito privado." }
+  ]
+}

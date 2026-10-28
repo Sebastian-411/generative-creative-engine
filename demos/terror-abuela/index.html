@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>terror-abuela</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&display=block" rel="stylesheet">
+<script src="/__engine/gsap.min.js"></script>
+<script src="/__engine/stage.js"></script>
+<style>
+  #stage { font-family: 'Cormorant Garamond', serif; }
+  #c { position: absolute; inset: 0; }
+  .cap { position: absolute; left: 90px; right: 150px; top: 1330px; text-align: center; font-size: 82px; font-style: italic; line-height: 1.05; color: #efe9dd; text-shadow: 0 0 24px rgba(0,0,0,.9), 0 3px 0 #000; }
+  .cap .cw { opacity: .3; }
+  .cap .cw.on { opacity: 1; }
+</style>
+</head>
+<body>
+<div id="stage"><canvas id="c" width="1080" height="1920"></canvas></div>
+<script>
+  const W = 1080, H = 1920;
+  const stage = Stage.create({
+    width: W, height: H, fps: 24, seed: 'abuela', background: '#050608',
+    voice: 'voice.json', duration: 'voice',
+    music: { ai: 'ace', prompt: 'dark cinematic horror score, low droning strings, eerie music box, distant piano, slow dread building, no drums', bpm: 60, key: 'D minor', seed: 42, db: -9, duck: 5, fallback: 'dread' },
+    // Ambientes reales: noche de bosque afuera; tono de cuarto adentro (Oculus Audio Pack, CC BY → créditos automáticos).
+    ambience: [{ sfx: '@oculus/audio-pack-1/AMBForst_Night_LOOP_01', from: 0, to: 6.2, db: -20, fadeOut: 1.2 }, { sfx: '@room tone home', from: 5.2, to: 35.6, db: -26 }],
+  });
+  const { tl, rand } = stage;
+  Stage.captions(stage, { maxWords: 3 });
+  const g = document.getElementById('c').getContext('2d');
+  const N = (id, x) => Stage.noise(id, x);
+
+  // ---- Tiempos (todo anclado a la voz) ----------------------------------------------------
+  const T = {
+    pasillo: stage.at('pasillo', -0.3), noche: stage.at('noche', -0.3), llamado: stage.at('llamado', -0.4),
+    casi: stage.at('casi', -0.3), muerta: stage.word('muerta', 'mi', -0.05), sigue: stage.at('sigue', -0.4),
+  };
+  const S = { push: 0, swing: 0, flick: 0, door: 0.08, figure: 0, clock: 0, candle: 0, photo: 0, ribbon: 0, black: 0, shake: 0 };
+
+  // ---- Utilidades de dibujo ---------------------------------------------------------------
+  const grainFrames = Array.from({ length: 6 }, (_, k) => {
+    const c = document.createElement('canvas'); c.width = 540; c.height = 960;
+    const x = c.getContext('2d'), img = x.createImageData(540, 960), r = Stage.makeRand('grain' + k);
+    for (let i = 0; i < img.data.length; i += 4) { const v = r() * 255; img.data[i] = img.data[i + 1] = img.data[i + 2] = v; img.data[i + 3] = 22; }
+    x.putImageData(img, 0, 0); return c;
+  });
+  // Parpadeo del bombillo: función cerrada del tiempo (ruido + caídas bruscas).
+  const bulb = (t) => {
+    const base = 0.75 + 0.25 * N('bulb', t * 3);
+    const drop = N('drop', Math.floor(t * 2) * 0.9) > 0.55 ? 0.3 : 1;
+    return Math.max(0, Math.min(1, base * drop * (1 - S.flick) + S.flick * (N('fl', Math.floor(t * 2.4)) > 0 ? 1 : 0.12)));
+  };
+  const vignette = (strength) => {
+    const v = g.createRadialGradient(W / 2, H * 0.45, H * 0.15, W / 2, H * 0.45, H * 0.75);
+    v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, `rgba(0,0,0,${strength})`);
+    g.fillStyle = v; g.fillRect(0, 0, W, H);
+  };
+  const figure = (x, y, h, alpha) => {
+    if (alpha <= 0.01) return;
+    g.save(); g.globalAlpha = alpha; g.fillStyle = '#000';
+    g.beginPath(); g.ellipse(x, y - h * 0.86, h * 0.07, h * 0.09, 0, 0, 7); g.fill();               // cabeza
+    g.beginPath(); g.moveTo(x - h * 0.06, y - h * 0.78); g.quadraticCurveTo(x - h * 0.2, y - h * 0.5, x - h * 0.13, y);
+    g.lineTo(x + h * 0.13, y); g.quadraticCurveTo(x + h * 0.2, y - h * 0.5, x + h * 0.06, y - h * 0.78); g.fill(); // cuerpo con chal
+    g.restore();
+  };
+
+  // ---- Escenas ----------------------------------------------------------------------------
+  function exterior(t) {
+    const k = 1 + S.push * 0.12;
+    g.save(); g.translate(W / 2, H * 0.55); g.scale(k, k); g.translate(-W / 2, -H * 0.55);
+    const sky = g.createLinearGradient(0, 0, 0, H); sky.addColorStop(0, '#0b1424'); sky.addColorStop(1, '#03050a');
+    g.fillStyle = sky; g.fillRect(-100, -100, W + 200, H + 200);
+    g.fillStyle = 'rgba(220,226,236,.92)'; g.beginPath(); g.arc(800, 360, 70, 0, 7); g.fill();          // luna
+    g.fillStyle = 'rgba(160,170,190,.08)'; g.beginPath(); g.arc(800, 360, 150, 0, 7); g.fill();
+    for (let i = 0; i < 4; i++) { g.fillStyle = 'rgba(12,18,30,.75)'; g.beginPath(); g.ellipse(((i * 380 + t * 18) % 1500) - 200, 300 + i * 70, 260, 40, 0, 0, 7); g.fill(); }
+    // árboles que se mecen
+    g.strokeStyle = '#020305'; g.lineWidth = 22; g.lineCap = 'round';
+    [[150, 1500, 700], [960, 1480, 560]].forEach(([x, y, h], i) => {
+      const sw = N('tree' + i, t * 0.5) * 0.06;
+      g.save(); g.translate(x, y); g.rotate(sw); g.beginPath(); g.moveTo(0, 0); g.lineTo(0, -h);
+      for (let b = 0; b < 6; b++) { const by = -h * (0.4 + b * 0.1), dir = b % 2 ? 1 : -1; g.moveTo(0, by); g.lineTo(dir * (120 - b * 12), by - 90); }
+      g.stroke(); g.restore();
+    });
+    // casa
+    g.fillStyle = '#04060a';
+    g.beginPath(); g.moveTo(270, 1530); g.lineTo(270, 1050); g.lineTo(540, 820); g.lineTo(810, 1050); g.lineTo(810, 1530); g.fill();
+    const lit = 0.55 + 0.45 * bulb(t);
+    g.fillStyle = `rgba(232,182,90,${0.85 * lit})`; g.fillRect(470, 1110, 140, 170);                    // ventana encendida
+    g.fillStyle = '#04060a'; g.fillRect(535, 1110, 10, 170); g.fillRect(470, 1190, 140, 10);
+    const wg = g.createRadialGradient(540, 1195, 40, 540, 1195, 320); wg.addColorStop(0, `rgba(232,182,90,${0.22 * lit})`); wg.addColorStop(1, 'rgba(232,182,90,0)'); g.fillStyle = wg; g.fillRect(200, 880, 680, 640);
+    g.fillStyle = '#020304'; g.fillRect(-100, 1520, W + 200, 500);
+    g.restore();
+  }
+
+  function hallway(t, depthPush, doorOpen, figAlpha, figScale) {
+    const L = bulb(t);
+    const k = 1 + depthPush * 0.35;
+    g.save(); g.translate(W / 2, 980); g.scale(k, k); g.translate(-W / 2, -980);
+    g.fillStyle = '#07080b'; g.fillRect(-200, -200, W + 400, H + 400);
+    const vx = 540, vy = 930, dw = 210, dh = 400;                       // punto de fuga y puerta del fondo
+    const wall = (pts, c) => { g.fillStyle = c; g.beginPath(); g.moveTo(...pts[0]); pts.slice(1).forEach((p) => g.lineTo(...p)); g.closePath(); g.fill(); };
+    const lit = (a) => `rgba(${Math.round(12 + 150 * L * a)},${Math.round(15 + 115 * L * a)},${Math.round(20 + 70 * L * a)},1)`;
+    wall([[-200, -200], [vx - dw, vy - dh / 2], [vx - dw, vy + dh / 2 + 120], [-200, H + 200]], lit(0.35));      // pared izquierda
+    wall([[W + 200, -200], [vx + dw, vy - dh / 2], [vx + dw, vy + dh / 2 + 120], [W + 200, H + 200]], lit(0.28)); // pared derecha
+    wall([[-200, -200], [W + 200, -200], [vx + dw, vy - dh / 2], [vx - dw, vy - dh / 2]], lit(0.18));            // techo
+    wall([[-200, H + 200], [W + 200, H + 200], [vx + dw, vy + dh / 2 + 120], [vx - dw, vy + dh / 2 + 120]], lit(0.22)); // piso
+    // tablas del piso
+    g.strokeStyle = `rgba(0,0,0,.35)`; g.lineWidth = 3;
+    for (let i = -6; i <= 6; i++) { g.beginPath(); g.moveTo(vx + i * 30, vy + dh / 2 + 120); g.lineTo(vx + i * 260, H + 200); g.stroke(); }
+    // marcos de cuadros en las paredes
+    g.strokeStyle = `rgba(20,14,8,.9)`; g.lineWidth = 10;
+    g.strokeRect(60, 760, 170, 230); g.strokeRect(860, 780, 150, 200);
+    // pared del fondo + puerta entreabierta (rendija oscura que crece)
+    g.fillStyle = lit(0.12); g.fillRect(vx - dw, vy - dh / 2, dw * 2, dh + 120);
+    g.fillStyle = '#2a1d12'; g.fillRect(vx - 90, vy - 150, 180, 390);
+    const gap = 180 * doorOpen;
+    const back = g.createLinearGradient(0, vy - 150, 0, vy + 240); back.addColorStop(0, '#1c2633'); back.addColorStop(1, '#0a0f16');
+    g.fillStyle = back; g.fillRect(vx - 90, vy - 150, gap, 390);
+    figure(vx - 90 + gap * 0.55, vy + 240, 340 * figScale, figAlpha * Math.min(1, doorOpen * 4));
+    // bombillo colgante que se mece
+    const sw = Math.sin(t * 1.3) * 0.12 * (0.4 + S.swing);
+    g.save(); g.translate(vx, vy - dh / 2 - 260); g.rotate(sw);
+    g.strokeStyle = '#000'; g.lineWidth = 4; g.beginPath(); g.moveTo(0, -400); g.lineTo(0, 160); g.stroke();
+    g.fillStyle = `rgba(255,214,140,${0.35 + 0.65 * L})`; g.beginPath(); g.arc(0, 190, 32, 0, 7); g.fill();
+    const glow = g.createRadialGradient(0, 190, 0, 0, 190, 520); glow.addColorStop(0, `rgba(255,200,120,${0.35 * L})`); glow.addColorStop(1, 'rgba(255,200,120,0)');
+    g.fillStyle = glow; g.fillRect(-520, -330, 1040, 1040);
+    g.restore();
+    g.restore();
+    // oscuridad global según la luz
+    g.fillStyle = `rgba(0,0,0,${0.62 - 0.4 * L})`; g.fillRect(0, 0, W, H);
+  }
+
+  function clockScene(t) {
+    g.fillStyle = '#0a0b0e'; g.fillRect(0, 0, W, H);
+    const cx = 540, cy = 860, R = 330, k = 1 + S.clock * 0.08;
+    g.save(); g.translate(cx, cy); g.scale(k, k);
+    g.fillStyle = '#1b1610'; g.beginPath(); g.arc(0, 0, R + 40, 0, 7); g.fill();
+    g.fillStyle = '#d8ccb2'; g.beginPath(); g.arc(0, 0, R, 0, 7); g.fill();
+    g.fillStyle = '#2a2116';
+    for (let i = 0; i < 12; i++) { const a = (i / 12) * Math.PI * 2; g.save(); g.rotate(a); g.fillRect(-6, -R + 18, 12, i % 3 ? 30 : 56); g.restore(); }
+    const sec = Math.floor(t - T.noche);                                  // el segundero salta cada segundo
+    const hand = (a, len, w) => { g.save(); g.rotate(a); g.fillRect(-w / 2, -len, w, len + 30); g.restore(); };
+    hand((10 / 60) * Math.PI * 2, R * 0.82, 14);                         // minutero: :10
+    hand((0 + 10 / 60 / 12) * Math.PI * 2, R * 0.5, 22);                 // horario: 12
+    g.fillStyle = '#7a1414'; hand(((sec % 60) / 60) * Math.PI * 2, R * 0.9, 5);
+    g.beginPath(); g.arc(0, 0, 16, 0, 7); g.fill();
+    g.restore();
+    const light = g.createRadialGradient(300, 500, 50, 540, 860, 1100); light.addColorStop(0, 'rgba(120,140,170,.12)'); light.addColorStop(1, 'rgba(0,0,0,.6)');
+    g.fillStyle = light; g.fillRect(0, 0, W, H);
+  }
+
+  function photoScene(t) {
+    g.fillStyle = '#060607'; g.fillRect(0, 0, W, H);
+    const fl = S.candle * (0.85 + 0.15 * N('flame', t * 9));
+    const cx = 540, cy = 820, k = 1 + S.photo * 0.1;
+    g.save(); g.translate(cx, cy); g.scale(k, k);
+    // marco y retrato (silueta de mujer mayor con moño)
+    g.fillStyle = `rgba(60,40,22,${0.2 + 0.8 * fl})`; g.fillRect(-250, -330, 500, 640);
+    g.fillStyle = `rgba(140,120,96,${0.1 + 0.75 * fl})`; g.fillRect(-210, -290, 420, 560);
+    g.fillStyle = `rgba(30,24,18,${0.15 + 0.85 * fl})`;
+    g.beginPath(); g.ellipse(0, -60, 95, 120, 0, 0, 7); g.fill();           // cabeza
+    g.beginPath(); g.arc(0, -175, 55, 0, 7); g.fill();                       // moño
+    g.beginPath(); g.moveTo(-190, 270); g.quadraticCurveTo(-170, 60, 0, 60); g.quadraticCurveTo(170, 60, 190, 270); g.fill(); // hombros
+    // lazo negro de luto en la esquina
+    if (S.ribbon > 0) {
+      g.save(); g.globalAlpha = S.ribbon; g.fillStyle = '#000';
+      g.beginPath(); g.moveTo(130, -330); g.lineTo(250, -330); g.lineTo(250, -210); g.closePath(); g.fill();
+      g.beginPath(); g.moveTo(180, -280); g.lineTo(150, -200); g.lineTo(200, -230); g.lineTo(230, -180); g.lineTo(215, -270); g.fill();
+      g.restore();
+    }
+    g.restore();
+    // vela
+    const vx = 540, vy = 1370;
+    g.fillStyle = '#cfc6b4'; g.fillRect(vx - 34, vy, 68, 220);
+    if (fl > 0.02) {
+      const fh = 70 + 12 * N('fh', t * 7), sway = 6 * N('fs', t * 5);
+      const fg = g.createRadialGradient(vx + sway, vy - 30, 2, vx, vy - 20, 420 * fl);
+      fg.addColorStop(0, `rgba(255,190,90,${0.5 * fl})`); fg.addColorStop(1, 'rgba(255,190,90,0)');
+      g.fillStyle = fg; g.fillRect(0, 0, W, H);
+      g.fillStyle = `rgba(255,224,150,${fl})`; g.beginPath(); g.ellipse(vx + sway, vy - fh / 2, 16, fh / 2, sway * 0.01, 0, 7); g.fill();
+    }
+  }
+
+  // ---- Coreografía ------------------------------------------------------------------------
+  tl.fromTo(S, { push: 0 }, { push: 1, duration: T.pasillo, ease: 'none' }, 0);
+  // pasillo: empuje lento hacia la puerta; parpadeo en "no contestes"
+  const hall1 = { p: 0 };
+  tl.fromTo(hall1, { p: 0 }, { p: 1, duration: T.noche - T.pasillo, ease: 'none' }, T.pasillo)
+    .to(S, { flick: 1, duration: 0.05 }, stage.word('pasillo', 'contestes', -0.3)).to(S, { flick: 0, duration: 0.05 }, stage.word('pasillo', 'contestes', 0.6));
+  stage.sfx('creak', T.pasillo + 0.4, -20).sfx('@impact wood heavy', stage.word('pasillo', 'contestes', 0.5), -18).sfx('glitch', stage.word('pasillo', 'contestes', -0.3), -24);
+  // reloj: se acerca; tic de segundero
+  tl.fromTo(S, { clock: 0 }, { clock: 1, duration: T.llamado - T.noche, ease: 'none' }, T.noche);
+  for (let s = Math.ceil(T.noche); s < T.llamado; s++) stage.sfx('tick', s, -20);
+  stage.sfx('heartbeat', stage.word('noche', 'voz', 0.1), -14);
+  // llamado: la puerta se abre un poco y algo se ve en los parpadeos
+  const hall2 = { p: 0, door: 0.08, fig: 0 };
+  tl.fromTo(hall2, { p: 0.5, door: 0.08, fig: 0 }, { p: 0.85, door: 0.3, fig: 0.9, duration: T.casi - T.llamado, ease: 'power1.in' }, T.llamado)
+    .to(S, { flick: 1, duration: 0.05 }, stage.end('llamado', 0.1)).to(S, { flick: 0, duration: 0.05 }, stage.end('llamado', 0.9));
+  stage.sfx('creak', T.llamado + 0.2, -16).sfx('breath', stage.end('llamado', 0.2), -18);
+  // casi / muerta: la vela se enciende sobre la foto; lazo negro en el golpe
+  tl.fromTo(S, { candle: 0, photo: 0 }, { candle: 1, photo: 0.4, duration: 0.6, ease: 'power2.out' }, stage.word('casi', 'acordé', -0.2))
+    .to(S, { photo: 1, duration: T.sigue - T.casi, ease: 'none' }, stage.word('casi', 'acordé', 0.4))
+    .fromTo(S, { ribbon: 0 }, { ribbon: 1, duration: 0.08 }, stage.word('muerta', 'muerta', -0.05))
+    .fromTo(S, { shake: 0 }, { shake: 1, duration: 0.05 }, stage.word('muerta', 'muerta', -0.05)).to(S, { shake: 0, duration: 0.5, ease: 'power2.out' }, stage.word('muerta', 'muerta', 0.05));
+  stage.sfx('stinger', stage.word('muerta', 'muerta', -0.05), -9);
+  // sigue: la puerta se abre más, la figura está más cerca; corte a negro al final
+  const hall3 = { p: 0, door: 0.3, fig: 0.9, scale: 1 };
+  tl.fromTo(hall3, { p: 0.85, door: 0.3, scale: 1 }, { p: 1.4, door: 0.75, scale: 1.25, duration: stage.duration - T.sigue - 1.6, ease: 'power1.in' }, T.sigue)
+    .to(S, { flick: 1, duration: 0.05 }, stage.word('sigue', 'llama', -0.1))
+    .fromTo(S, { black: 0 }, { black: 1, duration: 0.05 }, stage.duration - 1.6);
+  stage.sfx('creak', T.sigue + 0.3, -14).sfx('impact', stage.duration - 1.6, -10);
+
+  // ---- Dibujo por fotograma ----------------------------------------------------------------
+  stage.onFrame((t, frame) => {
+    g.save();
+    if (S.shake > 0) g.translate(N('shx', t * 40) * 24 * S.shake, N('shy', t * 40) * 24 * S.shake);
+    if (t < T.pasillo) exterior(t);
+    else if (t < T.noche) hallway(t, hall1.p * 0.5, 0.08, 0, 1);
+    else if (t < T.llamado) clockScene(t);
+    else if (t < T.casi) hallway(t, hall2.p, hall2.door, hall2.fig, 1);
+    else if (t < stage.word('casi', 'acordé', -0.25)) hallway(t, hall2.p + (t - T.casi) * 0.18, hall2.door, hall2.fig, 1 + (t - T.casi) * 0.06);
+    else if (t < T.sigue) photoScene(t);
+    else hallway(t, hall3.p, hall3.door, 1, hall3.scale);
+    g.restore();
+    vignette(0.85);
+    g.globalAlpha = 1; g.drawImage(grainFrames[frame % grainFrames.length], 0, 0, W, H);
+    if (S.black > 0) { g.fillStyle = `rgba(0,0,0,${S.black})`; g.fillRect(0, 0, W, H); }
+  });
+</script>
+</body>
+</html>

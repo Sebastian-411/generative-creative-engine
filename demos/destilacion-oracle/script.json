@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 2,
+  "voice": "",
+  "engine": "qwen",
+  "cast": {
+    "narrador": {
+      "description": "locutor técnico latino, masculino, cálido y seguro, ritmo ágil, dicción limpia"
+    }
+  },
+  "direction": "técnico que confiesa: seguro en los datos, bajo y honesto en la confesión, cálido en el payoff",
+  "takes": 2,
+  "lead": 0.15,
+  "gap": 0.3,
+  "tail": 0.8,
+  "lines": [
+    {
+      "id": "hook",
+      "role": "hook",
+      "text": "Esto no se mira. Se mide.",
+      "emotion": "seguro",
+      "intensity": "alta",
+      "pace": "normal",
+      "value_from": "creo",
+      "value_to": "dudo",
+      "lesson": "la calidad se demuestra con números, no con gusto",
+      "char_budget": 28
+    },
+    {
+      "id": "inspector",
+      "role": "proof",
+      "text": "Un inspector revisa cada fotograma de este video mientras lo ves.",
+      "emotion": "curioso",
+      "intensity": "media",
+      "pace": "normal",
+      "value_from": "dudo",
+      "value_to": "ojo",
+      "lesson": "el árbitro vive dentro del video",
+      "char_budget": 70
+    },
+    {
+      "id": "frames",
+      "role": "proof",
+      "text": "Ningún cuadro se repite. El contador no miente.",
+      "emotion": "enumerando",
+      "intensity": "media",
+      "pace": "ágil",
+      "value_from": "ojo",
+      "value_to": "dato",
+      "lesson": "un cuadro quieto de más es un punto muerto",
+      "char_budget": 48
+    },
+    {
+      "id": "hertz",
+      "role": "desarrollo",
+      "text": "El movimiento se mide dos veces por segundo. Si algo se congela, el render muere.",
+      "emotion": "tenso",
+      "intensity": "media-alta",
+      "pace": "normal",
+      "value_from": "dato",
+      "value_to": "amenaza",
+      "lesson": "el congelamiento es falla, no estilo",
+      "char_budget": 84
+    },
+    {
+      "id": "audio",
+      "role": "desarrollo",
+      "text": "Catorce LUFS exactos, pico bajo cero, y silencios donde la voz respira.",
+      "emotion": "ordenado",
+      "intensity": "media",
+      "pace": "ágil",
+      "value_from": "amenaza",
+      "value_to": "orden",
+      "lesson": "el sonido se firma con números",
+      "char_budget": 72
+    },
+    {
+      "id": "negro",
+      "role": "desarrollo",
+      "text": "Cero cuadros negros. Cero muestras cortadas. Voz verificada palabra por palabra.",
+      "emotion": "firme",
+      "intensity": "media",
+      "pace": "ágil",
+      "value_from": "orden",
+      "value_to": "blindaje",
+      "lesson": "lo negro y lo cortado son defectos, no grano",
+      "char_budget": 84
+    },
+    {
+      "id": "giro",
+      "role": "giro",
+      "text": "La versión anterior se rechazó sola: catorce segundos congelados.",
+      "emotion": "confesión",
+      "intensity": "baja",
+      "pace": "lento",
+      "value_from": "blindaje",
+      "value_to": "golpe",
+      "lesson": "el inspector no negocia",
+      "char_budget": 66
+    },
+    {
+      "id": "duro",
+      "role": "desarrollo",
+      "text": "Cuando falla, el build se cae solo. No hay segunda oportunidad editorial.",
+      "emotion": "firme",
+      "intensity": "alta",
+      "pace": "normal",
+      "value_from": "golpe",
+      "value_to": "firmeza",
+      "lesson": "fallar es automático, no discutible",
+      "char_budget": 74
+    },
+    {
+      "id": "payoff",
+      "role": "payoff",
+      "text": "Este que estás viendo, pasó. En vivo, delante de ti.",
+      "emotion": "cálido",
+      "intensity": "media-alta",
+      "pace": "normal",
+      "pause": 0.8,
+      "value_from": "firmeza",
+      "value_to": "prueba",
+      "lesson": "lo que viste fue medido, no prometido",
+      "char_budget": 52
+    },
+    {
+      "id": "cta",
+      "role": "cta",
+      "text": "Comenta ORACULO y te mando el inspector.",
+      "emotion": "cercano",
+      "intensity": "media",
+      "pace": "normal",
+      "char_budget": 42
+    }
+  ]
+}

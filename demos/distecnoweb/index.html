@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>distecnoweb</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;700;800;900&display=block" rel="stylesheet">
+<script src="/__engine/gsap.min.js"></script>
+<script src="/__engine/stage.js"></script>
+<style>
+  :root { --bg: #141516; --ink: #ffffff; --pink: #ef2d56; --muted: rgba(255,255,255,.6); --wire: #2a2c2f; --wire2: #3a3d41; }
+  #stage { font-family: 'Raleway', sans-serif; color: var(--ink); }
+  #bg { position: absolute; inset: 0; }
+  .top { position: absolute; left: 70px; right: 140px; top: 250px; text-align: center; opacity: 0; }
+  .top .h { font-weight: 900; font-size: 92px; line-height: 1; letter-spacing: 0.02em; text-transform: uppercase; }
+  .top .s { margin-top: 18px; font-weight: 600; font-size: 52px; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+  .dot { color: var(--pink); }
+  .mask { overflow: hidden; padding-bottom: .06em; }
+  .mask > span { display: inline-block; }
+
+  /* teléfono con un sitio que se arma */
+  #phone { position: absolute; left: 330px; top: 560px; width: 420px; height: 800px; border-radius: 58px; background: #0b0b0c; border: 10px solid #2b2d30; box-shadow: 0 60px 120px rgba(0,0,0,.6), 0 0 0 2px #45484c; overflow: hidden; }
+  #notch { position: absolute; left: 50%; top: 14px; width: 120px; height: 30px; margin-left: -60px; border-radius: 20px; background: #0b0b0c; z-index: 5; }
+  #site { position: absolute; inset: 0; background: #f6f6f7; }
+  .w { position: absolute; border-radius: 10px; background: #e3e4e7; }
+  #nav { left: 0; right: 0; top: 0; height: 96px; border-radius: 0; background: #1a1a1a; }
+  #navlogo { position: absolute; left: 26px; top: 50px; width: 120px; height: 22px; border-radius: 11px; background: #fff; }
+  #navcta { position: absolute; right: 22px; top: 44px; width: 90px; height: 34px; border-radius: 6px; background: var(--pink); }
+  #hero { left: 18px; right: 18px; top: 112px; height: 230px; background: #2a2c2f; overflow: hidden; }
+  #hero i { position: absolute; left: 24px; height: 18px; border-radius: 9px; background: #fff; }
+  #hero b { position: absolute; left: 24px; top: 160px; width: 140px; height: 42px; border-radius: 6px; background: var(--pink); }
+  .prod { width: 182px; height: 210px; background: #fff; box-shadow: 0 6px 16px rgba(0,0,0,.08); }
+  .prod u { position: absolute; left: 12px; right: 12px; top: 12px; height: 120px; border-radius: 8px; background: #e9e1e3; }
+  .prod s { position: absolute; left: 12px; top: 146px; width: 110px; height: 14px; border-radius: 7px; background: #c9cbcf; }
+  .prod em { position: absolute; left: 12px; top: 172px; width: 60px; height: 16px; border-radius: 8px; background: var(--pink); }
+  #cart { position: absolute; right: 26px; bottom: 30px; width: 86px; height: 86px; border-radius: 50%; background: var(--pink); box-shadow: 0 10px 24px rgba(239,45,86,.45); display: grid; place-items: center; }
+  #cart svg { width: 44px; height: 44px; }
+
+  .chip { position: absolute; padding: 22px 34px; border-radius: 100px; background: #fff; color: #141516; font-weight: 800; font-size: 50px; letter-spacing: 0.01em; box-shadow: 0 20px 40px rgba(0,0,0,.35); opacity: 0; }
+  .chip.p { background: var(--pink); color: #fff; }
+
+  #days { position: absolute; left: 60px; right: 140px; top: 640px; display: flex; justify-content: center; gap: 12px; opacity: 0; }
+  #days div { width: 92px; height: 92px; border-radius: 18px; border: 4px solid #3a3d41; display: grid; place-items: center; font-weight: 800; font-size: 50px; color: #6b6e72; }
+  #days div.on { background: var(--pink); border-color: var(--pink); color: #fff; }
+  #bigDays { position: absolute; left: 0; right: 0; top: 820px; text-align: center; font-weight: 900; font-size: 300px; line-height: .9; letter-spacing: -0.02em; opacity: 0; }
+  #bigDays span { display: block; font-size: 84px; letter-spacing: 0.12em; color: var(--muted); margin-top: 16px; }
+
+  #proof { position: absolute; left: 0; right: 0; top: 520px; text-align: center; opacity: 0; }
+  #proof .n { font-weight: 900; font-size: 290px; line-height: .9; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  #proof .l { font-weight: 800; font-size: 76px; letter-spacing: 0.1em; margin-top: 18px; }
+  #proof .y { font-weight: 600; font-size: 56px; color: var(--muted); letter-spacing: 0.06em; margin-top: 14px; }
+  #marquee { position: absolute; left: 0; top: 1100px; white-space: nowrap; font-weight: 700; font-size: 50px; color: rgba(255,255,255,.45); letter-spacing: 0.06em; text-transform: uppercase; opacity: 0; }
+
+  #end { position: absolute; inset: 0; opacity: 0; }
+  #end img { position: absolute; left: 120px; top: 560px; width: 800px; }
+  #end .btn { position: absolute; left: 90px; right: 150px; top: 910px; padding: 40px 0; text-align: center; background: var(--pink); font-weight: 800; font-size: 60px; letter-spacing: 0.06em; border-radius: 6px; }
+  #end .url { position: absolute; left: 0; right: 60px; top: 1120px; text-align: center; font-weight: 700; font-size: 66px; letter-spacing: 0.03em; }
+  #end .city { position: absolute; left: 0; right: 60px; top: 1220px; text-align: center; font-weight: 600; font-size: 50px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .cap { position: absolute; left: 80px; right: 140px; top: 1400px; text-align: center; font-weight: 800; font-size: 66px; line-height: 1.08; }
+  .cap .cw { opacity: .35; }
+  .cap .cw.on { opacity: 1; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="bg" width="1080" height="1920"></canvas>
+
+  <div class="top" id="t1"><div class="h mask"><span>Una página</span></div><div class="h mask"><span>que venda<span class="dot">.</span></span></div></div>
+  <div class="top" id="t2"><div class="h mask"><span>Páginas web</span></div><div class="s mask"><span>y tiendas online</span></div></div>
+  <div class="top" id="t3"><div class="h mask"><span>Lista para</span></div><div class="h mask"><span>el celular<span class="dot">.</span></span></div></div>
+
+  <div id="phone">
+    <div id="notch"></div>
+    <div id="site">
+      <div class="w" id="nav"><div id="navlogo"></div><div id="navcta"></div></div>
+      <div class="w" id="hero"><i style="top:34px;width:250px;height:26px"></i><i style="top:76px;width:300px;height:26px"></i><i style="top:122px;width:200px;opacity:.5"></i><b></b></div>
+      <div class="w prod" style="left:18px;top:360px"><u></u><s></s><em></em></div>
+      <div class="w prod" style="left:210px;top:360px"><u style="background:#dfe6ea"></u><s></s><em></em></div>
+      <div class="w prod" style="left:18px;top:588px"><u style="background:#e8e4da"></u><s></s><em></em></div>
+      <div class="w prod" style="left:210px;top:588px"><u style="background:#e3e0ea"></u><s></s><em></em></div>
+      <div id="cart"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.5l2.2 10.5h10.6L20.5 7H7"/><circle cx="9.5" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg></div>
+    </div>
+  </div>
+
+  <div class="chip" id="wp" style="left:60px;top:600px">WordPress</div>
+  <div class="chip" id="ps" style="left:600px;top:840px">PrestaShop</div>
+  <div class="chip p" id="sh" style="left:90px;top:1110px">Shopify</div>
+
+  <div id="days"><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div></div>
+  <div id="bigDays"><b id="dn">1</b><span>DÍAS</span></div>
+
+  <div id="proof"><div class="n">+<b id="pn">0</b></div><div class="l">PROYECTOS</div><div class="y">EN 12 AÑOS</div></div>
+  <div id="marquee" data-qa-ignore>Parque del Café · Bora Bora Cartagena · Hoteles Grupo Alba · Maletas Explora · Prokpil · Arequipe · Parque del Café · Bora Bora Cartagena · Hoteles Grupo Alba</div>
+
+  <div id="end">
+    <img src="assets/logo-blanco.webp" alt="Distecnoweb">
+    <div class="btn">SOLICITA TU COTIZACIÓN</div>
+    <div class="url">distecnoweb.com</div>
+    <div class="city">Bogotá · Colombia</div>
+  </div>
+</div>
+<script>
+  const W = 1080, H = 1920;
+  const stage = Stage.create({
+    width: W, height: H, fps: 30, seed: 'distecnoweb', background: '#141516',
+    voice: 'voice.json', duration: 'voice',
+    bpm: 116,
+    music: { style: 'pulse', key: 'E', energy: [[0, 1], [4.5, 2], [10.5, 3], [24, 2]], drops: [{ at: 19.5, dur: 0.4 }] },
+  });
+  const { tl } = stage;
+  Stage.captions(stage, { maxWords: 3, skip: ['hook', 'fast', 'proof', 'cta'] });
+
+  // Fondo: anillos de brújula (eco del hero de la marca) que giran lento en una esquina.
+  const g = document.getElementById('bg').getContext('2d');
+  const ring = { a: 0.08 };
+  stage.onFrame((t) => {
+    g.fillStyle = '#141516'; g.fillRect(0, 0, W, H);
+    const cx = 960, cy = 1700;
+    g.save(); g.translate(cx, cy); g.rotate(t * 0.05);
+    g.strokeStyle = `rgba(255,255,255,${ring.a})`;
+    for (let r = 200; r <= 900; r += 140) { g.lineWidth = 2; g.beginPath(); g.arc(0, 0, r, 0, Math.PI * 2); g.stroke(); }
+    for (let k = 0; k < 120; k++) { const a = (k / 120) * Math.PI * 2, r1 = 760, r2 = k % 10 === 0 ? 700 : 735; g.lineWidth = k % 10 === 0 ? 3 : 1.5; g.beginPath(); g.moveTo(Math.cos(a) * r1, Math.sin(a) * r1); g.lineTo(Math.cos(a) * r2, Math.sin(a) * r2); g.stroke(); }
+    g.restore();
+    // aguja de la brújula: apunta al rosa de la marca
+    g.save(); g.translate(cx, cy); g.rotate(-2.3 + Math.sin(t * 0.7) * 0.06);
+    g.fillStyle = `rgba(239,45,86,${ring.a * 4})`; g.beginPath(); g.moveTo(0, -560); g.lineTo(26, 0); g.lineTo(-26, 0); g.closePath(); g.fill();
+    g.restore();
+  });
+
+  const show = (sel, a, b) => tl.set(sel, { opacity: 1 }, a).set(sel, { opacity: 0 }, b);
+  const rise = (sel, at) => tl.fromTo(`${sel} .mask > span`, { yPercent: 110 }, { yPercent: 0, duration: 0.45, ease: 'power4.out', stagger: 0.08 }, at);
+  const leave = (sel, at) => tl.to(`${sel} .mask > span`, { yPercent: -110, duration: 0.28, ease: 'power4.in', stagger: 0.03 }, at);
+
+  // Estado inicial del sitio: todo en "esqueleto" (bloques grises sin contenido).
+  tl.set(['#navlogo', '#navcta', '#hero i', '#hero b', '.prod u', '.prod s', '.prod em', '#cart'], { opacity: 0 }, 0)
+    .set('#nav', { backgroundColor: '#e3e4e7' }, 0).set('#hero', { backgroundColor: '#e3e4e7' }, 0);
+
+  // 1 · Gancho: el teléfono entra ya en movimiento; titular en dos líneas.
+  show('#t1', 0, stage.end('hook', 0.3));
+  rise('#t1', 0.05);
+  tl.fromTo('#phone', { y: 260, rotation: -6 }, { y: 0, rotation: 0, duration: 0.7, ease: 'expo.out' }, 0)
+    .fromTo('#site .w', { opacity: 0.35 }, { opacity: 1, duration: 0.6, stagger: { each: 0.06, repeat: 3, yoyo: true } }, 0.6);
+  leave('#t1', stage.end('hook', 0.02));
+  stage.sfx('whoosh', 0.05, -16).sfx('pop', stage.word('hook', 'venda'), -13);
+
+  // 2 · Qué hacen: el sitio se arma por partes al ritmo de la frase.
+  const a2 = stage.at('what');
+  show('#t2', a2 - 0.1, stage.end('what', 0.3)); rise('#t2', a2 - 0.1); leave('#t2', stage.end('what', 0.02));
+  tl.to('#nav', { backgroundColor: '#1a1a1a', duration: 0.25 }, stage.word('what', 'distecnoweb'))
+    .fromTo(['#navlogo', '#navcta'], { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.3, stagger: 0.1, ease: 'power3.out' }, stage.word('what', 'distecnoweb', 0.1))
+    .to('#hero', { backgroundColor: '#2a2c2f', duration: 0.25 }, stage.word('what', 'páginas', -0.1))
+    .fromTo('#hero i', { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.35, stagger: 0.08, ease: 'power3.out' }, stage.word('what', 'páginas'))
+    .fromTo('#hero b', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(1.6)' }, stage.word('what', 'web', 0.1))
+    .fromTo('.prod', { y: 60, opacity: 0.4 }, { y: 0, opacity: 1, duration: 0.35, stagger: 0.09, ease: 'power3.out' }, stage.word('what', 'tiendas', -0.1))
+    .fromTo(['.prod u', '.prod s', '.prod em'], { opacity: 0 }, { opacity: 1, duration: 0.25, stagger: 0.03 }, stage.word('what', 'online', -0.1))
+    .fromTo('#cart', { opacity: 0, scale: 1.8 }, { opacity: 1, scale: 1, duration: 0.35, ease: 'expo.out' }, stage.word('what', 'empresas', -0.1));
+  stage.sfx('tap', stage.word('what', 'distecnoweb', 0.1), -15).sfx('tap', stage.word('what', 'páginas'), -15)
+       .sfx('tap', stage.word('what', 'tiendas', -0.05), -15).sfx('pop', stage.word('what', 'empresas', -0.05), -12);
+
+  // 3 · Plataformas: tres fichas aparecen alrededor del teléfono en cada nombre.
+  const a3 = stage.at('tech');
+  show('#t3', stage.word('tech', 'listas', -0.15), stage.end('tech', 0.3)); rise('#t3', stage.word('tech', 'listas', -0.15)); leave('#t3', stage.end('tech', 0.02));
+  [['#wp', 'wordpress'], ['#ps', 'prestashop'], ['#sh', 'shopify']].forEach(([id, w], i) => {
+    tl.fromTo(id, { opacity: 0, scale: 1.6, rotation: i % 2 ? 6 : -6 }, { opacity: 1, scale: 1, rotation: i % 2 ? 3 : -3, duration: 0.4, ease: 'expo.out' }, stage.word('tech', w, -0.1));
+    stage.sfx('pop', stage.word('tech', w, -0.05), -13);
+  });
+  tl.to(['#wp', '#ps', '#sh'], { opacity: 0, y: -40, duration: 0.25, stagger: 0.05, ease: 'power3.in' }, stage.word('tech', 'listas', -0.3))
+    .to('#phone', { scale: 1.08, y: -40, duration: stage.end('tech') - stage.word('tech', 'listas') + 0.3, ease: 'power2.out' }, stage.word('tech', 'listas', -0.1))
+    .to('#phone', { y: 1300, rotation: 8, duration: 0.35, ease: 'power4.in' }, stage.end('tech', -0.15))
+    .set('#phone', { opacity: 0 }, stage.end('tech', 0.25));
+
+  // 4 · 8 días: las casillas se llenan una por una y el número cae en "ocho".
+  const a4 = stage.at('fast');
+  show('#days', a4 - 0.1, stage.end('fast', 0.35)); show('#bigDays', a4 - 0.1, stage.end('fast', 0.35));
+  const dayEls = [...document.querySelectorAll('#days div')];
+  const dayState = { n: 0 };
+  tl.fromTo('#days', { y: 60 }, { y: 0, duration: 0.4, ease: 'power4.out' }, a4 - 0.1)
+    .fromTo(dayState, { n: 0 }, { n: 8, duration: stage.word('fast', 'ocho') - a4 + 0.05, ease: 'power1.in',
+      onUpdate: () => { const k = Math.floor(dayState.n + 1e-6); dayEls.forEach((d, i) => d.classList.toggle('on', i < k)); document.getElementById('dn').textContent = Math.max(1, k); } }, a4)
+    .fromTo('#bigDays', { scale: 1 }, { scale: 1.12, duration: 0.12, yoyo: true, repeat: 1, ease: 'power2.out' }, stage.word('fast', 'ocho'))
+    .to(['#days', '#bigDays'], { y: -80, opacity: 0, duration: 0.3, ease: 'power4.in' }, stage.end('fast', 0.05));
+  for (let i = 0; i < 8; i++) stage.sfx('tick', a4 + (stage.word('fast', 'ocho') - a4) * Math.sqrt((i + 1) / 8), -18);
+  stage.sfx('impact', stage.word('fast', 'ocho'), -11);
+
+  // 5 · Respaldo: +800 proyectos en 12 años, con los clientes desfilando debajo.
+  const a5 = stage.at('proof');
+  show('#proof', a5 - 0.1, stage.end('proof', 0.3)); show('#marquee', a5 - 0.1, stage.end('proof', 0.3));
+  const p = { v: 0 };
+  tl.fromTo('#proof', { y: 60 }, { y: 0, duration: 0.45, ease: 'power4.out' }, a5 - 0.1)
+    .fromTo(p, { v: 0 }, { v: 800, duration: stage.word('proof', 'proyectos') - a5, ease: 'power2.out', onUpdate: () => (document.getElementById('pn').textContent = Math.round(p.v)) }, a5)
+    .fromTo('#marquee', { x: 0 }, { x: -900, duration: stage.end('proof') - a5 + 0.6, ease: 'none' }, a5 - 0.1)
+    .to(['#proof', '#marquee'], { y: -60, opacity: 0, duration: 0.3, ease: 'power4.in' }, stage.end('proof', 0.05));
+  stage.sfx('ding', stage.word('proof', 'proyectos'), -14);
+
+  // 6 · Cierre: logo, botón de cotización y dominio.
+  const a6 = stage.at('cta');
+  show('#end', a6 - 0.15, stage.duration);
+  tl.fromTo('#end img', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power4.out' }, a6 - 0.15)
+    .fromTo('#end .btn', { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: 'expo.out' }, stage.word('cta', 'cotización', -0.15))
+    .fromTo('#end .url', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power4.out' }, stage.word('cta', 'distecnoweb.com', -0.1))
+    .fromTo('#end .city', { opacity: 0 }, { opacity: 1, duration: 0.4 }, stage.end('cta', 0.2))
+    .fromTo(ring, { a: 0.08 }, { a: 0.16, duration: 1.5 }, a6)
+    .fromTo('#end .btn', { boxShadow: '0 0 0 0 rgba(239,45,86,0.6)' }, { boxShadow: '0 0 0 28px rgba(239,45,86,0)', duration: 1.2, ease: 'power2.out' }, stage.end('cta', 0.1));
+  stage.sfx('whoosh', a6 - 0.2, -16).sfx('pop', stage.word('cta', 'cotización', -0.1), -12).sfx('chime', stage.end('cta', 0.1), -12);
+</script>
+</body>
+</html>

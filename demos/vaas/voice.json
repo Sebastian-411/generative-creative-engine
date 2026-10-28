@@ -1,0 +1,330 @@
+{
+ "engine": "edge",
+ "voice": "es-CO-GonzaloNeural",
+ "rate": "+3%",
+ "duration": 28.572,
+ "wordsPerSecond": 2.26,
+ "lines": [
+  {
+   "id": "hook",
+   "text": "Detrás de cada crédito privado hay tres preguntas.",
+   "start": 0.4,
+   "end": 3.736,
+   "words": [
+    {
+     "w": "Detrás",
+     "start": 0.499,
+     "end": 0.899
+    },
+    {
+     "w": "de",
+     "start": 0.923,
+     "end": 0.984
+    },
+    {
+     "w": "cada",
+     "start": 1.045,
+     "end": 1.19
+    },
+    {
+     "w": "crédito",
+     "start": 1.251,
+     "end": 1.518
+    },
+    {
+     "w": "privado",
+     "start": 1.579,
+     "end": 1.894
+    },
+    {
+     "w": "hay",
+     "start": 1.894,
+     "end": 1.967
+    },
+    {
+     "w": "tres",
+     "start": 2.028,
+     "end": 2.21
+    },
+    {
+     "w": "preguntas",
+     "start": 2.27,
+     "end": 2.853
+    }
+   ]
+  },
+  {
+   "id": "doc",
+   "text": "¿Existe el activo?",
+   "start": 4.086,
+   "end": 6.006,
+   "words": [
+    {
+     "w": "Existe",
+     "start": 4.185,
+     "end": 4.634
+    },
+    {
+     "w": "el",
+     "start": 4.634,
+     "end": 4.695
+    },
+    {
+     "w": "activo",
+     "start": 4.695,
+     "end": 5.095
+    }
+   ]
+  },
+  {
+   "id": "cash",
+   "text": "¿Recibe usted el dinero?",
+   "start": 6.356,
+   "end": 8.372,
+   "words": [
+    {
+     "w": "Recibe",
+     "start": 6.455,
+     "end": 6.807
+    },
+    {
+     "w": "usted",
+     "start": 6.819,
+     "end": 7.001
+    },
+    {
+     "w": "el",
+     "start": 7.001,
+     "end": 7.062
+    },
+    {
+     "w": "dinero",
+     "start": 7.098,
+     "end": 7.462
+    }
+   ]
+  },
+  {
+   "id": "own",
+   "text": "¿Ya fue cedido antes?",
+   "start": 8.722,
+   "end": 10.81,
+   "words": [
+    {
+     "w": "Ya",
+     "start": 8.821,
+     "end": 9.003
+    },
+    {
+     "w": "fue",
+     "start": 9.039,
+     "end": 9.16
+    },
+    {
+     "w": "cedido",
+     "start": 9.185,
+     "end": 9.476
+    },
+    {
+     "w": "antes",
+     "start": 9.488,
+     "end": 9.913
+    }
+   ]
+  },
+  {
+   "id": "turn",
+   "text": "Vaas las responde de forma automática, todos los días.",
+   "start": 11.41,
+   "end": 15.154,
+   "words": [
+    {
+     "w": "Vaas",
+     "start": 11.509,
+     "end": 11.776
+    },
+    {
+     "w": "las",
+     "start": 11.8,
+     "end": 11.885
+    },
+    {
+     "w": "responde",
+     "start": 11.921,
+     "end": 12.297
+    },
+    {
+     "w": "de",
+     "start": 12.297,
+     "end": 12.346
+    },
+    {
+     "w": "forma",
+     "start": 12.37,
+     "end": 12.613
+    },
+    {
+     "w": "automática",
+     "start": 12.613,
+     "end": 13.305
+    },
+    {
+     "w": "todos",
+     "start": 13.547,
+     "end": 13.681
+    },
+    {
+     "w": "los",
+     "start": 13.717,
+     "end": 13.814
+    },
+    {
+     "w": "días",
+     "start": 13.875,
+     "end": 14.251
+    }
+   ]
+  },
+  {
+   "id": "proof",
+   "text": "Más de 20 millones de documentos verificados y más de mil millones en capital fluyendo por sus rieles.",
+   "start": 15.504,
+   "end": 21.672,
+   "words": [
+    {
+     "w": "Más",
+     "start": 15.603,
+     "end": 15.833
+    },
+    {
+     "w": "de",
+     "start": 15.87,
+     "end": 15.93
+    },
+    {
+     "w": "veinte",
+     "start": 15.942,
+     "end": 16.173
+    },
+    {
+     "w": "millones",
+     "start": 16.209,
+     "end": 16.537
+    },
+    {
+     "w": "de",
+     "start": 16.586,
+     "end": 16.646
+    },
+    {
+     "w": "documentos",
+     "start": 16.683,
+     "end": 17.119
+    },
+    {
+     "w": "verificados",
+     "start": 17.156,
+     "end": 17.896
+    },
+    {
+     "w": "y",
+     "start": 18.187,
+     "end": 18.26
+    },
+    {
+     "w": "más",
+     "start": 18.285,
+     "end": 18.418
+    },
+    {
+     "w": "de",
+     "start": 18.454,
+     "end": 18.515
+    },
+    {
+     "w": "mil",
+     "start": 18.539,
+     "end": 18.649
+    },
+    {
+     "w": "millones",
+     "start": 18.685,
+     "end": 19.061
+    },
+    {
+     "w": "en",
+     "start": 19.061,
+     "end": 19.17
+    },
+    {
+     "w": "capital",
+     "start": 19.171,
+     "end": 19.559
+    },
+    {
+     "w": "fluyendo",
+     "start": 19.571,
+     "end": 19.984
+    },
+    {
+     "w": "por",
+     "start": 20.044,
+     "end": 20.129
+    },
+    {
+     "w": "sus",
+     "start": 20.153,
+     "end": 20.299
+    },
+    {
+     "w": "rieles",
+     "start": 20.336,
+     "end": 20.772
+    }
+   ]
+  },
+  {
+   "id": "payoff",
+   "text": "Vaas. Rieles públicos para el crédito privado.",
+   "start": 22.172,
+   "end": 26.372,
+   "words": [
+    {
+     "w": "Vaas",
+     "start": 22.271,
+     "end": 22.732
+    },
+    {
+     "w": "Rieles",
+     "start": 23.616,
+     "end": 23.98
+    },
+    {
+     "w": "públicos",
+     "start": 24.053,
+     "end": 24.441
+    },
+    {
+     "w": "para",
+     "start": 24.502,
+     "end": 24.636
+    },
+    {
+     "w": "el",
+     "start": 24.66,
+     "end": 24.708
+    },
+    {
+     "w": "crédito",
+     "start": 24.757,
+     "end": 25.06
+    },
+    {
+     "w": "privado",
+     "start": 25.121,
+     "end": 25.497
+    }
+   ]
+  }
+ ]
+}

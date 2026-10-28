@@ -1,0 +1,808 @@
+{
+ "engine": "qwen",
+ "duration": 41.642,
+ "wordsPerSecond": 2.84,
+ "descriptions": [
+  {
+   "speaker": "narrador",
+   "description": "locutor técnico latino, masculino, cálido y seguro, ritmo ágil, dicción limpia Overall: técnico que confiesa: seguro en los datos, bajo y honesto en la confesión, cálido en el payoff. Performance arc, sentence by sentence: 1) natural, conversational and clear; 2) natural, conversational and clear; 3) natural, conversational and clear; 4) natural, conversational and clear; 5) natural, conversational and clear; 6) natural, conversational and clear; 7) natural, conversational and clear; 8) natural, conversational and clear; 9) warm, close and friendly, with a gentle smile in the voice; 10) natural, conversational and clear. Realistic human phrasing with natural pauses at ellipses and line breaks, varied pitch and pace, never monotone, never theatrical."
+  }
+ ],
+ "lines": [
+  {
+   "id": "hook",
+   "text": "Esto no se mira. Se mide.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 0.15,
+   "end": 1.53,
+   "words": [
+    {
+     "w": "Esto",
+     "start": 0.15,
+     "end": 0.37
+    },
+    {
+     "w": "no",
+     "start": 0.37,
+     "end": 0.53
+    },
+    {
+     "w": "se",
+     "start": 0.53,
+     "end": 0.65
+    },
+    {
+     "w": "mira.",
+     "start": 0.65,
+     "end": 0.85
+    },
+    {
+     "w": "Se",
+     "start": 1.17,
+     "end": 1.33
+    },
+    {
+     "w": "mide.",
+     "start": 1.33,
+     "end": 1.53
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t2.wav",
+     "err": 0.03,
+     "dur": 40.45,
+     "heard": "Esto no se mira, se mide. Un inspector revisa cada fotograma de este video mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 lufts exactos, pico bajo cero y silencios donde la voz respira. Cero cuadros negros, cero muestras cortadas, voz verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t1.wav",
+     "err": 0.05,
+     "dur": 45.33,
+     "heard": "Esto no se mira. Se mide. Un inspector revisa cada fotograma de este vídeo mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 love es exactos. Pico bajo cero. Y silencios donde la voz respira. Cero cuadros negros. Cero muestras cortadas. Vos verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    }
+   ]
+  },
+  {
+   "id": "inspector",
+   "text": "Un inspector revisa cada fotograma de este video mientras lo ves.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 2.13,
+   "end": 5.51,
+   "words": [
+    {
+     "w": "Un",
+     "start": 2.13,
+     "end": 2.33
+    },
+    {
+     "w": "inspector",
+     "start": 2.33,
+     "end": 2.71
+    },
+    {
+     "w": "revisa",
+     "start": 2.71,
+     "end": 3.23
+    },
+    {
+     "w": "cada",
+     "start": 3.23,
+     "end": 3.49
+    },
+    {
+     "w": "fotograma",
+     "start": 3.49,
+     "end": 4.13
+    },
+    {
+     "w": "de",
+     "start": 4.13,
+     "end": 4.27
+    },
+    {
+     "w": "este",
+     "start": 4.27,
+     "end": 4.53
+    },
+    {
+     "w": "video",
+     "start": 4.53,
+     "end": 4.85
+    },
+    {
+     "w": "mientras",
+     "start": 4.85,
+     "end": 5.11
+    },
+    {
+     "w": "lo",
+     "start": 5.11,
+     "end": 5.37
+    },
+    {
+     "w": "ves.",
+     "start": 5.37,
+     "end": 5.51
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t2.wav",
+     "err": 0.03,
+     "dur": 40.45,
+     "heard": "Esto no se mira, se mide. Un inspector revisa cada fotograma de este video mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 lufts exactos, pico bajo cero y silencios donde la voz respira. Cero cuadros negros, cero muestras cortadas, voz verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t1.wav",
+     "err": 0.05,
+     "dur": 45.33,
+     "heard": "Esto no se mira. Se mide. Un inspector revisa cada fotograma de este vídeo mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 love es exactos. Pico bajo cero. Y silencios donde la voz respira. Cero cuadros negros. Cero muestras cortadas. Vos verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    }
+   ]
+  },
+  {
+   "id": "frames",
+   "text": "Ningún cuadro se repite. El contador no miente.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 6.03,
+   "end": 8.71,
+   "words": [
+    {
+     "w": "Ningún",
+     "start": 6.03,
+     "end": 6.39
+    },
+    {
+     "w": "cuadro",
+     "start": 6.39,
+     "end": 6.79
+    },
+    {
+     "w": "se",
+     "start": 6.79,
+     "end": 6.97
+    },
+    {
+     "w": "repite.",
+     "start": 6.97,
+     "end": 7.35
+    },
+    {
+     "w": "El",
+     "start": 7.73,
+     "end": 7.87
+    },
+    {
+     "w": "contador",
+     "start": 7.87,
+     "end": 8.25
+    },
+    {
+     "w": "no",
+     "start": 8.25,
+     "end": 8.39
+    },
+    {
+     "w": "miente.",
+     "start": 8.39,
+     "end": 8.71
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t2.wav",
+     "err": 0.03,
+     "dur": 40.45,
+     "heard": "Esto no se mira, se mide. Un inspector revisa cada fotograma de este video mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 lufts exactos, pico bajo cero y silencios donde la voz respira. Cero cuadros negros, cero muestras cortadas, voz verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t1.wav",
+     "err": 0.05,
+     "dur": 45.33,
+     "heard": "Esto no se mira. Se mide. Un inspector revisa cada fotograma de este vídeo mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 love es exactos. Pico bajo cero. Y silencios donde la voz respira. Cero cuadros negros. Cero muestras cortadas. Vos verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    }
+   ]
+  },
+  {
+   "id": "hertz",
+   "text": "El movimiento se mide dos veces por segundo. Si algo se congela, el render muere.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 9.33,
+   "end": 13.89,
+   "words": [
+    {
+     "w": "El",
+     "start": 9.33,
+     "end": 9.45
+    },
+    {
+     "w": "movimiento",
+     "start": 9.45,
+     "end": 9.77
+    },
+    {
+     "w": "se",
+     "start": 9.77,
+     "end": 10.15
+    },
+    {
+     "w": "mide",
+     "start": 10.15,
+     "end": 10.35
+    },
+    {
+     "w": "dos",
+     "start": 10.35,
+     "end": 10.59
+    },
+    {
+     "w": "veces",
+     "start": 10.59,
+     "end": 10.91
+    },
+    {
+     "w": "por",
+     "start": 10.91,
+     "end": 11.19
+    },
+    {
+     "w": "segundo.",
+     "start": 11.19,
+     "end": 11.57
+    },
+    {
+     "w": "Si",
+     "start": 11.91,
+     "end": 12.09
+    },
+    {
+     "w": "algo",
+     "start": 12.09,
+     "end": 12.33
+    },
+    {
+     "w": "se",
+     "start": 12.33,
+     "end": 12.49
+    },
+    {
+     "w": "congela,",
+     "start": 12.49,
+     "end": 12.93
+    },
+    {
+     "w": "el",
+     "start": 13.17,
+     "end": 13.25
+    },
+    {
+     "w": "render",
+     "start": 13.25,
+     "end": 13.51
+    },
+    {
+     "w": "muere.",
+     "start": 13.51,
+     "end": 13.89
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t2.wav",
+     "err": 0.03,
+     "dur": 40.45,
+     "heard": "Esto no se mira, se mide. Un inspector revisa cada fotograma de este video mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 lufts exactos, pico bajo cero y silencios donde la voz respira. Cero cuadros negros, cero muestras cortadas, voz verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t1.wav",
+     "err": 0.05,
+     "dur": 45.33,
+     "heard": "Esto no se mira. Se mide. Un inspector revisa cada fotograma de este vídeo mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 love es exactos. Pico bajo cero. Y silencios donde la voz respira. Cero cuadros negros. Cero muestras cortadas. Vos verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    }
+   ]
+  },
+  {
+   "id": "audio",
+   "text": "Catorce LUFS exactos, pico bajo cero, y silencios donde la voz respira.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 14.41,
+   "end": 18.73,
+   "words": [
+    {
+     "w": "Catorce",
+     "start": 14.41,
+     "end": 14.71
+    },
+    {
+     "w": "LUFS",
+     "start": 14.71,
+     "end": 15.11
+    },
+    {
+     "w": "exactos,",
+     "start": 15.11,
+     "end": 15.65
+    },
+    {
+     "w": "pico",
+     "start": 15.87,
+     "end": 16.05
+    },
+    {
+     "w": "bajo",
+     "start": 16.05,
+     "end": 16.23
+    },
+    {
+     "w": "cero,",
+     "start": 16.23,
+     "end": 16.63
+    },
+    {
+     "w": "y",
+     "start": 16.63,
+     "end": 16.97
+    },
+    {
+     "w": "silencios",
+     "start": 16.97,
+     "end": 17.49
+    },
+    {
+     "w": "donde",
+     "start": 17.49,
+     "end": 17.91
+    },
+    {
+     "w": "la",
+     "start": 17.91,
+     "end": 18.09
+    },
+    {
+     "w": "voz",
+     "start": 18.09,
+     "end": 18.27
+    },
+    {
+     "w": "respira.",
+     "start": 18.27,
+     "end": 18.73
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t2.wav",
+     "err": 0.03,
+     "dur": 40.45,
+     "heard": "Esto no se mira, se mide. Un inspector revisa cada fotograma de este video mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 lufts exactos, pico bajo cero y silencios donde la voz respira. Cero cuadros negros, cero muestras cortadas, voz verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t1.wav",
+     "err": 0.05,
+     "dur": 45.33,
+     "heard": "Esto no se mira. Se mide. Un inspector revisa cada fotograma de este vídeo mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 love es exactos. Pico bajo cero. Y silencios donde la voz respira. Cero cuadros negros. Cero muestras cortadas. Vos verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    }
+   ]
+  },
+  {
+   "id": "negro",
+   "text": "Cero cuadros negros. Cero muestras cortadas. Voz verificada palabra por palabra.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 19.23,
+   "end": 24.01,
+   "words": [
+    {
+     "w": "Cero",
+     "start": 19.23,
+     "end": 19.41
+    },
+    {
+     "w": "cuadros",
+     "start": 19.41,
+     "end": 19.79
+    },
+    {
+     "w": "negros.",
+     "start": 19.79,
+     "end": 20.27
+    },
+    {
+     "w": "Cero",
+     "start": 20.57,
+     "end": 20.77
+    },
+    {
+     "w": "muestras",
+     "start": 20.77,
+     "end": 21.13
+    },
+    {
+     "w": "cortadas.",
+     "start": 21.13,
+     "end": 21.69
+    },
+    {
+     "w": "Voz",
+     "start": 22.07,
+     "end": 22.35
+    },
+    {
+     "w": "verificada",
+     "start": 22.35,
+     "end": 22.97
+    },
+    {
+     "w": "palabra",
+     "start": 22.97,
+     "end": 23.31
+    },
+    {
+     "w": "por",
+     "start": 23.31,
+     "end": 23.63
+    },
+    {
+     "w": "palabra.",
+     "start": 23.63,
+     "end": 24.01
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t2.wav",
+     "err": 0.03,
+     "dur": 40.45,
+     "heard": "Esto no se mira, se mide. Un inspector revisa cada fotograma de este video mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 lufts exactos, pico bajo cero y silencios donde la voz respira. Cero cuadros negros, cero muestras cortadas, voz verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t1.wav",
+     "err": 0.05,
+     "dur": 45.33,
+     "heard": "Esto no se mira. Se mide. Un inspector revisa cada fotograma de este vídeo mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 love es exactos. Pico bajo cero. Y silencios donde la voz respira. Cero cuadros negros. Cero muestras cortadas. Vos verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    }
+   ]
+  },
+  {
+   "id": "giro",
+   "text": "La versión anterior se rechazó sola: catorce segundos congelados.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 24.59,
+   "end": 28.53,
+   "words": [
+    {
+     "w": "La",
+     "start": 24.59,
+     "end": 24.77
+    },
+    {
+     "w": "versión",
+     "start": 24.77,
+     "end": 25.03
+    },
+    {
+     "w": "anterior",
+     "start": 25.03,
+     "end": 25.51
+    },
+    {
+     "w": "se",
+     "start": 25.51,
+     "end": 25.89
+    },
+    {
+     "w": "rechazó",
+     "start": 25.89,
+     "end": 26.35
+    },
+    {
+     "w": "sola:",
+     "start": 26.35,
+     "end": 26.61
+    },
+    {
+     "w": "catorce",
+     "start": 26.95,
+     "end": 27.35
+    },
+    {
+     "w": "segundos",
+     "start": 27.35,
+     "end": 27.79
+    },
+    {
+     "w": "congelados.",
+     "start": 27.79,
+     "end": 28.53
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t2.wav",
+     "err": 0.03,
+     "dur": 40.45,
+     "heard": "Esto no se mira, se mide. Un inspector revisa cada fotograma de este video mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 lufts exactos, pico bajo cero y silencios donde la voz respira. Cero cuadros negros, cero muestras cortadas, voz verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t1.wav",
+     "err": 0.05,
+     "dur": 45.33,
+     "heard": "Esto no se mira. Se mide. Un inspector revisa cada fotograma de este vídeo mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 love es exactos. Pico bajo cero. Y silencios donde la voz respira. Cero cuadros negros. Cero muestras cortadas. Vos verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    }
+   ]
+  },
+  {
+   "id": "duro",
+   "text": "Cuando falla, el build se cae solo. No hay segunda oportunidad editorial.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 28.53,
+   "end": 33.23,
+   "words": [
+    {
+     "w": "Cuando",
+     "start": 28.53,
+     "end": 29.05
+    },
+    {
+     "w": "falla,",
+     "start": 29.05,
+     "end": 29.57
+    },
+    {
+     "w": "el",
+     "start": 29.81,
+     "end": 29.91
+    },
+    {
+     "w": "build",
+     "start": 29.91,
+     "end": 30.15
+    },
+    {
+     "w": "se",
+     "start": 30.15,
+     "end": 30.41
+    },
+    {
+     "w": "cae",
+     "start": 30.41,
+     "end": 30.71
+    },
+    {
+     "w": "solo.",
+     "start": 30.71,
+     "end": 30.93
+    },
+    {
+     "w": "No",
+     "start": 31.51,
+     "end": 31.77
+    },
+    {
+     "w": "hay",
+     "start": 31.77,
+     "end": 31.99
+    },
+    {
+     "w": "segunda",
+     "start": 31.99,
+     "end": 32.23
+    },
+    {
+     "w": "oportunidad",
+     "start": 32.23,
+     "end": 32.91
+    },
+    {
+     "w": "editorial.",
+     "start": 32.91,
+     "end": 33.23
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t2.wav",
+     "err": 0.03,
+     "dur": 40.45,
+     "heard": "Esto no se mira, se mide. Un inspector revisa cada fotograma de este video mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 lufts exactos, pico bajo cero y silencios donde la voz respira. Cero cuadros negros, cero muestras cortadas, voz verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t1.wav",
+     "err": 0.05,
+     "dur": 45.33,
+     "heard": "Esto no se mira. Se mide. Un inspector revisa cada fotograma de este vídeo mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 love es exactos. Pico bajo cero. Y silencios donde la voz respira. Cero cuadros negros. Cero muestras cortadas. Vos verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    }
+   ]
+  },
+  {
+   "id": "payoff",
+   "text": "Este que estás viendo, pasó. En vivo, delante de ti.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "cálido",
+   "take": 2,
+   "start": 33.87,
+   "end": 37.43,
+   "words": [
+    {
+     "w": "Este",
+     "start": 33.87,
+     "end": 34.13
+    },
+    {
+     "w": "que",
+     "start": 34.13,
+     "end": 34.31
+    },
+    {
+     "w": "estás",
+     "start": 34.31,
+     "end": 34.49
+    },
+    {
+     "w": "viendo,",
+     "start": 34.49,
+     "end": 34.81
+    },
+    {
+     "w": "pasó.",
+     "start": 34.81,
+     "end": 35.35
+    },
+    {
+     "w": "En",
+     "start": 35.97,
+     "end": 36.15
+    },
+    {
+     "w": "vivo,",
+     "start": 36.15,
+     "end": 36.35
+    },
+    {
+     "w": "delante",
+     "start": 36.75,
+     "end": 37.13
+    },
+    {
+     "w": "de",
+     "start": 37.13,
+     "end": 37.25
+    },
+    {
+     "w": "ti.",
+     "start": 37.25,
+     "end": 37.43
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t2.wav",
+     "err": 0.03,
+     "dur": 40.45,
+     "heard": "Esto no se mira, se mide. Un inspector revisa cada fotograma de este video mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 lufts exactos, pico bajo cero y silencios donde la voz respira. Cero cuadros negros, cero muestras cortadas, voz verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t1.wav",
+     "err": 0.05,
+     "dur": 45.33,
+     "heard": "Esto no se mira. Se mide. Un inspector revisa cada fotograma de este vídeo mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 love es exactos. Pico bajo cero. Y silencios donde la voz respira. Cero cuadros negros. Cero muestras cortadas. Vos verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "text": "Comenta ORACULO y te mando el inspector.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 2,
+   "start": 38.23,
+   "end": 40.45,
+   "words": [
+    {
+     "w": "Comenta",
+     "start": 38.23,
+     "end": 38.73
+    },
+    {
+     "w": "ORACULO",
+     "start": 38.73,
+     "end": 39.29
+    },
+    {
+     "w": "y",
+     "start": 39.29,
+     "end": 39.59
+    },
+    {
+     "w": "te",
+     "start": 39.59,
+     "end": 39.73
+    },
+    {
+     "w": "mando",
+     "start": 39.73,
+     "end": 40.03
+    },
+    {
+     "w": "el",
+     "start": 40.03,
+     "end": 40.15
+    },
+    {
+     "w": "inspector.",
+     "start": 40.15,
+     "end": 40.45
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t2.wav",
+     "err": 0.03,
+     "dur": 40.45,
+     "heard": "Esto no se mira, se mide. Un inspector revisa cada fotograma de este video mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 lufts exactos, pico bajo cero y silencios donde la voz respira. Cero cuadros negros, cero muestras cortadas, voz verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-6958cb21d9-t1.wav",
+     "err": 0.05,
+     "dur": 45.33,
+     "heard": "Esto no se mira. Se mide. Un inspector revisa cada fotograma de este vídeo mientras lo ves. Ningún cuadro se repite. El contador no miente. El movimiento se mide dos veces por segundo. Si algo se congela, el render muere. 14 love es exactos. Pico bajo cero. Y silencios donde la voz respira. Cero cuadros negros. Cero muestras cortadas. Vos verificada palabra por palabra. La versión anterior se rechazó sola. 14 segundos congelados. Cuando falla, el build se cae solo. No hay segunda oportunidad editorial. Este que estás viendo pasó. En vivo, delante de ti. Comenta oraculo y te mando el inspector."
+    }
+   ]
+  }
+ ]
+}

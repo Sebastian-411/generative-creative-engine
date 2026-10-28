@@ -1,0 +1,284 @@
+{
+ "engine": "edge",
+ "voice": "es-MX-JorgeNeural",
+ "rate": "+0%",
+ "duration": 24.802,
+ "wordsPerSecond": 2.31,
+ "lines": [
+  {
+   "id": "hook",
+   "text": "Esta taza de café necesitó 140 litros de agua.",
+   "start": 0.5,
+   "end": 4.796,
+   "words": [
+    {
+     "w": "Esta",
+     "start": 0.6,
+     "end": 0.912
+    },
+    {
+     "w": "taza",
+     "start": 0.925,
+     "end": 1.212
+    },
+    {
+     "w": "de",
+     "start": 1.225,
+     "end": 1.338
+    },
+    {
+     "w": "café",
+     "start": 1.35,
+     "end": 1.637
+    },
+    {
+     "w": "necesitó",
+     "start": 1.65,
+     "end": 2.2
+    },
+    {
+     "w": "140",
+     "start": 2.212,
+     "end": 2.6
+    },
+    {
+     "w": "litros",
+     "start": 2.612,
+     "end": 3.037
+    },
+    {
+     "w": "de",
+     "start": 3.05,
+     "end": 3.438
+    },
+    {
+     "w": "agua.",
+     "start": 3.45,
+     "end": 3.55
+    }
+   ]
+  },
+  {
+   "id": "brew",
+   "text": "Y casi nada se usó para prepararla.",
+   "start": 5.146,
+   "end": 8.218,
+   "words": [
+    {
+     "w": "Y",
+     "start": 5.246,
+     "end": 5.384
+    },
+    {
+     "w": "casi",
+     "start": 5.396,
+     "end": 5.721
+    },
+    {
+     "w": "nada",
+     "start": 5.734,
+     "end": 6.033
+    },
+    {
+     "w": "se",
+     "start": 6.046,
+     "end": 6.184
+    },
+    {
+     "w": "usó",
+     "start": 6.196,
+     "end": 6.471
+    },
+    {
+     "w": "para",
+     "start": 6.483,
+     "end": 6.696
+    },
+    {
+     "w": "prepararla",
+     "start": 6.708,
+     "end": 7.346
+    }
+   ]
+  },
+  {
+   "id": "farm",
+   "text": "La mayor parte se fue en cultivar los granos.",
+   "start": 8.568,
+   "end": 12.048,
+   "words": [
+    {
+     "w": "La",
+     "start": 8.668,
+     "end": 8.818
+    },
+    {
+     "w": "mayor",
+     "start": 8.831,
+     "end": 9.168
+    },
+    {
+     "w": "parte",
+     "start": 9.181,
+     "end": 9.518
+    },
+    {
+     "w": "se",
+     "start": 9.531,
+     "end": 9.681
+    },
+    {
+     "w": "fue",
+     "start": 9.693,
+     "end": 9.868
+    },
+    {
+     "w": "en",
+     "start": 9.88,
+     "end": 9.968
+    },
+    {
+     "w": "cultivar",
+     "start": 9.981,
+     "end": 10.468
+    },
+    {
+     "w": "los",
+     "start": 10.481,
+     "end": 10.63
+    },
+    {
+     "w": "granos",
+     "start": 10.643,
+     "end": 11.168
+    }
+   ]
+  },
+  {
+   "id": "scale",
+   "text": "Son 140 botellas de un litro, por cada taza.",
+   "start": 12.398,
+   "end": 16.646,
+   "words": [
+    {
+     "w": "Son",
+     "start": 12.498,
+     "end": 12.798
+    },
+    {
+     "w": "140",
+     "start": 12.81,
+     "end": 13.148
+    },
+    {
+     "w": "botellas",
+     "start": 13.16,
+     "end": 13.561
+    },
+    {
+     "w": "de",
+     "start": 13.573,
+     "end": 14.036
+    },
+    {
+     "w": "un",
+     "start": 14.048,
+     "end": 14.135
+    },
+    {
+     "w": "litro,",
+     "start": 14.148,
+     "end": 14.273
+    },
+    {
+     "w": "por",
+     "start": 14.285,
+     "end": 14.673
+    },
+    {
+     "w": "cada",
+     "start": 14.86,
+     "end": 15.048
+    },
+    {
+     "w": "taza.",
+     "start": 15.061,
+     "end": 15.336
+    }
+   ]
+  },
+  {
+   "id": "payoff",
+   "text": "No se trata de dejar el café. Se trata de saber cuánto vale.",
+   "start": 17.346,
+   "end": 22.602,
+   "words": [
+    {
+     "w": "No",
+     "start": 17.446,
+     "end": 17.633
+    },
+    {
+     "w": "se",
+     "start": 17.646,
+     "end": 17.796
+    },
+    {
+     "w": "trata",
+     "start": 17.809,
+     "end": 18.121
+    },
+    {
+     "w": "de",
+     "start": 18.133,
+     "end": 18.233
+    },
+    {
+     "w": "dejar",
+     "start": 18.246,
+     "end": 18.558
+    },
+    {
+     "w": "el",
+     "start": 18.571,
+     "end": 18.671
+    },
+    {
+     "w": "café",
+     "start": 18.683,
+     "end": 19.096
+    },
+    {
+     "w": "Se",
+     "start": 19.958,
+     "end": 20.208
+    },
+    {
+     "w": "trata",
+     "start": 20.221,
+     "end": 20.521
+    },
+    {
+     "w": "de",
+     "start": 20.534,
+     "end": 20.646
+    },
+    {
+     "w": "saber",
+     "start": 20.658,
+     "end": 21.021
+    },
+    {
+     "w": "cuánto",
+     "start": 21.034,
+     "end": 21.371
+    },
+    {
+     "w": "vale",
+     "start": 21.383,
+     "end": 21.721
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,524 @@
+{
+ "engine": "qwen",
+ "duration": 38.421,
+ "wordsPerSecond": 2.37,
+ "descriptions": [
+  {
+   "speaker": "narrador",
+   "description": "A natural, expressive Latin American Spanish narrator. A mature male voice with a subtle Colombian accent, warm timbre and realistic human phrasing. This is a psychological horror story told to a friend late at night, not a news report or a commercial voiceover. Overall: historia de terror contada a un amigo en voz baja: arranca íntimo, la tensión sube línea a línea, el remate cae seco después de un silencio. Performance arc, sentence by sentence: 1) confidential, almost whispering a secret to a friend; 2) mysterious and intimate, low voice, slow pace, deliberate pauses, restrained tension; 3) suspenseful, holding the breath, tension rising toward the end of each sentence. Realistic human phrasing with natural pauses at ellipses and line breaks, varied pitch and pace, never monotone, never theatrical."
+  },
+  {
+   "speaker": "abuela",
+   "description": "An elderly Colombian grandmother, around 80 years old, soft and slightly raspy voice, tender and calling gently from a dark hallway at night, slow and sweet, almost a whisper, which makes it unsettling. Overall: historia de terror contada a un amigo en voz baja: arranca íntimo, la tensión sube línea a línea, el remate cae seco después de un silencio. Performance: tender and soft, like talking to a child. Realistic human phrasing with natural pauses at ellipses and line breaks, varied pitch and pace, never monotone, never theatrical."
+  },
+  {
+   "speaker": "narrador",
+   "description": "A natural, expressive Latin American Spanish narrator. A mature male voice with a subtle Colombian accent, warm timbre and realistic human phrasing. This is a psychological horror story told to a friend late at night, not a news report or a commercial voiceover. Overall: historia de terror contada a un amigo en voz baja: arranca íntimo, la tensión sube línea a línea, el remate cae seco después de un silencio. Performance arc, sentence by sentence: 1) suspenseful, holding the breath, tension rising toward the end of each sentence; 2) ominous horror narration, hushed and slow, building dread, chilling conviction on the last words; 3) ominous horror narration, hushed and slow, building dread, chilling conviction on the last words. Realistic human phrasing with natural pauses at ellipses and line breaks, varied pitch and pace, never monotone, never theatrical."
+  }
+ ],
+ "lines": [
+  {
+   "id": "regla",
+   "text": "Mi abuela tenía una sola regla en esa casa.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "confidencial",
+   "take": 1,
+   "start": 0.8,
+   "end": 3.74,
+   "words": [
+    {
+     "w": "Mi",
+     "start": 0.8,
+     "end": 0.98
+    },
+    {
+     "w": "abuela",
+     "start": 0.98,
+     "end": 1.38
+    },
+    {
+     "w": "tenía",
+     "start": 1.38,
+     "end": 1.74
+    },
+    {
+     "w": "una",
+     "start": 1.74,
+     "end": 2.02
+    },
+    {
+     "w": "sola",
+     "start": 2.02,
+     "end": 2.34
+    },
+    {
+     "w": "regla",
+     "start": 2.34,
+     "end": 2.88
+    },
+    {
+     "w": "en",
+     "start": 2.88,
+     "end": 3.08
+    },
+    {
+     "w": "esa",
+     "start": 3.08,
+     "end": 3.26
+    },
+    {
+     "w": "casa.",
+     "start": 3.26,
+     "end": 3.74
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-907f99d1ce-t1.wav",
+     "err": 0.057,
+     "dur": 15.22,
+     "heard": "Mi abuela tenía una sola regla en esa casa. Después de medianoche, si alguien te llama desde el pasillo, no contestes. La primera noche que dormía ya, a las 12 y 10 escuché su voz."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-907f99d1ce-t2.wav",
+     "err": 0.057,
+     "dur": 13.99,
+     "heard": "Mi abuela tenía una sola regla en esa casa. Después de medianoche, si alguien te llama desde el pasillo, no contestes. La primera noche que dormía ya, a las 12 y 10, escuché su voz."
+    }
+   ]
+  },
+  {
+   "id": "pasillo",
+   "text": "Después de medianoche, si alguien te llama desde el pasillo… no contestes.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "misterio",
+   "take": 1,
+   "start": 4.78,
+   "end": 10.5,
+   "words": [
+    {
+     "w": "Después",
+     "start": 4.78,
+     "end": 5.14
+    },
+    {
+     "w": "de",
+     "start": 5.14,
+     "end": 5.4
+    },
+    {
+     "w": "medianoche,",
+     "start": 5.4,
+     "end": 6.12
+    },
+    {
+     "w": "si",
+     "start": 6.6,
+     "end": 6.72
+    },
+    {
+     "w": "alguien",
+     "start": 6.72,
+     "end": 7
+    },
+    {
+     "w": "te",
+     "start": 7,
+     "end": 7.18
+    },
+    {
+     "w": "llama",
+     "start": 7.18,
+     "end": 7.5
+    },
+    {
+     "w": "desde",
+     "start": 7.5,
+     "end": 7.76
+    },
+    {
+     "w": "el",
+     "start": 7.76,
+     "end": 7.96
+    },
+    {
+     "w": "pasillo…",
+     "start": 7.96,
+     "end": 8.58
+    },
+    {
+     "w": "no",
+     "start": 9.48,
+     "end": 9.66
+    },
+    {
+     "w": "contestes.",
+     "start": 9.66,
+     "end": 10.5
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-907f99d1ce-t1.wav",
+     "err": 0.057,
+     "dur": 15.22,
+     "heard": "Mi abuela tenía una sola regla en esa casa. Después de medianoche, si alguien te llama desde el pasillo, no contestes. La primera noche que dormía ya, a las 12 y 10 escuché su voz."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-907f99d1ce-t2.wav",
+     "err": 0.057,
+     "dur": 13.99,
+     "heard": "Mi abuela tenía una sola regla en esa casa. Después de medianoche, si alguien te llama desde el pasillo, no contestes. La primera noche que dormía ya, a las 12 y 10, escuché su voz."
+    }
+   ]
+  },
+  {
+   "id": "noche",
+   "text": "La primera noche que dormí allá, a las doce y diez, escuché su voz.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "suspenso",
+   "take": 1,
+   "start": 11.82,
+   "end": 15.78,
+   "words": [
+    {
+     "w": "La",
+     "start": 11.82,
+     "end": 11.98
+    },
+    {
+     "w": "primera",
+     "start": 11.98,
+     "end": 12.24
+    },
+    {
+     "w": "noche",
+     "start": 12.24,
+     "end": 12.56
+    },
+    {
+     "w": "que",
+     "start": 12.56,
+     "end": 12.74
+    },
+    {
+     "w": "dormí",
+     "start": 12.74,
+     "end": 13.08
+    },
+    {
+     "w": "allá,",
+     "start": 13.08,
+     "end": 13.34
+    },
+    {
+     "w": "a",
+     "start": 13.86,
+     "end": 13.92
+    },
+    {
+     "w": "las",
+     "start": 13.92,
+     "end": 14.06
+    },
+    {
+     "w": "doce",
+     "start": 14.06,
+     "end": 14.36
+    },
+    {
+     "w": "y",
+     "start": 14.36,
+     "end": 14.56
+    },
+    {
+     "w": "diez,",
+     "start": 14.56,
+     "end": 14.92
+    },
+    {
+     "w": "escuché",
+     "start": 14.92,
+     "end": 15.4
+    },
+    {
+     "w": "su",
+     "start": 15.4,
+     "end": 15.52
+    },
+    {
+     "w": "voz.",
+     "start": 15.52,
+     "end": 15.78
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-907f99d1ce-t1.wav",
+     "err": 0.057,
+     "dur": 15.22,
+     "heard": "Mi abuela tenía una sola regla en esa casa. Después de medianoche, si alguien te llama desde el pasillo, no contestes. La primera noche que dormía ya, a las 12 y 10 escuché su voz."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-907f99d1ce-t2.wav",
+     "err": 0.057,
+     "dur": 13.99,
+     "heard": "Mi abuela tenía una sola regla en esa casa. Después de medianoche, si alguien te llama desde el pasillo, no contestes. La primera noche que dormía ya, a las 12 y 10, escuché su voz."
+    }
+   ]
+  },
+  {
+   "id": "llamado",
+   "text": "Mijo… venga un momentico.",
+   "speaker": "abuela",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "ternura",
+   "take": 2,
+   "start": 17.62,
+   "end": 20.68,
+   "words": [
+    {
+     "w": "Mijo…",
+     "start": 17.62,
+     "end": 18.24
+    },
+    {
+     "w": "venga",
+     "start": 19.12,
+     "end": 19.7
+    },
+    {
+     "w": "un",
+     "start": 19.7,
+     "end": 19.94
+    },
+    {
+     "w": "momentico.",
+     "start": 19.94,
+     "end": 20.68
+    }
+   ],
+   "takes": [
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-abuela-60841ecf6d-t2.wav",
+     "err": 0,
+     "dur": 3.23,
+     "heard": "¡Mijo! ¡Venga un momentico!"
+    },
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-abuela-60841ecf6d-t1.wav",
+     "err": 0.5,
+     "dur": 4.45,
+     "heard": "Mi hijo, venga un momentico."
+    }
+   ]
+  },
+  {
+   "id": "casi",
+   "text": "Casi me levanto. Pero entonces me acordé de algo.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "suspenso",
+   "take": 1,
+   "start": 22.846,
+   "end": 26.946,
+   "words": [
+    {
+     "w": "Casi",
+     "start": 22.846,
+     "end": 23.226
+    },
+    {
+     "w": "me",
+     "start": 23.226,
+     "end": 23.486
+    },
+    {
+     "w": "levanto.",
+     "start": 23.486,
+     "end": 24.246
+    },
+    {
+     "w": "Pero",
+     "start": 25.126,
+     "end": 25.366
+    },
+    {
+     "w": "entonces",
+     "start": 25.366,
+     "end": 25.786
+    },
+    {
+     "w": "me",
+     "start": 25.786,
+     "end": 26.106
+    },
+    {
+     "w": "acordé",
+     "start": 26.106,
+     "end": 26.486
+    },
+    {
+     "w": "de",
+     "start": 26.486,
+     "end": 26.606
+    },
+    {
+     "w": "algo.",
+     "start": 26.606,
+     "end": 26.946
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-28f9566e8d-t1.wav",
+     "err": 0,
+     "dur": 11.63,
+     "heard": "casi me levanto. Pero entonces me acordé de algo. Mi abuela llevaba tres años muerta y la voz todavía me llama."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-28f9566e8d-t2.wav",
+     "err": 0,
+     "dur": 10.08,
+     "heard": "Casi me levanto, pero entonces me acordé de algo. Mi abuela llevaba tres años muerta y la voz todavía me llama."
+    }
+   ]
+  },
+  {
+   "id": "muerta",
+   "text": "Mi abuela llevaba tres años muerta.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "terror",
+   "take": 1,
+   "start": 28.166,
+   "end": 30.766,
+   "words": [
+    {
+     "w": "Mi",
+     "start": 28.166,
+     "end": 28.366
+    },
+    {
+     "w": "abuela",
+     "start": 28.366,
+     "end": 28.706
+    },
+    {
+     "w": "llevaba",
+     "start": 28.706,
+     "end": 29.166
+    },
+    {
+     "w": "tres",
+     "start": 29.166,
+     "end": 29.546
+    },
+    {
+     "w": "años",
+     "start": 29.546,
+     "end": 30.106
+    },
+    {
+     "w": "muerta.",
+     "start": 30.106,
+     "end": 30.766
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-28f9566e8d-t1.wav",
+     "err": 0,
+     "dur": 11.63,
+     "heard": "casi me levanto. Pero entonces me acordé de algo. Mi abuela llevaba tres años muerta y la voz todavía me llama."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-28f9566e8d-t2.wav",
+     "err": 0,
+     "dur": 10.08,
+     "heard": "Casi me levanto, pero entonces me acordé de algo. Mi abuela llevaba tres años muerta y la voz todavía me llama."
+    }
+   ]
+  },
+  {
+   "id": "sigue",
+   "text": "Y la voz… todavía me llama.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "terror",
+   "take": 1,
+   "start": 32.066,
+   "end": 35.026,
+   "words": [
+    {
+     "w": "Y",
+     "start": 32.066,
+     "end": 32.446
+    },
+    {
+     "w": "la",
+     "start": 32.446,
+     "end": 32.566
+    },
+    {
+     "w": "voz…",
+     "start": 32.566,
+     "end": 32.986
+    },
+    {
+     "w": "todavía",
+     "start": 32.986,
+     "end": 34.326
+    },
+    {
+     "w": "me",
+     "start": 34.326,
+     "end": 34.766
+    },
+    {
+     "w": "llama.",
+     "start": 34.766,
+     "end": 35.026
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-28f9566e8d-t1.wav",
+     "err": 0,
+     "dur": 11.63,
+     "heard": "casi me levanto. Pero entonces me acordé de algo. Mi abuela llevaba tres años muerta y la voz todavía me llama."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-28f9566e8d-t2.wav",
+     "err": 0,
+     "dur": 10.08,
+     "heard": "Casi me levanto, pero entonces me acordé de algo. Mi abuela llevaba tres años muerta y la voz todavía me llama."
+    }
+   ]
+  }
+ ]
+}

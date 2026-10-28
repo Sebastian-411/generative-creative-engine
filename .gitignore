@@ -1,5 +1,8 @@
 /examples
 /videos
 node_modules/
-# Demos y piezas: viven solo en local, no en el repo
-demos/
+# Demos: el código de la pieza se versiona; los pesados (render/audio/review) quedan en local
+demos/*/render/
+demos/*/audio/
+demos/*/review/
+demos/*/*.mp4

@@ -1,0 +1,37 @@
+{
+ "direction": "de dueña a dueña: arranca cómplice y con ironía sobre la carta tachada, se cansa un poco en el PDF, se ilumina con alivio cuando aparece Tastora, baja a confidencial en '¿y cuánto cuesta?', explota de alegría en 'nada', y el payoff es satisfacción tranquila y clara",
+ "engine": "qwen",
+ "cast": {
+  "narrador": {
+   "description": "A warm, natural Colombian woman in her late thirties who owns a small restaurant, speaking to another restaurant owner like a friend over coffee. Friendly Latin American Spanish with a subtle Colombian accent, conversational and playful, a little ironic when complaining, genuinely relieved and happy when sharing the solution. Realistic human phrasing, not a commercial announcer."
+  },
+  "comensal": {
+   "description": "A young Colombian man in his twenties, casual and friendly, ordering food at a restaurant table, relaxed everyday tone."
+  }
+ },
+ "takes": 2,
+ "lead": 0.4,
+ "gap": 0.3,
+ "tail": 2.4,
+ "lines": [
+  { "id": "hook", "text": "Bajaste la bandeja paisa. La carta sigue diciendo $32.000.", "say": "Bajaste la bandeja paisa. La carta sigue diciendo treinta y dos mil.", "emotion": "ironía", "intensity": 0.5, "pace": "natural", "pause": 0.35 },
+  { "id": "tachar", "text": "Otra vez a imprimir. O a tachar con lapicero.", "emotion": "ironía", "intensity": 0.45, "pace": "natural", "pause": 0.4 },
+  { "id": "pide", "speaker": "comensal", "text": "¿Me trae un ajiaco?", "emotion": "casual", "intensity": 0.4, "pace": "natural", "pause": 0.3 },
+  { "id": "acabo", "text": "Se acabó a la una. La carta no se enteró.", "emotion": "ironía", "intensity": 0.5, "pace": "natural", "pause": 0.35 },
+  { "id": "pdf", "text": "Y el PDF borroso… tampoco ayuda.", "say": "Y el pe de efe borroso… tampoco ayuda.", "emotion": "cansancio", "intensity": 0.4, "pace": "pausado", "pause": 0.8 },
+  { "id": "tastora", "text": "Con Tastora armas tu carta digital en cinco minutos.", "emotion": "alivio", "intensity": 0.55, "pace": "natural", "pause": 0.3 },
+  { "id": "plato", "text": "Cada plato con su foto y su precio.", "emotion": "cálido", "intensity": 0.5, "pace": "natural", "pause": 0.35 },
+  { "id": "qr", "text": "Pones un QR en cada mesa.", "say": "Pones un cu erre en cada mesa.", "emotion": "seguro", "intensity": 0.55, "pace": "natural", "pause": 0.3 },
+  { "id": "camara", "text": "Lo escanean con la cámara y la carta abre al instante.", "emotion": "entusiasmo", "intensity": 0.6, "pace": "natural", "pause": 0.25 },
+  { "id": "sinapp", "text": "Sin descargar nada.", "emotion": "entusiasmo", "intensity": 0.55, "pace": "natural", "pause": 0.6 },
+  { "id": "cuesta", "text": "¿Y cuánto cuesta?", "emotion": "confidencial", "intensity": 0.5, "pace": "pausado", "pause": 0.6 },
+  { "id": "gratis", "text": "Nada. Gratis para siempre en una sede, sin tarjeta.", "emotion": "alegría", "intensity": 0.7, "pace": "natural", "pause": 0.3 },
+  { "id": "comision", "text": "Y no pagas comisión por pedido.", "emotion": "seguro", "intensity": 0.6, "pace": "natural", "pause": 1.6 },
+  { "id": "ahora", "text": "Ahora sí: la bandeja paisa.", "emotion": "confidencial", "intensity": 0.5, "pace": "pausado", "pause": 0.6 },
+  { "id": "payoff", "text": "Treinta y dos mil… veintinueve mil. El ajiaco, agotado.", "emotion": "satisfacción", "intensity": 0.8, "pace": "pausado", "pause": 0.3 },
+  { "id": "mesas", "text": "Cada mesa lo ve al instante.", "emotion": "alivio", "intensity": 0.75, "pace": "natural", "pause": 0.5 },
+  { "id": "cta", "text": "Tu menú en la mesa. Créalo gratis en Tastora.", "emotion": "cálido", "intensity": 0.6, "pace": "natural" }
+ ],
+ "master": true,
+ "room": "seco"
+}
