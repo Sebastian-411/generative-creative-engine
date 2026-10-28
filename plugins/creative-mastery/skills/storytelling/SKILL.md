@@ -50,6 +50,10 @@ Resumen de las tablas (detalle en `references/dispositivos-y-formas.md`):
 
 Regla de progresión: **cada beat cambia algo** (información, emoción, riesgo, decisión o perspectiva). Si dos beats se pueden intercambiar sin perder nada, sobra uno.
 
+- **Valor polar y lección**: cada beat se anota `value_from → value_to` (abre en un valor dramático y cierra en el opuesto o desplazado) y una `lesson` única. Escena que cierra con el mismo valor con el que abre = **exposición**: se elimina o se funde con otra (McKee; Wei Minglun: cada golpe enseña UNA cosa nueva, dos golpes sin lección se funden en uno — vía screenwriting-skills, MIT). En `schemaVersion: 2` el check lo exige.
+- **Escalada mínima de 3 capas antes del payoff** y escenas que **se acortan hacia el clímax** (sw-scene-craft, MIT). El eco final es la rima inicio-final del Contrato creativo.
+- **Pacing de lo incremental** (wshuyi — criterio, licencia sin verificar): concepto nuevo 2–4 s, repaso 0.3–0.5 s; estructura 10/15/50/15/10 % (pregunta/intuición/verificación/formalización/recap); que el espectador **descubra** el patrón un momento antes de que la voz lo nombre.
+
 ## 4. Hilo, pregunta dramática, giro y payoff
 
 - **Hilo**: la columna es **una persona haciendo una tarea real**, y un dato real (una consulta, un archivo, un número, un pedido) viaja del fotograma 0 al payoff. Un explicador es un ejemplo concreto trabajado de principio a fin, no un tour de datos.

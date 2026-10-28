@@ -32,6 +32,7 @@ Notación: `tl = stage.tl`, `F = 1/stage.fps`; los tiempos salen de `stage.at/wo
 - Mediana profesional ~10 fotogramas a 30 fps (0.33 s). Más distancia, más tiempo: 100 px ×1.0, 400 px ×1.6, pantalla completa ×1.8–2.0.
 - **Salida = 65–75 % de la entrada** (HF dice 40–50 %; nos quedamos con lo nuestro). Una entrada única nunca pasa de 800 ms. Llegar lento, salir limpio: una salida es un solo movimiento, nunca deslizar-parar-irse.
 - Ritmo por género: montaje 0.13–0.8 s por corte · promedio 1.8–3 s con movimiento por dentro · demo 7–10 s en un encuadre mientras la UI actúa · showreel 1.5–4 s por idea. **Un mismo tratamiento envejece a los ~6 s**: se cambia de tratamiento o se pausa; nunca se alargan los tweens.
+- Clases por rol (iart, MIT): **micro 100–200 · UI 200–400 · héroe 400–800 · cámara 800–2000 ms** — la tabla de arriba manda por elemento; estas clases son el techo por rol.
 
 ## Curvas según el papel
 
@@ -48,13 +49,16 @@ El mismo `power2.out` de 0.5 s en todo es lo que hace que una pieza se vea gener
 - **Nunca lineal en movimiento espacial** (salvo derivas lentas de fondo). Nunca `bounce` ni `elastic`.
 - **Blur de movimiento medido**: todo movimiento de 0.3–0.6 s lleva blur con pico en su fotograma más rápido: **6–12 px en algo del tamaño de un texto** (en zoom: 10 px; con 20 se embarran las letras), **15–20 px a pantalla completa**; solo horizontal si el movimiento es horizontal (SVG `feGaussianBlur stdDeviation="X 0"` por proxy, ver `references/transiciones.md`). El blur vale lo mismo a ambos lados de un corte.
 - **Sobrepaso solo en transforms**: premium 0 %, papel 3–5 %, éxito 5–10 %; tope `back.out(1.7)`. **Opacidad, color y números nunca se pasan** (un contador que llega a 47 y vuelve a 42 mostró una cifra falsa). El arrastre secundario (sombra, carcasa) termina 1 fotograma después que el objeto.
-- **Resortes por amortiguación** ζ = damping / (2√stiffness) en `Stage.spring` (masa 1): 1.0 no rebota · **0.7–0.85 premium** · 0.4–0.6 juguetón · < 0.3 caricatura. Presets: UI 320/30 (ζ 0.84) · cámara y tarjetas 170/26 (ζ 1.0) · tipografía pesada 120/24 (ζ 1.1) · personaje 180/12 (ζ 0.45, **solo personajes**). Fuera de personajes, ζ ≥ 0.72.
+- Overshoot multiplicativo (iart, MIT): la escala de llegada pasa por **1.0–1.12×** del valor final, **nunca > 1.15**.
+- **Resortes por amortiguación** ζ = damping / (2√stiffness) en `Stage.spring` (masa 1): 1.0 no rebota · **0.7–0.85 premium** · 0.4–0.6 juguetón · < 0.3 caricatura. Presets: UI 320/30 (ζ 0.84) · cámara y tarjetas 170/26 (ζ 1.0) · tipografía pesada 120/24 (ζ 1.1) · personaje 180/12 (ζ 0.45, **solo personajes**). Fuera de personajes, ζ ≥ 0.72. Presets iart (MIT): {300,30,1} ζ0.87 · {400,17,1} ζ0.43 (solo criatura) · {120,20,1} ζ0.91 · {500,50,1} ζ1.12.
 - Escala: los objetos **llegan desde grande** (1.3–1.8× → 1, `expo.out`) más que crecer desde cero. Las llegadas por transform superan a los fundidos 6 a 1.
 
 ## Coreografía
 
 - **Una cosa se mueve a la vez**; el resto espera. Como máximo 1/3 de los elementos activos al mismo tiempo.
-- **Solape con proporción**: el siguiente arranca cuando el anterior lleva 30–50 %. El desfase siempre es **menor** que la duración (si no, es una cola). Escalonado: letras 1 fotograma, palabras 60–120 ms (con voz: en `stage.word`), ítems 40–80 ms; **total ≤ 500 ms**.
+- **Solape con proporción**: el siguiente arranca cuando el anterior lleva 30–50 %. El desfase siempre es **menor** que la duración (si no, es una cola). Escalonado: letras 1 fotograma, palabras 60–120 ms (con voz: en `stage.word`), ítems 40–80 ms; **total ≤ 500 ms** (iart permite tope 600–800 ms cuando la lista ES la escena; fuera de eso, 500).
+- **Forma del reveal 20 % : 50 % : 30 %** (pixel2motion, MIT): entrada 20 %, desarrollo 50 %, salida 30 % de la duración total (1500 ms → 300/750/450). El stagger entre partes es **10–20 % de la duración de cada parte**, y **nunca todas las partes empiezan y terminan en el mismo frame**. Jerarquía de arrastre: raíz → primario → secundario → terciario, cada nivel hereda el retraso del anterior.
+- **Fases semánticas del gesto ANTES del ease** (vibe-motion, sin licencia — números con atribución): rest → anticipation → commitment → passing → apex → contact → overshoot → settle; elige la curva después de saber en qué fase está cada parte. Caso salto medido: hold 4f · anticipación 6f · hold 2f · ascenso 10f · hang 20f · descenso 7f · squash 3f · recuperación 5f.
 - Se retrasan los secundarios, **nunca el focal** (si espera, se lee como lag). Se escalona lo que *ocurre*, no lo que ya *estaba*.
 - **Combinar propiedades solo si cuentan la misma historia**: subir + fundirse = "llega". Subir + rotar + escalar + desenfocar = cuatro afirmaciones y texto ilegible.
 - Todo entra desde la misma dirección. El protagonista recorre la mayor distancia; el contra-movimiento va al 20–30 % de su velocidad.
@@ -133,6 +137,23 @@ Fuentes: medición propia de trabajo profesional · parte destilada de HyperFram
 - Texto estático mientras la voz lo lee; hold ≥15 frames tras aparecer; nada de flash <3 cambios/s.
 - Como máximo dos curvas por estilo (una "snap" + una "draw"); si necesitaste más, el estilo no tiene lenguaje propio.
 - Cámara: efectos anclados world→screen (transform-origin en el punto del mundo), nunca muerta (drift ~0.02/s + bob); si la pieza es loop, el último frame = el primero, posiciones y velocidades incluidas.
+
+### Anclas de easing con nombre (diffusionstudio/lottie, MIT)
+- `entrance-sharp` cubic-bezier(.20,.75,.34,.94) — entrada con momentum visible (hermana de la UI crisp de arriba: úsala cuando la entrada carga historia, la crisp cuando es UI seca).
+- `settle-soft` (.00,.65,.51,.99) — asentamiento suave sin golpe (texto que llega a leerse).
+- `kinetic-ui` (.85,.46,.14,.53) — UI en movimiento continuo.
+- `expressive-pop` (.94,.75,.34,.94) — pop expresivo (el playful de arriba, sin back).
+- `travel-balanced` (1.00,.49,.00,.55) — viajes de cámara y desplazamientos largos.
+- `exit-accelerate` (1.00,.02,.54,.42) — salida que acelera (cae con gravedad).
+- `travel-cut` (.15,.85,.95,.05) — travel que termina en corte (corta la curva en vuelo, no la apagues).
+- Orquestación por propiedad (5 modos) y jerarquía del focal: la propiedad que cuenta la historia va sola con la curva fuerte; el resto copia 1 fotograma después. **Premium significa restar**: chrome budget 0.
+
+### Números de la segunda destilación (pixel2motion, iart, motion-video-kit)
+- Draw-on (pixel2motion, MIT): forma **10 % : 70 % : 20 %** (arranque del trazo, recorrido, asiento); en trazos divididos, **caps `butt` obligatorios** en cada handoff (los caps redondos pintan un punto fantasma de ~50 ms); cascada de letras **≤ 700 ms** total.
+- Presupuesto calm-sharp (iart): travel ≤ 24 px, overshoot ≤ 2 %, hold ≥ 0.3 s tras cada acierto. **Máx 2 easings por pieza y un solo momento "wow"** (misma regla que las dos curvas por estilo — cuenta curvas, no marcas).
+- 12–15 composiciones distintas por film de 30 s (motion-video-kit, MIT); el sujeto protagónico ocupa **60–85 % del frame**; el handoff de objetos entre escenas va en **coordenadas de píxel exactas**.
+- Diagnóstico rápido (iart): flotante → dura un 30 % de más · rígido → todo lineal/simétrico · barato → todo entra simultáneo · mecánico → sin anticipación ni settle.
+- Gotcha de Chromium (pixel2motion, medido): `var()` dentro de `@keyframes` **degrada la animación CSS a lineal** (~4.3× de salto de velocidad). No afecta tweens GSAP; no uses `var()` en keyframes.
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: sound-design
-description: Diseño sonoro para los videos del motor - elegir voz, estilo de música procedural (paper, pulse, ambient, hype, lofi), bpm y secciones de energía, silencios (drops) antes del remate, efectos sintetizados en los momentos de contacto, niveles, recorte por bandas (carve) y ducking bajo la voz, efectos con el pico alineado y loudness final (-14 LUFS, pico -2 dBTP). Úsala al declarar el audio de una pieza (music y stage.sfx en index.html), cuando el usuario trae su propia pista, o cuando la mezcla mide mal. Recuerda que no puedes escuchar: todo se decide con reglas y se verifica con números.
+description: Diseño sonoro para los videos del motor - elegir voz, estilo de música procedural (paper, pulse, ambient, hype, lofi), bpm y secciones de energía, silencios (drops) antes del remate, efectos sintetizados en los momentos de contacto, niveles, recorte por bandas (carve) y ducking bajo la voz, efectos con el pico alineado y loudness final parametrizado por plataforma (social -14 LUFS/pico -2 dBTP · YouTube -16 ±0.5 LUFS/pico ≤ -1 dBTP). Úsala al declarar el audio de una pieza (music y stage.sfx en index.html), cuando el usuario trae su propia pista, o cuando la mezcla mide mal. Recuerda que no puedes escuchar: todo se decide con reglas y se verifica con números.
 ---
 
 # Diseño sonoro
@@ -32,12 +32,14 @@ Se declara en `Stage.create({ bpm, music: {...} })` y la compone `mix.mjs` a la 
 
 **Que el sonido actúe la historia**: la forma vieja casi en silencio; la música se abre cuando aparece el producto; el golpe se guarda para el remate. Entra en el compás más fuerte de la pista (no en una intro floja) y cierra en barra bajo la tarjeta final. Un silencio deliberado se queda en silencio. La apertura no asusta: los primeros 2 s no suenan más fuerte que el resto. Con el sonido apagado (así arranca el feed) la pieza la cargan la tipografía y los subtítulos.
 
+**Marcar con armonía, no con volumen** (iart soundtrack, MIT): la emoción se marca cambiando acordes y capas, no subiendo faders. Un cambio de acorde con **+3–5 dB** se siente limpio; **+7–10 dB** ya es jump-scare; y capas que entran todas juntas suman ~+11 dB de golpe — por eso entran **≤ 1–2 capas por compás**. El **break** (silencio seco) cae **un compás antes del payoff** y cada corte de sección aterriza en un **downbeat** (verificable con `stage.bar/beat`); el `drops` de las opciones de abajo es la forma fuerte de ese break. Y al escribir la música: **sin notas de pad por debajo de MIDI 48** (≈ C3) — el low-end del pad ensucia la banda grave que la voz necesita (lemo-opuscar, MIT).
+
 Opciones de `music`:
 - `key`: tónica (`'C'`, `'A'`, `'F#'`…).
 - `energy: [[t, nivel], …]`: niveles 0–3 (0 = solo pad, 1 = + bajo/melodía, 2 = + batería ligera, 3 = todo). Por defecto sube 1 → 2 → 3 a lo largo de la pieza. Baja la energía donde la voz explica algo denso.
 - `drops: [{ at, dur }]`: silencio total (con cola de reverb) y **golpe** al terminar. Úsalo una vez, antes del remate: 0.3–0.75 s con voz, 1 tiempo en promos.
 - `hits: [t, …]`: golpes sueltos (sin silencio previo).
-- `end`: cuándo cierra la música con el acorde final (por defecto, duración − 1.6 s).
+- `end`: cuándo cierra la música con el acorde final (por defecto, duración − 1.6 s). Por **backtiming**: fíjalo hacia atrás desde el endcard para que el acorde aterrice exactamente en la tarjeta final (motion-video-kit, MIT).
 - `db`: dB **relativos a la voz** (la mezcla mide e iguala cada pista antes de mezclar): −12 por defecto con voz (cama clara pero detrás), −8/−10 para piezas atmosféricas (terror, épico), −15 para explicadores densos; sin voz, 0. `fallback`: estilo procedural si la música con IA falla.
 - `carve`: **recorte por bandas bajo la voz** (por defecto `true` = fuerza 0.25 cuando hay voz). La música cede solo las 3 bandas que más ocupa la voz (elegidas midiendo la voz, con más peso en 1–3 kHz) y conserva graves y agudos. El recorte sigue la envolvente real del habla (ataque 15 ms, suelta 300 ms): en las pausas la música queda intacta. Fuerza 0.25 → −6/−3/−3 dB; 0.5 → −10/−5/−5 (ya se oye «ahuecado»; no pases de ahí). `carve: 0` lo apaga.
 - `duck`: duck de nivel mientras alguien habla (6 dB por defecto; con carve se aplica al 60 %: 6 → 3.6, 5 → 3). Ataque 0.25 s, suelta 0.6 s. Las pausas de menos de 0.6 s entre líneas se funden en un solo tramo para que la música no bombee entre frases. Si aun así bombea, baja la fuerza del carve.
@@ -94,11 +96,12 @@ Prefiere grabaciones reales para contactos físicos (golpes, puertas, pasos, obj
 
 Orden de la señal: igualar (voz a −18 LUFS, música relativa a ella) → duck de nivel → **carve** → efectos y ambientes → loudnorm (el techo siempre al final).
 
-- Normalización en dos pasadas a **−14 LUFS integrados**, pico real objetivo **−2 dBTP**: 2 dB de margen, porque el limitador deja pasar picos entre muestras y el AAC los aumenta. Si `loudnorm` no puede trabajar en modo lineal (cae en silencio a modo dinámico), el motor limita antes a −3 dBFS y repite; el reporte lo dice.
+- Normalización en dos pasadas al objetivo de la **plataforma**, medido sobre el **archivo estéreo final** (el MP4 entregado, no las fuentes): **social −14 LUFS** integrados con pico real objetivo **−2 dBTP** · **YouTube −16 ±0.5 LUFS con pico ≤ −1.0 dBTP** — fuera de esos números se rechaza la publicación (lanshu, MIT; el perfil lo aplica `engine/verify.mjs --profile social|youtube`). En social se dejan 2 dB de margen porque el limitador deja pasar picos entre muestras y el AAC los aumenta. Si `loudnorm` no puede trabajar en modo lineal (cae en silencio a modo dinámico), el motor limita antes a −3 dBFS y repite; el reporte lo dice.
 - **Voz sobre música por línea** (tabla en `audio/mix.md`): una pista de ACE puede subir justo en el clímax y los LUFS integrados no lo ven. Lo cómodo es ≥ +10 dB en cada línea; con < +8 el reporte avisa ⚠ con el id de la línea. Un carve no arregla una música que simplemente está más fuerte que la voz: esa brecha es aritmética, y se arregla bajando `music.db`.
-- **Prueba del parlante de celular**: si más del 55 % de la energía de la música está bajo 150 Hz, en un teléfono suena a nada y el reporte avisa. Pide en el prompt más medios ("bright", "plucked", "piano", "marimba") o sube la voz.
+- **Prueba del parlante de celular**: si más del 50 % de la energía de la música está bajo 150 Hz, en un teléfono suena a nada y el reporte avisa. Pide en el prompt más medios ("bright", "plucked", "piano", "marimba") o sube la voz.
+- **Low-end plano**: la banda 20–120 Hz del master queda dentro de **±3 dB** (medición por bandas del archivo final; lemo-opuscar, MIT): un bajo que sobresale se come la voz en el parlante del celular y triggerea el limitador.
 - Si el reporte da más de 1 LU de diferencia con el objetivo o el pico pasa de −1 dBTP, algo está mal: un efecto muy alto o una pista del usuario saturada.
-- Pendiente: el pico se mide sobre `mix.wav`, no sobre el AAC del mp4 (suma ~0.5 dB). Con el objetivo de −2 dBTP hay margen.
+- El pico medido sobre `mix.wav` y el del AAC del mp4 difieren (~0.5 dB): por eso el objetivo final se verifica sobre el MP4 entregado (arriba), no sobre la mezcla fuente.
 
 ## Lo que no tiene respuesta honesta (dilo en la entrega)
 
@@ -109,9 +112,9 @@ Orden de la señal: igualar (voz a −18 LUFS, música relativa a ella) → duck
 
 ## Entrega
 
-Di siempre: "el audio está medido (−14 LUFS, pico ≤ −2 dBTP, voz sobre música mínima +X dB en la línea Y), no escuchado; revísalo una vez con audífonos y otra en el parlante del celular".
+Di siempre: "el audio está medido (perfil de plataforma: social −14 LUFS/pico ≤ −2 dBTP · YouTube −16 ±0.5 LUFS/pico ≤ −1 dBTP; voz sobre música mínima +X dB en la línea Y), no escuchado; revísalo una vez con audífonos y otra en el parlante del celular".
 
-Fuentes: EBU R128 / ITU-R BS.1770 (K-weighting), Audio EQ Cookbook (RBJ), Regalia-Mitra (peaking paralelo) · parte destilada de HyperFrames (Apache-2.0)
+Fuentes: EBU R128 / ITU-R BS.1770 (K-weighting), Audio EQ Cookbook (RBJ), Regalia-Mitra (peaking paralelo) · parte destilada de HyperFrames (Apache-2.0) · lanshu, iart, lemo-opuscar y motion-video-kit (MIT)
 
 
 ---

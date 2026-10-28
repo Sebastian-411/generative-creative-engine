@@ -60,6 +60,16 @@
     return 1 - Math.exp(-w0 * t) * (1 + w0 * t);
   }
 
+  // Watchdog de seek (infraestructura del runtime, no tiempo de pieza): un <video> cuyo seek nunca
+  // responde —ni 'seeked' ni 'error'— colgaría el render para siempre. A los 10 s el seek falla
+  // con la fuente en la razón: el render termina con error en vez de quedarse esperando.
+  function withSeekWatchdog(p, src) {
+    return new Promise((res, rej) => {
+      const tm = setTimeout(() => rej(new Error(`seek sin responder en ${src}`)), 10000);
+      p.then((x) => { clearTimeout(tm); res(x); }, (e) => { clearTimeout(tm); rej(e); });
+    });
+  }
+
   function create(opts) {
     const cfg = Object.assign({ width: 1080, height: 1920, fps: 30, duration: 10, seed: 'piece', background: '#000', tail: 0 }, opts);
     if (!window.gsap) throw new Error('stage.js necesita gsap cargado antes (/__engine/gsap.min.js)');
@@ -163,14 +173,48 @@
         const frame = Math.round(lastT * cfg.fps);
         for (const fn of frameFns) fn(lastT, frame);
         const videos = [...root.querySelectorAll('video')];
-        return Promise.all(videos.map((v) => new Promise((res) => {
+        return Promise.all(videos.map((v) => withSeekWatchdog((async () => {
           v.pause();
+          v.muted = true;
+          // Espera un evento del <video> y suelta el listener gemelo: un error de media debe fallar, no colgar el render.
+          const waitEvent = (ev, arm) => new Promise((res, rej) => {
+            const ok = () => { v.removeEventListener('error', bad); res(); };
+            const bad = () => { v.removeEventListener(ev, ok); rej(v.error); };
+            v.addEventListener(ev, ok, { once: true });
+            v.addEventListener('error', bad, { once: true });
+            if (arm) arm();
+          });
+          // Sin metadatos no hay duration ni seek fiable: se esperan antes del primer fotograma capturado.
+          if (v.readyState < 1) await (v.error ? Promise.reject(v.error) : waitEvent('loadedmetadata'));
           // `video.__time = (t) => segundos` permite recorrer el metraje a otro ritmo (p. ej. scroll de un sitio al compás de la voz).
-          const target = Math.min(v.__time ? v.__time(lastT) : lastT - (parseFloat(v.dataset.start) || 0), v.duration || Infinity);
-          if (target < 0 || Math.abs(v.currentTime - target) < 1e-3) return res();
-          v.addEventListener('seeked', res, { once: true });
-          v.currentTime = target;
-        })));
+          // Clamp a [0, duration]: antes del inicio (data-start o __time < 0) sostiene el primer frame, nunca uno viejo de un seek anterior.
+          let target = v.__time ? v.__time(lastT) : lastT - (parseFloat(v.dataset.start) || 0);
+          if (Number.isFinite(v.duration)) target = Math.min(target, v.duration);
+          target = Math.max(0, target);
+          // data-fps cuantiza al grid de cuadros del metraje: el seek cae en un cuadro real del archivo, no entre dos
+          // (sin esto, un target 0.099999 lo trunca la base de tiempo del navegador al cuadro anterior).
+          const srcFps = parseFloat(v.dataset.fps);
+          if (srcFps > 0) target = Math.round(target * srcFps) / srcFps;
+          if (srcFps > 0) {
+            // Con grid declarado se busca SIEMPRE, dos ciclos: 'seeked' dice "decodificado", no "presentado" — la
+            // presentación viaja en el compositor y sin actividad del pipeline un screenshot captura el cuadro viejo
+            // (o la textura inicial en la primera captura de la página). El segundo seek 0.4-cuadros adentro
+            // re-decodifica el MISMO cuadro y empuja la presentación pendiente antes del capture.
+            await waitEvent('seeked', () => { v.currentTime = target; });
+            const eps = 0.4 / srcFps;
+            const nudge = target + eps <= v.duration ? target + eps : target - eps;
+            if (nudge > 0) await waitEvent('seeked', () => { v.currentTime = nudge; });
+          } else if (Math.abs(v.currentTime - target) >= 1e-3) {
+            // Sin grid declarado: comportamiento clásico — buscar solo si el tiempo cambia.
+            await waitEvent('seeked', () => { v.currentTime = target; });
+          } else if (v.readyState < 2) {
+            // Ya está en el tiempo correcto pero aún no hay cuadro decodificado (arranque en frío): esperar el primero.
+            await waitEvent('loadeddata');
+          }
+        })().catch((e) => {
+          const why = e && e.code ? `código ${e.code}${e.message ? `: ${e.message}` : ''}` : (e && e.message) || e;
+          throw new Error(`Video ${v.currentSrc || v.src || '(sin src)'}: no pude fijar el cuadro en t=${lastT.toFixed(3)}s (${why})`);
+        }), v.currentSrc || v.src || '(sin src)')));
       },
     };
 

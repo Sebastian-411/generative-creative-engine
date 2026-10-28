@@ -149,3 +149,21 @@ Si el usuario no fija duración: 30 s = intro 2.5 s + 4 escenas × 5.5 s + outro
 ### Publicación
 La pieza se entrega con título + descripción (+créditos de música/imagen si aplica); la cover son **2–4 palabras distintas del título** y se prueban como par.
 
+### Schema v2 del guion (el check lo mide)
+Con `"schemaVersion": 2` en `script.json`, cada línea lleva: `role` (hook/proof/desarrollo/rehook/payoff/claim/cta/respite…), `value_from`/`value_to` (el valor dramático con el que la escena abre y cierra — gira o es exposición), `lesson` (lo ÚNICO que el golpe enseña), `char_budget` y `out` (transición de salida). Exentos de giro: `cta` y `respite`. **Payoff nunca después del CTA** (`check.mjs` lo falla); escena que cierra con el mismo valor con el que abre = exposición: se elimina o se funde con otra (McKee; Wei Minglun: dos golpes sin lección se funden en uno — vía screenwriting-skills, MIT).
+
+### Cadencia medida en el set de referencias (10 MP4 locales, 2026-10-27)
+- El primer beat claro (gancho comprensible sin sonido) cae en **3–6 s** en las 10 piezas; el gancho de texto ≤ 3 s sigue mandando en promos.
+- Shots de **3–6 s, nunca > 7 s**; corte cada **~4–6 s** en las cut-driven; las de cámara continua (0–1 cortes) viven de movimiento interno y cards — dos gramáticas por contenido: listas → cortes; demo/narrativa → continua.
+- Narración de 8–10 s se reparte en **2 shots cortando a media frase**; `static` reservado al payoff; `camera_move` no se repite entre beats adyacentes (vox-director, MIT).
+- El CTA ocupa los **últimos 10–17 %** del runtime y el payoff **nunca aterriza después de él**.
+
+### Captions con números (iart/lanshu, MIT) + set local
+- 1–4 palabras por página; banda **62–70 %** del alto; bottom libre **≥ 15 %** (≥ 280 px en 1920); 56–80 px (mín 45); stroke 2–6 px.
+- Pop por palabra: spring damping 12 / mass 0.6 / scale 0.6→1 (iart). Lead visual **~40 ms** antes de la palabra y hold de cola **~120 ms**, alineados a marcas reales de ASR (lanshu). **Un término significativo resaltado por frase**: en el set local es la keyword-pill — fondo/acento sobre la palabra dicha (9/10 videos).
+- **Nunca dos contadores a la vez**; charts con **ease al VALOR** (`easeOutCubic`/Quint; lineal solo relojes) + `tabular-nums`; el número héroe ocupa **≥ 1/3 del frame** en su beat; todo número estimado lleva su **chip de honestidad** con el dato exacto visible (v4/v5/v8/v10).
+
+### CTA y end-card del set local
+- **CTA-mockup de comentario**: la keyword se teclea en un input de comentario con typing + check verde (v4/v5/v6/v8) — un solo elemento HTML garantiza que se lea la palabra exacta.
+- **End-card grammar**: logo + tagline + URL pill escalonadas **0.5–0.7 s** por capa (v2), o terminar en el remate sin card (v4); loop de pregunta como variante (v10). El CTA social va antes o en el endcard, jamás un beat después.
+

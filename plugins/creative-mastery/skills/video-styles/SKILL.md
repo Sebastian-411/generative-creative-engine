@@ -30,7 +30,7 @@ Si el usuario nombra un estilo o trae una referencia, gana eso. Si no, elige por
 
 ## Marca real > estilo del catálogo
 
-- **Tokens de verdad**: si hay sitio, `npx hyperframes capture <url> --json` (CLI de HyperFrames) escribe capturas, `extracted/tokens.json` (colores, fuentes), `design-styles.json`, logos y el copy visible. Mira las capturas antes de decidir. Si sale con código ≠ 0, imprime `ok: false` o deja `BLOCKED.md`, falló: no tomes nada de sus archivos parciales. Para animación del sitio (3D, scroll), `site-footage.mjs`.
+- **Tokens de verdad**: si hay sitio, `npx hyperframes capture <url> --json` (CLI de HyperFrames) escribe capturas, `extracted/tokens.json` (colores, fuentes), `design-styles.json`, logos y el copy visible. Mira las capturas antes de decidir. Si sale con código ≠ 0, imprime `ok: false` o deja `BLOCKED.md`, falló: no tomes nada de sus archivos parciales. Del motor propio, `node engine/capture-site.mjs <url> <pieza> --dpi 2` captura full-page a **2× de densidad** (hasta 8000 px: una captura a 1× se suaviza con los zooms de la demo) y escribe `capture/capture.json` con colores, fuentes, logos y **el wording exacto como fuente de verdad**: el texto del sitio que la pieza muestra se copia de ahí, nunca se reescribe de memoria (explainroo, MIT). Para animación del sitio (3D, scroll), `site-footage.mjs`.
 - Hex, familias, pesos y los "sí / no" de la marca son estrictos; tamaños, espaciado, grosor de bordes y decoración se escalan para video.
 - **El acento** es el color que se repite en más roles. Nunca el azul de link `#0000EE` ni los rojos/verdes de estado. Solo los pesos que la fuente trae (600/700 sin archivo = negrita falsa). Una fuente de íconos nunca es display. Si la marca es oscura, intercambia fondo y tinta.
 - Su color principal se vuelve el **color reservado**; el resto de la paleta del estilo se ajusta a su temperatura. Fuente no libre → la más cercana de Google Fonts, dicho en los supuestos. Logo = archivo oficial en `assets/`, nunca redibujado ni recoloreado. Contraste ≥ 4.5:1 (≥ 3:1 en texto grande).
@@ -42,7 +42,7 @@ Si el usuario nombra un estilo o trae una referencia, gana eso. Si no, elige por
 
 - **Delatan generación** (solo si la marca las usa): Inter (e Inter Tight), Space Grotesk, Instrument Serif, Geist, JetBrains Mono. Libres que no delatan: grotescas Archivo, Bricolage Grotesque, Familjen Grotesk, Schibsted Grotesk, Hanken Grotesk; condensadas Oswald, Barlow Condensed, Anton; serif Fraunces, Newsreader, Source Serif 4; mono IBM Plex Mono, DM Mono.
 - Por tono (px a 1080 de alto; vertical ×1.3): hype pesada 72–96 · corporativo sans limpia 56–72 · tutorial mono 48–64 · narrativo serif 44–56 · social redondeada 56–80.
-- Titular 4–9 % del alto en horizontal, 7–11 % en vertical; palabras héroe al 60–90 % del ancho; líneas tranquilas al 2.5–4 %. Una palabra en el acento, y que cargue significado.
+- Titular 4–9 % del alto en horizontal, 7–11 % en vertical; palabras héroe al 60–90 % del ancho; líneas tranquilas al 2.5–4 %. Una palabra en el acento, y que cargue significado: el **acento único marca exactamente lo que la voz enfatiza** — pill, glow o check sobre la palabra de ese beat (`stage.word`), reservado a lo único importante (explainroo, MIT; dispositivo presente en 9/10 referencias locales).
 - Horizontal → vertical: tipo ×1.3 (titulares ×1.35, cifras ×1.4), padding de 40–64 a 24–36 px.
 
 ## Hechos de video (la web no los tiene)
@@ -50,6 +50,7 @@ Si el usuario nombra un estilo o trae una referencia, gana eso. Si no, elige por
 - Un degradado lineal a pantalla completa sobre fondo oscuro **se bandea en H.264**: usa radial, sólido o sólido + brillo local.
 - Un acento o motivo al 5 % **desaparece al comprimir**: 15–25 % para atmósfera, saturación plena en el foco. Un borde de 1 px o una sombra al 6 % copiados de una web también desaparecen: mínimo 2 px y 15 %.
 - El texto y la UI real nunca pasan por un tratamiento: van encima, nítidos (`references/tratamientos.md`).
+- **Zoom de demo sin media cabeza**: al acercar capturas o footage de sitio, el zoom va **≤ 1.1** (el titular sigue entero en cuadro) o **≥ 1.3** (el titular ya salió del cuadro) — nunca un punto intermedio que deje el titular cortado a media altura (explainroo, MIT).
 
 ## Checklist universal por fotograma clave
 
@@ -60,8 +61,9 @@ Si el usuario nombra un estilo o trae una referencia, gana eso. Si no, elige por
 5. Algo se mueve con una causa (ver "Nada se detiene" en `motion-craft`).
 6. Texto dentro del mundo, como máximo un rótulo por beat, ≥ 48 px a 1080 de ancho.
 7. Varía la escala: al menos un primerísimo plano en la pieza.
-8. Zona segura vertical (1080×1920): x 60–940, y 250–1500. Lo importante, ≥ 100 px.
+8. Zona segura por plataforma, como datos (iart, MIT): 9:16 top 12–14 %, bottom 18–20 %, lados 6 % · 16:9 ~5 % · 1:1 6–8 % · 4:5 lados 6 %, top/bottom 8 %. En 1080×1920 el QA mide x 64.8–939.6, y 250–1500 — conservador frente a las guías, que discrepan (tiktok-video-skills 120/320/120 px vs freelance-motion ~250/250–400 px). Lo importante, ≥ 100 px.
 9. Nada del PROHIBIDO global ni del de la pieza.
+10. Toda cifra estimada lleva su **chip de honestidad** con el dato exacto visible junto a la cifra — "ejemplo: 8×H200 · 326.524 $", "Negocio de ejemplo", "Illustration not to scale" — nunca letra pequeña ni nota al pie (referencias locales v4/v5/v8/v10; `video-review` lo rubrica).
 
 ## Crear un estilo nuevo
 
@@ -71,7 +73,7 @@ Si el usuario nombra un estilo o trae una referencia, gana eso. Si no, elige por
 4. Itera **un eje a la vez con valores absolutos** ("radio del punto = 25 % del espaciado", nunca "2× más fino": lo relativo oscila). Las constantes que convergieron vuelven al `styles/x.md` (eso sube a 80–90 %). Lo continuo (caída de un brillo, un material) no se cierra con palabras: guarda el archivo de referencia.
 5. Copia lógica de sistema, nunca identidad ajena (logos, nombres, copy, fuentes propietarias).
 
-Fuentes: estilos propios del plugin · parte destilada de HyperFrames (Apache-2.0): `references/look.md`, `film.md`, `overlays.md`, `spec.md`, `/prompting/color-grading`, `/prompting/recreating-references`, `/prompting/generated-artwork`.
+Fuentes: estilos propios del plugin · parte destilada de HyperFrames (Apache-2.0): `references/look.md`, `film.md`, `overlays.md`, `spec.md`, `/prompting/color-grading`, `/prompting/recreating-references`, `/prompting/generated-artwork` · explainroo e iart (MIT) · set local de referencias (v4/v5/v8/v10).
 
 
 ---

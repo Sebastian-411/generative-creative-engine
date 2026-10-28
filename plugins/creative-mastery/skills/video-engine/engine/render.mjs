@@ -58,6 +58,10 @@ async function openPage(browser, server, meta) {
 
 async function renderSegment(browser, server, meta, frames, segPath, label) {
   const page = await openPage(browser, server, meta);
+  // Detección de <video>: activa la doble captura de fotograma (abajo). Se vuelve a muestrear cada
+  // 30 fotogramas: un <video> insertado con flojera a mitad del segmento no debe perder la doble captura.
+  let hasVideo = await page.evaluate(() => document.querySelector('video') !== null);
+  const shot = { type: 'jpeg', quality: draft ? 80 : 95, clip: { x: 0, y: 0, width: meta.width, height: meta.height } };
   const w = Math.round(meta.width * scale / 2) * 2;
   const h = Math.round(meta.height * scale / 2) * 2;
   const enc = spawn(ffmpeg, [
@@ -72,8 +76,17 @@ async function renderSegment(browser, server, meta, frames, segPath, label) {
 
   for (let i = 0; i < frames.length; i++) {
     const f = frames[i];
+    if (!hasVideo && i % 30 === 0) hasVideo = await page.evaluate(() => document.querySelector('video') !== null);
     await page.evaluate((t) => window.__composition.seek(t), f / meta.fps);
-    const buf = await page.screenshot({ type: 'jpeg', quality: draft ? 80 : 95, clip: { x: 0, y: 0, width: meta.width, height: meta.height } });
+    if (hasVideo) {
+      // 'seeked' dice "decodificado", no "presentado": la presentación viaja en el compositor y un
+      // screenshot puede cazar el cuadro anterior (carrera de un fotograma con mapeo continuo de video).
+      // 1er screenshot (descartado): drena el compositor y fuerza la presentación del cuadro decodificado;
+      // doble rAF: compone el cuadro fresco (patrón in-page de capture-site.mjs); se conserva el 2º capture.
+      await page.screenshot(shot);
+      await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+    }
+    const buf = await page.screenshot(shot);
     if (!enc.stdin.write(buf)) await new Promise((r) => enc.stdin.once('drain', r));
     if (i % Math.max(1, Math.round(meta.fps * 2)) === 0) process.stdout.write(`  [${label}] ${i}/${frames.length}\r`);
   }

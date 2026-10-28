@@ -99,7 +99,7 @@ Antes de la ronda 1, copia o haz commit de la pieza para poder revertir.
 
 ## Paso 5 — Render y entrega
 
-`node ../video-engine/engine/build.mjs videos/<slug>` hace QA, mezcla, render, verificación del MP4 y hoja de contacto final. Abre `review/final/contact-sheet.png` antes de anunciar nada.
+`node ../video-engine/engine/build.mjs videos/<slug>` hace QA, mezcla, render, **verify** del MP4 (oráculo: movimiento, audio, legibilidad; perfiles en `video-engine`) y hoja de contacto final. Un FAIL del verify detiene el build: la pieza no se entrega (escape `--skip-verify` solo para borradores). Abre `review/final/contact-sheet.png` antes de anunciar nada.
 
 Entrega en ≤ 12 líneas:
 - ruta del MP4, duración, resolución, peso;

@@ -1,6 +1,6 @@
 ---
 name: video-engine
-description: Motor local de video por código del plugin. Una pieza es una carpeta con index.html (HTML/CSS + GSAP + Canvas) donde cada fotograma es función pura del tiempo; el motor la renderiza a MP4 con Chrome headless + ffmpeg, sintetiza voz (edge-tts o Piper), compone música y efectos procedurales, mezcla a -14 LUFS y la revisa con QA automático y hojas de contacto. Úsala como referencia técnica cuando escribas o depures una pieza, cuando un render falle o salga distinto a la vista previa, o cuando necesites un comando del motor (setup, new, voice, check, stills, mix, render, build, preview). Para el flujo completo de pedido → video usa `video-oneshot`.
+description: Motor local de video por código del plugin. Una pieza es una carpeta con index.html (HTML/CSS + GSAP + Canvas) donde cada fotograma es función pura del tiempo; el motor la renderiza a MP4 con Chrome headless + ffmpeg, sintetiza voz (edge-tts o Piper), compone música y efectos procedurales, mezcla a -14 LUFS y la revisa con QA automático y hojas de contacto. Úsala como referencia técnica cuando escribas o depures una pieza, cuando un render falle o salga distinto a la vista previa, o cuando necesites un comando del motor (setup, new, voice, check, stills, mix, render, verify, build, preview). Para el flujo completo de pedido → video usa `video-oneshot`.
 ---
 
 # Motor de video
@@ -24,8 +24,15 @@ Todos viven en `engine/` (relativo a esta skill) y reciben la carpeta de la piez
 | `node engine/stills.mjs <dir> --review` | Las tres hojas del critic en `review/stills/`: `review-beats.png` (cada línea de voz en inicio+0.3 s y a su mitad, más gancho y póster), `review-seam-NN.png` (5 cuadros de −0.2 a +0.2 s en cada corte = inicio de línea), `review-phone-NN.png` (los beats a 360 px de ancho, de a 8) y `review.json` |
 | `node engine/mix.mjs <dir>` | Música + voz + efectos → `audio/mix.wav` normalizado. `--list-sfx` lista efectos y estilos |
 | `node engine/render.mjs <dir> [--draft] [--from s --to s]` | MP4 (`render/final.mp4`; `--draft` = mitad de resolución → `render/draft.mp4`) |
+| `node engine/verify.mjs <pieza\|video.mp4> [--profile social\|youtube\|benchmark]` | Oráculo post-render: mide el MP4 de la pieza (`render/final.mp4` o `draft.mp4`) o un MP4 directo (referencias) — movimiento, cadencia, quietud, audio (pico, clipping, silencio, LUFS), frames negros, legibilidad — y reporta PASS/WARN/FAIL/SKIP/UNVERIFIED; FAIL sale con código ≠ 0. Umbrales vivos en `engine/lib/verify-profiles.mjs` |
 | `node engine/site-footage.mjs <url> <dir>/assets/x.mp4 [--from --to --speed --scale 2 --hide header]` | Graba un sitio (propio o con permiso) haciendo scroll, fotograma a fotograma con el reloj de la página controlado: animaciones 3D/ScrollTrigger fluidas. Escribe `x.json` con la posición de scroll de cada fotograma |
-| `node engine/build.mjs <dir>` | check → mix → render → verificación → hoja de contacto final |
+| `node engine/capture-site.mjs <url> <pieza> [--dpi 2] [--max-height 8000] [--mobile] [--exclude-selector sel]` | Captura un sitio: full-page a densidad 2× acotada, shot del viewport y variante móvil opcional → `capture/` con `capture.json` (colores, fuentes, logos, wording exacto). Los banners de cookies/chat no se detectan solos: se ocultan con `--exclude-selector` |
+| `node engine/variants.mjs <pieza>` | Lee `variants.json` (una fila `{name, overrides}` por variante: params de script.json, texto por línea, find/replace sobre index.html) y materializa una carpeta hermana por fila, corriendo voz + build en cada una; una fila que falla aborta el lote con resumen (SKIP razonado si la voz no está disponible) |
+| `node engine/export-alpha.mjs <pieza> [--formats webm,prores,png] [--from 0] [--to <dur>] [--times 0.5,2.1]` | Export con alpha (VP9/ProRes 4444 + PNG sueltos) a `render/alpha/` con `alpha.json`; ruta on-demand que no toca el render normal; con `--times` solo exporta PNG (webm/prores quedan SKIP con razón) |
+| `node engine/analyze-reference.mjs <video.mp4> [--out dir] [--scene-thresh 0.3]` | Deconstruye una referencia en números: duración, cortes aproximados, CV de cadencia, quietud, hoja de contacto → `analysis/cut-sheet.md`; heurística declarada como aproximada |
+| `node engine/bench.mjs <pieza\|video.mp4…> [--profile benchmark] [--out dir]` | Mide una o más piezas/MP4: specs ffprobe, movimiento a 2 Hz, quietud, black frames y audio → `bench.md` + `bench.json` (los 4 checks del hub) |
+| `node engine/selftest.mjs` | Prueba el oráculo solo: genera MP4/WAV defectuosos sintéticos al vuelo (ffmpeg, dir temporal) y demuestra cada leg con un fixture que lo rompe (FAIL) y uno de input faltante (SKIP con razón) |
+| `node engine/build.mjs <dir>` | check → mix → render → verify → hoja de contacto final; un FAIL del verify detiene el build (escape `--skip-verify` para borradores) |
 
 Velocidad de referencia: 15 s a 1080×1920 se renderizan en ~15 s con 4 workers (DOM). Canvas pesado o filtros `blur` lo vuelven más lento: mira la línea de progreso.
 
@@ -56,7 +63,7 @@ Velocidad de referencia: 15 s a 1080×1920 se renderizan en ~15 s con 4 workers 
 6. Assets locales en la carpeta de la pieza (`assets/…`). Google Fonts está permitido; cualquier otra URL remota se descarga primero. Una fuente usada solo en `<canvas>` se pide con `stage.font('800 120px "Archivo"')`.
 7. Imágenes: `stage.loadImage('assets/x.png').then((img) => { … })`; el motor espera a que carguen antes del fotograma 0.
 8. Nada de `gsap.utils.random`, valores `"random(…)"`, `stagger: {from: 'random'}` ni `repeat: -1` (GSAP sortea con `Math.random` al crear el tween; `-1` vuelve infinito el timeline): `check.mjs` los marca FAIL. Tampoco `.play()` ni `.currentTime =` en la pieza: el motor sincroniza los medios.
-9. `<video>` embebido: ponle `data-start="<s>"` y `muted`; el motor lo sincroniza al buscar. Para recorrerlo a otro ritmo, asígnale una función pura `video.__time = (t) => segundosDelVideo` (p. ej. un scroll grabado con `site-footage.mjs`, avanzado al compás de la voz).
+9. `<video>` embebido: ponle `data-start="<s>"` y `muted`; el motor lo sincroniza al buscar. `data-fps="<fps del metraje>"` cuantiza el seek al grid de cuadros del archivo (el seek cae en un cuadro real, no entre dos): `site-footage.mjs` escribe el fps de cada metraje en su json sidecar (`<salida>.json`). Para recorrerlo a otro ritmo, asígnale una función pura `video.__time = (t) => segundosDelVideo` (p. ej. un scroll grabado con `site-footage.mjs`, avanzado al compás de la voz).
 
 ### API de `stage`
 
@@ -134,7 +141,7 @@ La dirección de voz (motores, emociones, acentos, biblioteca, consentimiento) v
 | `Chatterbox no está instalado` | falta el motor local | `node engine/setup-voice.mjs` |
 | ⚠ toma difiere del guion | el modelo se comió o cambió palabras | más `takes`, frase más corta, o `say` con la pronunciación |
 
-Fuentes: GSAP, Playwright, ffmpeg · parte destilada de HyperFrames (Apache-2.0)
+Fuentes: GSAP, Playwright, ffmpeg · parte destilada de HyperFrames (Apache-2.0) · legs del verify re-implementados con umbrales propios, método citado en el informe (nada literal de onetake, PolyForm NC) · método del bench replicado del hub público (agent-skills-hub)
 
 ---
 

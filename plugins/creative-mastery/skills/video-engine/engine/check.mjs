@@ -17,6 +17,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { dep, chromePath, CHROME_ARGS, parseArgs } from './lib/env.mjs';
 import { serve } from './lib/server.mjs';
+import { validateScript } from './lib/script-rules.mjs';
 
 const args = parseArgs(process.argv.slice(2));
 const pieceDir = path.resolve(args._[0] || '.');
@@ -382,6 +383,20 @@ try {
   // film_silent: más de 15 s sin nada que suene.
   const au = await page.evaluate(() => (window.__composition.audio ? window.__composition.audio() : null));
   if (au && meta.duration > 15 && !au.voice && !au.music && !(au.cues || []).length && !(au.ambience || []).length) warn(`film_silent: ${meta.duration.toFixed(0)}s sin voz, música, efectos ni ambiente declarados. Declara music en Stage.create o efectos con stage.sfx.`);
+
+  // Reglas narrativas del guion (schemaVersion 2, opt-in): lib/script-rules.mjs es puro y sus
+  // hallazgos salen como filas FAIL/WARN más abajo. v1 o sin schemaVersion = legacy, sin validar.
+  // Corre para TODA pieza con script.json: no depende de que la pieza tenga voz generada.
+  const scriptFile = path.join(pieceDir, 'script.json');
+  if (fs.existsSync(scriptFile)) {
+    try {
+      for (const f of validateScript(JSON.parse(fs.readFileSync(scriptFile, 'utf8')))) {
+        (f.severity === 'FAIL' ? fail : warn)(`${f.code} (línea ${f.lineId}): ${f.message}`);
+      }
+    } catch {
+      warn('script.json no se pudo parsear: las reglas narrativas v2 no corrieron.');
+    }
+  }
 
   // Voz generada pero no declarada, y desajuste pieza/voz: la voz es el reloj; si no se
   // declara en Stage.create el render sale mudo; si las duraciones no cuadran, queda aire muerto.

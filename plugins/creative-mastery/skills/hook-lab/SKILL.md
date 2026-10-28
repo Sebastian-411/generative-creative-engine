@@ -1,6 +1,6 @@
 ---
 name: hook-lab
-description: Laboratorio de ganchos para los primeros 0-3 segundos de un video - banco de 13 mecanismos (curiosity gap, demostración en frío, contraste antes/después, mito vs realidad, número que choca, pregunta incómoda, confesión, clímax primero, promesa demostrable, POV, objeto fuera de lugar, loop, frase cuya última palabra se vuelve la imagen), aperturas que funcionan, qué pasa justo después del gancho (lo viejo falla en pantalla), cómo escribir cada gancho en tres capas sincronizadas (imagen del fotograma 0 + texto en pantalla + primera línea de voz + sonido), y cómo evaluarlos y elegir uno sin prometer más de lo que el video entrega, con las fallas típicas (abrir escribiendo en una caja de prompt, "Presentamos" de primera línea). Úsala al escribir o reescribir la apertura de cualquier video, cuando el usuario pida "un buen gancho", "que enganche", "hooks", o cuando el critic marque el gancho como débil.
+description: Laboratorio de ganchos para los primeros 0-3 segundos de un video - banco de 14 mecanismos (curiosity gap, demostración en frío, contraste antes/después, mito vs realidad, número que choca, pregunta incómoda, confesión, clímax primero, promesa demostrable, POV, objeto fuera de lugar, loop, frase cuya última palabra se vuelve la imagen, negación en cadena), aperturas que funcionan, qué pasa justo después del gancho (lo viejo falla en pantalla), cómo escribir cada gancho en tres capas sincronizadas (imagen del fotograma 0 + texto en pantalla + primera línea de voz + sonido), y cómo evaluarlos y elegir uno sin prometer más de lo que el video entrega, con las fallas típicas (abrir escribiendo en una caja de prompt, "Presentamos" de primera línea). Úsala al escribir o reescribir la apertura de cualquier video, cuando el usuario pida "un buen gancho", "que enganche", "hooks", o cuando el critic marque el gancho como débil.
 ---
 
 # Hook lab
@@ -24,6 +24,7 @@ El gancho no es una frase chocante: es **una promesa que el resto del video cump
 | 11 | **Objeto fuera de lugar** | una imagen que no debería estar ahí | papel recortado, ilustración |
 | 12 | **Loop** | la primera línea es la segunda mitad de la última | piezas para repetir |
 | 13 | **La última palabra se vuelve imagen** | una frase corta cuya palabra final aterriza como el objeto en pantalla ("…y todo empezó con una **taza**" → la taza llena el cuadro) | explicadores, marca, piezas sin cara |
+| 14 | **Negación en cadena** | "No es X. No es Y. No es Z." — tres negaciones de lo obvio y el twist nombra lo que nadie miraba ("No mira el restaurante — mira tu teléfono") | SaaS, datos, targeting |
 
 **Aperturas que funcionan** (combinan con cualquier mecanismo): la función actuando sobre algo reconocible · un momento real que crea la necesidad · una pregunta con el input dentro ("¿y si tu ⟨web⟩ fuera un video?", con la web real llenando el hueco) · una frase cuya última palabra se vuelve la imagen · el bug en sí.
 
@@ -68,6 +69,7 @@ Puntúa cada gancho 0–5 en: **especificidad**, **curiosidad**, **claridad a 0.
 - **Palabra-clave en la caption en color de acento**: la palabra dicha que dispara el gancho ("**gratis**", el país, el número) va resaltada en los subtítulos.
 - **La cover/thumb son 2–4 palabras distintas del título** de publicación y se comprueban como par (título + cover), no como dos accesorios independientes.
 - Gancho < 3 s; la primera escena tiene **cambio visible cada ~1 s** en los primeros 2 s (el espectador decide a ~1 s en vertical).
+- **El primer beat claro cae en 3–6 s** (medido en 10 referencias locales, 2026-10-27): el texto del gancho abre, pero el primer beat comprensible sin sonido aterriza en esa ventana; ninguna referencia abrió con logo o marca.
 
 Fuentes: práctica de retención en redes verticales · mecanismo 13, aperturas, "lo viejo falla en pantalla" y fallas de apertura: parte destilada de HyperFrames (Apache-2.0) · cifras de payoff-en-gancho y rehook: destilación de `virality` (master-skills, MIT) y cross-repo 2026-10-27.
 
