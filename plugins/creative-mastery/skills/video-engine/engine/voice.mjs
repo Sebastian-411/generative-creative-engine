@@ -292,7 +292,12 @@ for (const [engine, items] of Object.entries(byEngine)) {
 const toAlign = plan.flatMap((p) => p.files).filter((f) => !fs.existsSync(f + '.asr.json') || args.force);
 if (toAlign.length) {
   console.log(`→ verificando ${toAlign.length} tomas con faster-whisper…`);
-  for (const f of toAlign) { const pcm = trimSilence(readWav(f).channels[0]); writeWav(f, [pcm]); }
+  for (const f of toAlign) {
+    // Conserva la toma cruda: permite auditar (p. ej. sílaba final cortada) sin nueva síntesis.
+    const rawTake = f.replace(/\.wav$/, '.raw.wav');
+    if (!fs.existsSync(rawTake)) fs.copyFileSync(f, rawTake);
+    const pcm = trimSilence(readWav(f).channels[0]); writeWav(f, [pcm]);
+  }
   const list = path.join(os.tmpdir(), `cme-align-${process.pid}.json`);
   fs.writeFileSync(list, JSON.stringify(toAlign));
   const r = spawnSync(alignPython(), [path.join(ENGINE_DIR, 'lib', 'align.py'), list, '--model', script.asrModel || 'small'], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024, env: pyEnv });
@@ -319,6 +324,10 @@ for (const p of plan) {
   scored.sort((a, b) => (a.err > minErr + 0.03) - (b.err > minErr + 0.03) || Math.abs(wpsOf(a) - (p.d.targetWps || 2.85)) - Math.abs(wpsOf(b) - (p.d.targetWps || 2.85)) || a.err - b.err);
   const forced = p.line.take ? scored.find((s) => s.k === p.line.take - 1) : null;
   const best = forced || scored[0];
+  // Duración fuera de 70–140% de lo que el guion toma a su velocidad objetivo: señal de
+  // desync (cortó palabras o se salió de su escena). Evidencia, no retry ciego.
+  const expected = Math.max(0.6, p.line.text.split(/\s+/).filter(Boolean).length / (p.d.targetWps || 2.85));
+  if (best.dur < expected * 0.7 || best.dur > expected * 1.4) report.push(`⚠ "${p.line.id}": la toma dura ${best.dur.toFixed(1)}s y el guion toma ~${expected.toFixed(1)}s a ${(p.d.targetWps || 2.85)} palabras/s (fuera de 70–140%). Escúchala antes de aceptar.`);
   if (best.err > 0.15) report.push(`⚠ "${p.line.id}": la mejor toma difiere ${Math.round(best.err * 100)}% del guion (dijo: "${best.asr.text}"). Escúchala o sube "takes".`);
   // Velocidad natural: mide palabras/s de lo hablado y corrige hacia el objetivo de la emoción
   // (Rubber Band conserva tono y formantes; se limita a −20 % / +10 %).

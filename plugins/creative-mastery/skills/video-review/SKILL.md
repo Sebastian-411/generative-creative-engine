@@ -89,3 +89,26 @@ Cierra con un veredicto: `ENTREGAR`, `ENTREGAR TRAS CORREGIR` o `NO ESTÁ LISTO`
 No escuchas: el audio se juzga solo por números (LUFS, pico real, que la voz exista y dure lo esperado). Escribe en "no evaluado" todo lo que dependa de oír.
 
 Fuentes: criterio propio del plugin · parte destilada de HyperFrames (Apache-2.0)
+
+
+---
+
+## Jurado calibrado y reglas añadidas 2026-10-27 (destilación cross-repo: motion-tools-and-skills, super-video-agent, video-shotcraft)
+
+- Anchors calibrados para puntuar sin inflar: **5 = estudiante, 7 = profesional sólido, 8 = agencia premium, 9 = candidata a premio**. "Los primeros renders merecen 5–7": solo marcar ≥8 si compite con el mejor trabajo que conozcas en ese eje.
+- El revisor no puede ser quien escribió la pieza: revisor/agente con contexto limpio (el builder tiene sesgo de confirmación). El veredicto cierra con: Resuelto / Revisado / **No revisado — lista obligatoria** / Decisiones / Pendientes; si la lista "No revisado" queda vacía, se marca explícitamente, no se omite.
+- Cada hallazgo lleva timecode + evidencia + remedio concreto. Nada de "se siente".
+- Prueba de ventana: mirar la hoja de contacto a **480 px de ancho**; lo que no se lee ahí no se lee en el celular.
+- Ver los **últimos 5 s completos con audio**: el 20% final es donde se rompe la promesa; y el primer fotograma debe contar el gancho sin sonido.
+- Regla transversal: toda regla de esta skill vale porque hay un medidor que la mide (check.mjs, readcheck, ebur128). Si una regla aún no tiene medidor, márcala "a ojo — por verificar".
+
+---
+
+## Lecciones de la pieza grua 2026-10-27 (el QA pasó y el usuario tiró el video)
+
+- **PASS 0/0 es el mínimo legal, no la entrega.** check.mjs no ve gusto, ritmo ni si el edificio se dibuja con el oficio. La grua v1 salió con 0 fallas / 0 avisos, grúa de una línea con cajas flotando, ~20 s de cuadro quieto y gancho vacío en el frame 0.30. La revisión de las hojas es la que decide; el veredicto solo vale después de abrir material real (imagen por imagen). No confundir "el QA pasó" con "la revisión está hecha".
+- **Dos cuadros consecutivos de review-beats indistinguibles = hallazgo Bloqueante de estancamiento.** En grua, t=20.6–35.3 mostraba el mismo cuadro repetido; lo atrapa el recorrido en frío describiendo cada cuadro, no el QA. Al revisar, este es el primer chequeo rápido: hoja de beats, mirar secuencias, buscar pares idénticos.
+- **El recorte de un hallazgo (`finding-*.png`) puede venir vacío** (cae sobre fondo o fuera del elemento que el QA detectó). Para concluir un hallazgo, abrir el still completo del rango (`stills.mjs --times a,b`); el recorte solo indica dónde mirar, no es la evidencia definitiva.
+- **Las rondas no son de la misma clase**: si la entrega fallada está mal construida a nivel de medio (primitivas, sin oficio), la ronda 1 es reinvención de la capa visual entera, no retoques; la ronda 2 es cirugía sobre los defectos que la re-revisión evidenció (por ejemplo: gancho vacío en el cuadro 9). Después se entrega declarando lo pendiente.
+- **Declare lo celebrado**: cuando una corrección le gustó al usuario (en grua: el medidor "SUBE/BAJA TRAMOS 0X / 07" contando con la acción), anótelo como elemento que se queda en futuras piezas equivalentes — va a lessons/skill correspondiente, no desaparece con la entrega.
+

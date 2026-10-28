@@ -383,6 +383,26 @@ try {
   const au = await page.evaluate(() => (window.__composition.audio ? window.__composition.audio() : null));
   if (au && meta.duration > 15 && !au.voice && !au.music && !(au.cues || []).length && !(au.ambience || []).length) warn(`film_silent: ${meta.duration.toFixed(0)}s sin voz, música, efectos ni ambiente declarados. Declara music en Stage.create o efectos con stage.sfx.`);
 
+  // Voz generada pero no declarada, y desajuste pieza/voz: la voz es el reloj; si no se
+  // declara en Stage.create el render sale mudo; si las duraciones no cuadran, queda aire muerto.
+  const voiceJson = path.join(pieceDir, 'voice.json');
+  if (fs.existsSync(path.join(pieceDir, 'audio', 'voice.wav')) || fs.existsSync(voiceJson)) {
+    const live = src.replace(/^\s*\/\/.*$/gm, ''); // ignora líneas comentadas (el scaffold trae voice: desactivado)
+    if (!/\bvoice\s*:/.test(live)) {
+      warn('voice_unused: la pieza tiene voz generada (voice.json + audio/voice.wav) pero Stage.create no declara `voice: "voice.json"` (y `duration: "voice"`): el render sale SIN narración. Descomenta y declara.');
+    } else if (fs.existsSync(voiceJson)) {
+      try {
+        const v = JSON.parse(fs.readFileSync(voiceJson, 'utf8'));
+        if (v.duration && meta.duration && Math.abs(meta.duration - v.duration) > 1.5) {
+          const extra = meta.duration - v.duration;
+          warn(extra > 0
+            ? `voice_mismatch: la pieza dura ${meta.duration.toFixed(1)}s y la voz ${v.duration.toFixed(1)}s → ${extra.toFixed(1)}s de aire muerto al final. Usa duration: 'voice' o ajusta la duración declarada.`
+            : `voice_mismatch: la voz (${v.duration.toFixed(1)}s) rebasa la pieza (${meta.duration.toFixed(1)}s) ${Math.abs(extra).toFixed(1)}s: la narración se corta antes de terminar. Ajusta la duración declarada (o 'tail' en script.json).`);
+        }
+      } catch { /* voice.json inválido: el error de parseo ya lo verá quien la consuma */ }
+    }
+  }
+
   // Captions: velocidad de lectura.
   const capFile = path.join(pieceDir, 'captions.json');
   if (fs.existsSync(capFile)) {

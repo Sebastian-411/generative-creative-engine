@@ -135,3 +135,15 @@ La dirección de voz (motores, emociones, acentos, biblioteca, consentimiento) v
 | ⚠ toma difiere del guion | el modelo se comió o cambió palabras | más `takes`, frase más corta, o `say` con la pronunciación |
 
 Fuentes: GSAP, Playwright, ffmpeg · parte destilada de HyperFrames (Apache-2.0)
+
+---
+
+## Añadidos 2026-10-27 (pieza grua)
+
+| Síntoma | Causa | Arreglo |
+|---|---|---|
+| Los acentos del HTML salen con doble codificación (Ã©, â–†) después de un buscar-reemplazar | round-trip de texto vía pipe de PowerShell 5.1 (`(Get-Content -Raw) -replace … \| Set-Content`): lee ANSI y re-escribe re-codificado. Pasó dos veces con el mismo daño | Nunca editar texto con acentos por PowerShell 5.1: usar las herramientas de edición del agente (Edit/Write) o `node -e` |
+| Etiquetas o textos posicionados por JS fuera de zona segura (o sin pose) en los cuadros tempranos | elemento con `top:auto`/`left:auto`: el navegador lo coloca y la pose del script lo corrige después; el QA fotografía antes | x/y explícitos en CSS desde el frame 1 (la pose del script fija los mismos valores); nunca descansar en `auto` para elementos que onFrame ubica |
+| El gancho queda vacío en el frame 0.3 s (dibujo apenas insinuado) | draw-on en smoothstep simétrico: casi no avanza al inicio | curva pre-cargada `q = 1 − (1−p)^2.2` sobre ~1.6 s, y textos del gancho anclados `Math.max(0, stage.at(id) − 0.28)` |
+
+Recordatorio de zona segura en 1080×1920: el QA mide texto dentro de x 64.8–939.6; una etiqueta derecha con `right: 90px` (borde a 990) se sale — `right: 142px` la deja dentro, y la leader line parte de `x = 936 − anchoEtiqueta`.

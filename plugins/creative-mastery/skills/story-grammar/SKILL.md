@@ -125,3 +125,27 @@ Entran en 0.4 s `power2.out`, salen en 0.35 s `power2.in`; duran ≥ 5 s con la 
 Contenedor del subtítulo: `left: 65px; width: 875px; text-align: center` (el centro óptico queda en x ≈ 502, no en 540). Nunca `left:50%; translateX(-50%)`. En horizontal (zona 5–95 %), subtítulo a 80–120 px del borde inferior y ancho máximo 1600 px. Los subtítulos van encima: no reservan franja, pero no pongas texto pequeño crítico (URL, legal) en su franja.
 
 Fuentes: criterio propio del plugin, medido en las piezas (Tastora) · parte destilada de HyperFrames (Apache-2.0)
+
+
+---
+
+## Números duros añadidos 2026-10-27 (destilación cross-repo: master-skills/virality, shorts-mapas, marketing-skill, lemo-opuscar)
+
+### Estructura canónica de short (20–45 s)
+HOOK <3 s → PROOF justo después del gancho → desarrollo → REHOOK al ~50% ("aquí está lo que nadie hace") → PAYOFF → CTA de **una sola palabra** dicha y en pantalla (la línea 1 de la caption es la misma petición, ~125 caracteres para sobrevivir al corte de la plataforma). El REHOOK se omite solo en piezas <20 s.
+
+### Densidad y gancho
+- ~160 palabras/minuto ES (~2.7 palabras/s) con margen para respirar; techo por línea ≤15 palabras; gancho ≤8 palabras.
+- El payoff o el número se dice dentro de las primeras ~8 palabras de voz (validado AUC 0.83 sobre outliers).
+
+### Read-time (medible, no a ojo)
+- Latín: 15 caracteres/s **+ 1.5 s de mínimo**; un subtítulo/hoja de texto hold ≥ max(1.8 s, duración hablada + 0.6 s).
+- Captions: 1–3 palabras; corte en . ! ?, tras coma si ya llevan 2, en pausas ≥0.3 s y al llegar a **18 caracteres**; nunca terminan en palabra débil (artículo, preposición); la palabra dicha va en color de acento.
+- Hold de texto estático ≥15 frames tras aparecer; "no rapid flashing" <3 cambios/s.
+
+### Timing por defecto
+Si el usuario no fija duración: 30 s = intro 2.5 s + 4 escenas × 5.5 s + outro 5 s. Escala proporcional para otra duración (49 s ≈ 7 escenas).
+
+### Publicación
+La pieza se entrega con título + descripción (+créditos de música/imagen si aplica); la cover son **2–4 palabras distintas del título** y se prueban como par.
+

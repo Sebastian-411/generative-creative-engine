@@ -61,4 +61,19 @@ Puntúa cada gancho 0–5 en: **especificidad**, **curiosidad**, **claridad a 0.
 - **Escribir en una caja de prompt como apertura**, sin nada más en pantalla: delata video generado. Unos segundos después, como paso de la historia, sí vale.
 - Primera línea "Presentamos…", "Conoce…" o el logo. "Presentamos X" vale **después** del dolor, nunca antes.
 
-Fuentes: práctica de retención en redes verticales · mecanismo 13, aperturas, "lo viejo falla en pantalla" y fallas de apertura: parte destilada de HyperFrames (Apache-2.0).
+## 5. Números duros del gancho
+
+- **El payoff o el número se dice dentro de las primeras ~8 palabras** de voz (señal validada con AUC 0.83 sobre outliers de retención; AUC 0.56 dentro del mismo creador — por eso se compara contra la propia mediana, no contra otros). Un gancho que guarda el número para el minuto 1 pierde la decisión.
+- **El gancho está en pantalla en el fotograma 1** (sin animar: el movimiento llega 0.3 s después con la segunda palabra). Mucha audiencia mira sin sonido: la imagen sola debe contar la promesa.
+- **Palabra-clave en la caption en color de acento**: la palabra dicha que dispara el gancho ("**gratis**", el país, el número) va resaltada en los subtítulos.
+- **La cover/thumb son 2–4 palabras distintas del título** de publicación y se comprueban como par (título + cover), no como dos accesorios independientes.
+- Gancho < 3 s; la primera escena tiene **cambio visible cada ~1 s** en los primeros 2 s (el espectador decide a ~1 s en vertical).
+
+Fuentes: práctica de retención en redes verticales · mecanismo 13, aperturas, "lo viejo falla en pantalla" y fallas de apertura: parte destilada de HyperFrames (Apache-2.0) · cifras de payoff-en-gancho y rehook: destilación de `virality` (master-skills, MIT) y cross-repo 2026-10-27.
+
+---
+
+## Añadidos 2026-10-27 (pieza grua)
+
+- **El dibujo del gancho va pre-cargado**: la curva de draw-on es `q = 1 − (1−p)^2.2` sobre ~1.6 s, no un smoothstep simétrico. En grua, el smoothstep dejó el frame 0.30 (la miniatura) con la torre apenas insinuada: el gancho existía en el código y no se veía en la puerta. Meta: en el cuadro ~9 la forma principal se reconoce sola.
+- **Ancla del titular con margen negativo sobre su línea de voz**: `show('#titular', Math.max(0, stage.at('hook') − 0.28))`. La regla "gancho en el fotograma 1" exige que el código lo garantice; el `at` de la línea de voz puede llegar tarde en pantalla si se ancla al segundo exacto. Verificarlo mirando el cuadro 0.30 de review-beats tras el cambio, no los tiempos de la sheet.

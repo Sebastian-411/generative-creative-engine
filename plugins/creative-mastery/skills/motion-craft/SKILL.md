@@ -108,3 +108,38 @@ El contrato la hereda: el campo PROHIBIDO de `## Especificación` en `brief.md` 
 - **Idea**: la asociación obvia (cohete para "lanzamiento", bombilla para "idea").
 
 Fuentes: medición propia de trabajo profesional · parte destilada de HyperFrames (Apache-2.0): `references/motion.md`, `look.md`, `motion-doctrine`, `cut-the-curve`, páginas `/prompting/motion` y `/prompting/vocabulary`.
+
+
+---
+
+## Curvas con nombre y números añadidos 2026-10-27 (destilación cross-repo: react-remotion-presets, video-shotcraft, lemo-opuscar)
+
+### Curvas bezier con caso (GSAP CustomEase / cubic-bezier(x1,y1,x2,y2))
+- Entrada UI crisp: cubic-bezier(0.16, 1, 0.3, 1) — ease-out fuerte sin overshoot.
+- Editorial slow (hold-friendly): cubic-bezier(0.45, 0, 0.55, 1).
+- Premium: cubic-bezier(0.22, 1, 0.36, 1).
+- Playful overshoot: cubic-bezier(0.34, 1.56, 0.64, 1) — con moderación; nunca en big type de pieza seria.
+- Entradas con ease-out, salidas con ease-in ("entra con momentum, sale con gravedad").
+
+### Números con nombre
+- Entrada: 4–8 frames @30fps, 2–3 propiedades a la vez (opacity + y + scale); stagger 2–4 frames entre elementos y ~0.09 s entre palabras.
+- Salidas: aproximadamente 2× más rápidas que las entradas.
+- Anticipation: retroceso previo de 3–5 frames (−10 px antes de ir +100 px) cuando el movimiento tiene "criatura".
+- Parallax: fondo a 0.3× la velocidad del frente.
+- Squash & stretch con inverso fijo: scaleX = 1 + (1 − scaleY) × 0.3.
+- Algo nuevo (movimiento, reveal, corte o reacción) cada 2–4 s; y movimiento ya en el primer 0.5 s.
+- Prohibidos los "scanner effects": light sweeps, sheens, glows, halos, pulse rings y lo que lee como plantilla.
+- Acción rápida, significado lento: la acción puede volar a los 3–5 frames si va anticipada; el hold posterior la hace legible; los reads (qué entiende el espectador y desde cuándo) fijan el largo del plano.
+- Texto estático mientras la voz lo lee; hold ≥15 frames tras aparecer; nada de flash <3 cambios/s.
+- Como máximo dos curvas por estilo (una "snap" + una "draw"); si necesitaste más, el estilo no tiene lenguaje propio.
+- Cámara: efectos anclados world→screen (transform-origin en el punto del mundo), nunca muerta (drift ~0.02/s + bob); si la pieza es loop, el último frame = el primero, posiciones y velocidades incluidas.
+
+---
+
+## Lecciones de la pieza grua 2026-10-27
+
+- **Trazos del gancho pre-cargados**: un draw-on en `smoothstep` simétrico dejó el frame 0.30 casi vacío (la forma no se reconocía). La curva de dibujo es `q = 1 − (1−p)^2.2` sobre ~1.6 s: vértice pronto, capa de detalle en la cola. Meta verificable: en el cuadro ~9 (0.3 s, la miniatura) la forma principal ya se reconoce sola.
+- **Imagen antes que la voz**: los textos cuya línea de voz los explica entran con margen negativo sobre el ancla — `Math.max(0, stage.at('hook') − 0.28)`. El audio de la línea se siente empezar ~0.3–0.5 s después del ancla calculada; el texto que entra al tiempo exacto del `at` es tarde para espectadores sin sonido. Verificarlo en el cuadro 0.30 de review-beats, no en la sheet de tiempos.
+- **El medidor con causa es una escena, no un chip decorativo**: el chip "SUBE/BAJA TRAMOS 0X / 07" que actualiza su número al paso real del gancho fue lo único que el usuario celebró espontáneamente. Diferencia con el "01 / 05" PROHIBIDO global: el número prohibido enumera rotaciones sin efecto; el medidor legítimo **cambia porque un hecho del mundo lo causó** (una sección se montó), dice una sola cosa y entra por beat. Al escribir un dispositivo numérico, preguntar: ¿el número cambia solo si el mundo cambia? Si no, es adorno.
+- **"Algo nuevo cada 2–4 s" se verifica con la hoja, no por fe**: esta regla ya estaba escrita y aun así una entrega pasó 15 s idénticos. Prueba concreta al revisar: recorrer review-beats buscando pares de cuadros consecutivos iguales (cambio invisible también es rotura de la regla — no basta con que haya tweens programados, el cuadro debe diferir).
+

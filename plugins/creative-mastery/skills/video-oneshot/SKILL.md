@@ -119,3 +119,19 @@ Entrega en ≤ 12 líneas:
 - Lo que una revisión atrapa se vuelve cláusula del brief. Si vale para todas las piezas, regístralo en `creative-contract/lessons.md` y llévalo a la skill dueña.
 
 Fuentes: flujo propio del plugin y lección Tastora · parte destilada de HyperFrames (Apache-2.0)
+
+
+---
+
+## Workflow anti-falla (obligatorio) — añadido 2026-10-27 (destilación cross-repo: motion-promo, super-video-agent, video-shotcraft)
+
+1. **Hechos antes de escribir**: cada dato/claim del material con fuente (o placeholder explícito {{dato}}); nunca PII real en pantalla.
+2. **Máx 5 preguntas** al usuario, cada una con default, en un solo mensaje; sin respuesta, se corre con los defaults. No pedir confirmaciones de técnica (parámetros, sfx, render) — esas las decide el agente.
+3. **3 conceptos con distinta forma de historia**, puntúar con la rúbrica, elegir el mejor y continuar sin esperar. Estructura por defecto de short: HOOK <3 s → PROOF → desarrollo → REHOOK al ~50% → PAYOFF → CTA de una palabra. Timing por defecto 30 s (intro 2.5 + 4×5.5 + outro 5).
+4. **Voz primero**: script.json → voice.mjs → voice.json; la voz es el reloj de la animación. Back-check STT de cada línea: señales de fallo = <70% o >140% de duración esperada, >50% de la línea mal entendida, o última sílaba cortada ≥20 ms → restaurar la toma cruda (no resintetizar todo).
+5. **Gate del plano difícil**: animar primero los 2–4 s más complicados como muestra terminada; si no lucen, redirigir antes de invertir en la pieza.
+6. Render **draft** → hoja de contacto → fixes (una variable por ronda, máx 3) → build.mjs final.
+7. **Verificar el MP4**: probe de streams y duración A/V dentro de un frame; loudness (ebur128) medido sobre el audio del mp4 (no sobre las fuentes); subtítulos = palabras dichas.
+8. **Entrega post-ready**: MP4 + cover (2–4 palabras distintas del título) + título y descripción + créditos de assets; reporte honesto con la lista **No revisado** (vacío se marca explícito, no se omite).
+9. Producto dentro de la historia: el producto/pantalla se incrusta como objeto con rol narrativo, no pegado a un avatar stock ni como fundido final.
+

@@ -72,3 +72,32 @@ Si el usuario nombra un estilo o trae una referencia, gana eso. Si no, elige por
 5. Copia lógica de sistema, nunca identidad ajena (logos, nombres, copy, fuentes propietarias).
 
 Fuentes: estilos propios del plugin · parte destilada de HyperFrames (Apache-2.0): `references/look.md`, `film.md`, `overlays.md`, `spec.md`, `/prompting/color-grading`, `/prompting/recreating-references`, `/prompting/generated-artwork`.
+
+
+---
+
+## Hoja de estilo completa (secciones fijas) — añadido 2026-10-27 (destilación cross-repo: lemo-opuscar STYLE.md, video-shotcraft)
+
+Un estilo nuevo se documenta con estas secciones fijas; la que falte se marca PENDING, nunca se improvisa:
+1. **Esencia** (medio + idea) y **qué NO es** (anti-estilos del mismo universo visual).
+2. Materiales y rendering (paths, overdraw, 1 px extra en seams por antialiasing).
+3. **Lógica de color**: papel / tinta / gris + **UN color señal** — "solo una cosa lleva el color; es la única que puede ser inexacta".
+4. Tipografía: familia OFL, weights, carga con `document.fonts.load` antes de dibujar, tracking, flush left.
+5. Curvas del medio: como máximo **DOS** (una snap + una draw); duraciones de entrada = valores de nota musical que aterrizan en el beat.
+6. **Grammar de cámara** como tabla (move / qué expresa / cuándo sirve) — vocabulario, no ruta.
+7. Sound palette por materiales (foley del medio, música con grilla propia, silencio = stop seco).
+8. Native moves (menú con "cuándo aplica"): el momento que solo este medio puede hacer, que va en el pico emocional.
+9. Pitfalls del medio (≥10, con causa y corrección).
+10. Variación (openings/endings alternativos) + **anti-demo**: la pieza difiere del demo del estilo en ≥4 de 6 ejes (estructura, apertura, plano firma, cámara, score, ending).
+
+Síntomas de estilo flojo que el QA debe detectar: composición idéntica entre piezas, sin native move, color decorativo, transiciones default del motor, escala sin extremos. Ejemplo completo: un color señal, dos curvas, subtítulo como parte del layout con hold assertado en código.
+
+---
+
+## Partes del oficio y etiquetas técnicas 2026-10-27 (pieza grua)
+
+- **El objeto técnico se dibuja con las partes de su oficio, nunca con primitivas.** La primera grua (una línea vertical + cajas grises flotando) pasaba el QA y leía "fuera de las herramientas"; el usuario la tiró. La versión que funcionó lleva sus partes reales: celosía del mástil con cruces, cordón superior de la pluma en el color señal, contrapeso, cabina, gancho con recorrido físico (sube lleno de carga, baja con las piezas). Antes de dibujar el protagonista: listar sus partes con nombre de oficio y dibujarlas todas; cada una debe verse al tamaño de un celular.
+- **Prueba "imágenes solas" a nivel de cuadro**: no basta con que la serie cuente la historia; cada cuadro, sin texto, debe nombrar el oficio ("una grúa de torre con su contrapeso"). Si hay que explicarle al espectador qué es, es primitiva.
+- **Etiqueta técnica: una por vez, ventanada por beat.** Cuatro rótulos (BASE / TORRE / BRAZO / CONTRAPESO) encimados a la vez eran ilegibles. Una etiqueta por clic dramático: entra con el beat que nombra la parte, sale antes de la siguiente, con leader line que la une a la parte en el mundo.
+- **Elementos posicionados por JS llevan x/y explícitos desde el frame 1.** Con `top:auto` el navegador coloca el elemento y la pose del script lo corrige después; los checks de zona segura corren antes. Etiquetas en columna derecha de 1080: `right: 142px` las deja dentro de la zona X 64.8–939.6, y la leader line arranca en `x = 936 − anchoEtiqueta`.
+

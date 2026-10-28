@@ -37,6 +37,22 @@ const video = (probe.match(/Video: ([^\n]+)/) || [])[1] || '?';
 const hasAudio = /Audio: /.test(probe);
 const sizeMb = (fs.statSync(out).size / 1e6).toFixed(1);
 console.log(`\n── Entregable ─────────────────────────────\n  ${out}\n  ${seconds.toFixed(2)}s · ${sizeMb} MB · ${hasAudio ? 'con audio' : 'SIN audio'}\n  ${video.split(',').slice(0, 3).join(',')}`);
+// Loudness del MP4 entregado: el encode AAC puede mover la pista; se mide el audio real del archivo.
+if (hasAudio) {
+  const ebur = (spawnSync(ffmpegPath(), ['-hide_banner', '-nostats', '-i', out, '-af', 'ebur128=peak=true', '-f', 'null', '-'], { encoding: 'utf8' }).stderr || '').split(/\r?\n/);
+  // Valores finales: solo en la sección "Summary:" (las líneas por-frame arrancan con I muy bajo).
+  const sIdx = ebur.findIndex((l) => l.includes('Summary:'));
+  const eburEnd = sIdx >= 0 ? ebur.slice(sIdx) : ebur;
+  const iLine = eburEnd.find((l) => /\bI:\s*-?\d/.test(l));
+  const peakLine = eburEnd.find((l) => /\bPeak:\s*-?\d/.test(l));
+  const lufs = iLine ? +iLine.match(/I:\s*(-?[\d.]+)/)[1] : NaN;
+  const dbtp = peakLine ? +peakLine.match(/Peak:\s*(-?[\d.]+)/)[1] : NaN;
+  if (isFinite(lufs)) {
+    console.log(`  loudness del mp4: ${lufs.toFixed(1)} LUFS${isFinite(dbtp) ? ` · pico real ${dbtp.toFixed(1)} dBTP` : ''}`);
+    if (lufs < -15.6 || lufs > -12.4) console.warn(`⚠ loudness fuera de rango social (objetivo -14 ±1.5 LUFS): las plataformas ajustan el volumen, pero la voz puede sonar débil o gritada.`);
+    if (isFinite(dbtp) && dbtp > -0.5) console.warn(`⚠ pico real ${dbtp.toFixed(1)} dBTP > -0.5: riesgo de clipping en el parlante del celular.`);
+  } else console.warn('⚠ no pude medir el loudness del mp4 (ebur128 no respondió); revísalo con audífonos.');
+}
 // Versión para compartir: el master queda intacto; esta pesa poco para WhatsApp/redes (CRF 26, preset lento).
 if (!args.draft) {
   const share = path.join(pieceDir, 'render', `${path.basename(pieceDir)}.mp4`);

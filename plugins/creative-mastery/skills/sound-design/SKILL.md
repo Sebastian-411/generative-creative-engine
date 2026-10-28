@@ -112,3 +112,16 @@ Orden de la señal: igualar (voz a −18 LUFS, música relativa a ella) → duck
 Di siempre: "el audio está medido (−14 LUFS, pico ≤ −2 dBTP, voz sobre música mínima +X dB en la línea Y), no escuchado; revísalo una vez con audífonos y otra en el parlante del celular".
 
 Fuentes: EBU R128 / ITU-R BS.1770 (K-weighting), Audio EQ Cookbook (RBJ), Regalia-Mitra (peaking paralelo) · parte destilada de HyperFrames (Apache-2.0)
+
+
+---
+
+## Números duros añadidos 2026-10-27 (destilación cross-repo: master-skills/edit, lemo-opuscar, video-shotcraft)
+
+- Master social: **-14 LUFS** con una sola ganancia fija (sin compresor ni AGC en la voz); limitador con pico ≈ **-1.5 dBTP** (`alimiter=limit=0.841:attack=5:release=50:level=false` con `aresample=192000` antes). El loudness final se verifica midiendo **ebur128 sobre el audio del MP4 ya renderizado**, no solo sobre mix.wav. Si hay corrimiento sistemático respecto a los cues, se corrige con una constante única de offset, jamás cue por cue.
+- Música **≈15 dB bajo la voz** a nivel fijo; fade ~1 s antes del final. Verificación por línea: mínimo +10 dB de voz sobre música (aviso < +8).
+- Coreografía de silencios: **≥2 silencios reales antes del giro y del payoff**; el primer sonido tras cada silencio es uno de los momentos más importantes de la mezcla; para que se oiga, el silencio exige stop seco (sends y sostenidos cerrados en el último beat previo).
+- Payoff audio: pausa 0.5–4 s → chord stab ~0.4 s + sub en el golpe → calma después (nada compitiendo encima). En piezas con voz, el payoff cae en la pausa de la voz.
+- SFX: se colocan **por su pico**, no por su inicio (whoosh en su pico de paso, riser en su hit); cada SFX se recorta a la duración exacta de la acción que acompaña; bajo voz, máximo 1 SFX por cada 3 s; alternar tomas para que no suene mecánico.
+- Regla del parlante de celular: si >50% de la energía de la música está bajo 150 Hz, no se oye en un celular — pide más medios en el arreglo o sube la voz.
+
