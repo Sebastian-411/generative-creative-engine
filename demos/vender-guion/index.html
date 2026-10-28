@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>vender-guion</title>
+<!-- Clon de la gramática v3: montaña rusa = el video. Cámara que recorre el riel TODA la pieza,
+     8 chips con pin de color de sección, un corte de bloque a cenital blueprint en el payoff meta. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800&family=IBM+Plex+Mono:wght@500;600&display=block" rel="stylesheet">
+<script src="/__engine/gsap.min.js"></script>
+<script src="/__engine/stage.js"></script>
+<style>
+  :root { --ink:#f2f4f8; --mut:#aab3c5; --coral:#ff5e7a; --gold:#ffc94d; --cyan:#3ad0ff; --green:#35e08c; }
+  #stage { font-family:'Archivo',sans-serif; color:var(--ink); background:#141a33; }
+  #sky { position:absolute; inset:0; }
+  .scene { position:absolute; inset:0; opacity:0; }
+  .card { position:absolute; left:84px; right:150px; top:480px; border-radius:20px; background:rgba(10,14,24,.82); border:2px solid #2a3348; border-top:6px solid var(--sc,#fff); padding:34px 38px; }
+  .card h2 { margin:0; font-weight:800; font-size:88px; line-height:1.0; letter-spacing:-0.02em; }
+  .card p { margin:16px 0 0; font-weight:500; font-size:50px; line-height:1.25; color:var(--mut); }
+  .card .n { font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:48px; color:var(--sc,#fff); letter-spacing:.08em; }
+  .cap { position:absolute; left:100px; right:150px; top:1180px; text-align:center; font-weight:800; font-size:58px; line-height:1.5; }
+  .capline { display:none; }
+  .capline.on { display:block; }
+  .capline span { opacity:.34; padding:2px 6px; border-radius:12px; }
+  .capline span.on { opacity:1; }
+  .capline span.kw { background:var(--kc,#fff); color:#10131c; padding:2px 16px; }
+  .metaTitle { position:absolute; left:84px; right:150px; top:400px; font-weight:800; font-size:104px; line-height:1.02; letter-spacing:-0.02em; text-align:center; }
+  .metaTitle em { font-style:normal; color:var(--green); }
+  #ctaBox { position:absolute; left:84px; right:150px; top:980px; height:170px; border:3px solid #2a3348; border-radius:22px; background:rgba(10,14,24,.9); opacity:0; }
+  #ctaBox .at { position:absolute; left:30px; top:0; bottom:0; right:110px; display:flex; align-items:center; font-weight:800; font-size:74px; letter-spacing:.04em; }
+  #ctaBox .at span { opacity:0; }
+  #ctaBox .at .cur { opacity:.6; }
+  #ctaCheck { position:absolute; right:26px; top:50%; width:84px; height:84px; margin-top:-42px; border-radius:50%; background:var(--green); color:#06281a; font-weight:800; font-size:54px; display:flex; align-items:center; justify-content:center; opacity:0; }
+  #saveHint { position:absolute; left:84px; right:150px; top:1180px; text-align:center; font-weight:500; font-size:48px; color:var(--mut); opacity:0; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="sky" width="1080" height="1920"></canvas>
+
+  <div class="scene" id="scTwist"><div class="card" style="--sc:#3ad0ff"><div class="n">LA TESIS, TORCIDA</div><h2>No es el <em style="font-style:normal">gancho</em>.</h2><p>El gancho abre. Otra pieza retiene.</p></div></div>
+  <div class="scene" id="scP1"><div class="card" style="--sc:#ff5e7a"><div class="n">PIEZA 1 / 8</div><h2>El gancho</h2><p>Promete exactamente lo que cumples.</p></div></div>
+  <div class="scene" id="scP2"><div class="card" style="--sc:#ffc94d"><div class="n">PIEZA 2 / 8</div><h2>La promesa</h2><p>Abre un hilo que cierras al final.</p></div></div>
+  <div class="scene" id="scP3"><div class="card" style="--sc:#ffc94d"><div class="n">PIEZA 3 / 8</div><h2>La prueba</h2><p>Un dato que se ve, no que se dice.</p></div></div>
+  <div class="scene" id="scP4"><div class="card" style="--sc:#3ad0ff"><div class="n">PIEZA 4 / 8</div><h2>El bucle abierto</h2><p>"Pero eso no es lo más loco…"</p></div></div>
+  <div class="scene" id="scP5"><div class="card" style="--sc:#3ad0ff"><div class="n">PIEZA 5 / 8</div><h2>El giro</h2><p>Se prepara despacio. Ocurre en frames.</p></div></div>
+  <div class="scene" id="scP6"><div class="card" style="--sc:#35e08c"><div class="n">PIEZA 6 / 8</div><h2>El respiro</h2><p>El único momento quieto — este.</p></div></div>
+  <div class="scene" id="scP7"><div class="card" style="--sc:#35e08c"><div class="n">PIEZA 7 / 8</div><h2>El payoff</h2><p>La respuesta llega antes del CTA.</p></div></div>
+  <div class="scene" id="scP8"><div class="card" style="--sc:#35e08c"><div class="n">PIEZA 8 / 8</div><h2>La rima</h2><p>El final mira al principio. La más importante.</p></div></div>
+
+  <div class="scene" id="scMeta">
+    <div class="metaTitle">¿Te diste cuenta?<br>Este video está <em>armado igual.</em></div>
+  </div>
+
+  <div id="ctaBox">
+    <div class="at" id="ctaText"></div>
+    <div id="ctaCheck">✓</div>
+  </div>
+
+  <div class="cap" id="cap"></div>
+</div>
+<script>
+  const stage = Stage.create({
+    width: 1080, height: 1920, fps: 30, seed: 'vender',
+    background: '#141a33',
+    voice: 'voice.json', duration: 'voice',
+    bpm: 84,
+    music: { style: 'ambient' },
+    profile: 'social',
+  });
+  const { tl, rand } = stage;
+
+  const g = document.getElementById('sky').getContext('2d');
+  const BANDS = [
+    [0, 0, '#141a33'],
+    [0, 430, '#4a2a5e'],
+    [0, 760, '#ff6a4d'],
+    [0, 980, '#ffc94d'],
+    [0, 1120, '#0d1526'],
+  ];
+  const SUN = { x: 540, y: 1005, r: 190 };
+  const grain = Array.from({ length: 1300 }, () => [rand() * 1080, rand() * 1920, rand() * 0.05]);
+
+  const hills = (s) => Math.sin(s * 0.9) * 330 + Math.sin(s * 0.37 + 1.7) * 190 + Math.sin(s * 1.7 + 0.5) * 60;
+  const PINS = [0.5, 1.1, 1.62, 2.2, 2.78, 3.3, 3.86, 4.3];
+  const PIN_COLOR = ['#ff5e7a', '#ffc94d', '#ffc94d', '#3ad0ff', '#3ad0ff', '#35e08c', '#35e08c', '#35e08c'];
+  const PIN_NAME = ['GANCHO', 'PROMESA', 'PRUEBA', 'BUCLE', 'GIRO', 'RESPIRO', 'PAYOFF', 'RIMA'];
+
+  // u(t): cada línea de voz recorre [pin_i, pin_{i+1}] con power1.inOut (acelerón al cerrar sección).
+  const IDS = ['hook', 'tesis', 'twist', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8'];
+  const SEGS = IDS.map((id, i) => ({ a: stage.at(id), b: stage.end(id), u0: PINS[i] - 0.35, u1: PINS[Math.min(i + 1, 7)] }));
+  SEGS[0].u0 = 0;
+  const easeIO = (x) => x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+  const uOf = (t) => {
+    for (let i = 0; i < SEGS.length; i++) {
+      const s = SEGS[i];
+      if (t < s.b || i === SEGS.length - 1) {
+        const p = Math.min(Math.max((t - s.a) / (s.b - s.a), 0), 1);
+        return s.u0 + (s.u1 - s.u0) * easeIO(p);
+      }
+    }
+    return PINS[7];
+  };
+
+  const S = { meta: 0, plan: 0 };
+  const META_T = () => stage.at('meta') - 0.08;
+  tl.to(S, { meta: 1, duration: 0.01 }, META_T());
+  tl.to(S, { plan: 1, duration: stage.end('meta') - META_T(), ease: 'power2.out' }, META_T());
+
+  const proj = (u) => ({ x: 540 + Math.sin(u * 0.9) * 60, y: 980 - hills(u) * 0.85 });
+
+  const CLOUDS = Array.from({ length: 5 }, (_, i) => ({ y: 120 + i * 190, w: 260 + (i * 97) % 180, h: 26 + (i * 37) % 26, sp: 26 + (i * 53) % 40, a: 0.10 + (i % 3) * 0.03 }));
+
+  stage.onFrame((t) => {
+    // Cielo franjado de afiche + sol plano + mar con reflejo de líneas.
+    for (let i = 0; i < BANDS.length; i++) {
+      const b = BANDS[i], nb = BANDS[i + 1];
+      g.fillStyle = b[2];
+      g.fillRect(0, b[1], 1080, (nb ? nb[1] : 1120) - b[1]);
+    }
+    g.fillStyle = '#0d1526'; g.fillRect(0, 1120, 1080, 800);
+    g.fillStyle = '#ffc94d'; g.beginPath(); g.arc(SUN.x, SUN.y, SUN.r, 0, 7); g.fill();
+    g.fillStyle = '#0d1526'; g.fillRect(0, 1120, 1080, 800);
+    for (let i = 0; i < 9; i++) {
+      g.fillStyle = `rgba(255,201,77,${0.20 - i * 0.02})`;
+      g.fillRect(((SUN.x - 260 + i * 58 + t * (30 + i * 6)) % 1380) - 150, 1160 + i * 54, 240 + i * 30, 7);
+    }
+    for (const c of CLOUDS) {
+      const cx = ((t * c.sp + c.y * 7) % (1080 + c.w * 2)) - c.w;
+      g.fillStyle = `rgba(242,244,248,${c.a})`;
+      g.beginPath(); g.roundRect(cx, c.y, c.w, c.h, c.h / 2); g.fill();
+    }
+    for (const [x, y, a] of grain) { g.fillStyle = `rgba(255,255,255,${a})`; g.fillRect(x, y, 2, 2); }
+    const vg = g.createRadialGradient(540, 960, 500, 540, 960, 1160);
+    vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,0.26)');
+    g.fillStyle = vg; g.fillRect(0, 0, 1080, 1920);
+
+    if (S.meta > 0.5) { drawPlan(t); return; }
+
+    // Riel en viaje: muestrea [u-0.55, u+0.55], proyecta, ties + soportes + chip-pin.
+    const u = uOf(t);
+    // Cámara viva: balanceo x, respiración de zoom y bob vertical — nunca un cuadro igual al anterior.
+    const camX = Math.sin(u * 3) * 46 + Stage.noise('camx', t * 0.6) * 14;
+    const camZoom = 1 + Math.sin(u * 2.2) * 0.045;
+    const camY = Math.sin(t * 1.4) * 8;
+    g.save();
+    g.translate(540 + camX, 940 + camY); g.scale(camZoom, camZoom); g.translate(-540, -940);
+    g.lineCap = 'butt';
+    g.strokeStyle = 'rgba(242,244,248,.28)'; g.lineWidth = 5;
+    for (let s = u - 0.55; s < u + 0.55; s += 0.11) {
+      const a = proj(s), b = proj(Math.min(s + 0.11, u + 0.55));
+      if (a.x > -80 && a.x < 1160) { g.beginPath(); g.moveTo(a.x, a.y + 46); g.lineTo(a.x, 1120); g.stroke(); }
+    }
+    g.strokeStyle = '#f2f4f8'; g.lineWidth = 11;
+    g.beginPath();
+    for (let s = u - 0.55; s <= u + 0.55; s += 0.018) {
+      const p = proj(s);
+      s === u - 0.55 ? g.moveTo(p.x, p.y) : g.lineTo(p.x, p.y);
+    }
+    g.stroke();
+    for (let s = u - 0.55; s <= u + 0.55; s += 0.055) {
+      const p = proj(s), q = proj(s + 0.02);
+      const dx = q.x - p.x, dy = q.y - p.y, L = Math.hypot(dx, dy) || 1;
+      g.strokeStyle = 'rgba(242,244,248,.75)'; g.lineWidth = 4;
+      g.beginPath(); g.moveTo(p.x - dy / L * 16, p.y + dx / L * 16); g.lineTo(p.x + dy / L * 16, p.y - dx / L * 16); g.stroke();
+    }
+    for (let i = 0; i < 8; i++) {
+      const pi = PINS[i], d = pi - u;
+      if (Math.abs(d) > 0.55) continue;
+      const p = proj(pi);
+      const appear = Math.min(Math.max(1 - Math.abs(d) / 0.5, 0), 1);
+      const sc = 0.7 + 0.3 * appear;
+      const pulse = 1 + Math.sin(t * 8 + i * 2) * 0.5;
+      g.strokeStyle = PIN_COLOR[i]; g.lineWidth = 3; g.globalAlpha = 0.35;
+      g.beginPath(); g.arc(p.x, p.y - 74 * sc, 52 * sc * pulse, 0, 7); g.stroke();
+      g.globalAlpha = 1;
+      g.fillStyle = PIN_COLOR[i];
+      g.fillRect(p.x - 7, p.y, 14, 42);
+      g.save(); g.translate(p.x, p.y - 74 * sc); g.scale(sc, sc);
+      g.fillStyle = 'rgba(10,14,24,.9)'; g.strokeStyle = PIN_COLOR[i]; g.lineWidth = 4;
+      const w = 84;
+      g.beginPath(); g.roundRect(-w / 2, -30, w, 60, 14); g.fill(); g.stroke();
+      g.fillStyle = PIN_COLOR[i]; g.font = '600 34px "IBM Plex Mono"'; g.textAlign = 'center'; g.textBaseline = 'middle';
+      g.fillText(String(i + 1), 0, 2);
+      g.restore();
+    }
+    const me = proj(u + 0.1);
+    const meBob = Math.sin(t * 5) * 7;
+    g.fillStyle = '#f2f4f8';
+    g.beginPath(); g.roundRect(me.x - 118, me.y - 150 + meBob, 236, 54, 14); g.fill();
+    g.fillStyle = '#10131c'; g.font = '600 30px "IBM Plex Mono"'; g.textAlign = 'center'; g.textBaseline = 'middle';
+    g.fillText('TÚ ESTÁS AQUÍ', me.x, me.y - 122 + meBob);
+    g.fillStyle = '#f2f4f8'; g.beginPath(); g.arc(me.x, me.y + Math.sin(t * 5) * 4, 13, 0, 7); g.fill();
+    g.restore();
+  });
+
+  function drawPlan(t) {
+    g.fillStyle = '#0d1526'; g.fillRect(0, 0, 1080, 1920);
+    g.strokeStyle = 'rgba(160,180,220,.10)'; g.lineWidth = 2;
+    const goff = (t * 14) % 60;
+    for (let x = -60 + goff; x < 1140; x += 60) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x, 1920); g.stroke(); }
+    for (let y = -60 + goff; y < 1980; y += 60) { g.beginPath(); g.moveTo(0, y); g.lineTo(1080, y); g.stroke(); }
+    for (const [x, y, a] of grain) { g.fillStyle = `rgba(160,180,220,${a * 0.6})`; g.fillRect(x, y, 2, 2); }
+    const p = S.plan;
+    g.strokeStyle = `rgba(53,224,140,${p})`; g.lineWidth = 8; g.lineCap = 'butt';
+    const pts = PINS.map((pu, i) => ({ x: 120 + (840 / 7) * i, y: 960 - (Math.sin(pu * 0.9) * 210) * 0.5 - i * 36 }));
+    g.beginPath();
+    const total = pts.length - 1, done = p * (total + 0.35);
+    pts.forEach((pt, i) => {
+      if (i === 0) g.moveTo(pt.x, pt.y);
+      else if (i <= done) g.lineTo(pt.x, pt.y);
+    });
+    g.stroke();
+    pts.forEach((pt, i) => {
+      const on = p > (i + 0.5) / 8;
+      const pr = on ? 26 + Math.sin(t * 6 + i) * 3 : 14;
+      g.fillStyle = on ? PIN_COLOR[i] : 'rgba(242,244,248,.25)';
+      g.beginPath(); g.arc(pt.x, pt.y, pr, 0, 7); g.fill();
+      if (on) {
+        g.fillStyle = '#10131c'; g.font = '600 28px "IBM Plex Mono"'; g.textAlign = 'center'; g.textBaseline = 'middle';
+        g.fillText(String(i + 1), pt.x, pt.y + 1);
+        g.fillStyle = PIN_COLOR[i]; g.font = '600 24px "IBM Plex Mono"';
+        g.fillText(PIN_NAME[i], pt.x, pt.y + 58);
+      }
+    });
+  }
+
+  // Cards de sección: entra crisp al pin, sale con la escena.
+  const show = (sel, from, to) => tl.set(sel, { opacity: 1 }, from).set(sel, { opacity: 0 }, to);
+  const card = (sel, id, exitOff, holdTo) => {
+    const a = stage.at(id);
+    const out = holdTo ? stage.at(holdTo) - 0.02 : stage.end(id, exitOff);
+    show(sel, a + 0.05, out);
+    tl.fromTo(sel + ' .card', { y: 30, opacity: 0.3 }, { y: 0, opacity: 1, duration: 0.34, ease: 'power4.out' }, a + 0.05);
+  };
+  card('#scTwist', 'twist', 0.08, 'p1');
+  card('#scP1', 'p1', 0.08); card('#scP2', 'p2', 0.08); card('#scP3', 'p3', 0.08);
+  card('#scP4', 'p4', 0.08); card('#scP5', 'p5', 0.08); card('#scP6', 'p6', 0.08);
+  card('#scP7', 'p7', 0.08); card('#scP8', 'p8', 0.08);
+  show('#scMeta', META_T(), stage.duration);
+  tl.fromTo('#scMeta .metaTitle', { y: 40, opacity: 0.3 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power4.out' }, META_T() + 0.05);
+
+  // Captions frase completa con pill de keyword en el color de sección.
+  const CAPS = [
+    ['hook', 'final', '#ff5e7a'], ['tesis', 'ocho', '#ffc94d'], ['twist', 'gancho', '#3ad0ff'],
+    ['p1', 'gancho', '#ff5e7a'], ['p2', 'promesa', '#ffc94d'], ['p3', 'prueba', '#ffc94d'],
+    ['p4', 'bucle', '#3ad0ff'], ['p5', 'giro', '#3ad0ff'], ['p6', 'respiro', '#35e08c'],
+    ['p7', 'payoff', '#35e08c'], ['p8', 'rima', '#35e08c'], ['meta', 'ocho', '#35e08c'], ['cta', 'GUION', '#35e08c'],
+  ];
+  const capRoot = document.getElementById('cap');
+  const capLines = CAPS.map(([id, kw, color]) => {
+    const el = document.createElement('div');
+    el.className = 'capline';
+    el.style.setProperty('--kc', color);
+    const words = stage.line(id).words;
+    let kwEl = null;
+    for (const w of words) {
+      const sp = document.createElement('span');
+      sp.textContent = w.w + ' ';
+      sp.dataset.s = w.start; sp.dataset.e = w.end;
+      if (w.w.toUpperCase().includes(kw.toUpperCase())) { sp.classList.add('kw'); kwEl = sp; }
+      el.appendChild(sp);
+    }
+    capRoot.appendChild(el);
+    return { id, el, kwEl, a: stage.at(id), b: stage.end(id, 0.25) };
+  });
+  // Ventanas exclusivas: la cola de una línea nunca pisa la siguiente (sin apilamiento).
+  capLines.forEach((L, i) => {
+    const next = capLines[i + 1];
+    if (next) L.b = Math.min(L.b, next.a - 0.02);
+  });
+  const KWT = {};
+  capLines.forEach((L) => { if (L.kwEl) KWT[L.id] = parseFloat(L.kwEl.dataset.s); });
+  const CARD_SCENES = ['#scTwist', '#scP1', '#scP2', '#scP3', '#scP4', '#scP5', '#scP6', '#scP7', '#scP8'].map((s) => document.querySelector(s));
+  stage.onFrame((t) => {
+    // Flotación viva de las cards: cada escena respira ±5 px, desfasada.
+    CARD_SCENES.forEach((el, i) => {
+      if (parseFloat(getComputedStyle(el).opacity) > 0.5) el.style.transform = `translateY(${Math.sin(t * 1.3 + i) * 5}px)`;
+    });
+    for (const L of capLines) {
+      const vis = t >= L.a - 0.05 && t <= L.b;
+      L.el.classList.toggle('on', vis);
+      if (!vis) continue;
+      for (const sp of L.el.children) {
+        sp.classList.toggle('on', t >= parseFloat(sp.dataset.s) && t <= parseFloat(sp.dataset.e) + 0.12);
+      }
+    }
+  });
+
+  // CTA: mock de comentario tecleando GUION + check.
+  const word = 'GUION';
+  const ctaText = document.getElementById('ctaText');
+  for (const ch of word) { const s = document.createElement('span'); s.textContent = ch; ctaText.appendChild(s); }
+  const cur = document.createElement('span'); cur.textContent = '_'; cur.className = 'cur'; ctaText.appendChild(cur);
+  const t13 = stage.at('cta');
+  show('#ctaBox', t13 + 0.3, stage.duration);
+  const wStart = stage.word('cta', 'GUION');
+  [...ctaText.children].forEach((s, i) => {
+    if (s.classList.contains('cur')) return;
+    tl.set(s, { opacity: 1 }, wStart + 0.05 + i * 0.09);
+    stage.sfx('tick', wStart + 0.05 + i * 0.09, -14);
+  });
+  tl.fromTo('#ctaCheck', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(1.12)' }, stage.word('cta', 'GUION') + 0.72);
+  stage.sfx('ding', stage.word('cta', 'GUION') + 0.78, -12);
+
+  // Sonido: impacto seco en cada pin, drop en el giro, golpe en el meta, riser antes del corte.
+  ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8'].forEach((id, i) => {
+    stage.sfx('impact', stage.at(id) + 0.02, -16);
+    if (id === 'p4') stage.sfx('thud', stage.word(id, 'loco'), -14);
+    if (id === 'p8') stage.sfx('ding', stage.word(id, 'rima'), -12);
+  });
+  stage.sfx('riser', META_T() - 0.6, -16).sfx('snap', META_T(), -12).sfx('impact', META_T() + 0.02, -10);
+  stage.sfx('tick', 0, -12);
+</script>
+</body>
+</html>

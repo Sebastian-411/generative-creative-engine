@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 2,
+  "voice": "",
+  "engine": "qwen",
+  "cast": {
+    "narrador": {
+      "description": "locutor latino de reels verticales, masculino, articulado, ritmo rápido y continuo, energía de creador enseñando su método, sin pausas largas"
+    }
+  },
+  "direction": "ritmo de reels: ágil y continuo; instrucciones secas y rápidas; solo el respiro baja la intensidad, nunca el tempo",
+  "takes": 2,
+  "lead": 0.15,
+  "gap": 0.3,
+  "tail": 0.8,
+  "lines": [
+    {
+      "id": "hook",
+      "role": "hook",
+      "text": "¿Cómo se arma un video que la gente vea hasta el final?",
+      "emotion": "curioso",
+      "intensity": "media-alta",
+      "pace": "ágil",
+      "value_from": "pregunta",
+      "value_to": "hambre",
+      "lesson": "la pregunta de oficio abre el curiosity gap",
+      "char_budget": 56
+    },
+    {
+      "id": "tesis",
+      "role": "proof",
+      "text": "Con ocho piezas. Siempre en el mismo orden.",
+      "emotion": "seguro",
+      "intensity": "media",
+      "pace": "ágil",
+      "value_from": "hambre",
+      "value_to": "orden",
+      "lesson": "la estructura es repetible, no intuición",
+      "char_budget": 44
+    },
+    {
+      "id": "twist",
+      "role": "giro",
+      "text": "Y la más importante no es el gancho.",
+      "emotion": "confesión",
+      "intensity": "media",
+      "pace": "normal",
+      "pause": 0.4,
+      "value_from": "orden",
+      "value_to": "duda",
+      "lesson": "la expectativa rota es la que retiene",
+      "char_budget": 38
+    },
+    {
+      "id": "p1",
+      "role": "desarrollo",
+      "text": "Pieza uno: el gancho. Promete exactamente lo que vas a cumplir.",
+      "emotion": "instruyendo",
+      "intensity": "media",
+      "pace": "ágil",
+      "value_from": "duda",
+      "value_to": "paso",
+      "lesson": "el gancho es una promesa que el payoff cobra",
+      "char_budget": 68
+    },
+    {
+      "id": "p2",
+      "role": "desarrollo",
+      "text": "Pieza dos: la promesa. Abre un hilo que cerrarás al final.",
+      "emotion": "instruyendo",
+      "intensity": "media",
+      "pace": "ágil",
+      "value_from": "paso",
+      "value_to": "hilo",
+      "lesson": "el hilo viaja del fotograma cero al payoff",
+      "char_budget": 58
+    },
+    {
+      "id": "p3",
+      "role": "desarrollo",
+      "text": "Pieza tres: la prueba. Un dato que se ve, no que se dice.",
+      "emotion": "instruyendo",
+      "intensity": "media",
+      "pace": "ágil",
+      "value_from": "hilo",
+      "value_to": "credito",
+      "lesson": "mostrar gana seis a uno sobre contar",
+      "char_budget": 58
+    },
+    {
+      "id": "p4",
+      "role": "desarrollo",
+      "text": "Pieza cuatro: el bucle abierto. Pero eso no es lo más loco.",
+      "emotion": "jugando",
+      "intensity": "media-alta",
+      "pace": "ágil",
+      "value_from": "credito",
+      "value_to": "trampa",
+      "lesson": "la promesa aplazada empuja al siguiente tramo",
+      "char_budget": 60
+    },
+    {
+      "id": "p5",
+      "role": "desarrollo",
+      "text": "Pieza cinco: el giro. Cambia cómo se ve todo lo anterior.",
+      "emotion": "revelando",
+      "intensity": "media-alta",
+      "pace": "ágil",
+      "value_from": "trampa",
+      "value_to": "jaque",
+      "lesson": "el giro se prepara despacio y ocurre en frames",
+      "char_budget": 58
+    },
+    {
+      "id": "p6",
+      "role": "respite",
+      "text": "Pieza seis: el respiro. El único momento quieto. Como este.",
+      "emotion": "calmo",
+      "intensity": "media",
+      "pace": "normal",
+      "value_from": "jaque",
+      "value_to": "aire",
+      "lesson": "sin causa visible, la quietud es punto muerto",
+      "char_budget": 64
+    },
+    {
+      "id": "p7",
+      "role": "desarrollo",
+      "text": "Pieza siete: el payoff. La respuesta, arriba del final.",
+      "emotion": "instruyendo",
+      "intensity": "media",
+      "pace": "ágil",
+      "value_from": "aire",
+      "value_to": "ansia",
+      "lesson": "el payoff aterriza antes del CTA, siempre",
+      "char_budget": 60
+    },
+    {
+      "id": "p8",
+      "role": "desarrollo",
+      "text": "Pieza ocho: la rima. El final que mira al principio.",
+      "emotion": "revelando",
+      "intensity": "media-alta",
+      "pace": "normal",
+      "value_from": "ansia",
+      "value_to": "respuesta",
+      "lesson": "la pieza más importante es el eco, no el gancho",
+      "char_budget": 52
+    },
+    {
+      "id": "meta",
+      "role": "payoff",
+      "text": "¿Te diste cuenta? Este video está armado con las ocho.",
+      "emotion": "cálido",
+      "intensity": "media-alta",
+      "pace": "normal",
+      "pause": 0.5,
+      "value_from": "respuesta",
+      "value_to": "descubrimiento",
+      "lesson": "el payoff meta convierte la lección en demo",
+      "char_budget": 54
+    },
+    {
+      "id": "cta",
+      "role": "cta",
+      "text": "Llegaste al final. Guárdalo, y comenta GUION por la plantilla.",
+      "emotion": "cercano",
+      "intensity": "media",
+      "pace": "normal",
+      "char_budget": 62
+    }
+  ]
+}

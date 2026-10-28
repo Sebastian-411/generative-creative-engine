@@ -1,0 +1,1065 @@
+{
+ "engine": "qwen",
+ "duration": 64.304,
+ "wordsPerSecond": 2.4,
+ "descriptions": [
+  {
+   "speaker": "narrador",
+   "description": "locutor latino de reels verticales, masculino, articulado, ritmo rápido y continuo, energía de creador enseñando su método, sin pausas largas Overall: ritmo de reels: ágil y continuo; instrucciones secas y rápidas; solo el respiro baja la intensidad, nunca el tempo. Performance arc, sentence by sentence: 1) natural, conversational and clear; 2) natural, conversational and clear; 3) natural, conversational and clear; 4) natural, conversational and clear; 5) natural, conversational and clear; 6) natural, conversational and clear; 7) natural, conversational and clear; 8) natural, conversational and clear; 9) natural, conversational and clear; 10) natural, conversational and clear; 11) natural, conversational and clear; 12) warm, close and friendly, with a gentle smile in the voice; 13) natural, conversational and clear. Realistic human phrasing with natural pauses at ellipses and line breaks, varied pitch and pace, never monotone, never theatrical."
+  }
+ ],
+ "lines": [
+  {
+   "id": "hook",
+   "text": "¿Cómo se arma un video que la gente vea hasta el final?",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 0.15,
+   "end": 2.77,
+   "words": [
+    {
+     "w": "¿Cómo",
+     "start": 0.15,
+     "end": 0.33
+    },
+    {
+     "w": "se",
+     "start": 0.33,
+     "end": 0.55
+    },
+    {
+     "w": "arma",
+     "start": 0.55,
+     "end": 0.71
+    },
+    {
+     "w": "un",
+     "start": 0.71,
+     "end": 0.89
+    },
+    {
+     "w": "video",
+     "start": 0.89,
+     "end": 1.15
+    },
+    {
+     "w": "que",
+     "start": 1.15,
+     "end": 1.35
+    },
+    {
+     "w": "la",
+     "start": 1.35,
+     "end": 1.47
+    },
+    {
+     "w": "gente",
+     "start": 1.47,
+     "end": 1.77
+    },
+    {
+     "w": "vea",
+     "start": 1.77,
+     "end": 2.17
+    },
+    {
+     "w": "hasta",
+     "start": 2.17,
+     "end": 2.35
+    },
+    {
+     "w": "el",
+     "start": 2.35,
+     "end": 2.45
+    },
+    {
+     "w": "final?",
+     "start": 2.45,
+     "end": 2.77
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t1.wav",
+     "err": 0.059,
+     "dur": 63.25,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final con ocho piezas? Siempre en el mismo orden. Y la más importante no es el gancho. Piesa 1, el gancho. Promete exactamente lo que vas a cumplir. Piesa 2, la promesa. Abre un hilo que cerrarás al final. Piesa 3, la prueba. Un dato que se ve, no que se dice. Piesa 4, el bucle abierto. Pero eso no es lo más loco. Piesa 5, el giro. Cambia como se ve todo lo anterior. Piesa 6, el respiro. El único momento quieto, como este. Piesa 7, el payoff. La respuesta arriba del final. Piesa 8, la rima. El final que mira al principio. Te diste cuenta. Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta guión por la plantilla."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t2.wav",
+     "err": 0.074,
+     "dur": 60.67,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final? Con ocho piezas, siempre en el mismo orden. Y la más importante no es el gancho. Piesa uno, el gancho. Promete exactamente lo que vas a cumplir. Piesa dos, la promesa. Abre un hilo que cerrarás al final. Piesa tres, la prueba. Un dato que se ve, no que se dice. Piesa cuatro, el bucle abierto. Pero eso no es lo más loco. Piesa cinco, el giro. Cambia como se ve todo lo anterior. Piesa seis, el respiro. El único momento quieto, como este. Piesa siete, el payoff. La respuesta, arriba del final. Piesa ocho, la rima. El final que mira al principio. ¿Te diste cuenta? Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta aquí aún por la plantilla."
+    }
+   ]
+  },
+  {
+   "id": "tesis",
+   "text": "Con ocho piezas. Siempre en el mismo orden.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 2.77,
+   "end": 7.21,
+   "words": [
+    {
+     "w": "Con",
+     "start": 2.77,
+     "end": 3.83
+    },
+    {
+     "w": "ocho",
+     "start": 3.83,
+     "end": 4.25
+    },
+    {
+     "w": "piezas.",
+     "start": 4.25,
+     "end": 4.73
+    },
+    {
+     "w": "Siempre",
+     "start": 5.37,
+     "end": 5.93
+    },
+    {
+     "w": "en",
+     "start": 5.93,
+     "end": 6.15
+    },
+    {
+     "w": "el",
+     "start": 6.15,
+     "end": 6.27
+    },
+    {
+     "w": "mismo",
+     "start": 6.27,
+     "end": 6.71
+    },
+    {
+     "w": "orden.",
+     "start": 6.71,
+     "end": 7.21
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t1.wav",
+     "err": 0.059,
+     "dur": 63.25,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final con ocho piezas? Siempre en el mismo orden. Y la más importante no es el gancho. Piesa 1, el gancho. Promete exactamente lo que vas a cumplir. Piesa 2, la promesa. Abre un hilo que cerrarás al final. Piesa 3, la prueba. Un dato que se ve, no que se dice. Piesa 4, el bucle abierto. Pero eso no es lo más loco. Piesa 5, el giro. Cambia como se ve todo lo anterior. Piesa 6, el respiro. El único momento quieto, como este. Piesa 7, el payoff. La respuesta arriba del final. Piesa 8, la rima. El final que mira al principio. Te diste cuenta. Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta guión por la plantilla."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t2.wav",
+     "err": 0.074,
+     "dur": 60.67,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final? Con ocho piezas, siempre en el mismo orden. Y la más importante no es el gancho. Piesa uno, el gancho. Promete exactamente lo que vas a cumplir. Piesa dos, la promesa. Abre un hilo que cerrarás al final. Piesa tres, la prueba. Un dato que se ve, no que se dice. Piesa cuatro, el bucle abierto. Pero eso no es lo más loco. Piesa cinco, el giro. Cambia como se ve todo lo anterior. Piesa seis, el respiro. El único momento quieto, como este. Piesa siete, el payoff. La respuesta, arriba del final. Piesa ocho, la rima. El final que mira al principio. ¿Te diste cuenta? Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta aquí aún por la plantilla."
+    }
+   ]
+  },
+  {
+   "id": "twist",
+   "text": "Y la más importante no es el gancho.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 7.63,
+   "end": 9.57,
+   "words": [
+    {
+     "w": "Y",
+     "start": 7.63,
+     "end": 7.81
+    },
+    {
+     "w": "la",
+     "start": 7.81,
+     "end": 7.91
+    },
+    {
+     "w": "más",
+     "start": 7.91,
+     "end": 8.07
+    },
+    {
+     "w": "importante",
+     "start": 8.07,
+     "end": 8.59
+    },
+    {
+     "w": "no",
+     "start": 8.59,
+     "end": 8.89
+    },
+    {
+     "w": "es",
+     "start": 8.89,
+     "end": 9.03
+    },
+    {
+     "w": "el",
+     "start": 9.03,
+     "end": 9.15
+    },
+    {
+     "w": "gancho.",
+     "start": 9.15,
+     "end": 9.57
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t1.wav",
+     "err": 0.059,
+     "dur": 63.25,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final con ocho piezas? Siempre en el mismo orden. Y la más importante no es el gancho. Piesa 1, el gancho. Promete exactamente lo que vas a cumplir. Piesa 2, la promesa. Abre un hilo que cerrarás al final. Piesa 3, la prueba. Un dato que se ve, no que se dice. Piesa 4, el bucle abierto. Pero eso no es lo más loco. Piesa 5, el giro. Cambia como se ve todo lo anterior. Piesa 6, el respiro. El único momento quieto, como este. Piesa 7, el payoff. La respuesta arriba del final. Piesa 8, la rima. El final que mira al principio. Te diste cuenta. Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta guión por la plantilla."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t2.wav",
+     "err": 0.074,
+     "dur": 60.67,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final? Con ocho piezas, siempre en el mismo orden. Y la más importante no es el gancho. Piesa uno, el gancho. Promete exactamente lo que vas a cumplir. Piesa dos, la promesa. Abre un hilo que cerrarás al final. Piesa tres, la prueba. Un dato que se ve, no que se dice. Piesa cuatro, el bucle abierto. Pero eso no es lo más loco. Piesa cinco, el giro. Cambia como se ve todo lo anterior. Piesa seis, el respiro. El único momento quieto, como este. Piesa siete, el payoff. La respuesta, arriba del final. Piesa ocho, la rima. El final que mira al principio. ¿Te diste cuenta? Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta aquí aún por la plantilla."
+    }
+   ]
+  },
+  {
+   "id": "p1",
+   "text": "Pieza uno: el gancho. Promete exactamente lo que vas a cumplir.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 10.03,
+   "end": 14.65,
+   "words": [
+    {
+     "w": "Pieza",
+     "start": 10.03,
+     "end": 10.33
+    },
+    {
+     "w": "uno:",
+     "start": 10.33,
+     "end": 10.53
+    },
+    {
+     "w": "el",
+     "start": 11.11,
+     "end": 11.23
+    },
+    {
+     "w": "gancho.",
+     "start": 11.23,
+     "end": 11.73
+    },
+    {
+     "w": "Promete",
+     "start": 12.21,
+     "end": 12.75
+    },
+    {
+     "w": "exactamente",
+     "start": 12.75,
+     "end": 13.27
+    },
+    {
+     "w": "lo",
+     "start": 13.27,
+     "end": 13.85
+    },
+    {
+     "w": "que",
+     "start": 13.85,
+     "end": 13.95
+    },
+    {
+     "w": "vas",
+     "start": 13.95,
+     "end": 14.11
+    },
+    {
+     "w": "a",
+     "start": 14.11,
+     "end": 14.21
+    },
+    {
+     "w": "cumplir.",
+     "start": 14.21,
+     "end": 14.65
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t1.wav",
+     "err": 0.059,
+     "dur": 63.25,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final con ocho piezas? Siempre en el mismo orden. Y la más importante no es el gancho. Piesa 1, el gancho. Promete exactamente lo que vas a cumplir. Piesa 2, la promesa. Abre un hilo que cerrarás al final. Piesa 3, la prueba. Un dato que se ve, no que se dice. Piesa 4, el bucle abierto. Pero eso no es lo más loco. Piesa 5, el giro. Cambia como se ve todo lo anterior. Piesa 6, el respiro. El único momento quieto, como este. Piesa 7, el payoff. La respuesta arriba del final. Piesa 8, la rima. El final que mira al principio. Te diste cuenta. Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta guión por la plantilla."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t2.wav",
+     "err": 0.074,
+     "dur": 60.67,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final? Con ocho piezas, siempre en el mismo orden. Y la más importante no es el gancho. Piesa uno, el gancho. Promete exactamente lo que vas a cumplir. Piesa dos, la promesa. Abre un hilo que cerrarás al final. Piesa tres, la prueba. Un dato que se ve, no que se dice. Piesa cuatro, el bucle abierto. Pero eso no es lo más loco. Piesa cinco, el giro. Cambia como se ve todo lo anterior. Piesa seis, el respiro. El único momento quieto, como este. Piesa siete, el payoff. La respuesta, arriba del final. Piesa ocho, la rima. El final que mira al principio. ¿Te diste cuenta? Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta aquí aún por la plantilla."
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "text": "Pieza dos: la promesa. Abre un hilo que cerrarás al final.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 15.09,
+   "end": 19.09,
+   "words": [
+    {
+     "w": "Pieza",
+     "start": 15.09,
+     "end": 15.39
+    },
+    {
+     "w": "dos:",
+     "start": 15.39,
+     "end": 15.57
+    },
+    {
+     "w": "la",
+     "start": 16.21,
+     "end": 16.27
+    },
+    {
+     "w": "promesa.",
+     "start": 16.27,
+     "end": 16.61
+    },
+    {
+     "w": "Abre",
+     "start": 17.47,
+     "end": 17.75
+    },
+    {
+     "w": "un",
+     "start": 17.75,
+     "end": 17.93
+    },
+    {
+     "w": "hilo",
+     "start": 17.93,
+     "end": 18.11
+    },
+    {
+     "w": "que",
+     "start": 18.11,
+     "end": 18.29
+    },
+    {
+     "w": "cerrarás",
+     "start": 18.29,
+     "end": 18.75
+    },
+    {
+     "w": "al",
+     "start": 18.75,
+     "end": 18.87
+    },
+    {
+     "w": "final.",
+     "start": 18.87,
+     "end": 19.09
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t1.wav",
+     "err": 0.059,
+     "dur": 63.25,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final con ocho piezas? Siempre en el mismo orden. Y la más importante no es el gancho. Piesa 1, el gancho. Promete exactamente lo que vas a cumplir. Piesa 2, la promesa. Abre un hilo que cerrarás al final. Piesa 3, la prueba. Un dato que se ve, no que se dice. Piesa 4, el bucle abierto. Pero eso no es lo más loco. Piesa 5, el giro. Cambia como se ve todo lo anterior. Piesa 6, el respiro. El único momento quieto, como este. Piesa 7, el payoff. La respuesta arriba del final. Piesa 8, la rima. El final que mira al principio. Te diste cuenta. Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta guión por la plantilla."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t2.wav",
+     "err": 0.074,
+     "dur": 60.67,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final? Con ocho piezas, siempre en el mismo orden. Y la más importante no es el gancho. Piesa uno, el gancho. Promete exactamente lo que vas a cumplir. Piesa dos, la promesa. Abre un hilo que cerrarás al final. Piesa tres, la prueba. Un dato que se ve, no que se dice. Piesa cuatro, el bucle abierto. Pero eso no es lo más loco. Piesa cinco, el giro. Cambia como se ve todo lo anterior. Piesa seis, el respiro. El único momento quieto, como este. Piesa siete, el payoff. La respuesta, arriba del final. Piesa ocho, la rima. El final que mira al principio. ¿Te diste cuenta? Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta aquí aún por la plantilla."
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "text": "Pieza tres: la prueba. Un dato que se ve, no que se dice.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 19.91,
+   "end": 24.67,
+   "words": [
+    {
+     "w": "Pieza",
+     "start": 19.91,
+     "end": 20.41
+    },
+    {
+     "w": "tres:",
+     "start": 20.41,
+     "end": 20.65
+    },
+    {
+     "w": "la",
+     "start": 21.29,
+     "end": 21.39
+    },
+    {
+     "w": "prueba.",
+     "start": 21.39,
+     "end": 21.67
+    },
+    {
+     "w": "Un",
+     "start": 22.69,
+     "end": 22.93
+    },
+    {
+     "w": "dato",
+     "start": 22.93,
+     "end": 23.17
+    },
+    {
+     "w": "que",
+     "start": 23.17,
+     "end": 23.37
+    },
+    {
+     "w": "se",
+     "start": 23.37,
+     "end": 23.51
+    },
+    {
+     "w": "ve,",
+     "start": 23.51,
+     "end": 23.69
+    },
+    {
+     "w": "no",
+     "start": 24.05,
+     "end": 24.15
+    },
+    {
+     "w": "que",
+     "start": 24.15,
+     "end": 24.29
+    },
+    {
+     "w": "se",
+     "start": 24.29,
+     "end": 24.43
+    },
+    {
+     "w": "dice.",
+     "start": 24.43,
+     "end": 24.67
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t1.wav",
+     "err": 0.059,
+     "dur": 63.25,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final con ocho piezas? Siempre en el mismo orden. Y la más importante no es el gancho. Piesa 1, el gancho. Promete exactamente lo que vas a cumplir. Piesa 2, la promesa. Abre un hilo que cerrarás al final. Piesa 3, la prueba. Un dato que se ve, no que se dice. Piesa 4, el bucle abierto. Pero eso no es lo más loco. Piesa 5, el giro. Cambia como se ve todo lo anterior. Piesa 6, el respiro. El único momento quieto, como este. Piesa 7, el payoff. La respuesta arriba del final. Piesa 8, la rima. El final que mira al principio. Te diste cuenta. Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta guión por la plantilla."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t2.wav",
+     "err": 0.074,
+     "dur": 60.67,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final? Con ocho piezas, siempre en el mismo orden. Y la más importante no es el gancho. Piesa uno, el gancho. Promete exactamente lo que vas a cumplir. Piesa dos, la promesa. Abre un hilo que cerrarás al final. Piesa tres, la prueba. Un dato que se ve, no que se dice. Piesa cuatro, el bucle abierto. Pero eso no es lo más loco. Piesa cinco, el giro. Cambia como se ve todo lo anterior. Piesa seis, el respiro. El único momento quieto, como este. Piesa siete, el payoff. La respuesta, arriba del final. Piesa ocho, la rima. El final que mira al principio. ¿Te diste cuenta? Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta aquí aún por la plantilla."
+    }
+   ]
+  },
+  {
+   "id": "p4",
+   "text": "Pieza cuatro: el bucle abierto. Pero eso no es lo más loco.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 25.29,
+   "end": 30.39,
+   "words": [
+    {
+     "w": "Pieza",
+     "start": 25.29,
+     "end": 25.75
+    },
+    {
+     "w": "cuatro:",
+     "start": 25.75,
+     "end": 26.07
+    },
+    {
+     "w": "el",
+     "start": 26.73,
+     "end": 26.89
+    },
+    {
+     "w": "bucle",
+     "start": 26.89,
+     "end": 27.25
+    },
+    {
+     "w": "abierto.",
+     "start": 27.25,
+     "end": 27.77
+    },
+    {
+     "w": "Pero",
+     "start": 28.35,
+     "end": 28.71
+    },
+    {
+     "w": "eso",
+     "start": 28.71,
+     "end": 29.07
+    },
+    {
+     "w": "no",
+     "start": 29.07,
+     "end": 29.47
+    },
+    {
+     "w": "es",
+     "start": 29.47,
+     "end": 29.65
+    },
+    {
+     "w": "lo",
+     "start": 29.65,
+     "end": 29.79
+    },
+    {
+     "w": "más",
+     "start": 29.79,
+     "end": 30.01
+    },
+    {
+     "w": "loco.",
+     "start": 30.01,
+     "end": 30.39
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t1.wav",
+     "err": 0.059,
+     "dur": 63.25,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final con ocho piezas? Siempre en el mismo orden. Y la más importante no es el gancho. Piesa 1, el gancho. Promete exactamente lo que vas a cumplir. Piesa 2, la promesa. Abre un hilo que cerrarás al final. Piesa 3, la prueba. Un dato que se ve, no que se dice. Piesa 4, el bucle abierto. Pero eso no es lo más loco. Piesa 5, el giro. Cambia como se ve todo lo anterior. Piesa 6, el respiro. El único momento quieto, como este. Piesa 7, el payoff. La respuesta arriba del final. Piesa 8, la rima. El final que mira al principio. Te diste cuenta. Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta guión por la plantilla."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t2.wav",
+     "err": 0.074,
+     "dur": 60.67,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final? Con ocho piezas, siempre en el mismo orden. Y la más importante no es el gancho. Piesa uno, el gancho. Promete exactamente lo que vas a cumplir. Piesa dos, la promesa. Abre un hilo que cerrarás al final. Piesa tres, la prueba. Un dato que se ve, no que se dice. Piesa cuatro, el bucle abierto. Pero eso no es lo más loco. Piesa cinco, el giro. Cambia como se ve todo lo anterior. Piesa seis, el respiro. El único momento quieto, como este. Piesa siete, el payoff. La respuesta, arriba del final. Piesa ocho, la rima. El final que mira al principio. ¿Te diste cuenta? Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta aquí aún por la plantilla."
+    }
+   ]
+  },
+  {
+   "id": "p5",
+   "text": "Pieza cinco: el giro. Cambia cómo se ve todo lo anterior.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 30.91,
+   "end": 35.57,
+   "words": [
+    {
+     "w": "Pieza",
+     "start": 30.91,
+     "end": 31.41
+    },
+    {
+     "w": "cinco:",
+     "start": 31.41,
+     "end": 31.69
+    },
+    {
+     "w": "el",
+     "start": 32.09,
+     "end": 32.23
+    },
+    {
+     "w": "giro.",
+     "start": 32.23,
+     "end": 32.55
+    },
+    {
+     "w": "Cambia",
+     "start": 33.15,
+     "end": 33.59
+    },
+    {
+     "w": "cómo",
+     "start": 33.59,
+     "end": 33.97
+    },
+    {
+     "w": "se",
+     "start": 33.97,
+     "end": 34.19
+    },
+    {
+     "w": "ve",
+     "start": 34.19,
+     "end": 34.37
+    },
+    {
+     "w": "todo",
+     "start": 34.37,
+     "end": 34.95
+    },
+    {
+     "w": "lo",
+     "start": 34.95,
+     "end": 35.25
+    },
+    {
+     "w": "anterior.",
+     "start": 35.25,
+     "end": 35.57
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t1.wav",
+     "err": 0.059,
+     "dur": 63.25,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final con ocho piezas? Siempre en el mismo orden. Y la más importante no es el gancho. Piesa 1, el gancho. Promete exactamente lo que vas a cumplir. Piesa 2, la promesa. Abre un hilo que cerrarás al final. Piesa 3, la prueba. Un dato que se ve, no que se dice. Piesa 4, el bucle abierto. Pero eso no es lo más loco. Piesa 5, el giro. Cambia como se ve todo lo anterior. Piesa 6, el respiro. El único momento quieto, como este. Piesa 7, el payoff. La respuesta arriba del final. Piesa 8, la rima. El final que mira al principio. Te diste cuenta. Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta guión por la plantilla."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t2.wav",
+     "err": 0.074,
+     "dur": 60.67,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final? Con ocho piezas, siempre en el mismo orden. Y la más importante no es el gancho. Piesa uno, el gancho. Promete exactamente lo que vas a cumplir. Piesa dos, la promesa. Abre un hilo que cerrarás al final. Piesa tres, la prueba. Un dato que se ve, no que se dice. Piesa cuatro, el bucle abierto. Pero eso no es lo más loco. Piesa cinco, el giro. Cambia como se ve todo lo anterior. Piesa seis, el respiro. El único momento quieto, como este. Piesa siete, el payoff. La respuesta, arriba del final. Piesa ocho, la rima. El final que mira al principio. ¿Te diste cuenta? Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta aquí aún por la plantilla."
+    }
+   ]
+  },
+  {
+   "id": "p6",
+   "text": "Pieza seis: el respiro. El único momento quieto. Como este.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 36.31,
+   "end": 41.33,
+   "words": [
+    {
+     "w": "Pieza",
+     "start": 36.31,
+     "end": 36.79
+    },
+    {
+     "w": "seis:",
+     "start": 36.79,
+     "end": 37.09
+    },
+    {
+     "w": "el",
+     "start": 37.59,
+     "end": 37.79
+    },
+    {
+     "w": "respiro.",
+     "start": 37.79,
+     "end": 38.29
+    },
+    {
+     "w": "El",
+     "start": 38.97,
+     "end": 39.11
+    },
+    {
+     "w": "único",
+     "start": 39.11,
+     "end": 39.35
+    },
+    {
+     "w": "momento",
+     "start": 39.35,
+     "end": 39.67
+    },
+    {
+     "w": "quieto.",
+     "start": 39.67,
+     "end": 40.25
+    },
+    {
+     "w": "Como",
+     "start": 40.63,
+     "end": 40.97
+    },
+    {
+     "w": "este.",
+     "start": 40.97,
+     "end": 41.33
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t1.wav",
+     "err": 0.059,
+     "dur": 63.25,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final con ocho piezas? Siempre en el mismo orden. Y la más importante no es el gancho. Piesa 1, el gancho. Promete exactamente lo que vas a cumplir. Piesa 2, la promesa. Abre un hilo que cerrarás al final. Piesa 3, la prueba. Un dato que se ve, no que se dice. Piesa 4, el bucle abierto. Pero eso no es lo más loco. Piesa 5, el giro. Cambia como se ve todo lo anterior. Piesa 6, el respiro. El único momento quieto, como este. Piesa 7, el payoff. La respuesta arriba del final. Piesa 8, la rima. El final que mira al principio. Te diste cuenta. Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta guión por la plantilla."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t2.wav",
+     "err": 0.074,
+     "dur": 60.67,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final? Con ocho piezas, siempre en el mismo orden. Y la más importante no es el gancho. Piesa uno, el gancho. Promete exactamente lo que vas a cumplir. Piesa dos, la promesa. Abre un hilo que cerrarás al final. Piesa tres, la prueba. Un dato que se ve, no que se dice. Piesa cuatro, el bucle abierto. Pero eso no es lo más loco. Piesa cinco, el giro. Cambia como se ve todo lo anterior. Piesa seis, el respiro. El único momento quieto, como este. Piesa siete, el payoff. La respuesta, arriba del final. Piesa ocho, la rima. El final que mira al principio. ¿Te diste cuenta? Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta aquí aún por la plantilla."
+    }
+   ]
+  },
+  {
+   "id": "p7",
+   "text": "Pieza siete: el payoff. La respuesta, arriba del final.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 42.09,
+   "end": 47.15,
+   "words": [
+    {
+     "w": "Pieza",
+     "start": 42.09,
+     "end": 42.61
+    },
+    {
+     "w": "siete:",
+     "start": 42.61,
+     "end": 42.85
+    },
+    {
+     "w": "el",
+     "start": 43.59,
+     "end": 43.69
+    },
+    {
+     "w": "payoff.",
+     "start": 43.69,
+     "end": 44.03
+    },
+    {
+     "w": "La",
+     "start": 44.87,
+     "end": 44.99
+    },
+    {
+     "w": "respuesta,",
+     "start": 44.99,
+     "end": 45.41
+    },
+    {
+     "w": "arriba",
+     "start": 45.41,
+     "end": 46.53
+    },
+    {
+     "w": "del",
+     "start": 46.53,
+     "end": 46.85
+    },
+    {
+     "w": "final.",
+     "start": 46.85,
+     "end": 47.15
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t1.wav",
+     "err": 0.059,
+     "dur": 63.25,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final con ocho piezas? Siempre en el mismo orden. Y la más importante no es el gancho. Piesa 1, el gancho. Promete exactamente lo que vas a cumplir. Piesa 2, la promesa. Abre un hilo que cerrarás al final. Piesa 3, la prueba. Un dato que se ve, no que se dice. Piesa 4, el bucle abierto. Pero eso no es lo más loco. Piesa 5, el giro. Cambia como se ve todo lo anterior. Piesa 6, el respiro. El único momento quieto, como este. Piesa 7, el payoff. La respuesta arriba del final. Piesa 8, la rima. El final que mira al principio. Te diste cuenta. Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta guión por la plantilla."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t2.wav",
+     "err": 0.074,
+     "dur": 60.67,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final? Con ocho piezas, siempre en el mismo orden. Y la más importante no es el gancho. Piesa uno, el gancho. Promete exactamente lo que vas a cumplir. Piesa dos, la promesa. Abre un hilo que cerrarás al final. Piesa tres, la prueba. Un dato que se ve, no que se dice. Piesa cuatro, el bucle abierto. Pero eso no es lo más loco. Piesa cinco, el giro. Cambia como se ve todo lo anterior. Piesa seis, el respiro. El único momento quieto, como este. Piesa siete, el payoff. La respuesta, arriba del final. Piesa ocho, la rima. El final que mira al principio. ¿Te diste cuenta? Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta aquí aún por la plantilla."
+    }
+   ]
+  },
+  {
+   "id": "p8",
+   "text": "Pieza ocho: la rima. El final que mira al principio.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 47.97,
+   "end": 52.41,
+   "words": [
+    {
+     "w": "Pieza",
+     "start": 47.97,
+     "end": 48.51
+    },
+    {
+     "w": "ocho:",
+     "start": 48.51,
+     "end": 49.05
+    },
+    {
+     "w": "la",
+     "start": 49.73,
+     "end": 49.85
+    },
+    {
+     "w": "rima.",
+     "start": 49.85,
+     "end": 50.15
+    },
+    {
+     "w": "El",
+     "start": 50.77,
+     "end": 50.95
+    },
+    {
+     "w": "final",
+     "start": 50.95,
+     "end": 51.29
+    },
+    {
+     "w": "que",
+     "start": 51.29,
+     "end": 51.59
+    },
+    {
+     "w": "mira",
+     "start": 51.59,
+     "end": 51.79
+    },
+    {
+     "w": "al",
+     "start": 51.79,
+     "end": 51.99
+    },
+    {
+     "w": "principio.",
+     "start": 51.99,
+     "end": 52.41
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t1.wav",
+     "err": 0.059,
+     "dur": 63.25,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final con ocho piezas? Siempre en el mismo orden. Y la más importante no es el gancho. Piesa 1, el gancho. Promete exactamente lo que vas a cumplir. Piesa 2, la promesa. Abre un hilo que cerrarás al final. Piesa 3, la prueba. Un dato que se ve, no que se dice. Piesa 4, el bucle abierto. Pero eso no es lo más loco. Piesa 5, el giro. Cambia como se ve todo lo anterior. Piesa 6, el respiro. El único momento quieto, como este. Piesa 7, el payoff. La respuesta arriba del final. Piesa 8, la rima. El final que mira al principio. Te diste cuenta. Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta guión por la plantilla."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t2.wav",
+     "err": 0.074,
+     "dur": 60.67,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final? Con ocho piezas, siempre en el mismo orden. Y la más importante no es el gancho. Piesa uno, el gancho. Promete exactamente lo que vas a cumplir. Piesa dos, la promesa. Abre un hilo que cerrarás al final. Piesa tres, la prueba. Un dato que se ve, no que se dice. Piesa cuatro, el bucle abierto. Pero eso no es lo más loco. Piesa cinco, el giro. Cambia como se ve todo lo anterior. Piesa seis, el respiro. El único momento quieto, como este. Piesa siete, el payoff. La respuesta, arriba del final. Piesa ocho, la rima. El final que mira al principio. ¿Te diste cuenta? Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta aquí aún por la plantilla."
+    }
+   ]
+  },
+  {
+   "id": "meta",
+   "text": "¿Te diste cuenta? Este video está armado con las ocho.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "cálido",
+   "take": 1,
+   "start": 53.21,
+   "end": 57.59,
+   "words": [
+    {
+     "w": "¿Te",
+     "start": 53.21,
+     "end": 53.43
+    },
+    {
+     "w": "diste",
+     "start": 53.43,
+     "end": 53.69
+    },
+    {
+     "w": "cuenta?",
+     "start": 53.69,
+     "end": 53.97
+    },
+    {
+     "w": "Este",
+     "start": 54.48,
+     "end": 54.95
+    },
+    {
+     "w": "video",
+     "start": 54.95,
+     "end": 55.31
+    },
+    {
+     "w": "está",
+     "start": 55.31,
+     "end": 55.81
+    },
+    {
+     "w": "armado",
+     "start": 55.81,
+     "end": 56.49
+    },
+    {
+     "w": "con",
+     "start": 56.49,
+     "end": 56.71
+    },
+    {
+     "w": "las",
+     "start": 56.71,
+     "end": 56.91
+    },
+    {
+     "w": "ocho.",
+     "start": 56.91,
+     "end": 57.59
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t1.wav",
+     "err": 0.059,
+     "dur": 63.25,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final con ocho piezas? Siempre en el mismo orden. Y la más importante no es el gancho. Piesa 1, el gancho. Promete exactamente lo que vas a cumplir. Piesa 2, la promesa. Abre un hilo que cerrarás al final. Piesa 3, la prueba. Un dato que se ve, no que se dice. Piesa 4, el bucle abierto. Pero eso no es lo más loco. Piesa 5, el giro. Cambia como se ve todo lo anterior. Piesa 6, el respiro. El único momento quieto, como este. Piesa 7, el payoff. La respuesta arriba del final. Piesa 8, la rima. El final que mira al principio. Te diste cuenta. Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta guión por la plantilla."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t2.wav",
+     "err": 0.074,
+     "dur": 60.67,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final? Con ocho piezas, siempre en el mismo orden. Y la más importante no es el gancho. Piesa uno, el gancho. Promete exactamente lo que vas a cumplir. Piesa dos, la promesa. Abre un hilo que cerrarás al final. Piesa tres, la prueba. Un dato que se ve, no que se dice. Piesa cuatro, el bucle abierto. Pero eso no es lo más loco. Piesa cinco, el giro. Cambia como se ve todo lo anterior. Piesa seis, el respiro. El único momento quieto, como este. Piesa siete, el payoff. La respuesta, arriba del final. Piesa ocho, la rima. El final que mira al principio. ¿Te diste cuenta? Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta aquí aún por la plantilla."
+    }
+   ]
+  },
+  {
+   "id": "cta",
+   "text": "Llegaste al final. Guárdalo, y comenta GUION por la plantilla.",
+   "speaker": "narrador",
+   "engine": "qwen",
+   "voice": "qwen:voice-design",
+   "emotion": "neutral",
+   "take": 1,
+   "start": 58.09,
+   "end": 63.33,
+   "words": [
+    {
+     "w": "Llegaste",
+     "start": 58.09,
+     "end": 58.55
+    },
+    {
+     "w": "al",
+     "start": 58.55,
+     "end": 58.95
+    },
+    {
+     "w": "final.",
+     "start": 58.95,
+     "end": 59.27
+    },
+    {
+     "w": "Guárdalo,",
+     "start": 59.85,
+     "end": 60.53
+    },
+    {
+     "w": "y",
+     "start": 60.53,
+     "end": 61.05
+    },
+    {
+     "w": "comenta",
+     "start": 61.05,
+     "end": 61.63
+    },
+    {
+     "w": "GUION",
+     "start": 61.63,
+     "end": 62.43
+    },
+    {
+     "w": "por",
+     "start": 62.43,
+     "end": 62.69
+    },
+    {
+     "w": "la",
+     "start": 62.69,
+     "end": 62.85
+    },
+    {
+     "w": "plantilla.",
+     "start": 62.85,
+     "end": 63.33
+    }
+   ],
+   "takes": [
+    {
+     "take": 1,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t1.wav",
+     "err": 0.059,
+     "dur": 63.25,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final con ocho piezas? Siempre en el mismo orden. Y la más importante no es el gancho. Piesa 1, el gancho. Promete exactamente lo que vas a cumplir. Piesa 2, la promesa. Abre un hilo que cerrarás al final. Piesa 3, la prueba. Un dato que se ve, no que se dice. Piesa 4, el bucle abierto. Pero eso no es lo más loco. Piesa 5, el giro. Cambia como se ve todo lo anterior. Piesa 6, el respiro. El único momento quieto, como este. Piesa 7, el payoff. La respuesta arriba del final. Piesa 8, la rima. El final que mira al principio. Te diste cuenta. Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta guión por la plantilla."
+    },
+    {
+     "take": 2,
+     "file": "audio/lines/qwen-narrador-133fba33f1-t2.wav",
+     "err": 0.074,
+     "dur": 60.67,
+     "heard": "¿Cómo se arma un video que la gente vea hasta el final? Con ocho piezas, siempre en el mismo orden. Y la más importante no es el gancho. Piesa uno, el gancho. Promete exactamente lo que vas a cumplir. Piesa dos, la promesa. Abre un hilo que cerrarás al final. Piesa tres, la prueba. Un dato que se ve, no que se dice. Piesa cuatro, el bucle abierto. Pero eso no es lo más loco. Piesa cinco, el giro. Cambia como se ve todo lo anterior. Piesa seis, el respiro. El único momento quieto, como este. Piesa siete, el payoff. La respuesta, arriba del final. Piesa ocho, la rima. El final que mira al principio. ¿Te diste cuenta? Este video está armado con las ocho. Llegaste al final. Guárdalo y comenta aquí aún por la plantilla."
+    }
+   ]
+  }
+ ]
+}
