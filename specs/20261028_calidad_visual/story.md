@@ -30,6 +30,8 @@ siguen igual para las piezas que ya existen.
 | T3 | `runtime/kits/studio.js`: escena WebGL con luz, materia, sombra de contacto, grano, viñeta y dithering | S4 | hecho | `engine/runtime/kits/studio.js` (7 kinds, materiales, pantalla emisiva con rebote) |
 | T4 | Pieza de prueba de 12 s con el look; `check` + `build` + auditoría | S2, S4 | hecho | `demos/studio-look` · check PASS (0 fallas) · build PASS (WARN solo en pico true) · audit: soft 0.86, sat 0.27 |
 | T5 | Doctrina: números medidos a `video-styles` y el kit al `video-engine` | S3-S4 | hecho | `video-styles` § *Anatomía de un cuadro caro* · `video-engine` § *Kit studio* + *Producto real en DOM* |
+| T6 | Pieza bunker completa: transcripción real (whisper), 10 tomas / 119.1 s, captions palabra-a-palabra | S5 | hecho | `demos/bunker/index.html` · check PASS (1 aviso) · render en curso |
+| T7 | Arreglo de color: el reporte del usuario ("los colores se ven opacos, tristes") | S6 | hecho | causa: albedos sRGB sin convertir a lineal + tone mapping; fix en `studio.js` (srgbToLinear) y per-piece (sat/contrast/exposure) |
 
 ## Log
 
@@ -48,3 +50,18 @@ easing (la quietud y el movimiento ya empatan con la referencia): es de material
 **L3** (factibilidad): WebGL2 disponible en el Chrome headless del motor con GPU real
 (ANGLE/D3D11, GTX 1660 SUPER); raymarch de 96 pasos a 1080×1920 ≈ 0.1 ms/frame. La capacidad es
 alcanzable sin dependencias nuevas.
+
+**L4** (reporte del usuario, verbatim): "el video de hiciste no se ven los colores, se ven opacos,
+se ven super tristes". Diagnóstico: los hex se pasaban a sombreador como si ya fueran lineales y la
+codificación gamma final los levantaba dos veces → todo lavado (grises, arena crema). Fix: srgbToLinear
+en hexToRgb del kit + exposición 1.22 + sat 1.12 + cielo naranja. Verificado en stills: naranja naranja,
+tierra roja roja.
+
+**L5** (decisiones de la pieza bunker): el cuarto en corte va DELANTE del terreno (no cavidad): la luz
+no entraba a la cavidad y el original construye así (caja abierta mirando a cámara). Lámpara = luz
+puntual real del kit (uLampPos/uLampCol). MAX_OBJ subido a 20→32 porque el diorama con base profunda
+pasó de 20 objetos y el casco desaparecía en silencio. Capa base de tierra extra para que no quede
+vacío blanco abajo.
+
+**L6** (commits): `280e987` kit+audit+skills · `88e6d2d` demos studio-look+bunker · `bdbd3aa` specs.
+Rama `feature/kit-studio-bunker`. Push/PR quedan a decisión del usuario.
