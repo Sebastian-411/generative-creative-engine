@@ -71,3 +71,10 @@ vacío blanco abajo.
 
 **L6** (commits): `280e987` kit+audit+skills · `88e6d2d` demos studio-look+bunker · `bdbd3aa` specs.
 Rama `feature/kit-studio-bunker`. Push/PR quedan a decisión del usuario.
+
+**L7** (render final, 28-10 20:2x): `build` completo · verify WARN (4 PASS · 2 WARN · 2 SKIP):
+loudness -14.0 LUFS ok pero pico -1.4 dBTP (objetivo ≤ -2) · specs WARN solo por duración 119.10 s.
+quietud 0 %, negro 0 s, audio sin recortes. Auditoría sobre el video nuevo: flat 39% · soft 0.85 ·
+**sat 0.66** · rango 0.53 vs referencia (flat 57 · soft 0.70 · sat 0.43 · rango 0.39). El pase de
+saturación se pasó: el cielo quedó todo amarillo cuando la referencia tiene cielo azul arriba del patio.
+Candidato a ajuste fino según feedback del usuario.
