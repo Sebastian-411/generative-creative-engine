@@ -34,7 +34,7 @@
 // Todo lo animable se puede mover por fotograma: `set.camera({...})` y `set.object(i, {...})` aceptan
 // llamarse dentro de `onFrame` (se reescriben uniformes, no se recompila nada).
 (function () {
-  const MAX_OBJ = 32;
+  const MAX_OBJ = 48;
 
   const VERT = `#version 300 es
   in vec2 p; void main() { gl_Position = vec4(p, 0.0, 1.0); }`;

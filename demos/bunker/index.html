@@ -79,12 +79,12 @@
   // ── Paleta del original: naranja quemado, tierra roja, azul francia, amarillo casco ──
   const P = {
     sand: '#e6a75a', rock: '#7d5136', soil: '#a8402a', deep: '#792a19',
-    tent: '#f07816', tarp: '#2b7fb8', concrete: '#d6cfc0', concreteDark: '#b3a894',
+    tent: '#f07816', tarp: '#2b7fb8', concrete: '#dcc294', concreteDark: '#b8945e',
     rebar: '#ffd447', wood: '#9a6236',
     overall: '#2f74d0', vest: '#ff7a1a', hat: '#ffc107', skin: '#f7c493', boot: '#33241a',
     lamp: '#ffc074',
   };
-  const SKY = ['#e8b184', '#f8e3c0'];
+  const SKY = ['#e8a060', '#f6d294'];
 
   // ── partículas radiactivas ──
   const fx = document.getElementById('fx');
@@ -113,7 +113,8 @@
     fxc.globalAlpha = 1; fxc.shadowBlur = 0;
   }
 
-  // ───────────────────────── piezas del set ─────────────────────────
+  // ───────────────────────── el mundo: una sola escena, 42 objetos, indices estables ─────────────────────────
+  // Piezas del set (funciones puras de posicion). La construccion no vive aca: vive en ANIM + onFrame.
   function strata(w = 3.2, d = 2.0, z = 0) {
     return [
       { kind: 'box', pos: [0, 0.0, z], size: [w, 0.28, d], radius: 0.02, color: P.sand, rough: 0.95, tex: 'sand', texScale: 5, bump: 0.018 },
@@ -124,14 +125,14 @@
     ];
   }
 
-  function tent(cx, cz, lit = 1) {
+  function tent(cx, cz) {
     return [
       { kind: 'slab', pos: [cx, 0.15, cz], size: [0.9, 0.05, 1.0], radius: 0.02, color: P.tarp, rough: 0.8 },
       { kind: 'box', pos: [cx, 0.3, cz - 0.12], size: [0.9, 0.05, 0.58], radius: 0.014, color: P.tent, rough: 0.7, pitch: 1.0 },
       { kind: 'box', pos: [cx, 0.3, cz + 0.12], size: [0.9, 0.05, 0.58], radius: 0.014, color: '#f58d22', rough: 0.7, pitch: -1.0 },
       { kind: 'card', pos: [cx, 0.34, cz + 0.46], size: [0.52, 0.36, 0.02], radius: 0.01, color: P.tarp, rough: 0.6 },
-      // linterna: el único emisor del patio, y el que da el resplandor cálido del original
-      { kind: 'sphere', pos: [cx, 0.3, cz + 0.1], size: [0.07, 0.07, 0.07], color: P.lamp, rough: 0.5, glow: 2.4 * lit },
+      // linterna: el unico emisor del patio; vive siempre encendida (era su glow en todas las tomas de patio)
+      { kind: 'sphere', pos: [cx, 0.3, cz + 0.1], size: [0.07, 0.07, 0.07], color: P.lamp, rough: 0.5, glow: 2.4 },
     ];
   }
 
@@ -146,7 +147,6 @@
     ];
   }
 
-  // Cerco con banderines y un cactus: el patio del original está habitado.
   function yard(cx, cz, w) {
     return [
       { kind: 'box', pos: [cx, 0.28, cz], size: [w, 0.28, 0.05], radius: 0.01, color: '#9a6236', rough: 0.95, tex: 'wood', texScale: 8 },
@@ -154,176 +154,159 @@
     ];
   }
 
-  // Seis piezas: botas, torso con chaleco, cabeza, casco con ala.
+  // Offsets locales de las seis piezas (botas, torso con chaleco, franja, cabeza, ala y copa del casco).
+  const CHAR_PARTS = [
+    [0, 0.11, 0], [0, 0.34, 0], [0, 0.34, 0.13], [0, 0.56, 0], [0, 0.66, 0], [0, 0.72, 0],
+  ];
   function character(px, pz, yaw, baseY = 0.14) {
     const c = Math.cos(yaw), s = Math.sin(yaw);
-    const put = (lx, ly, lz) => [px + lx * c + lz * s, baseY + ly, pz - lx * s + lz * c];
-    return [
-      { kind: 'box', pos: put(0, 0.11, 0), size: [0.34, 0.22, 0.24], radius: 0.05, color: P.overall, rough: 0.85, yaw },
-      { kind: 'box', pos: put(0, 0.34, 0), size: [0.44, 0.3, 0.3], radius: 0.1, color: P.vest, rough: 0.72, yaw },
-      { kind: 'box', pos: put(0, 0.34, 0.13), size: [0.26, 0.22, 0.06], radius: 0.03, color: P.overall, rough: 0.6, yaw },
-      { kind: 'sphere', pos: put(0, 0.56, 0), size: [0.26, 0.25, 0.24], color: P.skin, rough: 0.8, yaw },
-      { kind: 'cylinder', pos: put(0, 0.66, 0), size: [0.46, 0.035, 0.46], color: P.hat, rough: 0.55, yaw },
-      { kind: 'cylinder', pos: put(0, 0.72, 0), size: [0.34, 0.14, 0.34], color: P.hat, rough: 0.55, yaw },
-    ];
-  }
-
-  // El cuarto: piso y paredes de concreto dentro de la cavidad.
-  // El cuarto es una caja en corte DELANTE del terreno (como el original): piso, pared de fondo,
-  // lateral y techo de concreto, con su lámpara. Así se lee la sección sin pelear con la cavidad.
-  function room(y0 = -1.25, z = 0.55, w = 1.5, h = 1.0) {
-    return [
-      { kind: 'box', pos: [0.1, y0, z], size: [w, 0.08, 1.15], radius: 0.01, color: P.concreteDark, rough: 0.95, tex: 'concrete', texScale: 7 },
-      { kind: 'box', pos: [0.1, y0 + h / 2, z - 0.55], size: [w, h, 0.08], radius: 0.02, color: P.concrete, rough: 0.92, tex: 'concrete', texScale: 5 },
-      { kind: 'box', pos: [0.1 - w / 2, y0 + h / 2, z], size: [0.08, h, 1.1], radius: 0.02, color: P.concrete, rough: 0.92, tex: 'concrete', texScale: 5 },
-      { kind: 'box', pos: [0.1, y0 + h, z], size: [w, 0.09, 1.15], radius: 0.02, color: P.concrete, rough: 0.94, tex: 'concrete', texScale: 6 },
-      // lámpara: el resplandor cálido que hace que el cuarto se vea habitado
-      { kind: 'sphere', pos: [0.1, y0 + h - 0.22, z + 0.25], size: [0.1, 0.1, 0.1], color: P.lamp, rough: 0.5, glow: 3.0 },
-    ];
+    const put = ([lx, ly, lz]) => [px + lx * c + lz * s, baseY + ly, pz - lx * s + lz * c];
+    const KINDS6 = ['box', 'box', 'box', 'sphere', 'cylinder', 'cylinder'];
+    const SIZES6 = [[0.34, 0.22, 0.24], [0.44, 0.3, 0.3], [0.26, 0.22, 0.06], [0.26, 0.25, 0.24], [0.46, 0.035, 0.46], [0.34, 0.14, 0.34]];
+    const RAD6 = [0.05, 0.1, 0.03, 0, 0, 0];
+    const COL6 = [P.overall, P.vest, P.overall, P.skin, P.hat, P.hat];
+    const ROUGH6 = [0.85, 0.72, 0.6, 0.8, 0.55, 0.55];
+    return CHAR_PARTS.map((p, i) => ({
+      kind: KINDS6[i], pos: put(p), size: SIZES6[i], radius: RAD6[i], color: COL6[i], rough: ROUGH6[i], yaw,
+    }));
   }
 
   const shelf = (x, y, z) => ({ kind: 'box', pos: [x, y, z], size: [1.1, 0.06, 0.3], radius: 0.01, color: P.wood, rough: 0.9, tex: 'wood', texScale: 6 });
-  const bed = (x, y, z) => ({ kind: 'box', pos: [x, y, z], size: [0.7, 0.14, 0.42], radius: 0.04, color: '#2f6f9f', rough: 0.85 });
-  const table = (x, y, z) => ({ kind: 'box', pos: [x, y, z], size: [0.6, 0.06, 0.4], radius: 0.01, color: P.wood, rough: 0.9, tex: 'wood', texScale: 6 });
   const jug = (x, y, z) => ({ kind: 'cylinder', pos: [x, y, z], size: [0.11, 0.17, 0.11], radius: 0.02, color: '#bfe3f2', rough: 0.5 });
   const can = (x, y, z) => ({ kind: 'cylinder', pos: [x, y, z], size: [0.07, 0.08, 0.07], color: '#c8ccd2', rough: 0.45, metal: 0.6 });
-  const door = (x, y, z) => [
-    { kind: 'box', pos: [x, y, z - 0.02], size: [0.78, 1.0, 0.06], radius: 0.01, color: '#454b52', rough: 0.8 },
-    { kind: 'box', pos: [x, y, z + 0.05], size: [0.62, 0.86, 0.1], radius: 0.02, color: '#5d666f', rough: 0.38, metal: 0.75 },
-    { kind: 'cylinder', pos: [x + 0.18, y - 0.05, z + 0.13], size: [0.045, 0.26, 0.045], radius: 0.01, color: '#2e3338', rough: 0.5, metal: 0.7, pitch: 1.5708 },
-  ];
   const pipe = (x, y, z, h) => ({ kind: 'cylinder', pos: [x, y, z], size: [0.13, h, 0.13], color: '#9aa3ad', rough: 0.4, metal: 0.5 });
   const filterBox = (x, y, z) => ({ kind: 'box', pos: [x, y, z], size: [0.34, 0.3, 0.3], radius: 0.03, color: '#6f7a86', rough: 0.7, metal: 0.3 });
   const rebar = (x, y, z, n) => Array.from({ length: n }, (_, i) => ({
     kind: 'cylinder', pos: [x + i * 0.28, y, z], size: [0.035, 0.5, 0.035], color: P.rebar, rough: 0.4, metal: 0.7,
   }));
 
-  // ───────────────────────── storyboard (tiempos de la transcripción) ─────────────────────────
-  const SHOTS = [
-    {
-      t0: 0, t1: 11.1, id: 'patio',
-      cam: { a: [1.9, 2.3, 7.2], b: [1.45, 2.0, 6.7], ta: [0.1, 0.15, 0], tb: [0.1, 0.1, 0], fov: 2.0 },
-      build: () => [
-        ...strata(3.4, 2.1),
-        ...tent(-0.5, 0.3),
-        ...shack(1.2, -0.5, -0.25),
-        ...yard(-0.1, -1.15, 2.1),
-        ...character(0.55, 0.95, -0.6),
-      ],
-    },
-    {
-      t0: 11.1, t1: 18.1, id: 'close',
-      cam: { a: [0.7, 1.9, 7.6], b: [0.35, 1.6, 6.9], ta: [-0.3, 0.05, 0.2], tb: [-0.3, 0.0, 0.2], fov: 2.0 },
-      build: () => [...strata(3.4, 2.1), ...tent(-0.5, 0.3), ...character(-1.05, 0.95, 0.5)],
-    },
-    {
-      t0: 18.1, t1: 28.4, id: 'blindaje',
-      cam: { a: [1.2, 1.4, 8.0], b: [0.95, 1.2, 7.5], ta: [0.1, -0.85, 0.3], tb: [0.1, -0.9, 0.3], fov: 2.0 },
-      build: () => [
-        ...strata(3.4, 2.1, -1.25),
-        ...room(-0.95, 0.55),
-        ...character(0.55, 0.72, 0.35, -0.9),
-      ],
-    },
-    {
-      t0: 28.4, t1: 40.6, id: 'concreto',
-      cam: { a: [1.1, 1.5, 7.8], b: [0.85, 1.3, 7.3], ta: [0.1, -1.0, 0.3], tb: [0.1, -1.05, 0.3], fov: 2.0 },
-      build: () => [
-        ...strata(3.4, 2.1, -1.25),
-        ...room(-1.05, 0.55, 1.5, 1.0),
-        ...rebar(-0.45, -1.0, 0.15, 3),
-        ...character(0.58, 0.72, -0.3, -1.0),
-      ],
-    },
-    {
-      t0: 40.6, t1: 50.5, id: 'codo',
-      cam: { a: [1.5, 1.9, 7.6], b: [1.2, 1.6, 7.1], ta: [0.1, -1.0, 0.3], tb: [0.1, -1.05, 0.3], fov: 2.0 },
-      build: () => [
-        ...strata(3.4, 2.1, -1.25),
-        ...room(-1.05, 0.55),
-        // el codo: un tabique a media altura que obliga a girar
-        { kind: 'box', pos: [0.05, -0.62, 0.5], size: [0.1, 0.86, 1.05], radius: 0.02, color: P.concrete, rough: 0.92, tex: 'concrete', texScale: 6 },
-        ...character(0.58, 0.72, 0.4, -1.0),
-      ],
-    },
-    {
-      t0: 50.5, t1: 71.1, id: 'ventilacion',
-      cam: { a: [1.2, 1.5, 7.6], b: [0.95, 1.3, 7.1], ta: [0.1, -1.0, 0.3], tb: [0.1, -1.05, 0.3], fov: 2.0 },
-      build: () => [
-        ...strata(3.4, 2.1, -1.25),
-        ...room(-1.05, 0.55),
-        pipe(-0.15, -0.35, 0.08, 1.1),
-        filterBox(-0.15, -0.82, 0.08),
-        ...character(0.58, 0.72, 0.3, -1.0),
-      ],
-    },
-    {
-      t0: 71.1, t1: 83.9, id: 'puerta',
-      cam: { a: [0.75, 1.05, 6.1], b: [0.5, 0.9, 5.7], ta: [-0.05, -0.6, 0.25], tb: [-0.05, -0.62, 0.25], fov: 2.0 },
-      build: () => [
-        ...strata(3.4, 2.1, -1.25),
-        ...room(-1.05, 0.55),
-        ...door(-0.15, -0.55, 0.08),
-        ...character(0.6, 0.72, 0.25, -1.0),
-      ],
-    },
-    {
-      t0: 83.9, t1: 97.9, id: 'reserva',
-      cam: { a: [0.95, 1.45, 7.3], b: [0.8, 1.2, 6.8], ta: [0.1, -0.95, 0.3], tb: [0.1, -1.0, 0.3], fov: 2.0 },
-      build: () => [
-        ...strata(3.4, 2.1, -1.25),
-        ...room(-1.05, 0.55),
-        shelf(-0.15, -0.55, 0.15),
-        jug(-0.35, -0.92, 0.3), jug(-0.12, -0.92, 0.3), can(0.12, -0.95, 0.3),
-        ...character(0.62, 0.72, -0.35, -1.0),
-      ],
-    },
-    {
-      t0: 97.9, t1: 109.1, id: 'dias',
-      cam: { a: [2.2, 2.7, 9.0], b: [1.7, 2.4, 8.4], ta: [0.1, 0.1, 0], tb: [0.1, 0.05, 0], fov: 2.0 },
-      build: () => [
-        ...strata(3.4, 2.1),
-        ...tent(-0.5, 0.3, 0.35),
-        ...shack(1.2, -0.5, -0.25),
-        ...yard(-0.1, -1.15, 2.1),
-        ...character(0.55, 0.95, -0.6),
-      ],
-    },
-    {
-      t0: 109.1, t1: 119.1, id: 'cierre',
-      cam: { a: [2.5, 3.2, 9.4], b: [1.9, 2.7, 10.6], ta: [0.1, 0.1, 0], tb: [0.1, 0.0, 0], fov: 2.0 },
-      build: () => [
-        ...strata(3.4, 2.1),
-        ...tent(-0.5, 0.3),
-        ...shack(1.2, -0.5, -0.25),
-        ...yard(-0.1, -1.15, 2.1),
-        ...character(0.55, 0.95, -0.6),
-      ],
-    },
+  // El cuarto (y0=-1.05, z=0.55, w=1.5, h=1.0): piso, fondo, lateral, techo y la esfera de la lampara.
+  const ROOM = [
+    { kind: 'box', pos: [0.1, -1.05, 0.55], size: [1.5, 0.08, 1.15], radius: 0.01, color: P.concreteDark, rough: 0.95, tex: 'concrete', texScale: 7 },
+    { kind: 'box', pos: [0.1, -0.55, 0.0], size: [1.5, 1.0, 0.08], radius: 0.02, color: P.concrete, rough: 0.92, tex: 'concrete', texScale: 5 },
+    { kind: 'box', pos: [-0.65, -0.55, 0.55], size: [0.08, 1.0, 1.1], radius: 0.02, color: P.concrete, rough: 0.92, tex: 'concrete', texScale: 5 },
+    { kind: 'box', pos: [0.1, -0.05, 0.55], size: [1.5, 0.09, 1.15], radius: 0.02, color: P.concrete, rough: 0.94, tex: 'concrete', texScale: 6 },
+    { kind: 'sphere', pos: [0.1, -0.27, 0.8], size: [0.1, 0.1, 0.1], color: P.lamp, rough: 0.5, glow: 0 },
   ];
+  // El codo: tabique a media altura que obliga a girar.
+  const TABIQUE = { kind: 'box', pos: [0.05, -0.62, 0.5], size: [0.1, 0.86, 1.05], radius: 0.02, color: P.concrete, rough: 0.92, tex: 'concrete', texScale: 6 };
+  // Puerta blindada: marco, hoja y manija.
+  const DOOR = [
+    { kind: 'box', pos: [-0.15, -0.55, 0.06], size: [0.78, 1.0, 0.06], radius: 0.01, color: '#454b52', rough: 0.8 },
+    { kind: 'box', pos: [-0.15, -0.55, 0.13], size: [0.62, 0.86, 0.1], radius: 0.02, color: '#5d666f', rough: 0.38, metal: 0.75 },
+    { kind: 'cylinder', pos: [0.03, -0.6, 0.26], size: [0.045, 0.26, 0.045], radius: 0.01, color: '#2e3338', rough: 0.5, metal: 0.7, pitch: 1.5708 },
+  ];
+  // Brocal: la losa frontal del terreno. En las tomas de superficie completa el piso hasta adelante;
+  // en el corte al subsuelo se hunde (es el "telon" del corte) y vuelve a subir al salir.
+  const BROCAL = { kind: 'box', pos: [0, 0, 0.6], size: [3.4, 0.28, 1.6], radius: 0.02, color: P.sand, rough: 0.95, tex: 'sand', texScale: 5, bump: 0.018 };
 
+  const WORLD = [
+    ...strata(3.4, 2.1, -1.25),                    // 0..4  terreno (siempre existe)
+    BROCAL,                                        // 5     brocal hundible
+    ...tent(-0.5, 0.3),                            // 6..10 carpa
+    ...shack(1.2, -0.5, -0.25),                    // 11..14 casita
+    ...yard(-0.1, -1.15, 2.1),                     // 15..16 cerco + cactus
+    ...character(0.55, 0.95, -0.6),                // 17..22 personaje (su pose la manda CHAR_BY_ID)
+    ...ROOM,                                       // 23..27 cuarto (construido)
+    ...rebar(-0.45, -1.0, 0.15, 3),                // 28..30 hierros
+    TABIQUE,                                       // 31 tabique del codo
+    pipe(-0.15, -0.35, 0.08, 1.1),                 // 32 caño
+    filterBox(-0.15, -0.82, 0.08),                 // 33 filtro
+    ...DOOR,                                       // 34..36 puerta
+    shelf(-0.15, -0.55, 0.15),                     // 37 estante
+    jug(-0.35, -0.92, 0.3),                        // 38 bidon 1
+    jug(-0.12, -0.92, 0.3),                        // 39 bidon 2
+    can(0.12, -0.95, 0.3),                         // 40 lata
+    { kind: 'box', pos: [0, -2.68, 0.6], size: [3.4, 1.36, 1.6], radius: 0.02, color: P.deep, rough: 1.0, tex: 'soil', texScale: 1.6, bump: 0.04 }, // 41 relleno: tierra bajo el brocal (y -3.36..-2, la banda que queda hueca al hundirlo)
+  ];
+  const IDX = { BROCAL: 5, CHAR0: 17, PISO: 23, FONDO: 24, LATERAL: 25, TECHO: 26, LAMP: 27, REBAR: 28, TABIQUE: 31, CAÑO: 32, PIPE: 32, FILTRO: 33, MARCO: 34, HOJA: 35, MANIJA: 36, ESTANTE: 37, BIDON1: 38, BIDON2: 39, LATA: 40 };
+
+  // ───────────────────────── storyboard: tiempos y camaras (los cortes siguen, la reconstruccion no) ─────────────────────────
+  // Camara: el recorrido a→b se agrando ~35% respecto del take fijo y suma micro-deriva handheld en onFrame.
+  const SHOTS = [
+    { t0: 0,     t1: 11.1,  id: 'patio',        cam: { a: [2.05, 2.4, 7.4],  b: [1.22, 1.82, 6.4],  ta: [0.1, 0.15, 0],  tb: [0.1, 0.1, 0] } },
+    { t0: 11.1,  t1: 18.1,  id: 'close',        cam: { a: [1.0, 2.2, 7.6],   b: [0.18, 1.42, 6.65], ta: [-0.3, 0.05, 0.2], tb: [-0.3, 0.0, 0.2] } },
+    { t0: 18.1,  t1: 28.4,  id: 'blindaje',     cam: { a: [1.25, 1.45, 8.1], b: [0.89, 1.14, 7.35], ta: [0.1, -0.85, 0.3], tb: [0.1, -0.9, 0.3] } },
+    { t0: 28.4,  t1: 40.6,  id: 'concreto',     cam: { a: [1.2, 1.6, 8.0],   b: [0.79, 1.18, 7.08], ta: [0.1, -1.0, 0.3], tb: [0.1, -1.05, 0.3] } },
+    { t0: 40.6,  t1: 50.5,  id: 'codo',         cam: { a: [1.8, 2.15, 7.6],  b: [0.96, 1.41, 6.7],  ta: [0.1, -1.0, 0.3], tb: [0.1, -1.05, 0.3] } },
+    { t0: 50.5,  t1: 71.1,  id: 'ventilacion',  cam: { a: [1.35, 1.65, 7.6], b: [0.84, 1.18, 6.8],  ta: [0.1, -1.0, 0.3], tb: [0.1, -1.05, 0.3] } },
+    { t0: 71.1,  t1: 83.9,  id: 'puerta',       cam: { a: [1.05, 1.25, 6.2], b: [0.28, 0.78, 5.55], ta: [-0.05, -0.6, 0.25], tb: [-0.05, -0.62, 0.25] } },
+    { t0: 83.9,  t1: 97.9,  id: 'reserva',      cam: { a: [1.1, 1.7, 7.35],  b: [0.66, 1.0, 6.4],   ta: [0.1, -0.95, 0.3], tb: [0.1, -1.0, 0.3] } },
+    { t0: 97.9,  t1: 109.1, id: 'dias',         cam: { a: [2.5, 3.05, 9.0],  b: [1.25, 2.1, 7.7],   ta: [0.0, 0.1, 0], tb: [0.0, 0.05, 0] } },
+    { t0: 109.1, t1: 119.1, id: 'cierre',       cam: { a: [2.75, 3.6, 8.35], b: [1.3, 2.15, 11.3],   ta: [0.0, 0.1, 0], tb: [0.0, 0.0, 0] } },
+  ];
   const shotAt = (t) => SHOTS.find((s) => t >= s.t0 && t < s.t1) || SHOTS[SHOTS.length - 1];
+
+  // El personaje vive en el mismo mundo: su pose (px,pz,yaw,baseY) la define la toma, con un unico
+  // tramo animado (la caminata del close). En los cortes la teletransportacion la tapa el propio corte.
+  const CHAR_POSES = {
+    surface: { x: 0.55, z: 0.95, yaw: -0.6, y: 0.14 },
+    room:    { x: 0.58, z: 0.72, yaw: 0.3,  y: -1.0 },
+  };
+  const CHAR_BY_ID = {
+    patio: 'surface', dias: 'surface', cierre: 'surface',
+    blindaje: 'room', concreto: 'room', codo: 'room', ventilacion: 'room', puerta: 'room', reserva: 'room',
+  };
 
   const LIGHT = {
     key: { dir: [-0.5, 0.95, 0.45], color: '#ffeec9', power: 0.95 },
     fill: { color: '#6a90e0', power: 0.1 },
     rim: { color: '#ffb968', power: 0.2 },
   };
+  const LAMP = { pos: [0.1, -0.45, 0.8], color: '#ffb765', power: 2.6 };
 
-  let active = null;
-  function enterShot(s) {
-    active = s;
-    const LAMP = ['blindaje', 'concreto', 'codo', 'ventilacion', 'puerta', 'reserva'].includes(s.id)
-      ? { pos: [0.1, -0.45, 0.8], color: '#ffb765', power: 2.6 } : null;
-    set.scene({
-      lamp: LAMP,
-      background: SKY, fog: 0.01, fogColor: '#f2dcbb', floor: { off: true },
-      light: LIGHT, screenColor: '#8dffa8',
-      hole: s.hole || null,
-      post: { grain: 0.026, vignette: 0.26, exposure: 1.22, dither: true, seed: 5, sat: 1.12, contrast: 1.08 },
-      objects: s.build(),
-    });
-  }
+  // ── construccion animada (S9): cada objeto del cuarto entra a su tiempo de narracion ──
+  const clamp01 = (v) => Math.max(0, Math.min(1, v));
+  const easeOutBack = (v) => {
+    const c1 = 1.70158, c3 = c1 + 1;
+    const u = v - 1;
+    return 1 + c3 * u * u * u + c1 * u * u;
+  };
+  const easeOut2 = (v) => 1 - (1 - v) * (1 - v); // power2.out: sin rebote
+  const vAt = (a, t) => clamp01((t - a.at) / (a.dur || 0.7));
+
+  const ANIM = [
+    // el brocal es el telon del corte: se hunde al entrar al subsuelo y vuelve a subir al salir
+    { i: IDX.BROCAL, kind: 'sink', base: BROCAL, seg: [[18.3, 18.7, 1], [97.9, 98.4, 0]], d: 3.5, dur: 0.45 },
+    // cuarto: sube de la tierra, el techo baja del cielo, la lampara prende (pop + glow con fade)
+    { i: IDX.PISO,    kind: 'rise', base: ROOM[0], at: 19.0, dur: 0.8, d: 2.5 },
+    { i: IDX.FONDO,   kind: 'rise', base: ROOM[1], at: 20.0, dur: 0.9, d: 2.6 },
+    { i: IDX.LATERAL, kind: 'rise', base: ROOM[2], at: 21.2, dur: 0.9, d: 2.6 },
+    { i: IDX.TECHO,   kind: 'drop', base: ROOM[3], at: 23.0, dur: 0.7, d: 1.2 },
+    { i: IDX.LAMP,    kind: 'pop',  base: ROOM[4], at: 24.0, dur: 0.5, glow: { at: 24.0, dur: 0.6, to: 3.0 } },
+    // concreto armado: los tres hierros brotan del piso (d=1.0 los dejaria flotando bajo el piso
+    // antes de su turno; con d=2.6 suben desde abajo del cuadro y del brocal hundido)
+    { i: IDX.REBAR,     kind: 'rise', base: WORLD[IDX.REBAR],     at: 30.0, dur: 0.7, d: 2.6 },
+    { i: IDX.REBAR + 1, kind: 'rise', base: WORLD[IDX.REBAR + 1], at: 30.9, dur: 0.7, d: 2.6 },
+    { i: IDX.REBAR + 2, kind: 'rise', base: WORLD[IDX.REBAR + 2], at: 31.8, dur: 0.7, d: 2.6 },
+    // entrada en codo: el tabique sale de la tierra y avanza hasta su lugar
+    // (d=0.8 lo dejaria media placa pegada a la cara del terreno antes de 43.0; d=1.3 lo entierra entero)
+    { i: IDX.TABIQUE, kind: 'slideZ', base: TABIQUE, at: 43.0, dur: 0.7, d: 1.3 },
+    // ventilacion: el caño crece desde la superficie hacia adentro y el filtro ensarta en su base
+    { i: IDX.PIPE,   kind: 'growDown', base: WORLD[IDX.PIPE],   at: 53.0, dur: 1.2 },
+    { i: IDX.FILTRO, kind: 'pop',      base: WORLD[IDX.FILTRO], at: 54.6, dur: 0.6 },
+    // puerta blindada: marco que sube, hoja que se desliza al marco (power2.out, sin rebote), manija que pop
+    { i: IDX.MARCO,  kind: 'rise',   base: DOOR[0], at: 73.0, dur: 0.8, d: 2.6 },
+    { i: IDX.HOJA,   kind: 'slideX', base: DOOR[1], at: 74.2, dur: 0.9, d: 1.1, ease: easeOut2 },
+    { i: IDX.MANIJA, kind: 'pop',    base: DOOR[2], at: 75.6, dur: 0.5 },
+    // reserva: el estante baja del techo y las provisiones popcean sobre el piso del cuarto
+    // (el estante baja 1.2 hasta su lugar; 1.0 lo dejaria asomando sobre el techo antes de su turno)
+    { i: IDX.ESTANTE, kind: 'drop', base: WORLD[IDX.ESTANTE], at: 86.0, dur: 0.8, d: 1.2 },
+    { i: IDX.BIDON1,  kind: 'pop',  base: WORLD[IDX.BIDON1],  at: 88.2, dur: 0.5 },
+    { i: IDX.BIDON2,  kind: 'pop',  base: WORLD[IDX.BIDON2],  at: 89.2, dur: 0.5 },
+    { i: IDX.LATA,    kind: 'pop',  base: WORLD[IDX.LATA],    at: 90.6, dur: 0.5 },
+  ];
+
+  // El cuarto existe desde el primer fotograma (sin la luz de la lampara encendida, no habria
+  // por que reconstruir la escena jamas). ANIM arranca los objetos en su estado oculto.
+  set.scene({
+    background: SKY, fog: 0.01, fogColor: '#f2dcbb', floor: { off: true },
+    lamp: LAMP,
+    light: LIGHT, screenColor: '#8dffa8', hole: null,
+    post: { grain: 0.026, vignette: 0.26, exposure: 1.22, dither: true, seed: 5, sat: 1.22, contrast: 1.08 },
+    objects: WORLD,
+  });
+  for (const a of ANIM) applyAnim(a, 0);
 
   // ── Texto: caption palabra por palabra (tiempos reales del original) ──
   const wordEl = document.getElementById('word');
@@ -372,15 +355,94 @@
   // La linterna se enciende cuando el personaje entra (0–4 s), como en el original.
   stage.sfx('sparkle', 3.6, -20);
 
+  // Aplicar la animacion de un objeto en el tiempo t: funcion pura de t (el motor hace seek).
+  // El estado oculto es v=0; despues de la animacion el objeto queda quieto en su base (v=1).
+  function applyAnim(a, t) {
+    const b = a.base;
+    const v = vAt(a, t);
+    const patch = {};
+    if (a.kind === 'rise') {
+      patch.pos = [b.pos[0], b.pos[1] - a.d * (1 - easeOutBack(v)), b.pos[2]];
+    } else if (a.kind === 'drop') {
+      patch.pos = [b.pos[0], b.pos[1] + a.d * (1 - easeOutBack(v)), b.pos[2]];
+    } else if (a.kind === 'slideZ') {
+      patch.pos = [b.pos[0], b.pos[1], b.pos[2] - a.d * (1 - easeOutBack(v))];
+    } else if (a.kind === 'slideX') {
+      const ve = (a.ease || easeOutBack)(v);
+      patch.pos = [b.pos[0] - a.d * (1 - ve), b.pos[1], b.pos[2]];
+    } else if (a.kind === 'growDown') {
+      const h = Math.max(0.002, b.size[1] * v);
+      patch.size = [b.size[0], h, b.size[2]];
+      patch.pos = [b.pos[0], b.pos[1] + (b.size[1] - h) / 2, b.pos[2]];
+    } else if (a.kind === 'pop') {
+      // k=0.25+0.75*v con easeOutBack (rebote). Con v=0 el objeto es un punto: escondido.
+      const k = v > 0 ? 0.25 + 0.75 * easeOutBack(v) : 0.002;
+      patch.size = [b.size[0] * k, b.size[1] * k, b.size[2] * k];
+      patch.pos = [...b.pos];
+    } else if (a.kind === 'sink') {
+      // brocal: telon del corte. Segun el tramo, baja (1) o vuelve a subir (0).
+      let w = 0;
+      for (const [t0, t1, to] of a.seg) {
+        const p = clamp01((t - t0) / (t1 - t0));
+        if (p > 0) w = to === 1 ? easeOut2(p) : 1 - easeOut2(p);
+      }
+      patch.pos = [b.pos[0], b.pos[1] - a.d * w, b.pos[2]];
+    }
+    if (a.glow) patch.glow = a.glow.to * clamp01((t - a.glow.at) / a.glow.dur);
+    set.object(a.i, patch);
+  }
+
+  // Pose del personaje en t: por toma (teletransporte tapado por el corte) + caminata del close.
+  function charPose(t, id) {
+    let p = CHAR_POSES[CHAR_BY_ID[id]] || CHAR_POSES.surface;
+    let dy = 0, moving = 0;
+    if (id === 'blindaje') {
+      // 18.1-19.9: enterrado en el relleno (el piso del cuarto sube a 19.0); 19.9-20.5: emerge del piso
+      const w = easeOutBack(clamp01((t - 19.9) / 0.6));
+      p = { x: CHAR_POSES.room.x, z: CHAR_POSES.room.z, yaw: CHAR_POSES.room.yaw, y: -3.9 + 2.9 * w };
+    }
+    if (id === 'close') {
+      const base = CHAR_POSES.surface, end = { x: -0.15, z: 0.55, yaw: 0.5, y: 0.14 };
+      const w = easeOut2(clamp01((t - 12) / 5));
+      p = { x: base.x + (end.x - base.x) * w, z: base.z + (end.z - base.z) * w, yaw: base.yaw + (end.yaw - base.yaw) * w, y: base.y };
+      moving = clamp01((t - 12) / 0.3) * clamp01((17 - t) / 0.3);
+    }
+    if (moving > 0) dy += Math.abs(Math.sin(t * 5)) * 0.02 * moving; // sube-y-baja de la caminata
+    return { p, dy, moving };
+  }
+
+  // Posicion de camara en t: interpolacion cuadratica a→b de la toma (recorrido agrandado ~35%).
+  const camAt = (s, e, k) => s.cam.a[k] + (s.cam.b[k] - s.cam.a[k]) * e;
+
   stage.onFrame((t) => {
     const s = shotAt(t);
-    if (s !== active) enterShot(s);
-    const c = s.cam, u = Math.min(1, Math.max(0, (t - s.t0) / (s.t1 - s.t0)));
+    // construccion: cada objeto en su tiempo, calculado por frame (nada se reconstruye)
+    for (const a of ANIM) applyAnim(a, t);
+    // personaje: pose por toma + idle bob permanente (funcion pura de t)
+    const { p, dy, moving } = charPose(t, s.id);
+    const c = Math.cos(p.yaw), sn = Math.sin(p.yaw);
+    for (let i = 0; i < CHAR_PARTS.length; i++) {
+      const [lx, ly, lz] = CHAR_PARTS[i];
+      set.object(IDX.CHAR0 + i, {
+        pos: [p.x + lx * c + lz * sn, p.y + ly + dy + Math.sin(t * 2.4 + i * 0.7) * 0.006, p.z - lx * sn + lz * c],
+        yaw: p.yaw,
+      });
+    }
+    // camara: mismo tween a→b por toma, recorrido agrandado, fov fijo 2.0 + micro-deriva handheld
+    const u = Math.min(1, Math.max(0, (t - s.t0) / (s.t1 - s.t0)));
     const e = 1 - (1 - u) * (1 - u);
     set.camera({
-      pos: [c.a[0] + (c.b[0] - c.a[0]) * e, c.a[1] + (c.b[1] - c.a[1]) * e, c.a[2] + (c.b[2] - c.a[2]) * e],
-      target: [c.ta[0] + (c.tb[0] - c.ta[0]) * e, c.ta[1] + (c.tb[1] - c.ta[1]) * e, c.ta[2] + (c.tb[2] - c.ta[2]) * e],
-      fov: c.fov,
+      pos: [
+        camAt(s, e, 0) + Math.sin(t * 0.63) * 0.03,
+        camAt(s, e, 1) + Math.sin(t * 1.1) * 0.02,
+        camAt(s, e, 2),
+      ],
+      target: [
+        s.cam.ta[0] + (s.cam.tb[0] - s.cam.ta[0]) * e,
+        s.cam.ta[1] + (s.cam.tb[1] - s.cam.ta[1]) * e,
+        s.cam.ta[2] + (s.cam.tb[2] - s.cam.ta[2]) * e,
+      ],
+      fov: 2.0,
     });
     set.draw(t);
     // Partículas: lluvia radiactiva en el patio, apenas dentro del cuarto.
