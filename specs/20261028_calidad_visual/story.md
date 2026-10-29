@@ -93,3 +93,9 @@ Candidato a ajuste fino según feedback del usuario.
 personaje que camina y emerge, deriva de cámara). Desviaciones documentadas: distancias d mayores que
 las pedidas para que nada asome antes de turno; la luz puntual queda fija desde el scene único (el kit
 no expone uLampCol por frame). Commits: `0ca989c` pieza+kit, este L8 en el spec.
+
+**L9** (render final v2, 28-10 ~21:5x): fix de tablas flotantes commiteado (`5d0780e`) y re-render.
+Verify: 5 PASS · 2 WARN · 0 FAIL (loudness pico -1.4 dBTP y duración exacta; sin voz por pedido).
+movimiento diff media 5.59 · quietud 0% · negro 0s. Hoja de contacto limpia: nada flotando, el cuarto
+sube de la tierra toma a toma. Entrega final: `demos/bunker/render/bunker.mp4` (19 MB) · `final.mp4`
+(297 MB). Merge a master y push por pedido explícito del usuario.
