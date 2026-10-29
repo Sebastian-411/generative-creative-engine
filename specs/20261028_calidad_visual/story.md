@@ -31,7 +31,17 @@ siguen igual para las piezas que ya existen.
 | T4 | Pieza de prueba de 12 s con el look; `check` + `build` + auditoría | S2, S4 | hecho | `demos/studio-look` · check PASS (0 fallas) · build PASS (WARN solo en pico true) · audit: soft 0.86, sat 0.27 |
 | T5 | Doctrina: números medidos a `video-styles` y el kit al `video-engine` | S3-S4 | hecho | `video-styles` § *Anatomía de un cuadro caro* · `video-engine` § *Kit studio* + *Producto real en DOM* |
 | T6 | Pieza bunker completa: transcripción real (whisper), 10 tomas / 119.1 s, captions palabra-a-palabra | S5 | hecho | `demos/bunker/index.html` · check PASS (1 aviso) · render en curso |
+| T8 | Mundo persistente + construcción animada (S8-S9) | S8-S9 | en curso | — |
 | T7 | Arreglo de color: el reporte del usuario ("los colores se ven opacos, tristes") | S6 | hecho | causa: albedos sRGB sin convertir a lineal + tone mapping; fix en `studio.js` (srgbToLinear) y per-piece (sat/contrast/exposure) |
+
+**S8.** (feedback del usuario, verbatim) "me gusta me parece que esta cabron, pero parecen screenshoots,
+lo chimba del video que te mostre es que es dinamico, todo se va construyendo y es super animado y super bonito".
+
+**S9.** (decisión de arquitectura para S8) El bunker pasa de 10 escenas reconstruidas por corte a UN
+mundo persistente: el terreno y el patio existen siempre; el cuarto y cada sistema (rebar, tabique,
+caño, puerta, estantes) entran ANIMADOS a su tiempo de narración (suben de abajo, crecen, se deslizan)
+con easing de rebote; el brocal frontal del terreno se hunde al cortar al interior y vuelve al salir;
+cámara con deriva y micro-bob continuo; personaje con idle bob y caminata en el close.
 
 ## Log
 
