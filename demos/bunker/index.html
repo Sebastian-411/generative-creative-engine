@@ -217,7 +217,7 @@
     jug(-0.35, -0.92, 0.3),                        // 38 bidon 1
     jug(-0.12, -0.92, 0.3),                        // 39 bidon 2
     can(0.12, -0.95, 0.3),                         // 40 lata
-    { kind: 'box', pos: [0, -2.68, 0.6], size: [3.4, 1.36, 1.6], radius: 0.02, color: P.deep, rough: 1.0, tex: 'soil', texScale: 1.6, bump: 0.04 }, // 41 relleno: tierra bajo el brocal (y -3.36..-2, la banda que queda hueca al hundirlo)
+    { kind: 'box', pos: [0, -3.3, 0.5], size: [3.4, 0.7, 1.4], radius: 0.02, color: P.deep, rough: 1.0, tex: 'soil', texScale: 1.6, bump: 0.04 }, // 41 relleno: y -3.65..-2.95, cara frontal z=-0.2 coplanar al terreno (sin banda visible)
   ];
   const IDX = { BROCAL: 5, CHAR0: 17, PISO: 23, FONDO: 24, LATERAL: 25, TECHO: 26, LAMP: 27, REBAR: 28, TABIQUE: 31, CAÑO: 32, PIPE: 32, FILTRO: 33, MARCO: 34, HOJA: 35, MANIJA: 36, ESTANTE: 37, BIDON1: 38, BIDON2: 39, LATA: 40 };
 
@@ -270,9 +270,9 @@
     { i: IDX.BROCAL, kind: 'sink', base: BROCAL, seg: [[18.3, 18.7, 1], [97.9, 98.4, 0]], d: 3.5, dur: 0.45 },
     // cuarto: sube de la tierra, el techo baja del cielo, la lampara prende (pop + glow con fade)
     { i: IDX.PISO,    kind: 'rise', base: ROOM[0], at: 19.0, dur: 0.8, d: 2.5 },
-    { i: IDX.FONDO,   kind: 'rise', base: ROOM[1], at: 20.0, dur: 0.9, d: 2.6 },
-    { i: IDX.LATERAL, kind: 'rise', base: ROOM[2], at: 21.2, dur: 0.9, d: 2.6 },
-    { i: IDX.TECHO,   kind: 'drop', base: ROOM[3], at: 23.0, dur: 0.7, d: 1.2 },
+    { i: IDX.FONDO,   kind: 'rise', base: ROOM[1], at: 20.0, dur: 0.9, d: 2.95 },
+    { i: IDX.LATERAL, kind: 'rise', base: ROOM[2], at: 21.2, dur: 0.9, d: 2.95 },
+    { i: IDX.TECHO,   kind: 'rise', base: ROOM[3], at: 23.0, dur: 0.7, d: 3.25 },
     { i: IDX.LAMP,    kind: 'pop',  base: ROOM[4], at: 24.0, dur: 0.5, glow: { at: 24.0, dur: 0.6, to: 3.0 } },
     // concreto armado: los tres hierros brotan del piso (d=1.0 los dejaria flotando bajo el piso
     // antes de su turno; con d=2.6 suben desde abajo del cuadro y del brocal hundido)
@@ -286,12 +286,12 @@
     { i: IDX.PIPE,   kind: 'growDown', base: WORLD[IDX.PIPE],   at: 53.0, dur: 1.2 },
     { i: IDX.FILTRO, kind: 'pop',      base: WORLD[IDX.FILTRO], at: 54.6, dur: 0.6 },
     // puerta blindada: marco que sube, hoja que se desliza al marco (power2.out, sin rebote), manija que pop
-    { i: IDX.MARCO,  kind: 'rise',   base: DOOR[0], at: 73.0, dur: 0.8, d: 2.6 },
+    { i: IDX.MARCO,  kind: 'rise',   base: DOOR[0], at: 73.0, dur: 0.8, d: 2.95 },
     { i: IDX.HOJA,   kind: 'slideX', base: DOOR[1], at: 74.2, dur: 0.9, d: 1.1, ease: easeOut2 },
     { i: IDX.MANIJA, kind: 'pop',    base: DOOR[2], at: 75.6, dur: 0.5 },
     // reserva: el estante baja del techo y las provisiones popcean sobre el piso del cuarto
     // (el estante baja 1.2 hasta su lugar; 1.0 lo dejaria asomando sobre el techo antes de su turno)
-    { i: IDX.ESTANTE, kind: 'drop', base: WORLD[IDX.ESTANTE], at: 86.0, dur: 0.8, d: 1.2 },
+    { i: IDX.ESTANTE, kind: 'rise', base: WORLD[IDX.ESTANTE], at: 86.0, dur: 0.8, d: 2.75 },
     { i: IDX.BIDON1,  kind: 'pop',  base: WORLD[IDX.BIDON1],  at: 88.2, dur: 0.5 },
     { i: IDX.BIDON2,  kind: 'pop',  base: WORLD[IDX.BIDON2],  at: 89.2, dur: 0.5 },
     { i: IDX.LATA,    kind: 'pop',  base: WORLD[IDX.LATA],    at: 90.6, dur: 0.5 },
