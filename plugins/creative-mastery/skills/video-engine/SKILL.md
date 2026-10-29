@@ -29,6 +29,7 @@ Todos viven en `engine/` (relativo a esta skill) y reciben la carpeta de la piez
 | `node engine/capture-site.mjs <url> <pieza> [--dpi 2] [--max-height 8000] [--mobile] [--exclude-selector sel]` | Captura un sitio: full-page a densidad 2× acotada, shot del viewport y variante móvil opcional → `capture/` con `capture.json` (colores, fuentes, logos, wording exacto). Los banners de cookies/chat no se detectan solos: se ocultan con `--exclude-selector` |
 | `node engine/variants.mjs <pieza>` | Lee `variants.json` (una fila `{name, overrides}` por variante: params de script.json, texto por línea, find/replace sobre index.html) y materializa una carpeta hermana por fila, corriendo voz + build en cada una; una fila que falla aborta el lote con resumen (SKIP razonado si la voz no está disponible) |
 | `node engine/export-alpha.mjs <pieza> [--formats webm,prores,png] [--from 0] [--to <dur>] [--times 0.5,2.1]` | Export con alpha (VP9/ProRes 4444 + PNG sueltos) a `render/alpha/` con `alpha.json`; ruta on-demand que no toca el render normal; con `--times` solo exporta PNG (webm/prores quedan SKIP con razón) |
+| `node engine/visual-audit.mjs <pieza\|mp4…> [--refs-from lista.txt]` | Mide el **perfil de imagen** de una pieza y lo compara con un grupo de referencias: área plana, suavidad de borde, saturación, rango tonal, detalle. No rankea calidad; dice si el cuadro es un póster de vectores o una escena con luz (ver la sección *Perfil de imagen* abajo) |
 | `node engine/analyze-reference.mjs <video.mp4> [--out dir] [--scene-thresh 0.3]` | Deconstruye una referencia en números: duración, cortes aproximados, CV de cadencia, quietud, hoja de contacto → `analysis/cut-sheet.md`; heurística declarada como aproximada |
 | `node engine/bench.mjs <pieza\|video.mp4…> [--profile benchmark] [--out dir]` | Mide una o más piezas/MP4: specs ffprobe, movimiento a 2 Hz, quietud, black frames y audio → `bench.md` + `bench.json` (los 4 checks del hub) |
 | `node engine/selftest.mjs` | Prueba el oráculo solo: genera MP4/WAV defectuosos sintéticos al vuelo (ffmpeg, dir temporal) y demuestra cada leg con un fixture que lo rompe (FAIL) y uno de input faltante (SKIP con razón) |
@@ -102,6 +103,72 @@ Además de contrato, errores de carga, texto cortado / fuera de zona segura / ch
 Si comparas fotogramas a mano para buscar no determinismo, hazlo con un solo worker (`render.mjs --workers 1` o dos capturas de `stills`): Chrome en procesos paralelos puede rasterizar el antialiasing ±1–3 niveles distinto, y eso no es un bug de la pieza.
 
 `data-hold` en un elemento declara quietud intencional: no cuenta para `line_unread` y el tiempo en que se ve no cuenta como tramo muerto. `data-qa-ignore` saca un elemento de todos los chequeos de texto. Cada hallazgo de texto, fuente o primer cuadro deja un recorte en `review/findings/finding-NN-<código>.png` y su ruta al final de la línea en `auto.md`.
+
+## Kit `studio` (set 3D con luz)
+
+`/__engine/kits/studio.js` renderiza una escena 3D por WebGL2 dentro de la misma página: objetos con volumen, luz principal con **sombra suave**, relleno, rim, oclusión ambiental, piso con contacto, niebla, grano, viñeta y dithering. Es la respuesta al problema "el cuadro se ve barato": rectángulos y círculos planos no tienen luz, y ninguna curva de easing arregla eso.
+
+```html
+<canvas id="set"></canvas>
+<script src="/__engine/kits/studio.js"></script>
+<script>
+  const set = Studio.create(stage, { canvas: 'set' });
+  set.scene({
+    background: ['#0a0f18', '#22304a'], fog: 0.07,
+    floor: { color: '#0b0f16', rough: 0.58 },
+    light: { key: { dir: [-0.55, 0.95, 0.35], color: '#fff0d8', power: 1.32 },
+             fill: { color: '#78a5ff', power: 0.3 }, rim: { color: '#ffd2a1', power: 0.58 } },
+    screenColor: '#4f9dff',
+    post: { grain: 0.042, vignette: 0.36, exposure: 1.04, dither: true, seed: 11 },
+    objects: [
+      { kind: 'slab',  pos: [0.62, 0.09, 0], size: [0.92, 0.18, 0.66], radius: 0.045, color: '#efe6d8', rough: 0.55 },
+      { kind: 'phone', pos: [0.55, 0.36, 0.04], size: [0.26, 0.54, 0.04], radius: 0.028,
+        color: '#0b0e14', rough: 0.24, yaw: 0.32, screen: { glow: 0.9, w: 0.74, h: 0.8 } },
+    ],
+  });
+  set.camera({ pos: [0.42, 0.78, 5.6], target: [0.42, 0.42, 0], fov: 1.75, roll: -0.012 });
+  stage.onFrame((t) => { set.camera({ pos: [0.42, 0.78, 5.6 - t * 0.08] }); set.draw(t); });
+</script>
+```
+
+| Pieza | Qué es |
+|---|---|
+| `kind` | `slab` (caja redondeada), `box`, `sphere` (elipsoide), `cylinder`, `card` (lámina fina), `stack` (pila de láminas: servidores, libros, platos), `phone` (cuerpo + pantalla emisiva) |
+| `size` | **tamaño completo** en unidades de mundo (el kit usa semiextensión por dentro) |
+| `yaw` / `pitch` | rotación en radianes, horaria sobre Y y sobre X |
+| `screen` | `{ glow, w, h }` — pantalla emisiva con hotspot, y la luz que **rebota** sobre lo que tiene cerca |
+| `rough` / `metal` | material; `rough` alto = arcilla/papel, bajo = vidrio/metal |
+
+Reglas del kit (el QA y el ojo las piden):
+
+1. **Movimiento por `tl`**, como todo: animá `cam` con un tween y pasalo a `set.camera()` dentro de `onFrame`. El kit es función pura de t y de su estado.
+2. **Una sola cosa en vuelo** además de la cámara; la cámara nunca se apaga (empuje 5–15 % en la pieza).
+3. **La pantalla emisiva es el único blanco que quema**: si dos objetos brillan, el cuadro pierde jerarquía.
+4. **Nada de UI falsa dentro de la pantalla**: el kit pinta una imagen encendida, no un dashboard inventado. La UI real va en DOM (ver *Producto real en DOM* abajo).
+5. **Dithering encendido**: sin él, un degradado de 8 bits se banda al comprimir a H.264 y el cuadro se ve barato otra vez.
+6. Determinismo: `draw()` hace doble submit (el compositor puede capturar el cuadro anterior en un contexto nuevo). Aun así, el QA puede marcar diferencias de ~0.007 % de píxeles en frío en corridas aisladas — está declarado en `specs/20261028_calidad_visual/followups.md`.
+
+Ejemplo funcionando: `demos/studio-look` (12 s, un solo plano, con el beat "la pantalla despierta" a 6.2 s).
+
+Perfil de imagen medido en las 10 referencias de `videos/referencias/` (mediana): **soft 0.70 · sat 0.43 · rango 0.39**. Una pieza de vectores daba soft 0.52 y sat 0.65: contornos duros y color de relleno. La lectura completa y el objetivo por tipo están en `video-styles`; acá solo el comando.
+
+## Producto real en DOM (no dibujado)
+
+Para UI, producto o pantalla de app, lo que se ve caro es la **interfaz real en HTML** —con su tipografía, sus separadores y su jerarquía—, no un mockup dibujado a rectángulos. La pieza `demos/tastora` lo demuestra: el teléfono y la carta son DOM, no canvas.
+
+Patrón: el set 3D va de fondo (kit `studio`), y encima se monta un contenedor con perspectiva CSS:
+
+```css
+#stage { perspective: 1600px; }
+.card {
+  position: absolute; left: 120px; top: 620px; width: 560px;
+  transform: rotateY(-14deg) rotateX(6deg) translateZ(60px);
+  box-shadow: 0 42px 80px rgba(0,0,0,.45), 0 4px 10px rgba(0,0,0,.3);
+  border-radius: 10px; background: #fbf7ef;
+}
+```
+
+Reglas: la sombra va en `box-shadow` (el set no la proyecta), la tarjeta no se mueve mientras se lee, y su ángulo coincide con la luz del set (si la luz viene de arriba-izquierda, la sombra cae abajo-derecha).
 
 ## Marca de un sitio (opcional)
 

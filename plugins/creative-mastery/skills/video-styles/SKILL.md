@@ -103,3 +103,48 @@ Síntomas de estilo flojo que el QA debe detectar: composición idéntica entre 
 - **Etiqueta técnica: una por vez, ventanada por beat.** Cuatro rótulos (BASE / TORRE / BRAZO / CONTRAPESO) encimados a la vez eran ilegibles. Una etiqueta por clic dramático: entra con el beat que nombra la parte, sale antes de la siguiente, con leader line que la une a la parte en el mundo.
 - **Elementos posicionados por JS llevan x/y explícitos desde el frame 1.** Con `top:auto` el navegador coloca el elemento y la pose del script lo corrige después; los checks de zona segura corren antes. Etiquetas en columna derecha de 1080: `right: 142px` las deja dentro de la zona X 64.8–939.6, y la leader line arranca en `x = 936 − anchoEtiqueta`.
 
+
+
+---
+
+## Anatomía de un cuadro caro — medido 2026-10-28 (10 referencias vs 6 demos)
+
+El problema reportado por el usuario fue real y concreto: "el tema de la voz está super bien, pero la
+generación de las piezas gráficas está super regular". Se midió con `engine/visual-audit.mjs` (área
+plana, suavidad de borde, saturación, rango tonal, detalle) sobre las 10 referencias de
+`videos/referencias/` y sobre las demos.
+
+| Perfil (mediana) | soft | sat | rango | flat |
+|---|---|---|---|---|
+| 10 referencias | **0.70** | **0.43** | 0.39 | 57 % |
+| demo `vender-guion` (póster de bandas) | 0.52 | 0.65 | 0.73 | 59 % |
+| demo `huella-cafe` (vectores duros) | 0.22 | 0.05 | 0.29 | 81 % |
+| `studio-look` con el kit `studio` | 0.86 | 0.27 | 0.46 | 71 % |
+
+Lectura: el cuadro barato tiene **contornos duros (soft bajo), color de relleno (sat alta con rango
+quemado) y áreas planas**. Las referencias son lo opuesto: bordes suaves (luz que cae, desenfoque,
+rampas), saturación moderada y un rango tonal de medios tonos. No es cuánta energía tiene la imagen —
+las demos daban *más* borde y *más* color que las referencias y se veían peor.
+
+**Objetivo operativo** para una pieza nueva: `soft ≥ 0.60`, `sat ≤ 0.50`, `rango 0.38–0.55`. Se mide con
+`node engine/visual-audit.mjs <pieza> --refs-from <lista de referencias>` (el comando vive en `video-engine`).
+
+Las seis cosas que separan un cuadro caro de un póster, en orden de impacto:
+
+1. **Objeto, no símbolo.** Un teléfono, una losa de arcilla, una pila de servidores; no un rectángulo
+   que "representa" un teléfono. Si no hay objeto real (sitio, producto, foto CC0), se modela con el kit
+   `studio` (ver `video-engine`).
+2. **Luz con dirección.** Una principal con sombra suave, un relleno frío y un rebote. El degradado de
+   fondo es *el set*, no el sujeto: si el fondo es lo más interesante, no hay escena.
+3. **Contacto.** Todo lo que apoya proyecta sombra y oscurece lo que tiene debajo; todo lo que flota no
+   proyecta. Sin esto los objetos levitan y el cuadro se lee como collage.
+4. **Textura y dithering.** Grano de película (no ruido de compresión) y dithering en los degradados:
+   sin ellos, el degradado se banda al comprimir y aparece el look de plantilla.
+5. **Un acento, del color de lo que importa.** El acento no es paleta: marca la palabra o el objeto que la
+   voz enfatiza. Cuatro bandas de color plano no son una paleta, son un semáforo.
+6. **Tipografía con jerarquía real.** Una display, un peso por nivel, tracking negativo en el titular,
+   alineada a un margen. Nada de píldoras de tres colores distintas en la misma pieza.
+
+Prohibido explícito (medido en las demos, no en las referencias): bandas horizontales de color plano a
+pantalla completa, sol/degradado caricaturesco como fondo, tarjetas de vidrio con borde redondeado,
+píldoras saturadas en cada caption, y cualquier elemento "2D pegado" sobre un set sin sombra.
