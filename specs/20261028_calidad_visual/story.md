@@ -31,7 +31,7 @@ siguen igual para las piezas que ya existen.
 | T4 | Pieza de prueba de 12 s con el look; `check` + `build` + auditoría | S2, S4 | hecho | `demos/studio-look` · check PASS (0 fallas) · build PASS (WARN solo en pico true) · audit: soft 0.86, sat 0.27 |
 | T5 | Doctrina: números medidos a `video-styles` y el kit al `video-engine` | S3-S4 | hecho | `video-styles` § *Anatomía de un cuadro caro* · `video-engine` § *Kit studio* + *Producto real en DOM* |
 | T6 | Pieza bunker completa: transcripción real (whisper), 10 tomas / 119.1 s, captions palabra-a-palabra | S5 | hecho | `demos/bunker/index.html` · check PASS (1 aviso) · render en curso |
-| T8 | Mundo persistente + construcción animada (S8-S9) | S8-S9 | en curso | — |
+| T8 | Mundo persistente + construcción animada (S8-S9) | S8-S9 | hecho | `0ca989c` · check PASS (0 fallas) · stills 20.5/23.5/31/44/54/75/87/100 aprobados · assess medium, self-verification |
 | T7 | Arreglo de color: el reporte del usuario ("los colores se ven opacos, tristes") | S6 | hecho | causa: albedos sRGB sin convertir a lineal + tone mapping; fix en `studio.js` (srgbToLinear) y per-piece (sat/contrast/exposure) |
 
 **S8.** (feedback del usuario, verbatim) "me gusta me parece que esta cabron, pero parecen screenshoots,
@@ -88,3 +88,8 @@ quietud 0 %, negro 0 s, audio sin recortes. Auditoría sobre el video nuevo: fla
 **sat 0.66** · rango 0.53 vs referencia (flat 57 · soft 0.70 · sat 0.43 · rango 0.39). El pase de
 saturación se pasó: el cielo quedó todo amarillo cuando la referencia tiene cielo azul arriba del patio.
 Candidato a ajuste fino según feedback del usuario.
+
+**L8** (S8, implementación): writer delegó el mundo persistente (42 objetos, ANIM por t, brocal-telón,
+personaje que camina y emerge, deriva de cámara). Desviaciones documentadas: distancias d mayores que
+las pedidas para que nada asome antes de turno; la luz puntual queda fija desde el scene único (el kit
+no expone uLampCol por frame). Commits: `0ca989c` pieza+kit, este L8 en el spec.
