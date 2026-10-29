@@ -51,8 +51,14 @@ easing (la quietud y el movimiento ya empatan con la referencia): es de material
 (ANGLE/D3D11, GTX 1660 SUPER); raymarch de 96 pasos a 1080×1920 ≈ 0.1 ms/frame. La capacidad es
 alcanzable sin dependencias nuevas.
 
-**L4** (reporte del usuario, verbatim): "el video de hiciste no se ven los colores, se ven opacos,
-se ven super tristes". Diagnóstico: los hex se pasaban a sombreador como si ya fueran lineales y la
+**S5.** (alcance pedido en esta sesión, verbatim) "no es necesario que hagas voces, solo haz la
+animacion" y "yo te voy a dar feedback mientras": la pieza bunker se arma contra la transcripción real
+de la referencia, sin voz, con feedback iterativo del usuario sobre stills.
+
+**S6.** (reporte del usuario, verbatim) "el video de hiciste no se ven los colores, se ven opacos,
+se ven super tristes".
+
+**L4** (diagnóstico de S6): Diagnóstico: los hex se pasaban a sombreador como si ya fueran lineales y la
 codificación gamma final los levantaba dos veces → todo lavado (grises, arena crema). Fix: srgbToLinear
 en hexToRgb del kit + exposición 1.22 + sat 1.12 + cielo naranja. Verificado en stills: naranja naranja,
 tierra roja roja.
