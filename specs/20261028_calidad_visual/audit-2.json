@@ -1,0 +1,70 @@
+{
+ "goal": {
+  "flat": 0.5703125,
+  "edge": 0.03408665012371219,
+  "soft": 0.7038380564661795,
+  "micro": 0.012460512065860595,
+  "rango": 0.38627450980392153,
+  "color": 0.2629716629521395,
+  "sat": 0.43147460438259033,
+  "n": 10
+ },
+ "pieces": [
+  {
+   "file": "C:\\Users\\Juan Diaz\\generative-creative-engine\\demos\\vender-guion\\render\\final.mp4",
+   "duration": 64.3,
+   "frames": 64,
+   "flat": 0.5948660714285714,
+   "flatWorst": 0.7477678571428571,
+   "edge": 0.03379587694036828,
+   "soft": 0.5152664799190618,
+   "micro": 0.009917719413343297,
+   "rango": 0.7254901960784313,
+   "color": 0.7405628159435544,
+   "sat": 0.6517910293990101,
+   "label": "vender-guion"
+  },
+  {
+   "file": "C:\\Users\\Juan Diaz\\generative-creative-engine\\demos\\destilacion-oracle\\render\\final.mp4",
+   "duration": 41.63,
+   "frames": 42,
+   "flat": 0.6919642857142857,
+   "flatWorst": 0.8928571428571429,
+   "edge": 0.04128235093262507,
+   "soft": 0.41037303866033265,
+   "micro": 0.013683518213242775,
+   "rango": 0.48235294117647065,
+   "color": 0.16927595428951864,
+   "sat": 0.3565658312260819,
+   "label": "destilacion-oracle"
+  },
+  {
+   "file": "C:\\Users\\Juan Diaz\\generative-creative-engine\\demos\\studio-look\\render\\final.mp4",
+   "duration": 12,
+   "frames": 12,
+   "flat": 0.7053571428571429,
+   "flatWorst": 0.7723214285714286,
+   "edge": 0.03008690180336434,
+   "soft": 0.8559155083921675,
+   "micro": 0.013967873292334766,
+   "rango": 0.45882352941176474,
+   "color": 0.27356184443715353,
+   "sat": 0.26527280840867085,
+   "label": "studio-look"
+  },
+  {
+   "file": "C:\\Users\\Juan Diaz\\generative-creative-engine\\demos\\huella-cafe\\render\\final.mp4",
+   "duration": 24.8,
+   "frames": 25,
+   "flat": 0.80625,
+   "flatWorst": 1,
+   "edge": 0.02755048407270752,
+   "soft": 0.21930184804928132,
+   "micro": 0.009055172383624835,
+   "rango": 0.2901960784313726,
+   "color": 0.188153266158451,
+   "sat": 0.045263455603397396,
+   "label": "huella-cafe"
+  }
+ ]
+}

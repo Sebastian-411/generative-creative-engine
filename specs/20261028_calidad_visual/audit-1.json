@@ -1,0 +1,98 @@
+{
+ "goal": {
+  "flat": 0.5703125,
+  "edge": 0.03408665012371219,
+  "soft": 0.7038380564661795,
+  "micro": 0.012460512065860595,
+  "rango": 0.38627450980392153,
+  "color": 0.2629716629521395,
+  "sat": 0.43147460438259033,
+  "n": 10
+ },
+ "pieces": [
+  {
+   "file": "C:\\Users\\Juan Diaz\\generative-creative-engine\\demos\\tastora\\render\\final.mp4",
+   "duration": 55.32,
+   "frames": 55,
+   "flat": 0.5491071428571429,
+   "flatWorst": 0.9174107142857143,
+   "edge": 0.05381433675119499,
+   "soft": 0.5887295848397955,
+   "micro": 0.02009517252512361,
+   "rango": 0.6549019607843137,
+   "color": 0.4412826204425218,
+   "sat": 0.1717894978012057,
+   "label": "tastora"
+  },
+  {
+   "file": "C:\\Users\\Juan Diaz\\generative-creative-engine\\demos\\vender-guion\\render\\final.mp4",
+   "duration": 64.3,
+   "frames": 64,
+   "flat": 0.5948660714285714,
+   "flatWorst": 0.7477678571428571,
+   "edge": 0.03379587694036828,
+   "soft": 0.5152664799190618,
+   "micro": 0.009917719413343297,
+   "rango": 0.7254901960784313,
+   "color": 0.7405628159435544,
+   "sat": 0.6517910293990101,
+   "label": "vender-guion"
+  },
+  {
+   "file": "C:\\Users\\Juan Diaz\\generative-creative-engine\\demos\\arboles-estrellas\\render\\final.mp4",
+   "duration": 66.07,
+   "frames": 66,
+   "flat": 0.6584821428571429,
+   "flatWorst": 0.75,
+   "edge": 0.05621627478491821,
+   "soft": 0.8168883774034031,
+   "micro": 0.029918974352322603,
+   "rango": 0.3333333333333333,
+   "color": 0.0467577254528094,
+   "sat": 0.04553167308949546,
+   "label": "arboles-estrellas"
+  },
+  {
+   "file": "C:\\Users\\Juan Diaz\\generative-creative-engine\\demos\\destilacion-oracle\\render\\final.mp4",
+   "duration": 41.63,
+   "frames": 42,
+   "flat": 0.6919642857142857,
+   "flatWorst": 0.8928571428571429,
+   "edge": 0.04128235093262507,
+   "soft": 0.41037303866033265,
+   "micro": 0.013683518213242775,
+   "rango": 0.48235294117647065,
+   "color": 0.16927595428951864,
+   "sat": 0.3565658312260819,
+   "label": "destilacion-oracle"
+  },
+  {
+   "file": "C:\\Users\\Juan Diaz\\generative-creative-engine\\demos\\terror-abuela\\render\\final.mp4",
+   "duration": 38.42,
+   "frames": 38,
+   "flat": 0.796875,
+   "flatWorst": 1,
+   "edge": 0.014742977192102318,
+   "soft": 0.9811994458745906,
+   "micro": 0.010818184498290634,
+   "rango": 0.11568627450980393,
+   "color": 0.09440554483248793,
+   "sat": 0.2334121970508808,
+   "label": "terror-abuela"
+  },
+  {
+   "file": "C:\\Users\\Juan Diaz\\generative-creative-engine\\demos\\huella-cafe\\render\\final.mp4",
+   "duration": 24.8,
+   "frames": 25,
+   "flat": 0.80625,
+   "flatWorst": 1,
+   "edge": 0.02755048407270752,
+   "soft": 0.21930184804928132,
+   "micro": 0.009055172383624835,
+   "rango": 0.2901960784313726,
+   "color": 0.188153266158451,
+   "sat": 0.045263455603397396,
+   "label": "huella-cafe"
+  }
+ ]
+}
